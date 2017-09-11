@@ -1,0 +1,134 @@
+{
+    "info": {
+        "name": "DeaLibre",
+        "code": "dealibre",
+        "year": "2017",
+        "notes": "",
+        "productionUrl": "http://wemakesites.ru/projects/dealibre/",
+        "siteName": "DeaLibre",
+        "title": "DeaLibre",
+        "description": "DeaLibre",
+        "keywords": "html, css, js",
+        "image": "/i/og.jpg"
+    },
+    "customer": {
+        "name": "Александр",
+        "company": "GoodCode",
+        "email": "akiricovich@gmail.com",
+        "removeCopyrights": false
+    },
+    "ftp": {
+        "host": "wemakesites.ru",
+        "login": "wemakesites",
+        "password": "wemakesites-root"
+    },
+    "pages": {
+        "home": {
+            "name": "Home",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "bodyClass": "page-home"
+        },
+        "faq": {
+            "name": "FAQ",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "help": {
+            "name": "Help",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "text": {
+            "name": "Text",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "contacts": {
+            "name": "Contacts",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "bodyClass": "page-contacts"
+        },
+        "register": {
+            "name": "Register",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "signin": {
+            "name": "SignIn",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "recover": {
+            "name": "Recover password",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        }
+    },
+    "paths": {
+        "dev": {
+            "root": "./dev/",
+            "pages": "./dev/pages/",
+            "dummy": "./dev/dummy/",
+            "templates": "./dev/templates/",
+            "lib": "./dev/lib",
+            "js": "./dev/js/",
+            "images": "./dev/i/",
+            "icons": "./dev/i/icons/",
+            "svg": "./dev/svg/",
+            "svgIcons": "./dev/svg/icons/",
+            "css": "./dev/css/",
+            "cssLib": "./dev/lib/css/",
+            "htmlLib": "./dev/lib/html/",
+            "jsLib": "./dev/lib/js/",
+            "fonts": "./dev/fonts/"
+        },
+        "prod": {
+            "root": "./prod/",
+            "archives": "./prod/archives/",
+            "dummy": "./prod/dummy/",
+            "fonts": "./prod/fonts",
+            "images": "./prod/i/",
+            "svg": "./prod/svg/",
+            "css": "./prod/css/",
+            "js": "./prod/js/",
+            "pages": "./prod/pages/"
+        },
+        "front": {
+            "root": "./front/",
+            "email": "./front/email/"
+        },
+        "tmp": {
+            "root": "./tmp/"
+        }
+    },
+    "access": {
+        "user": "demo",
+        "password": "7DZ7cuvUa4"
+    }
+}
