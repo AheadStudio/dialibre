@@ -5,6 +5,7 @@
 		$sel.window = $(window);
 		$sel.html = $("html");
 		$sel.body = $("body", $sel.html);
+		$sel.bigMap = $(".geo-map", $sel.body);
 
 		return {
 			page: {
@@ -30,7 +31,197 @@
 							$sel.body.removeClass("scrolled");
 						}
 					}
-				}
+				},
+
+				polygonAnimate: {
+
+					init: function() {
+						var self = this;
+
+						$(".polygon-animate", $sel.body).Geometryangle({
+
+							mesh: {
+
+								width: 2,
+								height: 3,
+
+								// How far should the mesh vary into z-space.
+								depth: 10,
+
+								// Number of columns for the mesh.
+								columns: 12,
+
+								columns_auto: false,
+
+								// Number of rows for the mesh.
+								rows: 7,
+
+								rows_auto: true,
+								zoom: 1,
+								xRange: 0.8,
+								yRange: 0.1,
+								zRange: 3.0,
+								ambient: 'rgba(51, 105, 131, 1)',
+								diffuse: 'rgba(38, 109, 157, 1)',
+								background: 'rgba(17, 59, 88, 1)',
+
+
+								speed: 0.00005,
+								fluctuationSpeed: 0.08,
+								fluctuationIntensity: 0,
+
+								onRender: function () {
+								},
+								floorPosition: false,
+								draw: true
+
+							},
+
+
+							lights: {
+
+								// How many light sources belong to this light.
+								count: 1,
+
+								xyScalar: 50,
+
+								// Position of light source.
+								zOffset: 100,
+
+								ambient: 'rgba(204, 255, 0, 1)',
+								diffuse: 'rgba(204, 255, 0, 1)',
+								speed: 0.001,
+								gravity: 100,
+
+								// Dampening of light's movements.
+								dampening: 0.95,
+
+								minLimit: 10,
+								maxLimit: null,
+								minDistance: 20,
+								maxDistance: 400,
+								autopilot: false,
+								draw: true, //show circle
+								bounds: FSS.Vector3.create(),
+								step: FSS.Vector3.create(
+									Math.randomInRange(0.2, 1.0),
+									Math.randomInRange(0.2, 1.0),
+									Math.randomInRange(0.2, 1.0)
+								)
+
+							},
+
+							// specify the thickness, color, stroke, etc.
+							line: {
+
+								fill: "rgba(62, 99, 125, 1)",
+								thickness: 1,
+								fluctuationIntensity: 0,
+								fluctuationSpeed: 0.5,
+								draw: false
+
+							},
+
+							// Set the point attributes for the vertex.
+							vertex: {
+
+								// Radius of vertice circle.
+								radius: 0,
+
+								fill: "rgba(62, 99, 125, 1)",
+
+								// Fluctuates opacity of vertex.
+								fluctuationSpeed: 0.5,
+
+								fluctuationIntensity: 0,
+								strokeWidth: 0,
+								strokeColor: "rgba(62, 99, 125, 1)",
+
+								// Instead of setting alpha channel to zero
+								// Set draw to false to avoid computing.
+								draw: false
+
+							}
+
+						});
+
+					}
+
+
+				},
+				scrollAnimation: {
+
+					blocks: [],
+					init: function() {
+						var self = this;
+						$("[data-animationtype]:not(.animated), [data-animation]:not(.animated)").each(function() {
+							var $item = $(this);
+							self.blocks.push({
+								"html": $item,
+								"top": $item.offset().top
+							});
+							$item.addClass("beforeanimate");
+						});
+
+						$sel.window.on("scroll", function() {
+							self.check();
+						});
+						setTimeout(function() {
+							self.check();
+						}, 50);
+
+					},
+					check: function() {
+						var self = this,
+							block = false,
+							blockTop = false,
+							top = $sel.window.scrollTop(),
+							buffer = parseInt($sel.window.height()) / 1.1;
+						for(var i = 0, len = self.blocks.length; i < len; i++) {
+							block = self.blocks[i],
+							blockTop = parseInt(block.top, 10);
+							if(block.html.hasClass("animated")) {
+								continue;
+							}
+							if(top + buffer >= blockTop) {
+								block.html.addClass("animated");
+							}
+
+						}
+					}
+
+				},
+
+				playVideo: {
+
+					init: function () {
+
+						var $blockVideo = $(".video-source", $sel.body),
+							$containerVideo = $blockVideo.parent(),
+							$buttonPlay = $containerVideo.find(".video-play");
+
+
+						$containerVideo.click(function () {
+
+							var container = $(this),
+								button = container.find(".video-play"),
+								video = button.siblings(".video-source");
+
+						    if(video.get(0).paused){
+
+						        video.get(0).play();
+						        button.fadeOut();
+
+						    } else{
+								video.get(0).pause();
+								button.fadeIn();
+						    }
+						});
+
+					},
+
+				},
+
 			},
 
 			help: {
@@ -106,7 +297,7 @@
 							spanColor: $rd.data("spancolor") ? $rd.data("spancolor") : ""
 						});
 					});
-					
+
 					jcf.replace($(".form-item--number", $container));
 					jcf.replace($(".form-item--range", $container));
 
@@ -151,7 +342,44 @@
 					});
 
 				}
-			}
+			},
+
+			map: {
+
+				init: function() {
+					var self = this,
+						$pointMap = $(".map", $sel.bigMap);
+
+					$pointMap.each(function() {
+						var $elementMap = $(this);
+						self.hover($elementMap);
+					});
+
+				},
+
+				hover: function(hoverElement) {
+
+					$(hoverElement).on("mouseenter", function() {
+						var $hoverItem = $(this);
+
+						if (!$hoverItem.hasClass("hover-block")) {
+							$hoverItem.addClass("hover-block");
+						}
+
+					});
+
+					$(hoverElement).on("mouseleave", function() {
+						var $hoverItem = $(this);
+
+						if ($hoverItem.hasClass("hover-block")) {
+							$hoverItem.removeClass("hover-block");
+						}
+					});
+
+				},
+
+			},
+
 		};
 
 	})();
@@ -162,5 +390,10 @@
 	DEALIBRE.content.init();
 
 	DEALIBRE.page.header.init();
+	DEALIBRE.page.polygonAnimate.init();
+	DEALIBRE.page.scrollAnimation.init();
+	DEALIBRE.page.playVideo.init();
+
+	DEALIBRE.map.init();
 
 })(jQuery);
