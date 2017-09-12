@@ -1,0 +1,1224 @@
+/*** Settings ***/
+@import "nib"
+@import "../lib/css/css"
+
+global-reset();
+reset-html5();
+form-reset();
+b
+strong
+i
+em
+	font-style normal
+	font-weight normal
+	
+$transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
+/*** //Settings ***/
+
+
+
+/*** Fonts ***/
+@font-face
+	font-family "ProximaNovaRegular"
+	src url("../fonts/ProximaNova-Regular.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaSemiBold"
+	src url("../fonts/ProximaNova-SemiBold.woff") format("woff")
+	
+@font-face
+	font-family "ProximaNovaBold"
+	src url("../fonts/ProximaNova-Bold.woff") format("woff")
+/*** //Fonts ***/
+
+
+/*** Base ***/
+html
+body
+	height 100%
+
+body
+	min-height 100%
+	
+	font-family "ProximaNovaRegular"
+	font-size 14px
+	line-height 1
+	cursor default
+
+.page
+	width 100%
+	min-height 100%
+	min-width 1020px
+	overflow hidden
+	padding-top 70px
+
+.page-inner
+	margin 0 auto
+
+	box-sizing border-box
+
+	&--relative
+		position relative
+
+	&--w0
+		max-width 100%
+		padding 0 50px
+
+	&--w1
+		max-width 1560px
+		padding 0 30px
+		
+	&--w2
+		max-width 1010px
+		padding 0 30px
+		
+	&--w3
+		max-width 520px
+		padding 0 20px
+
+.page-content
+	padding 50px 0 320px 0
+/*** //Base ***/
+
+
+
+/*** Header ***/
+.page-header
+	position fixed
+	left 0
+	top 0
+	z-index 990
+	
+	box-sizing border-box
+	height 70px
+	display block
+	width 100%
+
+	background-color #e9eef4
+	
+	transition .3s background-color $transitionAnimation
+	
+	.header-logo
+		float left
+		margin 7px 100px 0 0
+
+		display block
+		width 170px
+		height 35px
+		
+		background url("../i/logo.png") no-repeat center center
+		background-size contain
+		
+		text-decoration none
+		
+	.header-menu
+		float left
+		
+		line-height 70px
+		
+		.header-menu-item-holder
+			vertical-align middle
+			margin-right 70px
+
+			display inline
+			
+			&:last-child
+				margin-right 0
+			
+		.header-menu-item
+			border-bottom 1px solid transparent
+
+			font-size 14px
+			text-transform uppercase
+			color #364b66
+			text-decoration none
+			letter-spacing 1px
+			white-space nowrap
+			
+			transition .3s border-bottom-color $transitionAnimation, .3s color $transitionAnimation
+			
+			&:hover
+				border-bottom-color #30b0ef
+
+				color #30b0ef
+		
+	.header-bar
+		float right
+		
+		line-height 70px
+		
+		.header-bar-item-holder
+			vertical-align middle
+			margin-right 70px
+
+			display inline
+			
+			&:last-child
+				margin-right 0
+			
+		.header-bar-item
+			border-bottom 1px solid transparent
+
+			font-size 14px
+			text-transform uppercase
+			color #364b66
+			text-decoration none
+			letter-spacing 1px
+			white-space nowrap
+			
+			transition .3s border-bottom-color $transitionAnimation, .3s color $transitionAnimation
+			
+			&:hover
+				border-bottom-color #30b0ef
+
+				color #30b0ef
+				
+.page-heading
+	padding 40px 0 60px 0
+	
+	text-align center
+	
+.page-description
+	margin -20px 0 40px 0
+
+	text-align center
+/*** //Header ***/
+
+
+
+/*** Footer ***/
+.page-footer
+	margin-top -205px
+
+	box-sizing border-box
+	padding 60px 0 50px 0
+	height 205px
+
+	background-color #344c68
+	
+.footer-menu
+	margin-bottom 30px
+	
+	text-align center
+	
+	.footer-menu-item-holder
+		vertical-align middle
+		margin 0 35px
+
+		display inline
+
+	.footer-menu-item
+		border-bottom 1px solid transparent
+
+		font-size 14px
+		color #FFF
+		text-transform uppercase
+		letter-spacing 1px
+		text-decoration none
+		
+		transition .3s border-bottom-color $transitionAnimation
+		
+		&:hover
+			border-bottom-color #FFF
+			
+.footer-social-items
+	text-align center
+	
+	.footer-social-item
+		position relative
+		vertical-align middle
+		margin 0 10px
+		
+		display inline-block
+		width 35px
+		height 35px
+		
+		text-decoration none
+		
+		svg
+			path
+			circle
+				fill #FFF
+				
+				transition .3s fill $transitionAnimation
+		
+		/*&:after
+			content ""
+			
+			position absolute
+			left 4px
+			top 5px
+			
+			display block
+			width 25px
+			height 25px
+			
+			background-color #FFF
+			
+			transform rotate(-45deg)
+			
+			transition .3s background-color $transitionAnimation*/
+			
+		&:hover
+			/*&:after
+				background-color #1dc819*/
+					
+			svg
+				path
+				circle
+					fill #1dc819
+/*** //Footer ***/
+
+
+
+/*** Content ***/
+.page-text
+	font-size 20px
+	line-height 35px
+
+	h1
+	/.h1
+		font-family "ProximaNovaBold"
+		font-size 24px
+		text-transform uppercase
+		letter-spacing 2px
+		
+	h1
+		margin 100px 0 50px 0
+
+		text-align center
+		
+	h2
+	/.h2
+		font-family "ProximaNovaBold"
+		font-size 24px
+		
+	p
+		margin-bottom 45px
+		
+		&:last-child
+			margin-bottom 0
+			
+	a
+		border-bottom 1px solid rgba(78, 183, 238, 0.5)
+
+		text-decoration none
+		color #4eb7ee
+		line-height 1
+		
+		transition .3s color $transitionAnimation, .3s border-bottom-color $transitionAnimation
+		
+		&:hover
+			border-bottom-color transparent
+			
+	img
+		&[align=left]
+			float left
+			margin 0 60px 40px 0
+			
+		&[align=right]
+			float right
+			margin 0 0 40px 60px
+			
+	ol
+		margin-bottom 45px
+		
+		counter-reset olList
+		
+		&:last-child
+			margin-bottom 0
+
+		li
+			position relative
+			margin-bottom 25px
+			
+			padding-left 25px
+			
+			&:before
+				counter-increment olList
+				content counter(olList) "."
+				
+				position absolute
+				left 0
+				top 0
+				
+				font-family "ProximaNovaBold"
+/*** //Content ***/
+
+
+
+/*** Links and btns ***/
+.btn
+	display inline-block
+	
+	line-height 1
+	white-space nowrap
+	text-decoration none
+	
+	&--green
+		padding 27px 100px
+
+		background-color #1dc818
+		
+		font-family "ProximaNovaBold"
+		font-size 24px
+		color #FFF
+		text-transform uppercase
+		letter-spacing 1px
+		
+		transition .3s border-radius $transitionAnimation
+		
+		&:hover
+			border-radius 7px
+		
+	&--blue
+		padding 15px 25px
+		
+		background-color #2fb0ee
+		
+		font-size 12px
+		color #FFF
+		text-transform uppercase
+		letter-spacing 2px
+		
+.link
+	display inline-block
+	text-decoration none
+	line-height 1
+	
+	transition .3s border-bottom-color $transitionAnimation
+	
+	&--blue
+		border-bottom 1px solid rgba(52, 76, 103, 0.5)
+
+		color #344c67
+		
+		&:hover
+			border-bottom-color transparent
+/*** //Links and btns ***/
+
+
+
+/*** Forms ***/
+.form-row
+	margin-bottom 20px
+	
+	overflow hidden
+	
+	font-size 0
+	
+	&--centered
+		text-align center
+		
+	&--clearfix
+		overflow visible
+		clearfix()
+	
+	&:last-child
+		margin-bottom 0
+		
+	.form-savesession
+		float left
+		
+	.form-forgot
+		float right
+		
+span.form-item--error
+	position absolute
+	left 0
+	bottom 0
+	
+	font-size 12px
+	color #ea640b
+
+.form-item-holder
+	position relative
+	
+	box-sizing border-box
+	padding-bottom 15px
+	
+	&--full
+		width 100%
+	
+	&--half
+		margin-right 4%
+
+		display inline-block
+		width 48%
+		
+		&:last-child
+			margin-right 0
+			
+	&--third
+		margin-right 5%
+		
+		display inline-block
+		width 30%
+		
+		&:last-child
+			margin-right 0
+
+.form-link
+	display inline-block
+
+	border-bottom 1px solid transparent
+
+	font-size 14px
+	color #344c67
+	line-height 1
+	text-decoration none
+	
+	transition .3s border-bottom-color $transitionAnimation
+	
+	&:hover
+		border-bottom-color rgba(52, 76, 103, 0.5)
+
+.form-item
+	display block
+	box-sizing border-box
+
+	&--text
+	&--textarea
+		width 100%
+		padding 25px 35px
+		
+		background-color #FF
+		border 1px solid #abb1b9
+		
+		font-family "ProximaNovaRegular"
+		font-size 24px
+		line-height 26px
+		
+		transition color .3s $transitionAnimation, border-color .3s $transitionAnimation
+		
+		&::-webkit-input-placeholder
+			color #4c637b
+
+			opacity 1
+			
+			transition opacity .3s $transitionAnimation, transform .3s $transitionAnimation
+
+		&:hover
+		&:focus
+			border-color #30b0ef
+
+			color #30b0ef
+
+		&:focus
+			&::-webkit-input-placeholder
+				opacity 0
+				
+				transform translateY(10px)
+				
+	&--textarea
+		min-height 150px
+		resize none
+				
+	&--error
+		border-color #ea640b
+		
+		color #ea640b
+		
+		&::-webkit-input-placeholder
+			color #ea640b
+		
+		&:hover
+		&:focus
+			border-color #ea640b
+			
+			color #ea640b
+			
+	&.valid
+		border-color #1dc819
+		
+		color #1dc819
+				
+.form-back-holder
+	margin 35px 0 80px 0
+	
+	.form-link
+		font-size 14px
+		text-transform uppercase
+
+.form-btn-holder
+	margin-top 20px
+
+	display inline-block
+	
+	.form-btn-controls
+		margin-top 25px
+
+		padding 5px 0
+		overflow hidden
+		
+		.form-btn-control-item
+			vertical-align middle
+
+			display inline-block
+
+			&--left
+				float left
+				
+				line-height 48px
+				
+			&--right
+				float right
+		
+.form-checkbox
+	display inline-block
+	
+	cursor pointer
+	
+	.jcf-checkbox
+		margin-right 10px
+	
+	.form-checkbox-title
+		vertical-align middle
+		position relative
+		top 2px
+
+		display inline-block
+		
+		font-size 14px
+		line-height 1
+		color #344c67
+
+.jcf-checkbox
+	position relative
+	vertical-align middle
+
+	display inline-block
+	width 15px
+	height 15px
+	
+	cursor pointer
+	
+	span
+		display block
+		width 100%
+		height 100%
+		
+		background-color #b9c6d7
+		
+		transition .3s transform $transitionAnimation, .3s background-color $transitionAnimation
+	
+	input
+		position absolute
+		left 0
+		top 0
+		
+		display block
+		
+	&.jcf-checked
+		span
+			background-color #67ba2f
+			transform rotate(45deg)
+/*** //Forms ***/
+
+
+
+/*** Faq ***/
+.faq-item
+	margin-bottom 50px
+	
+	&:last-child
+		margin-bottom 0
+		
+	.faq-item-title
+		margin-bottom 10px
+
+		font-family "ProximaNovaBold"
+		font-size 24px
+		color #344c67
+		
+	.faq-item-text
+		font-size 20px
+		line-height 35px
+/*** //Faq ***/
+
+
+
+/*** Help ***/
+.help
+	margin-bottom 100px
+
+.help-section-item
+	margin-bottom 70px
+	
+	&:last-child
+		margin-bottom 0
+		
+	.help-section-item-name
+		margin-bottom 25px
+		
+.help-section-item-block-item
+	margin-bottom 30px
+	
+	&:last-child
+		margin-bottom 0
+		
+	.help-section-item-block-item-name-holder
+		padding-bottom 5px
+
+		font-size 20px
+		font-family "ProximaNovaBold"
+		
+	.help-section-item-block-item-text
+		position relative
+		margin 30px 0 0 -25px
+
+		display none
+		width 100%
+		padding 20px 25px
+
+		background-color #e1ebfa
+		
+		font-size 20px
+		line-height 35px
+		
+		&:before
+			content ""
+			
+			position absolute
+			left 80px
+			top -25px
+
+			display block
+			width 0
+			height 0
+			
+			border-left 12px solid transparent
+			border-right 12px solid transparent
+			border-bottom 25px solid #e1ebfa
+			
+			opacity 0
+			transform translateY(5px)
+			
+			transition .3s opacity $transitionAnimation, .3s transform $transitionAnimation
+			
+	&.active
+		.help-section-item-block-item-text
+			&:before
+				opacity 1
+				transform translateY(0)
+/*** //Help ***/
+
+
+
+/*** Contacts ***/
+.contacts-inner
+	position relative
+	
+	overflow hidden
+	
+	&:after
+		content ""
+		
+		position absolute
+		right 230px
+		top 0
+		
+		display block
+		width 1px
+		height 100%
+		
+		background-color #abb1b9
+	
+	.contacts-info
+		float right
+		
+		box-sizing border-box
+		width 270px
+		padding-left 80px
+		
+		b
+			margin-bottom 25px
+
+			display block
+			
+			font-family "ProximaNovaBold"
+			font-size 30px
+		
+		p
+			margin-bottom 20px
+
+			font-size 24px
+			line-height 30px
+			color #3b3b3b
+			
+			&:last-child
+				margin-bottom 0
+	
+	.contacts-form
+		padding-right 270px
+/*** //Contacts ***/
+
+
+
+/*** Intro ***/
+.intro
+	position relative
+	
+	height 100vh
+	min-height 700px
+	
+	background url("../dummy/home.png") no-repeat center center
+	background-size cover
+	
+	.intro-inner
+		position absolute
+		left 0
+		top 50%
+		transform translateY(-50%)
+		
+		width 100%
+		
+		text-align center
+		
+	.intro-title
+		margin-bottom 20px
+
+		font-family "ProximaNovaSemiBold"
+		font-size 60px
+		color #FFF
+		
+	.intro-description
+		margin-bottom 80px
+
+		font-size 24px
+		color #FFF
+		
+	.intro-features
+		font-size 0
+		color #FFF
+		
+		.intro-feature-item
+			vertical-align middle
+			margin-right 5%
+
+			display inline-block
+			width 30%
+			
+			&:last-child
+				margin-right 0
+			
+			.intro-feature-item-title
+				margin-bottom  10px
+
+				font-family "ProximaNovaSemiBold"
+				font-size 24px
+				text-transform uppercase
+				
+			.intro-feature-item-description
+				font-size 18px
+				line-height 24px
+/*** //Intro ***/
+
+
+
+/*** Video ***/
+.video
+	background-color #f2f6fa
+
+	.video-view
+		position relative
+
+		min-height 700px
+		
+		background url("../dummy/notebook.png") no-repeat center bottom
+		background-size contain
+		
+		.video-source
+			position absolute
+			z-index 10
+			left 115px
+			top 158px
+
+			width 721px
+			height 450px
+			
+			background url("../dummy/video.png") no-repeat center center
+			background-size cover
+			
+		.video-play
+			position absolute
+			z-index 20
+			left 50%
+			top 50%
+			margin-left -70px
+			margin-top -30px
+
+			box-sizing border-box
+			display block
+			width 140px
+			height 140px
+			
+			border 1px solid #FFF
+			
+			cursor pointer
+			
+			transform rotate(-45deg)
+			
+			&:before
+				content ""
+				
+				position absolute
+				left 50%
+				top 50%
+				transform translate(-50%, -50%) rotate(45deg)
+				
+				display block
+				width 0
+				height 0
+				
+				border-top 10px solid transparent
+				border-bottom 10px solid transparent
+				border-left 22px solid #FFF
+/*** //Video ***/
+
+
+
+/*** Subscribe ***/
+.subscribe
+	margin-top -30px
+
+	padding 80px 0 160px 0
+	
+	background-image linear-gradient(to bottom, #E3EAF3 0%, #FFFFFF 100%)
+	
+	.subscribe-title
+		margin-bottom 30px
+
+		font-size 24px
+		font-family "ProximaNovaSemiBold"
+		text-transform uppercase
+		white-space nowrap
+		
+	.subscribe-form-holder
+		padding 0 70px
+		
+		.subscribe-form
+			position relative
+		
+		.subscribe-form-input-holder
+			padding-right 340px
+			
+		.subscribe-form-submit
+			position absolute
+			right 0
+			top 0
+			
+			width 320px
+/*** //Subscribe ***/
+
+
+
+/*** Features ***/
+.features
+	position relative
+	
+	padding 0 0 100px 50%
+	
+	&:before
+		content ""
+		
+		position absolute
+		left 0
+		top 0
+		
+		display block
+		width 50%
+		height 100%
+		
+		background url("../dummy/ipad.png") no-repeat right center
+	
+	.features-title
+		margin-bottom 60px
+
+		font-size 24px
+		font-family "ProximaNovaSemiBold"
+		text-transform uppercase
+		
+	.feature-item
+		position relative
+		margin-bottom 70px
+		
+		clearfix()
+		
+		&:last-child
+			margin-bottom 0
+			
+		.feature-item-icon
+			position relative
+			float left
+
+			box-sizing border-box
+			display block
+			width 80px
+			height 80px
+			
+			line-height 80px
+			text-align center
+			
+			&:after
+				content ""
+				
+				position absolute
+				left 0
+				top 0
+				
+				box-sizing border-box
+				display block
+				width 100%
+				height 100%
+				
+				border 1px solid #0d8ae2
+				
+				transform rotate(-45deg)
+				
+			svg
+				vertical-align middle
+
+				display inline-block
+				width 55%
+				height auto
+				max-height 55%
+
+				path
+				rect
+					fill #0d8ae2
+					
+					&[fill]
+						fill #FFF
+			
+		.feature-item-content
+			padding-left 160px
+
+		.feature-item-title
+			margin-bottom 10px
+
+			font-size 24px
+			font-family "ProximaNovaSemiBold"
+			text-transform uppercase
+			color #0d8ae2
+			
+		.feature-item-description
+			font-size 18px
+			line-height 24px
+/*** //Features ***/
+
+
+
+/*** Reviews ***/
+.reviews
+	padding 100px 0 30px 0
+
+	background url("../dummy/reviews.png") no-repeat center center
+	background-size cover
+	
+	.review-item
+		.review-item-text
+			margin-bottom 60px
+
+			font-size 18px
+			line-height 30px
+			color #FFF
+			text-align center
+			
+		.review-item-author
+			font-family "ProximaNovaBold"
+			font-size 18px
+			color #FFF
+			text-align center
+			text-transform uppercase
+			letter-spacing 1px
+			
+	.slick-dots
+		margin-top 50px
+		
+		text-align center
+		
+		li
+			vertical-align middle
+			margin 0 6px
+
+			display inline-block
+			
+			button
+				display block
+				width 8px
+				height 8px
+				
+				background-color #FFF
+				border-radius 50%
+				
+				text-indent -9999px
+				
+				transition background-color .3s $transitionAnimation
+				
+			&.slick-active
+				button
+					background-color #344c67
+/*** //Reviews ***/
+
+
+
+/*** Geo ***/
+.geo
+	padding 110px 0
+
+.geo-title
+	margin-bottom 80px
+
+	font-family "ProximaNovaSemiBold"
+	font-size 24px
+	text-align center
+	text-transform uppercase
+	
+.geo-inner
+	position relative
+	
+	clearfix()
+	
+.geo-info
+	position relative
+	z-index 20
+	float right
+	
+	width 420px
+	
+	.geo-item
+		margin-bottom 50px
+		
+		&:last-child
+			margin-bottom 0
+			
+		.jcf-select
+			position relative
+			
+			box-sizing border-box
+			display block
+			padding 5px 0
+			
+			border-bottom 1px solid #000
+			
+			cursor pointer
+			
+			.jcf-select-text
+				display block
+				
+				font-size 14px
+				text-transform uppercase
+				line-height 14px
+				letter-spacing 1px
+				
+			.jcf-select-opener
+				position absolute
+				right 10px
+				top 8px
+
+				display block
+				width 0
+				height 0
+				
+				border-left 5px solid transparent
+				border-right 5px solid transparent
+				border-top 8px solid #000
+				
+				transition .3s transform $transitionAnimation
+				
+			&.jcf-drop-active
+				.jcf-select-opener
+					transform rotate(-180deg)
+
+.jcf-select-geo-item-select
+	position absolute
+	z-index 50
+
+	background-color #FFF
+	
+	.jcf-list
+	.jcf-list-content
+		display block
+		
+	.jcf-list-content
+		padding 10px 0
+		
+	.jcf-option
+		margin 10px 0
+
+		display block
+		padding 5px 0
+		
+		border-bottom 1px solid transparent
+		
+		cursor pointer
+		
+		transition .3s border-bottom-color $transitionAnimation
+		
+		&:hover
+			border-bottom-color #000
+
+.geo-map
+	position absolute
+	z-index 10
+	left 0
+	top -30px
+	bottom -50px
+
+	box-sizing border-box
+	width 100%
+
+	background url("../dummy/map.png") no-repeat left center
+	background-size contain
+/*** //Geo ***/
+
+
+
+/*** Pages ***/
+.page-contacts
+	background url("../dummy/contacts.png") no-repeat center center
+	background-size contain
+	
+	.contacts
+		padding 180px 0
+		
+.page-home
+	.page-header
+		height 130px
+
+		background-color rgba(52, 76, 103, 0.5)
+		
+		.header-logo
+			margin-top 37px
+
+			background-image url("../i/logo_white.png")
+		
+		.header-menu
+			line-height 130px
+
+			.header-menu-item
+				color #FFF
+				
+		.header-bar
+			line-height 130px
+			
+			.header-bar-item
+				color #FFF
+				
+	&.scrolled
+		.page-header
+			background-color rgba(52, 76, 103, 1)
+
+	.page
+		padding-top 0
+		
+	.page-content
+		padding-top 0
+		padding-bottom 205px
+		
+/*** //Pages ***/
+
+
+
+
