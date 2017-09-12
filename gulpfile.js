@@ -740,10 +740,10 @@ gulp.task("production", function() {
 	runSequence(
 		//["clear"],
 		["svg"],
-		["front", "pages", "dummy", "js"],
 		["sprite"],
 		["css"],
-		["images"]
+		["images"],
+		["front", "pages", "dummy", "js"]
 	);
 });
 

@@ -2,8 +2,8 @@ extends ../templates/base
 
 block content
 	div(class="intro polygon-animate")
-		div(style="position: fixed; left: 0; right: 0; top: 0; bottom: 0;")
-		div(class="intro-inner ")
+		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
+		div(class="intro-inner ") 
 			div(class="page-inner page-inner--w2")
 				h1(class="intro-title") Vestibulum cursus nunc purus
 				div(class="intro-description") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci.
@@ -72,7 +72,7 @@ block content
 
 
 	div(class="reviews polygon-animate")
-		div(style="position: fixed; left: 0; right: 0; top: 0; bottom: 0;")
+		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
 		div(class="page-inner page-inner--w2")
 			div(class="reviews-items")
 				div(class="review-item")
@@ -91,32 +91,32 @@ block content
 			div(class="geo-inner")
 				div(class="geo-info")
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="Africa")
+						select(class="geo-item-select", placeholder="Africa", data-map="map-africa")
 							option(value="1") Tunis
 							option(value="2") Algir
 
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="Asia")
+						select(class="geo-item-select", placeholder="Asia", data-map="map-asia")
 							option(value="1") Tunis
 							option(value="2") Algir
 
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="Australia / Oceania")
+						select(class="geo-item-select", placeholder="Australia / Oceania", data-map="map-australia")
 							option(value="1") Tunis
 							option(value="2") Algir
 
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="Europe")
+						select(class="geo-item-select", placeholder="Europe", data-map="map-asia")
 							option(value="1") Tunis
 							option(value="2") Algir
 
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="North America")
+						select(class="geo-item-select", placeholder="North America", data-map="map-north-america")
 							option(value="1") Tunis
 							option(value="2") Algir
 
 					div(class="geo-item")
-						select(class="geo-item-select", placeholder="South America")
+						select(class="geo-item-select", placeholder="South America", data-map="map-south-america")
 							option(value="1") Tunis
 							option(value="2") Algir
 				div(class="geo-map")

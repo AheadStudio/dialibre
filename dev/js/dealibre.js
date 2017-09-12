@@ -5,7 +5,9 @@
 		$sel.window = $(window);
 		$sel.html = $("html");
 		$sel.body = $("body", $sel.html);
-		$sel.bigMap = $(".geo-map", $sel.body);
+
+		$sel.geo = $(".geo", $sel.body);
+		$sel.bigMap = $(".geo-map", $sel.geo);
 
 		return {
 			page: {
@@ -360,19 +362,29 @@
 				hover: function(hoverElement) {
 
 					$(hoverElement).on("mouseenter", function() {
-						var $hoverItem = $(this);
+						var $hoverItem = $(this),
+							idHoverItem = $hoverItem.attr("id"),
+							$selectHover = $(".geo-item", $sel.geo).find("[data-map='" + idHoverItem + "']"),
+							$jcfHover = $selectHover.siblings(".jcf-select-geo-item-select");
 
 						if (!$hoverItem.hasClass("hover-block")) {
 							$hoverItem.addClass("hover-block");
+							$jcfHover.addClass("jcf-select--hover");
 						}
 
 					});
 
 					$(hoverElement).on("mouseleave", function() {
-						var $hoverItem = $(this);
+						var $hoverItem = $(this)
+							idHoverItem = $hoverItem.attr("id"),
+							$selectHover = $(".geo-item", $sel.geo).find("[data-map='" + idHoverItem + "']"),
+							$jcfHover = $selectHover.siblings(".jcf-select-geo-item-select");
+
 
 						if ($hoverItem.hasClass("hover-block")) {
 							$hoverItem.removeClass("hover-block");
+							$jcfHover.removeClass("jcf-select--hover");
+
 						}
 					});
 

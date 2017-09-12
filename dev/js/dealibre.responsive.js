@@ -10,8 +10,8 @@
 
 		return {
 
-			// Adds href="tel:" to the phone nыumbers
-			mobilizePhones: {    ы
+			// Adds href="tel:" to the phone numbers
+			mobilizePhones: {
 				init: function($phones) {
 					$phones.each(function() {
 						var $phone = $(this),

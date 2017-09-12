@@ -15,7 +15,7 @@ em
 $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
 /*** //Settings ***/
 
-     
+
 
 /*** Fonts ***/
 @font-face
@@ -29,6 +29,7 @@ $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
 @font-face
 	font-family "ProximaNovaBold"
 	src url("../fonts/ProximaNova-Bold.woff") format("woff")
+
 /*** //Fonts ***/
 
 
@@ -1145,6 +1146,12 @@ span.form-item--error
 			border-bottom 1px solid #000
 
 			cursor pointer
+
+			transition color 0.5s $transitionAnimation, border-bottom-color 0.5s $transitionAnimation
+
+			&.jcf-select--hover
+				color #4987c7
+				border-bottom-color #4987c7
 
 			.jcf-select-text
 				display block
