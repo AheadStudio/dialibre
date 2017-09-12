@@ -1,0 +1,28 @@
+extends ../templates/base
+
+block content
+	div(class="page-heading")
+		div(class="page-inner page-inner--w1")
+			h1(class="h1") Log in
+
+	div(class="page-inner page-inner--w3")
+		form(class="form")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="User name", required, name="lf1")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="password", class="form-item form-item--text", placeholder="Password", required, name="lf2")
+			div(class="form-row form-row--clearfix")
+				label(class="form-savesession form-checkbox")
+					input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+					span(class="form-checkbox-title") Keep me logged in
+				a(href="recover.html", class="form-forgot form-link") Forgot password?
+			div(class="form-row form-row--centered")
+				div(class="form-btn-holder")
+					button(type="submit", class="btn btn--green form-btn") Log in
+					div(class="form-btn-controls")
+						div(class="form-btn-control-item form-btn-control-item--left")
+							a(href="register.html", class="form-link") Don't have an account?
+						div(class="form-btn-control-item form-btn-control-item--right")
+							a(href="register.html", class="btn btn--blue") Sign up

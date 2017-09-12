@@ -1,0 +1,34 @@
+extends ../templates/base
+
+block content
+	div(class="page-heading")
+		div(class="page-inner page-inner--w1")
+			h1(class="h1") Join DeaLibre’
+
+	div(class="page-description")
+		div(class="page-inner page-inner--w1") Free deal exchange for business brokers, prospectors, rasearchers, and investors.
+
+	div(class="page-inner page-inner--w3")
+		form(class="form")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="email", class="form-item form-item--text", name="remail" placeholder="Work Email", required, data-error="Enter your email")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="First Name", name="rname")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="Last Name", name="rname2")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="Company Name", name="rcompany")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="Position", name="rposition")
+			div(class="form-row")
+				div(class="form-item-holder form-item-holder--full")
+					input(type="text", class="form-item form-item--text", placeholder="Phone" name="rphone", required, data-error="Enter your phone")
+			div(class="form-row form-row--centered")
+				button(type="submit", class="btn btn--green") Join dealibre
+			div(class="form-row form-row--centered")
+				a(href="signin.html", class="form-link") Already have an account?
