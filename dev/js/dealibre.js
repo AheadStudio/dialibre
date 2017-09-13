@@ -357,6 +357,11 @@
 						self.hover($elementMap);
 					});
 
+					$pointMap.on("click", function() {
+						var $elementMap = $(this),
+							idElement = $elementMap.attr("id");
+						self.moveSelect(idElement);
+					})
 				},
 
 				hover: function(hoverElement) {
@@ -389,6 +394,34 @@
 					});
 
 				},
+
+				moveSelect: function(idElement) {
+					var self = this,
+						$geoBlock = $(".geo-item", $sel.geo),
+						$select = $geoBlock.find("[data-map='" + idElement + "']"),
+						$parentSelect = $select.parent(),
+
+						$jcfSelect = $select.siblings(".jcf-select-geo-item-select"),
+
+						$allElement = $(".geo-item .geo-item-select:not([data-map='" + idElement + "'])"),
+						$parentAllElement = $allElement.parent();
+
+					$geoBlock.addClass("geo-item--hidden");
+
+					setTimeout(function() {
+						$parentAllElement.hide();
+
+						$parentSelect.show();
+						$parentSelect.removeClass("geo-item--hidden");
+
+						self.openSelect($select, $jcfSelect);
+					}, 600);
+
+				},
+
+				openSelect: function($select, $jcfSelect) {
+					console.log(jcf.getInstance($select));
+				}
 
 			},
 

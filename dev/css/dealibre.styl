@@ -61,6 +61,12 @@ body
 	&--relative
 		position relative
 
+	&--max
+		max-width 2000px
+		width 100%
+		height 100%
+		padding 0 50px
+
 	&--w0
 		max-width 100%
 		padding 0 50px
@@ -95,9 +101,15 @@ body
 	display block
 	width 100%
 
-	background-color #e9eef4
+	background-color #e9eef5
 
 	transition .3s background-color $transitionAnimation
+
+	.header-logo-container
+		width 305px
+		height 100%
+
+		background #344c67
 
 	.header-logo
 		float left
@@ -108,6 +120,19 @@ body
 		height 35px
 
 		background url("../i/logo.png") no-repeat center center
+		background-size contain
+
+		text-decoration none
+
+	.header-logo-white
+		float left
+		margin 7px 100px 0 0
+
+		display block
+		width 170px
+		height 35px
+
+		background url("../i/logo_white.png") no-repeat center center
 		background-size contain
 
 		text-decoration none
@@ -1121,6 +1146,8 @@ span.form-item--error
 .geo-inner
 	position relative
 
+	height 480px
+
 	clearfix()
 
 .geo-info
@@ -1132,6 +1159,12 @@ span.form-item--error
 
 	.geo-item
 		margin-bottom 50px
+
+		opacity 1
+		transition opacity 0.6s $transitionAnimation
+
+		&.geo-item--hidden
+			opacity 0
 
 		&:last-child
 			margin-bottom 0
