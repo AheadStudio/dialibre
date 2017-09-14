@@ -9,6 +9,8 @@
 		$sel.geo = $(".geo", $sel.body);
 		$sel.bigMap = $(".geo-map", $sel.geo);
 
+		$sel.colorFilter = $(".main-filter-items").css("background-color");
+
 		return {
 			page: {
 				header: {
@@ -283,7 +285,7 @@
 						jcf.replace($select);
 					});
 
-					$(".form-item--checkbox", $container).each(function() {
+					$(".form-item--checkbox, .filter-checkbox-item", $container).each(function() {
 						var $ch = $(this);
 
 						jcf.replace($ch, "Checkbox", {
@@ -291,7 +293,7 @@
 						});
 					});
 
-					$(".form-item--radio", $container).each(function() {
+					$(".form-item--radio, .filter-radio-item", $container).each(function() {
 						var $rd = $(this);
 
 						jcf.replace($rd, "Radio", {
@@ -425,10 +427,49 @@
 
 			},
 
+			accordionFilter: {
+				init: function() {
+					var self = this,
+						checkboxFilter = $(".filter-checkbox");
+
+					checkboxFilter.on("change", function() {
+						checkboxItem = $(this);
+						console.log(checkboxItem);
+						self.openFilter(checkboxItem);
+					});
+
+
+				},
+
+				openFilter: function(checkboxItem) {
+					var self = this,
+						$checkboxContainer = checkboxItem.closest(".filter-accordion"),
+						checkboxContainerId = $checkboxContainer.attr("id"),
+						checkboxContainerColor = $checkboxContainer.data("color"),
+						$content = $(".main-filter-items").find("[data-filter='" + checkboxContainerId + "']");
+
+					if ($checkboxContainer) {
+						if (!$content.hasClass("active")) {
+							$checkboxContainer.css("background-color", checkboxContainerColor);
+							$content.slideDown("600", function() {
+								$content.addClass("active");
+							});
+						} else {
+							$content.slideUp("600", function() {
+								$content.removeClass("active");
+							});
+							$checkboxContainer.css("background-color", "transparent");
+
+						}
+					}
+				},
+
+			},
+
 		};
 
 	})();
-
+	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
 

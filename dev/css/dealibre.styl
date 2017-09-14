@@ -13,6 +13,8 @@ em
 	font-weight normal
 
 $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
+$colorDarkBlue = #344c67
+$colorBlue = #30b0ef
 /*** //Settings ***/
 
 
@@ -65,7 +67,6 @@ body
 		max-width 2000px
 		width 100%
 		height 100%
-		padding 0 50px
 
 	&--w0
 		max-width 100%
@@ -85,6 +86,10 @@ body
 
 .page-content
 	padding 50px 0 320px 0
+
+.page-content-register
+	height 100vh
+	padding 0
 /*** //Base ***/
 
 
@@ -106,10 +111,16 @@ body
 	transition .3s background-color $transitionAnimation
 
 	.header-logo-container
+		display inline-block
 		width 305px
 		height 100%
 
-		background #344c67
+		margin-right 60px
+
+		background $colorDarkBlue
+
+		.header-logo-white
+			margin-left 15px
 
 	.header-logo
 		float left
@@ -164,9 +175,9 @@ body
 			transition .3s border-bottom-color $transitionAnimation, .3s color $transitionAnimation
 
 			&:hover
-				border-bottom-color #30b0ef
+				border-bottom-color $colorBlue
 
-				color #30b0ef
+				color $colorBlue
 
 	.header-bar
 		float right
@@ -195,9 +206,9 @@ body
 			transition .3s border-bottom-color $transitionAnimation, .3s color $transitionAnimation
 
 			&:hover
-				border-bottom-color #30b0ef
+				border-bottom-color $colorBlue
 
-				color #30b0ef
+				color $colorBlue
 
 .page-heading
 	padding 40px 0 60px 0
@@ -208,6 +219,204 @@ body
 	margin -20px 0 40px 0
 
 	text-align center
+
+/** header register user **/
+
+.header-menu-register
+	display inline-block
+	vertical-align top
+
+.header-personal
+	display flex
+	float right
+	height 100%
+
+	align-items center
+
+	.header-personal-alerts
+		position relative
+		display inline-block
+
+		width 15px
+		height 15px
+
+		margin-right 35px
+
+		&:before
+		&:after
+			content ""
+
+			position absolute
+			top 0
+			left 0
+
+			width 100%
+			height 100%
+
+			background-repeat no-repeat
+			background-size contain
+
+
+			transition opacity 0.3s $transitionAnimation
+
+		&:before
+			opacity 1
+			background-image url("../i/icon_alerts.png")
+
+		&:after
+			opacity 0
+			background-image url("../i/icon_alerts_blue.png")
+
+		&:hover
+			&:before
+				opacity 0
+			&:after
+				opacity 1
+
+	.header-personal-mail
+		position relative
+		display inline-block
+
+		width 19px
+		height 13px
+
+		margin-right 50px
+
+		&:before
+		&:after
+			content ""
+
+			position absolute
+			top 0
+			left 0
+
+			width 100%
+			height 100%
+
+			background-repeat no-repeat
+			background-size contain
+
+
+			transition opacity 0.3s $transitionAnimation
+
+		&:before
+			opacity 1
+			background-image url("../i/icon_mail.png")
+
+		&:after
+			opacity 0
+			background-image url("../i/icon_mail_blue.png")
+
+		&:hover
+			&:before
+				opacity 0
+			&:after
+				opacity 1
+
+	.header-personal-mail
+	.header-personal-alerts
+		.header-personal-count
+			position absolute
+			top 7px
+			left 9px
+
+			padding 2px 5px
+
+			border-radius 10px
+			background #e9eef5
+
+			font-size 14px
+
+			text-decoration none
+
+			color #d0631b
+
+			z-index 100
+
+	.header-personal-btn
+		width 180px
+		height 45px
+
+		padding 0
+		padding-top 3px
+		box-sizing border-box
+
+
+		font-size 14px
+
+	.header-personal-avatar
+		position relative
+		display inline-block
+
+		width 45px
+		height 45px
+
+		padding 12px
+		box-sizing border-box
+
+		margin-right 25px
+		margin-left 25px
+
+		border 1px solid $colorDarkBlue
+		border-radius 50%
+
+		transition border-color 0.3s $transitionAnimation
+
+		&:before
+		&:after
+			content ""
+
+			position absolute
+			top 50%
+			left 50%
+
+			width 14px
+			height 16px
+
+			background-repeat no-repeat
+			background-size contain
+
+			transform translate(-50%,-50%)
+
+			transition opacity 0.3s $transitionAnimation
+
+		&:before
+			opacity 1
+			background-image url("../i/no_avatar.png")
+
+		&:after
+			opacity 0
+			background-image url("../i/no_avatar_blue.png")
+
+		&:hover
+			border-color $colorBlue
+			&:before
+				opacity 0
+			&:after
+				opacity 1
+
+	.header-personal-initials
+		margin-right 40px
+
+		border-bottom 1px solid transparent
+
+		text-decoration none
+
+		font-size 16px
+		font-family ProximaNovaBold
+
+		color $colorDarkBlue
+		transition color 0.3s $transitionAnimation, border-bottom-color 0.3s $transitionAnimation
+
+		&:hover
+			border-bottom-color $colorBlue
+			color $colorBlue
+
+
+
+
+/** //header register user **/
+
 /*** //Header ***/
 
 
@@ -417,7 +626,7 @@ body
 	&--blue
 		border-bottom 1px solid rgba(52, 76, 103, 0.5)
 
-		color #344c67
+		color $colorDarkBlue
 
 		&:hover
 			border-bottom-color transparent
@@ -490,7 +699,7 @@ span.form-item--error
 	border-bottom 1px solid transparent
 
 	font-size 14px
-	color #344c67
+	color $colorDarkBlue
 	line-height 1
 	text-decoration none
 
@@ -529,9 +738,9 @@ span.form-item--error
 
 		&:hover
 		&:focus
-			border-color #30b0ef
+			border-color $colorBlue
 
-			color #30b0ef
+			color $colorBlue
 
 		&:focus
 			&::-webkit-input-placeholder
@@ -612,7 +821,7 @@ span.form-item--error
 
 		font-size 14px
 		line-height 1
-		color #344c67
+		color $colorDarkBlue
 
 .jcf-checkbox
 	position relative
@@ -644,6 +853,42 @@ span.form-item--error
 		span
 			background-color #67ba2f
 			transform rotate(45deg)
+
+.jcf-radio
+	position relative
+	vertical-align middle
+
+	display inline-block
+	width 15px
+	height 15px
+
+	border-radius 50%
+
+	cursor pointer
+
+	span
+		display block
+		width 100%
+		height 100%
+
+		border-radius 50%
+		background-color #b9c6d7
+
+		transition .3s background-color $transitionAnimation
+
+	input
+		position absolute
+		left 0
+		top 0
+
+		display block
+
+	&.jcf-checked
+		span
+			background-color #67ba2f
+
+
+
 /*** //Forms ***/
 
 
@@ -660,7 +905,7 @@ span.form-item--error
 
 		font-family "ProximaNovaBold"
 		font-size 24px
-		color #344c67
+		color $colorDarkBlue
 
 	.faq-item-text
 		font-size 20px
@@ -918,6 +1163,8 @@ span.form-item--error
 
 			transform rotate(-45deg)
 
+			transition background 0.6s $transitionAnimation
+
 			&:before
 				content ""
 
@@ -933,6 +1180,9 @@ span.form-item--error
 				border-top 10px solid transparent
 				border-bottom 10px solid transparent
 				border-left 22px solid #FFF
+
+			&:hover
+				background #1dc819
 /*** //Video ***/
 
 
@@ -1126,7 +1376,7 @@ span.form-item--error
 
 			&.slick-active
 				button
-					background-color #344c67
+					background-color $colorDarkBlue
 /*** //Reviews ***/
 
 
@@ -1309,3 +1559,177 @@ span.form-item--error
 		padding-bottom 205px
 
 /*** //Pages ***/
+
+
+/*** PAGE SEARCH ***/
+
+/*** filter ***/
+.main-table
+	display inline-block
+	vertical-align top
+	width auto
+
+	margin-left -4px
+.main-filter
+	display inline-block
+	width 305px
+	height 100%
+
+	background #4c637b
+
+	.main-filter-items
+		display block
+		width 100%
+
+		.main-filter-item
+			display block
+			width 100%
+
+			padding 15px 15px
+			box-sizing border-box
+
+			.filter-button
+				display inline-block
+
+				margin-bottom 20px
+
+				padding 15px 25px 12px 25px
+				box-sizing border-box
+
+				border 1px solid #fff
+
+				font-size 12px
+				font-family ProximaNovaBold
+
+				text-transform uppercase
+				color #fff
+
+				transition background 0.6s $transitionAnimation, color 0.6s $transitionAnimation
+
+				&:hover
+					background #fff
+					color #4c637b
+
+			.filter-radio-items
+				display block
+				width 100%
+				margin-bottom 35px
+
+			.filter-radio
+				display inline-block
+				cursor pointer
+
+				margin-right 60px
+
+				&:last-child
+					margin-right 0
+
+				.jcf-radio
+					margin-right 10px
+
+					span
+						background #fff
+
+					&.jcf-checked
+						span
+							background-color #67ba2f
+
+
+
+				.filter-radio-item
+					top 0
+					left 0
+
+				.filter-radio-title
+					position relative
+					display inline-block
+
+					vertical-align middle
+
+					font-size 14px
+					line-height 1
+
+					color #fff
+
+			.filter-checkbox
+				display inline-block
+				cursor pointer
+
+				.jcf-checkbox
+					margin-right 10px
+
+					span
+						background #fff
+
+					&.jcf-checked
+						span
+							background-color #67ba2f
+
+				.filter-checkbox-title
+					position relative
+					display inline-block
+
+					vertical-align middle
+
+					font-size 16px
+					line-height 1
+
+					color #fff
+
+			.filter-text-item
+				display inline-block
+
+				vertical-align top
+
+				width 100%
+
+				border 1px solid #fff
+
+				padding 15px
+
+				box-sizing border-box
+
+				color #fff
+
+				&::-webkit-input-placeholder
+					color #fff
+
+					transition transform 0.3s $transitionAnimation, font-size 0.3s $transitionAnimation
+
+				&--half
+					width 48%
+					margin-right 2%
+
+					&:last-child
+						margin-right 0
+
+				&:focus
+					&::-webkit-input-placeholder
+						transform translateY(-15px)
+
+						font-size 10px
+
+		.filter-accordion
+			.main-filter-item-content
+				display none
+				width 100%
+
+				&--lvl1
+					.main-filter-item
+						padding-left 45px
+				&--lvl2
+					max-height 325px
+
+					overflow-y auto
+
+					.main-filter-item
+						padding-left 70px
+
+				&--lvl3
+					.main-filter-item
+						padding-left 90px
+
+
+/*** //filter ***/
+
+/*** //PAGE SEARCH ***/

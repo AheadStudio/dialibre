@@ -1,3 +1,123 @@
 extends ../templates/base_register
 
 block content
+    div(class="main-filter")
+        div(class="main-filter-items", style="background-color: #4c637b")
+            div(class="main-filter-item")
+                button(type="submit", class="btn filter-button") new search
+                div(class="filter-radio-items")
+                    label(class="filter-radio")
+                        input(type="radio", name="deals", class="filter-radio-item")
+                        span(class="filter-radio-title") All deals
+                    label(class="filter-radio")
+                        input(type="radio", name="deals", class="filter-radio-item")
+                        span(class="filter-radio-title") My deals
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Industry
+    
+            div(class="filter-accordion", data-color="rgb(86, 114, 142)", id="location")
+                div(class="main-filter-item main-filter-item-header")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") Location
+                div(class="main-filter-item-content main-filter-item-content--lvl1", data-filter="location")                    
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Africa
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Australia / Oceania
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Asia
+                    div(class="filter-accordion", data-color="rgb(104, 135, 166)", id="europe")
+                        div(class="main-filter-item main-filter-item-header")
+                            label(class="filter-checkbox")
+                                input(type="checkbox", class="filter-checkbox-item")
+                                span(class="filter-checkbox-title") Europe
+                        div(class="main-filter-item-content main-filter-item-content--lvl2", data-filter="europe")   
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Albania
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Andorra
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Armenia
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Austria
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belarus                    
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belgium
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Albania
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Andorra
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Armenia
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Austria
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belarus
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belgium    
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") North America
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") South America
+            div(class="main-filter-item")
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Revenue
+            div(class="filter-accordion", data-color="rgb(86, 114, 142)", id="ebitda")
+                div(class="main-filter-item main-filter-item-header")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") EBITDA                
+                div(class="main-filter-item-content", data-filter="ebitda")
+                    div(class="main-filter-item")
+                        input(type="text", placeholder="FROM $", class="filter-text-item filter-text-item--half")
+                        input(type="text", placeholder="TO $", class="filter-text-item filter-text-item--half")
+            div(class="main-filter-item")
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Cash Flow
+
+    div(class="main-table")
+        form(action="#", class="main-table-search")
+            input(type="text", class="main-table-search-input")
+            button(type="text", class="main-table-search-submit")
+        button(type="text", class="btn btn--blue main-table-search-unlock")
+        button(type="text", class="btn btn--blue main-table-search-export")
+        button(type="text", class="btn btn--blue main-table-search-save")

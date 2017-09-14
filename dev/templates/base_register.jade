@@ -65,7 +65,35 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 					div(class="header-logo-container")
 						a(href="home.html", class="header-logo-white")
 							img(src="", class="header-logo-img")
-			main(class="page-content")
+					div(class="header-menu-register")
+						+menu({
+							rootClass: "header-menu",
+							items: [
+								{
+									name: "search",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "my deals",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "help",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}
+							]
+						})
+					div(class="header-personal")
+						a(href="#", class="header-personal-alerts")
+							span(class="header-personal-count") 566
+						a(href="#", class="header-personal-mail")
+							span(class="header-personal-count") 566
+						button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
+						a(href="#", class="header-personal-avatar")
+						a(href="#", class="header-personal-initials") J. S.
+					
+			main(class="page-content-register")
 				block content
                 
                 
@@ -79,6 +107,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, {
 				src: "../js/plugins/jcf.checkbox.js"
 			}, {
+				src: "../js/plugins/jcf.radio.js"
+			}, { 
 				src: "../js/plugins/jquery.validate.min.js"
 			}, { 
 				src: "../js/plugins/slick.min.js"
