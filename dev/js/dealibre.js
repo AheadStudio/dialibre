@@ -285,7 +285,7 @@
 						jcf.replace($select);
 					});
 
-					$(".form-item--checkbox, .filter-checkbox-item", $container).each(function() {
+					$(".form-item--checkbox, .filter-checkbox-item, .table-checkbox-item", $container).each(function() {
 						var $ch = $(this);
 
 						jcf.replace($ch, "Checkbox", {
@@ -434,7 +434,7 @@
 
 					checkboxFilter.on("change", function() {
 						checkboxItem = $(this);
-						console.log(checkboxItem);
+
 						self.openFilter(checkboxItem);
 					});
 
@@ -443,25 +443,51 @@
 
 				openFilter: function(checkboxItem) {
 					var self = this,
-						$checkboxContainer = checkboxItem.closest(".filter-accordion"),
-						checkboxContainerId = $checkboxContainer.attr("id"),
+						idFilter = checkboxItem.attr("id"),
+						$checkboxContainer = $(".main-filter-items").find("[data-container='" + idFilter + "']"),
 						checkboxContainerColor = $checkboxContainer.data("color"),
-						$content = $(".main-filter-items").find("[data-filter='" + checkboxContainerId + "']");
+						$content = $(".main-filter-items").find("[data-filter='" + idFilter + "']");
 
 					if ($checkboxContainer) {
-						if (!$content.hasClass("active")) {
+						if (!$checkboxContainer.hasClass("active")) {
 							$checkboxContainer.css("background-color", checkboxContainerColor);
 							$content.slideDown("600", function() {
-								$content.addClass("active");
+								$checkboxContainer.addClass("active");
 							});
 						} else {
 							$content.slideUp("600", function() {
-								$content.removeClass("active");
+								$checkboxContainer.removeClass("active");
 							});
 							$checkboxContainer.css("background-color", "transparent");
-
 						}
 					}
+				},
+
+			},
+
+			tableSearch: {
+
+				init: function() {
+					var self = this,
+						checkboxTable = $(".table-checkbox");
+
+					checkboxTable.on("change", function() {
+						checkboxItem = $(this);
+
+						self.changeColor(checkboxItem);
+					});
+				},
+
+				changeColor: function(checkboxItem) {
+					var self = this,
+						continerRow = checkboxItem.closest("tr");
+					console.log(continerRow);
+					if (!continerRow.hasClass("active")) {
+						continerRow.addClass("active");
+					} else {
+						continerRow.removeClass("active");
+					}
+
 				},
 
 			},
@@ -469,9 +495,11 @@
 		};
 
 	})();
+
 	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
+	DEALIBRE.tableSearch.init();
 
 	DEALIBRE.content.init();
 

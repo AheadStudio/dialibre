@@ -616,6 +616,31 @@ body
 		text-transform uppercase
 		letter-spacing 2px
 
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
+	&--blue-inverse
+		padding 15px 25px
+
+		border 1px solid #2fb0ee
+		box-sizing border-box
+
+		background-color #fff
+
+		font-size 12px
+		color #2fb0ee
+
+		text-transform uppercase
+		letter-spacing 2px
+
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
+
 .link
 	display inline-block
 	text-decoration none
@@ -1564,16 +1589,14 @@ span.form-item--error
 /*** PAGE SEARCH ***/
 
 /*** filter ***/
-.main-table
-	display inline-block
-	vertical-align top
-	width auto
-
-	margin-left -4px
 .main-filter
+	position fixed
 	display inline-block
+
 	width 305px
 	height 100%
+
+	margin-top -10px
 
 	background #4c637b
 
@@ -1731,5 +1754,175 @@ span.form-item--error
 
 
 /*** //filter ***/
+
+/*** table ***/
+
+.main-table
+	display block
+	width auto
+
+	margin-left 305px
+
+.main-table-search
+	display block
+
+	height 40px
+
+	padding-left 60px
+	padding-right 15px
+
+	margin-top 10px
+
+	.main-table-search-container
+		position relative
+
+		display inline-block
+
+		width 72%
+		height 100%
+
+		vertical-align top
+
+		margin-right 15px
+
+		&:hover
+			.search-input
+				border 1px solid #2fb0ee
+
+			.main-table-search-submit
+				&:before
+					opacity 0
+				&:after
+					opacity 1
+
+	.btn
+		height 100%
+		font-family ProximaNovaBold
+
+	.btn--blue
+		padding 16px 25px
+
+
+.search-input
+	display inline-block
+	width 100%
+	height 100%
+
+	vertical-align top
+
+	padding-left 20px
+	box-sizing border-box
+
+	border 1px solid #b8c6d6
+
+	background #f2f6fa
+
+	font-family ProximaNovaRegular
+
+	color #2fb0ee
+
+	transition border-color 0.3s $transitionAnimation
+
+.main-table-search-submit
+	position absolute
+	top 50%
+	right 15px
+
+	width 20px
+	height 20px
+
+	margin-top -10px
+
+	&:before
+	&:after
+		content ""
+		position absolute
+		top 0
+		left 0
+
+		width 100%
+		height 100%
+
+		background-repeat no-repeat
+		background-size contain
+
+		transition opacity 0.3s $transitionAnimation
+
+	&:before
+		opacity 1
+		background-image url("../i/loupe.png")
+
+	&:after
+		opacity 0
+		background-image url("../i/loupe_blue.png")
+
+
+.main-table-result
+	width 100%
+	margin-top 25px
+
+	thead
+		tr
+			th
+				padding 15px
+				font-size 12px
+				font-family ProximaNovaBold
+
+				text-transform uppercase
+				border-right 1px solid #c2c9d1
+
+				&:last-child
+				&:first-child
+					border-right none
+
+	tbody
+		tr
+			box-shadow 0px 0px 29px -2px transparent
+
+			transition box-shadow 0.3s $transitionAnimation, background 0.3s $transitionAnimation
+
+			td
+				padding 15px
+				border-right 1px solid #c2c9d1
+
+				font-size 12px
+
+				&:last-child
+				&:first-child
+					border-right none
+
+				.table-industry
+					display inline-block
+					width 40%
+
+				.table-checkbox
+					cursor pointer
+
+					.table-checkbox-title
+						margin-left 15px
+						font-size 12px
+						color #2fb0ee
+
+				.table-btn
+					padding 5px
+
+					margin-left 10px
+
+					font-size 12px
+					font-family ProximaNovaRegular
+
+					text-transform inherit
+
+
+			&:nth-child(2n-1)
+				background #eaf7fd
+
+			&:hover
+				box-shadow 0px 0px 29px -2px rgba(0,0,0,0.6)
+
+			&.active
+				background #d7efc6
+
+/*** //table ***/
 
 /*** //PAGE SEARCH ***/
