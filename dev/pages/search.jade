@@ -119,8 +119,8 @@ block content
             div(class="main-table-search-container")
                 input(type="text", class="search-input main-table-search-input")
                 button(type="submit", class="main-table-search-submit")
-            button(type="submit", class="btn btn--blue-inverse main-table-search-unlock") Unlock | 2
-            button(type="submit", class="btn btn--blue-inverse main-table-search-export") Export
+            a(href="#unlock", class="btn btn--blue-inverse main-table-search-unlock popup") Unlock | 2
+            a(href="#export", class="btn btn--blue-inverse main-table-search-export popup") Export
             button(type="submit", class="btn btn--blue main-table-search-save") Save search
             
         table(class="main-table-result")
@@ -483,3 +483,93 @@ block content
                     td 07/15/2016
                     td 3
                     td 3
+    
+
+    div(id="unlock", class="popup-container popup-unlock white-popup mfp-hide", data-send="send_ajaxForm")
+        div(class="popup-title") Unlock Selected new deals
+        div(class="popup-unlock-deals-items")
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 1
+                div(class="popup-unlock-deals-item-name") Name deal 1
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 10cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $2000
+                        
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 2
+                div(class="popup-unlock-deals-item-name") Name deal 2
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 3
+                div(class="popup-unlock-deals-item-name") Name deal 3
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 4
+                div(class="popup-unlock-deals-item-name") Name deal 4
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 5
+                div(class="popup-unlock-deals-item-name") Name deal 5
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+        
+        div(class="popup-unlock-deals-information")
+            div(class="popup-unlock-deals-information--left")
+                div(class="popup-unlock-deals-information-total") total cost: 
+                    span 30 credits
+                div(class="popup-unlock-deals-information-balance") You current balance: 200 credits
+                div(class="popup-unlock-deals-information-money") You money: $1000
+                div(class="popup-unlock-deals-information-result") 25cr + $1000
+            div(class="popup-unlock-deals-information--right")
+                button(type="button", class="btn btn--green-inverse popup-unlock-deals-information-btn") Share deal
+                button(type="button", class="btn btn--green popup-unlock-deals-information-btn") unlock
+
+    div(id="export", class="popup-container popup-export white-popup mfp-hide", data-send="send_ajaxForm")
+        div(class="popup-title") export
+        div(class="popup-export-format") Chooseone file format
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") XLSX
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") DOCS
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") PDF
+            
+        button(type="button", class="btn btn--green popup-export-btn") Share deal

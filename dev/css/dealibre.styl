@@ -606,6 +606,23 @@ body
 		&:hover
 			border-radius 7px
 
+	&--green-inverse
+		background-color #fff
+
+		border 1px solid #1dc818
+
+		font-family "ProximaNovaBold"
+		font-size 24px
+		color #1dc818
+
+		text-transform uppercase
+		letter-spacing 1px
+
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
 	&--blue
 		padding 15px 25px
 
@@ -1799,6 +1816,9 @@ span.form-item--error
 		height 100%
 		font-family ProximaNovaBold
 
+	.main-table-search-unlock
+		margin-right 5px
+
 	.btn--blue
 		padding 16px 25px
 
@@ -1877,15 +1897,13 @@ span.form-item--error
 
 	tbody
 		tr
-			box-shadow 0px 0px 29px -2px transparent
-
-			transition box-shadow 0.3s $transitionAnimation, background 0.3s $transitionAnimation
-
 			td
+
 				padding 15px
 				border-right 1px solid #c2c9d1
 
 				font-size 12px
+
 
 				&:last-child
 				&:first-child
@@ -1914,15 +1932,239 @@ span.form-item--error
 					text-transform inherit
 
 
+
+
 			&:nth-child(2n-1)
 				background #eaf7fd
-
-			&:hover
-				box-shadow 0px 0px 29px -2px rgba(0,0,0,0.6)
 
 			&.active
 				background #d7efc6
 
+
 /*** //table ***/
+
+/*** modal window ***/
+
+.mfp-bg
+	background-color rgba(255, 255, 255, 1)
+
+.mfp-popup-window.mfp-bg
+	opacity 0
+
+	transition opacity 0.3s $transitionAnimation
+
+	&.mfp-ready
+		opacity 0.5
+
+	&.mfp-removing
+		opacity 0
+
+.mfp-popup-window.mfp-wrap
+	.mfp-content
+		opacity 0
+
+		transform translateY(-50px)
+
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+	&.mfp-ready
+		.mfp-content
+			opacity 1
+
+			transform translateY(0)
+
+	&.mfp-removing
+		.mfp-content
+			opacity 0
+
+			transform translateY(-50px)
+
+.mfp-popup-window
+	.mfp-container
+		.popup-container
+			.mfp-close
+				right -20px
+				top 10px
+
+				width 28px
+				height 22px
+
+				opacity 1
+
+.popup-container
+	position relative
+	display block
+
+	padding 55px 30px 45px 30px
+	box-sizing border-box
+
+	border 1px solid #dddddd
+	border-radius 5px
+
+	background #fff
+
+	&.popup-unlock
+		width 540px
+		float right
+
+		top -100px
+		right 250px
+
+	&.popup-export
+		width 305px
+		float right
+
+		top -130px
+		right 100px
+
+	.popup-title
+		display block
+		width 100%
+
+		margin-bottom 35px
+
+		text-align center
+
+		font-size 24px
+		font-family ProximaNovaSemiBold
+
+.popup-unlock
+	.popup-unlock-deals-items
+		display block
+		width 100%
+
+		.popup-unlock-deals-item
+			display flex
+
+			width 100%
+
+			margin-bottom 25px
+
+
+			font-size 16px
+
+			font-family ProximaNovaRegular
+
+			.popup-unlock-deals-item-number
+				display block
+				width 5%
+
+			.popup-unlock-deals-item-name
+				display block
+				width 55%
+
+			.popup-unlock-deals-item-count
+				display block
+				width 20%
+
+			.popup-unlock-deals-item-price
+				display block
+				width auto
+
+			.popup-unlock-deals-item-count
+			.popup-unlock-deals-item-price
+				.filter-checkbox
+					cursor pointer
+
+					.jcf-checkbox
+						vertical-align top
+
+					.filter-checkbox-title
+						margin-left 15px
+
+	.popup-unlock-deals-information
+		display block
+		width 100%
+
+		overflow hidden
+
+		font-family ProximaNovaBold
+		font-weight bold
+
+		font-size 16px
+
+		&--left
+			float left
+			width 50%
+		&--right
+			float right
+			width 40%
+
+		.popup-unlock-deals-information-total
+			display block
+			width 100%
+
+			margin-bottom 15px
+
+			text-transform uppercase
+
+			span
+				color #d0631b
+				text-transform lowercase
+
+		.popup-unlock-deals-information-balance
+		.popup-unlock-deals-information-money
+			display block
+			width 100%
+
+			margin-bottom 15px
+		.popup-unlock-deals-information-result
+			display block
+			width 100%
+
+			margin-top 20px
+
+			font-size 24px
+
+			color #d0631b
+
+		.popup-unlock-deals-information-btn
+			padding 16px 50px
+			font-size 14px
+
+			width 100%
+
+			&:first-child
+				margin-bottom 20px
+
+
+.popup-export
+	.popup-title
+		text-transform uppercase
+
+	.popup-export-format
+		display block
+		width 100%
+
+		text-align center
+
+		font-family ProximaNovaBold
+		font-size 18px
+
+	.filter-radio
+		display block
+		margin-top 35px
+
+		.filter-radio-title
+			margin-left 10px
+
+			font-size 16px
+
+			text-transform uppercase
+
+	.popup-export-btn
+		display block
+		width 100%
+
+		padding 20px
+
+		margin-top 45px
+
+		font-size 14px
+
+
+/*** //modal window***/
+
+
 
 /*** //PAGE SEARCH ***/

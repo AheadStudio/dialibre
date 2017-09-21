@@ -481,7 +481,7 @@
 				changeColor: function(checkboxItem) {
 					var self = this,
 						continerRow = checkboxItem.closest("tr");
-					console.log(continerRow);
+
 					if (!continerRow.hasClass("active")) {
 						continerRow.addClass("active");
 					} else {
@@ -492,6 +492,27 @@
 
 			},
 
+			modalWindow: {
+
+				init: function() {
+
+					$(".popup").magnificPopup({
+						type: "inline",
+						mainClass: "mfp-popup-window",
+						closeMarkup: '<button title="%title%" class="mfp-close"><img src="../i/close_popup.png" width="20" height="20" class="mfp-close-icn mfp-close"/></button>',
+						removalDelay: 300,
+					});
+
+				},
+
+			},
+
+			scrollBar: {
+				init: function() {
+					$(".main-filter-item-content").perfectScrollbar();
+				}
+			},
+
 		};
 
 	})();
@@ -500,7 +521,7 @@
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
 	DEALIBRE.tableSearch.init();
-
+	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();
 
 	DEALIBRE.page.header.init();
