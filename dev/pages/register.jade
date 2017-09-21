@@ -9,26 +9,33 @@ block content
 		div(class="page-inner page-inner--w1") Free deal exchange for business brokers, prospectors, rasearchers, and investors.
 
 	div(class="page-inner page-inner--w3")
-		form(class="form")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="email", class="form-item form-item--text", name="remail" placeholder="Work Email", required, data-error="Enter your email")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="text", class="form-item form-item--text", placeholder="First Name", name="rname")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="text", class="form-item form-item--text", placeholder="Last Name", name="rname2")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="text", class="form-item form-item--text", placeholder="Company Name", name="rcompany")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="text", class="form-item form-item--text", placeholder="Position", name="rposition")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="text", class="form-item form-item--text", placeholder="Phone" name="rphone", required, data-error="Enter your phone")
-			div(class="form-row form-row--centered")
-				button(type="submit", class="btn btn--green") Join dealibre
-			div(class="form-row form-row--centered")
-				a(href="signin.html", class="form-link") Already have an account?
+		registerform()
+
+		script(type="text/x-template", id="register-form")
+			div
+				form(class="form", @submit.prevent="register", v-if="!success")
+					div {{ message }}
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="email", class="form-item form-item--text", name="email", v-model="email" placeholder="Work Email", required, data-error="Enter your email")
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="text", class="form-item form-item--text", placeholder="First Name", name="first_name", v-model="first_name")
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="text", class="form-item form-item--text", placeholder="Last Name", name="last_name", v-model="last_name")
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="text", class="form-item form-item--text", placeholder="Company Name", name="company_name", v-model="company_name")
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="text", class="form-item form-item--text", placeholder="Position", name="position", v-model="position")
+					div(class="form-row")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="text", class="form-item form-item--text", placeholder="Phone" name="phone", v-model="phone", required, data-error="Enter your phone")
+					div(class="form-row form-row--centered")
+						button(type="submit", class="btn btn--green") Join dealibre
+					div(class="form-row form-row--centered")
+						a(href="signin.html", class="form-link") Already have an account?
+
+				div(v-if="success") Yehh!

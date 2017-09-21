@@ -59,7 +59,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 	body(itemscope, itemtype="http://schema.org/WebPage", class="#{page.bodyClass ? page.bodyClass : ''}")
 
-		div(class="page")
+		div(class="page", id="dealibre-app")
 			header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
 				div(class="page-inner page-inner--w1")
 					if page.code == "home"
@@ -154,6 +154,14 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, { 
 				src: "../js/plugins/geometryangle.min.js"
 			}, {
+				src: "../js/plugins/js.cookie.js"
+			}, {
 				src: "../js/" + info.code + ".js"
+			}, {
+				src: "https://unpkg.com/vue"
+			}, {
+				src: "https://unpkg.com/axios/dist/axios.min.js"
+			}, {
+				src: "../js/" + info.code + ".app.js"
 			}
 		])

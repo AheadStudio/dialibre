@@ -268,7 +268,7 @@
 					if(!$container) {
 						var $container = $sel.body;
 					}
-
+					
 					jcf.setOptions("Select", {
 						wrapNative: false,
 						wrapNativeOnMobile: false
@@ -481,5 +481,7 @@
 	DEALIBRE.page.playVideo.init();
 
 	DEALIBRE.map.init();
+
+	window.DEALIBRE = DEALIBRE;
 
 })(jQuery);

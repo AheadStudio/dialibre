@@ -737,7 +737,8 @@ gulp.task("default", ["browser-sync"], function() {
 // Создание версии для production
 gulp.task("production", function() {
 	runSequence(
-		["clear"],
+		//["clear"],
+		["svg"],
 		["front", "pages", "dummy", "js"],
 		["sprite"],
 		["css"],
