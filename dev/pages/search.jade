@@ -4,7 +4,7 @@ block content
     div(class="main-filter")
         div(class="main-filter-items", style="background-color: #4c637b")
             div(class="main-filter-item")
-                button(type="submit", class="btn filter-button") new search
+                a(href="#newsearch", class="btn filter-button popup") new search
                 div(class="filter-radio-items")
                     label(class="filter-radio")
                         input(type="radio", name="deals", class="filter-radio-item")
@@ -121,7 +121,7 @@ block content
                 button(type="submit", class="main-table-search-submit")
             a(href="#unlock", class="btn btn--blue-inverse main-table-search-unlock popup") Unlock | 2
             a(href="#export", class="btn btn--blue-inverse main-table-search-export popup") Export
-            button(type="submit", class="btn btn--blue main-table-search-save") Save search
+            a(href="#savesearch", class="btn btn--blue main-table-search-save popup") Save search
             
         table(class="main-table-result")
             thead
@@ -485,7 +485,7 @@ block content
                     td 3
     
 
-    div(id="unlock", class="popup-container popup-unlock white-popup mfp-hide", data-send="send_ajaxForm")
+    div(id="unlock", class="popup-container popup-unlock white-popup mfp-hide")
         div(class="popup-title") Unlock Selected new deals
         div(class="popup-unlock-deals-items")
             div(class="popup-unlock-deals-item")
@@ -559,9 +559,9 @@ block content
                 button(type="button", class="btn btn--green-inverse popup-unlock-deals-information-btn") Share deal
                 button(type="button", class="btn btn--green popup-unlock-deals-information-btn") unlock
 
-    div(id="export", class="popup-container popup-export white-popup mfp-hide", data-send="send_ajaxForm")
+    div(id="export", class="popup-container popup-export white-popup mfp-hide")
         div(class="popup-title") export
-        div(class="popup-export-format") Chooseone file format
+        div(class="popup-subtitle") Chooseone file format
         label(class="filter-radio")
             input(type="radio", name="export", class="filter-radio-item")
             span(class="filter-radio-title") XLSX
@@ -573,3 +573,30 @@ block content
             span(class="filter-radio-title") PDF
             
         button(type="button", class="btn btn--green popup-export-btn") Share deal
+    
+    div(id="newsearch", class="popup-container popup-newsearch white-popup mfp-hide")
+        div(class="popup-title") Do you want to create a new saved search with currently selected filters?
+        div(class="popup-subtitle") By doing so you will be notified when new deals matching selected criteria become available.
+        a(href="#", class="btn btn--green popup-newsearch-btn") Yes
+        a(href="#", class="btn btn--green-inverse popup-newsearch-btn") No, Start New search
+        
+    div(id="savesearch", class="popup-container popup-savesearch white-popup mfp-hide")
+        div(class="popup-title") Do you want to create a new saved search with currently selected filters?
+        div(class="popup-subtitle") By doing so you will be notified when new deals matching selected criteria become available.
+        form(action"#", class="form popup-savesearch-form")
+            div(class="form-row")
+                div(class="form-item-holder form-item-holder--full")
+                    input(type="text", name="nsearch", class="form-item form-item--text", required, placeholder="Saved search name", aria-required="true")
+            div(class="form-row form-row--btn")
+                button(type="submit", class="btn btn--green popup-savesearch-btn") Yes
+                button(type="button", class="btn btn--green-inverse popup-savesearch-btn") No, Start New search
+
+            div(class="form-row form-row--clearfix")
+                label(class="form-checkbox")
+                    input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+                    span(class="form-checkbox-title") Notify me by email new deal matches my search
+            div(class="form-row form-row--clearfix")
+                label(class="form-checkbox")
+                    input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+                    span(class="form-checkbox-title") Don't need email notification
+            
