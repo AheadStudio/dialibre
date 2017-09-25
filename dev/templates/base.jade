@@ -154,14 +154,18 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, { 
 				src: "../js/plugins/geometryangle.min.js"
 			}, {
-				src: "../js/plugins/js.cookie.js"
-			}, {
-				src: "../js/" + info.code + ".js"
-			}, {
 				src: "https://unpkg.com/vue"
 			}, {
 				src: "https://unpkg.com/axios/dist/axios.min.js"
 			}, {
+				src: "../js/plugins/js.cookie.js"
+			}, {
+				src: "../js/" + info.code + ".js"
+			}, {
 				src: "../js/" + info.code + ".app.js"
 			}
 		])
+
+		block scripts
+
+		

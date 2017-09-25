@@ -230,7 +230,7 @@
 
 			help: {
 				init: function() {
-					$(".help-section-item-block-item-name", $sel.body).on("click", function(e) {
+					$sel.body.on("click", ".help-section-item-block-item-name", function(e) {
 						var $block = $(this).closest(".help-section-item-block-item"),
 							$text = $block.find(".help-section-item-block-item-text");
 

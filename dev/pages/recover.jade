@@ -1,25 +1,60 @@
 extends ../templates/base
 
 block content
-	div(class="page-heading")
-		div(class="page-inner page-inner--w1")
-			h1(class="h1") Recover your password
+	// HTML
+	div(id="recover")
+		div(class="page-heading")
+			div(class="page-inner page-inner--w1")
+				h1(class="h1") Recover your password
 
-	div(class="page-description")
-		div(class="page-inner page-inner--w1") Enter your email and we’ll send you a password reset link.
+		div(class="page-description")
+			div(class="page-inner page-inner--w1") Enter your email and we’ll send you a password reset link.
 
-	div(class="page-inner page-inner--w3")
-		form(class="form")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					input(type="email", class="form-item--text", placeholder="E-mail", name="rf1", required)
-			div(class="form-row form-row--centered")
-				div(class="form-btn-holder")
-					button(type="submit", class="btn btn--green form-btn") Send
-					div(class="form-back-holder")
-						a(href="#", class="form-link") Back to log in
-					div(class="form-btn-controls")
-						div(class="form-btn-control-item form-btn-control-item--left")
-							a(href="register.html", class="form-link") Don't have an account?
-						div(class="form-btn-control-item form-btn-control-item--right")
-							a(href="register.html", class="btn btn--blue") Sign up
+
+		div(class="page-inner page-inner--w3")
+			recoverform()
+
+	// Template
+	script(type="text/x-template", id="recover-form")
+		div(class="form-holder")
+			div(class="form-result") {{ form.message }}
+
+			form(class="form", @submit.prevent="send", v-if="form.type == 'request'", v-show="!form.success", v-bind:action="form.action")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="email", class="form-item--text", placeholder="E-mail", name="email", v-model="email", required)
+				div(class="form-row form-row--centered")
+					div(class="form-btn-holder")
+						button(type="submit", class="btn btn--green form-btn") Send
+						div(class="form-back-holder")
+							a(href="#", class="form-link") Back to log in
+						div(class="form-btn-controls")
+							div(class="form-btn-control-item form-btn-control-item--left")
+								a(href="register.html", class="form-link") Don't have an account?
+							div(class="form-btn-control-item form-btn-control-item--right")
+								a(href="register.html", class="btn btn--blue") Sign up
+
+// Scripts
+block scripts
+	script.
+		Vue.component("recoverform", {
+			mixins: [formMixin],
+			template: "#recover-form",
+			data: function() {
+				return {
+					email: "",
+					form: {
+						action: "/api/password/email",
+						message: "",
+						success: false,
+						type: "request"
+					}
+				}
+			}
+		});
+
+		new Vue({
+			el: "#recover",
+			data: {
+			}
+		});

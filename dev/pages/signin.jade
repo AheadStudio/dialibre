@@ -1,26 +1,29 @@
 extends ../templates/base
 
 block content
-	div(class="page-heading")
-		div(class="page-inner page-inner--w1")
-			h1(class="h1") Log in
+	// HTML
+	div(id="login")
+		div(class="page-heading")
+			div(class="page-inner page-inner--w1")
+				h1(class="h1") Log in
 
-	div(class="page-inner page-inner--w3")
-		loginform()
+		div(class="page-inner page-inner--w3")
+			loginform()
 
-		script(type="text/x-template", id="login-form")
-			form(class="form", @submit.prevent="login")
-				div(class="form-row")
-					div {{ message }}
+	// Template
+	script(type="text/x-template", id="login-form")
+		div(class="form-holder")
+			div(class="form-result") {{ form.message }}
+			form(class="form", @submit.prevent="send", v-show="!form.success", v-bind:action="form.action")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="User name", required, name="username", v-model="username")
+						input(type="text", class="form-item form-item--text", placeholder="User name", required, name="login", v-model="login")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
 						input(type="password", class="form-item form-item--text", placeholder="Password", required, name="password", v-model="password")
 				div(class="form-row form-row--clearfix")
 					label(class="form-savesession form-checkbox")
-						input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+						input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox", v-model="remember")
 						span(class="form-checkbox-title") Keep me logged in
 					a(href="recover.html", class="form-forgot form-link") Forgot password?
 				div(class="form-row form-row--centered")
@@ -31,3 +34,29 @@ block content
 								a(href="register.html", class="form-link") Don't have an account?
 							div(class="form-btn-control-item form-btn-control-item--right")
 								a(href="register.html", class="btn btn--blue") Sign up
+
+
+block scripts
+	script.
+		Vue.component("loginform", {
+			mixins: [formMixin],
+			template: "#login-form",
+			data: function() {
+				return {
+					login: "",
+					password: "",
+					remember: "",
+					form: {
+						action: "/api/login",
+						message: "",
+						success: false
+					}
+				}
+			}
+		});
+
+		new Vue({
+			el: "#login",
+			data: {
+			}
+		});

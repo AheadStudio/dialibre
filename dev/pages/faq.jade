@@ -1,16 +1,48 @@
 extends ../templates/base
 
 block content
+	// HTML
 	div(class="page-heading")
 		div(class="page-inner page-inner--w1")
 			h1(class="h1") Faq
 
-	div(class="faq", id="faq")
+	div(class="faq", v-bind:class="{loading:!list.length}", id="faq")
 		div(class="page-inner page-inner--w2")
 			div(class="faq-items")
 				faqitem(v-for="item in list", v-bind:faq="item", v-bind:key="item.id")
 
+	
+	// Templates
 	script(type="text/x-template", id="faq-item")
 		div(class="faq-item")
 			div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
 			div(class="faq-item-text") {{ faq.answer }}
+
+
+block scripts
+	// Component
+	script.
+		Vue.component("faqitem", {
+			props: ["faq"],
+			template: "#faq-item"
+		});
+
+		new Vue({
+			el: "#faq",
+			data: {
+				list: []
+			},
+			created: function() {
+				this.load();
+			},
+			methods: {
+				load: function() {
+					var self = this;
+					axios.get("/api/faq").then(function(r) {
+						for(var key in r.data.data) {
+							self.list.push(r.data.data[key]);
+						}
+					});
+				}
+			}
+		});
