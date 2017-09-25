@@ -1,0 +1,123 @@
+extends ../templates/base
+
+block content
+	div(class="intro polygon-animate")
+		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
+		div(class="intro-inner ") 
+			div(class="page-inner page-inner--w2")
+				h1(class="intro-title") Vestibulum cursus nunc purus
+				div(class="intro-description") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci.
+				div(class="intro-features")
+					div(class="intro-feature-item")
+						div(class="intro-feature-item-title") 100% free
+						div(class="intro-feature-item-description") No subscription fee with ulimitedaccess to deal flow.
+					div(class="intro-feature-item")
+						div(class="intro-feature-item-title") Efficient
+						div(class="intro-feature-item-description") Electronic NDA and CIM with online submission.
+					div(class="intro-feature-item")
+						div(class="intro-feature-item-title") Accurate
+						div(class="intro-feature-item-description") Our expert analysts review and cross-check every deal.
+			div(class="intro-footer")
+				a(href="#video", class="intro-arrow")
+		a(href="#", class="intro-icon")
+			include ../../prod/svg/arrow_bottom.svg
+			
+
+	div(class="video")
+		div(class="page-inner page-inner--w2")
+			div(class="video-view")
+				div(class="video-play")
+				video(muted="muted", loop="loop", playsinline, class="video-source")
+					source(src="../dummy/exafs_spectroscopy.mp4", type="video/mp4")
+					
+
+	div(class="subscribe")
+		div(class="page-inner page-inner--w2")
+			div(class="subscribe-title") Join private community of M&amp;A professional and start trading deals today
+			div(class="subscribe-form-holder")
+				form(class="subscribe-form form")
+					div(class="subscribe-form-input-holder")
+						div(class="form-item-holder form-item-holder--full")
+							input(type="email", class="form-item form-item--text subscribe-form-input", placeholder="Email adress", required, name="sf1")
+					button(type="submit", class="btn btn--green subscribe-form-submit") Join free
+
+	div(class="features")
+		div(class="page-inner page-inner--w2")
+			div(class="features-title") Curabitur in vestibulum neque, nec tempus nulla.
+			div(class="features-items")
+				div(class="feature-item")
+					div(class="feature-item-icon animation-block", data-animation="true")
+						include ../../prod/svg/f1.svg
+					div(class="feature-item-content")
+						div(class="feature-item-title") Reputable
+						div(class="feature-item-description") Dealibre’ creates reputation for members through rating system to foster a collaborative environment.
+				div(class="feature-item")
+					div(class="feature-item-icon animation-block", data-animation="true")
+						include ../../prod/svg/f2.svg
+					div(class="feature-item-content")
+						div(class="feature-item-title") Verified
+						div(class="feature-item-description") Only verified brokers, prospectors, researchers, and investors have access to the platform.
+				div(class="feature-item")
+					div(class="feature-item-icon animation-block", data-animation="true")
+						include ../../prod/svg/f3.svg
+					div(class="feature-item-content")
+						div(class="feature-item-title") Share any deal
+						div(class="feature-item-description") Share information about your own deals or deals others have shared with you.
+				div(class="feature-item")
+					div(class="feature-item-icon animation-block", data-animation="true")
+						include ../../prod/svg/f4.svg
+					div(class="feature-item-content")
+						div(class="feature-item-title") Global market coverage
+						div(class="feature-item-description") Dealibre’ is present in Africa, Asia, Australia/Oceania, Europe, North America, South America.
+
+
+	div(class="reviews polygon-animate")
+		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
+		div(class="page-inner page-inner--w2")
+			div(class="reviews-items")
+				div(class="review-item")
+					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
+					div(class="review-item-author") John Smit
+				div(class="review-item")
+					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
+					div(class="review-item-author") John Smit
+				div(class="review-item")
+					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
+					div(class="review-item-author") John Smit
+
+	div(class="geo")
+		div(class="page-inner page-inner--w1")
+			div(class="geo-title") Global coverage to rely on
+			div(class="geo-inner")
+				div(class="geo-info")
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="Africa", data-map="map-africa")
+							option(value="1") Tunis
+							option(value="2") Algir
+
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="Asia", data-map="map-asia")
+							option(value="1") Tunis
+							option(value="2") Algir
+
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="Australia / Oceania", data-map="map-australia")
+							option(value="1") Tunis
+							option(value="2") Algir
+
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="Europe", data-map="map-asia")
+							option(value="1") Tunis
+							option(value="2") Algir
+
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="North America", data-map="map-north-america")
+							option(value="1") Tunis
+							option(value="2") Algir
+
+					div(class="geo-item")
+						select(class="geo-item-select", placeholder="South America", data-map="map-south-america")
+							option(value="1") Tunis
+							option(value="2") Algir
+				div(class="geo-map")
+					include ../svg/map_big.svg

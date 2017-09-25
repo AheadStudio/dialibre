@@ -32,6 +32,14 @@
             },
             "bodyClass": "page-home"
         },
+        "search": {
+            "name": "Search",
+            "progress": {
+                "desktop": "0",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
         "faq": {
             "name": "FAQ",
             "progress": {

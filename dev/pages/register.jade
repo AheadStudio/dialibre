@@ -1,0 +1,73 @@
+extends ../templates/base
+
+block content
+	// HTML
+	div(id="register")
+		div(class="page-heading")
+			div(class="page-inner page-inner--w1")
+				h1(class="h1") Join DeaLibre’
+
+		div(class="page-description")
+			div(class="page-inner page-inner--w1") Free deal exchange for business brokers, prospectors, rasearchers, and investors.
+
+		div(class="page-inner page-inner--w3")
+			registerform()
+
+
+	// Template
+	script(type="text/x-template", id="register-form")
+		div(class="form-holder")
+			div(class="form-result") {{ form.message }}
+			form(class="form", @submit.prevent="send", v-show="!form.success", v-bind:action="form.action")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="email", class="form-item form-item--text", name="email", v-model="email" placeholder="Work Email", required, data-error="Enter your email")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="text", class="form-item form-item--text", placeholder="First Name", name="first_name", v-model="first_name")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="text", class="form-item form-item--text", placeholder="Last Name", name="last_name", v-model="last_name")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="text", class="form-item form-item--text", placeholder="Company Name", name="company_name", v-model="company_name")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="text", class="form-item form-item--text", placeholder="Position", name="position", v-model="position")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						input(type="text", class="form-item form-item--text", placeholder="Phone" name="phone", v-model="phone", required, data-error="Enter your phone")
+				div(class="form-row form-row--centered")
+					button(type="submit", class="btn btn--green") Join dealibre
+				div(class="form-row form-row--centered")
+					a(href="signin.html", class="form-link") Already have an account?
+
+
+// Scripts
+block scripts
+	script.
+		Vue.component("registerform", {
+			mixins: [formMixin],
+			template: "#register-form",
+			data: function() {
+				return {
+					first_name: "",
+					last_name: "",
+					company_name: "",
+					email: "",
+					phone: "",
+					position: "",
+					form: {
+						action: "/api/register",
+						message: "",
+						success: false
+					}
+				}
+			}
+		});
+
+		new Vue({
+			el: "#register",
+			data: {
+			}
+		});
