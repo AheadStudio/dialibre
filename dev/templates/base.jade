@@ -65,16 +65,102 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 		div(class="page", id="dealibre-app")
 			header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-				div(class="page-inner page-inner--w1")
-					if page.code == "home"
-						div(class="header-logo")
-							img(src="", class="header-logo-img")
-					else
-						a(href="home.html", class="header-logo")
-							img(src="", class="header-logo-img")
+				if page.code == "search"
+					div(class="page-inner page-inner--max")
+						div(class="header-logo-container")
+							a(href="home.html", class="header-logo-white")
+								img(src="", class="header-logo-img")
+						div(class="header-menu-register")
+							+menu({
+								rootClass: "header-menu",
+								items: [
+									{
+										name: "search",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}, {
+										name: "my deals",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}, {
+										name: "help",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}
+								]
+							})
+						div(class="header-personal")
+							a(href="#", class="header-personal-alerts")
+								span(class="header-personal-count") 566
+							a(href="#", class="header-personal-mail")
+								span(class="header-personal-count") 566
+							button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
+							a(href="#profile", class="header-personal-avatar popup")
+							a(href="#profile", class="header-personal-initials popup") J. S.
+				else
+					div(class="page-inner page-inner--w1")
+						if page.code == "home"
+							div(class="header-logo")
+								img(src="", class="header-logo-img")
+						else
+							a(href="home.html", class="header-logo")
+								img(src="", class="header-logo-img")
 
+						+menu({
+							rootClass: "header-menu",
+							items: [
+								{
+									name: "Company",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "Testimonials",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}
+							]
+						})
+
+						+menu({
+							rootClass: "header-bar",
+							items: [
+								{
+									name: "Join free",
+									href: "register.html",
+									current: (page.code == "register" ? true : false)
+								}, {
+									name: "Log in",
+									href: "signin.html",
+									current: (page.code == "signin" ? true : false)
+								}
+							]
+						})
+					
+			if page.code == "search"
+				main(class="page-content-register")
+					block content 
+			else
+				main(class="page-content")
+					block content
+				
+			div(id="profile", class="popup-container popup-profile white-popup mfp-hide")
+				div(class="popup-profile-holder")
+					img(src="../i/profile.jpg", class="popup-profile-holder-img")
+				div(class="popup-profile-personal")
+					div(class="popup-profile-name") Jon Smit
+					a(href="#", class="link link--blue popup-profile-link") Profile
+					div(class="popup-profile-events")
+						a(href="#", class="popup-profile-events-alerts")
+							span(class="popup-profile-events-count") 566
+						a(href="#", class="popup-profile-events-mail")
+							span(class="popup-profile-events-count") 566
+				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
+	
+		if page.code != "search"
+			footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
+				div(class="page-inner page-inner--w1")
 					+menu({
-						rootClass: "header-menu",
+						rootClass: "footer-menu",
 						items: [
 							{
 								name: "Company",
@@ -84,61 +170,26 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 								name: "Testimonials",
 								href: "#",
 								current: (page.code == "#" ? true : false)
-							}
-						]
-					})
-
-					+menu({
-						rootClass: "header-bar",
-						items: [
-							{
-								name: "Join free",
-								href: "register.html",
-								current: (page.code == "register" ? true : false)
 							}, {
-								name: "Log in",
-								href: "signin.html",
-								current: (page.code == "signin" ? true : false)
+								name: "Support && General Q&A",
+								href: "#",
+								current: (page.code == "#" ? true : false)
+							}, {
+								name: "Contact",
+								href: "contacts.html",
+								current: (page.code == "contacts" ? true : false)
 							}
 						]
 					})
 
-			main(class="page-content")
-				block content
-
-		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
-			div(class="page-inner page-inner--w1")
-				+menu({
-					rootClass: "footer-menu",
-					items: [
-						{
-							name: "Company",
-							href: "#",
-							current: (page.code == "#" ? true : false)
-						}, {
-							name: "Testimonials",
-							href: "#",
-							current: (page.code == "#" ? true : false)
-						}, {
-							name: "Support && General Q&A",
-							href: "#",
-							current: (page.code == "#" ? true : false)
-						}, {
-							name: "Contact",
-							href: "contacts.html",
-							current: (page.code == "contacts" ? true : false)
-						}
-					]
-				})
-
-				div(class="footer-social")
-					div(class="footer-social-items")
-						a(href="#", target="_blank", class="footer-social-item")
-							include ../../prod/svg/fb.svg
-						a(href="#", target="_blank", class="footer-social-item")
-							include ../../prod/svg/insta.svg
-						a(href="#", target="_blank", class="footer-social-item")
-							include ../../prod/svg/ln.svg
+					div(class="footer-social")
+						div(class="footer-social-items")
+							a(href="#", target="_blank", class="footer-social-item")
+								include ../../prod/svg/fb.svg
+							a(href="#", target="_blank", class="footer-social-item")
+								include ../../prod/svg/insta.svg
+							a(href="#", target="_blank", class="footer-social-item")
+								include ../../prod/svg/ln.svg
 
 		+addJS([
 			{

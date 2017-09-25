@@ -671,6 +671,13 @@ body
 
 		&:hover
 			border-bottom-color transparent
+
+	&--white
+		color #fff
+		border-bottom 1px solid transparent
+
+		&:hover
+			border-bottom 1px solid #fff
 /*** //Links and btns ***/
 
 
@@ -682,10 +689,10 @@ body
 	text-align center
 
 	font-size 20px
-	
+
 	&--error
 		color #ea640b
-		
+
 	&--success
 		color #1dc818
 
@@ -1633,7 +1640,7 @@ span.form-item--error
 		display block
 		width 100%
 		height 100%
-	
+
 		background #FFF url("../i/preloader.gif") no-repeat center center
 /*** //Preloader ***/
 
@@ -1663,6 +1670,35 @@ span.form-item--error
 
 			padding 15px 15px
 			box-sizing border-box
+
+			.main-filter-name-search
+				position relative
+				display inline-block
+				padding 15px 25px 12px 25px
+
+
+				vertical-align top
+
+				font-family ProximaNovaBold
+				font-size 12px
+
+				color #fff
+
+				text-transform uppercase
+
+				.new-search-name-close
+					position absolute
+					top 12px
+					right -18px
+
+					display block
+					width 20px
+					height 16px
+
+					background-image url("../i/close_white.png")
+					background-repeat no-repeat
+
+
 
 			.filter-button
 				display inline-block
@@ -1787,8 +1823,38 @@ span.form-item--error
 
 		.filter-accordion
 			.main-filter-item-content
+				position relative
 				display none
 				width 100%
+
+				&::-webkit-scrollbar-track
+					background-color transparent
+
+
+				&::-webkit-scrollbar
+					position absolute
+					right 10px
+					width 5px
+					background-color transparent
+
+
+					opacity 0
+
+					&:hover
+						opacity 1
+
+
+
+				&::-webkit-scrollbar-thumb
+					border-radius: 10px;
+					-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+					background-color: #2e3b4a;
+
+					opacity 0
+
+					&:hover
+						opacity 1
+
 
 				&--lvl1
 					.main-filter-item
@@ -1849,7 +1915,7 @@ span.form-item--error
 					opacity 1
 
 	.btn
-		padding 13px 25px
+		padding 14px 25px 12px 25px
 		height auto
 
 		vertical-align top
@@ -1861,7 +1927,7 @@ span.form-item--error
 		margin-right 5px
 
 	.main-table-search-save
-		padding 14px 25px
+		padding 15px 25px 13px 25px
 		margin-left 5px
 
 
@@ -1939,6 +2005,7 @@ span.form-item--error
 
 	tbody
 		tr
+			cursor pointer
 			td
 
 				padding 15px
@@ -1963,7 +2030,7 @@ span.form-item--error
 						font-size 12px
 						color #2fb0ee
 
-				.table-btn
+				.table-btn-unlock
 					padding 5px
 
 					margin-left 10px
@@ -2052,6 +2119,13 @@ span.form-item--error
 		top -100px
 		right 250px
 
+	&.popup-unlock2
+		width 540px
+		float right
+
+		top -100px
+		right 50%
+
 	&.popup-export
 		width 305px
 		float right
@@ -2080,6 +2154,18 @@ span.form-item--error
 		top -320px
 		right 65px
 
+	&.popup-infodeals
+		width 1200px
+
+		top 50%
+		left 50%
+
+		transform translate(-50%, -50%)
+
+		padding 0
+
+
+
 
 	.popup-title
 		display block
@@ -2103,7 +2189,9 @@ span.form-item--error
 		font-size 18px
 
 
+
 .popup-unlock
+.popup-unlock2
 	.popup-unlock-deals-items
 		display block
 		width 100%
@@ -2201,6 +2289,13 @@ span.form-item--error
 
 			&:first-child
 				margin-bottom 20px
+
+
+.popup-unlock2
+	.popup-unlock-deals-items
+		.popup-unlock-deals-item
+			.popup-unlock-deals-item-name
+				width 90%
 
 
 .popup-export
@@ -2427,8 +2522,172 @@ span.form-item--error
 
 		font-size 14px
 
+/** modal with map **/
+
+.popup-infodeals
+	.popup-infodeals-head
+		display block
+		width 100%
+
+		background-color #4c637b
+		border-top-left-radius 5px
+
+		.popup-infodeals-head-map
+			display inline-block
+			vertical-align top
+
+			width 40%
+			margin-right 5%
+
+			.popup-infodeals-head-map-holder
+				display block
+				width 100%
+
+				min-width 100%
+
+				padding 20px
+				box-sizing border-box
+
+
+				.popup-infodeals-head-map-holder-img
+					display block
+					width 100%
+
+		.popup-infodeals-head-name
+			display inline-block
+			width 34%
+
+			vertical-align top
+
+			.popup-infodeals-head-name-title
+				display block
+				margin-top 45px
+				margin-bottom 10px
+
+				font-size 24px
+				font-family ProximaNovaBold
+
+				color #fff
+
+			.popup-infodeals-head-name-location
+			.popup-infodeals-head-name-count
+				display block
+				margin-bottom 10px
+
+				font-size 14px
+
+				color #fff
+
+			.popup-infodeals-head-name-location
+				margin-bottom 15px
+
+			.popup-infodeals-head-name-users
+				display block
+				width 100%
+
+				font-size 15px
+
+				color #35dcfa
+
+		.popup-infodeals-head-price-items
+			display inline-block
+			width 20.333333%
+
+			background-color #344c67
+
+			padding 30px 20px 30px 20px
+
+			box-sizing border-box
+
+
+			.popup-infodeals-head-price-item
+				display flex
+				justify-content space-between
+				align-items center
+
+				width 160px
+
+				margin 0 auto
+				margin-bottom 20px
+
+				.popup-infodeals-head-price-item-text
+					display block
+
+					font-size 12px
+					font-family ProximaNovaRegular
+					color #fff
+
+					text-transform uppercase
+
+				.popup-infodeals-head-price-item-quantity
+					display block
+
+					font-size 20px
+					font-family ProximaNovaBold
+
+					color #fff
+
+			.popup-infodeals-head-price-items-btn
+				padding 17px 35px
+
+				width 160px
+				height 46px
+
+				font-size 14px
+
+				margin-left 50%
+				transform translate(-50%)
+
+	.popup-infodeals-content
+		display block
+		width 100%
+
+		padding 35px 90px 45px 75px
+
+
+
+
+
+
+
+
+/** //modal with map **/
+
+
 /*** //modal window***/
 
+
+/*** filter new search ***/
+
+.main-filter-new-search
+	display none
+
+	.main-filter-items
+		.main-filter-new-search-item-btn
+			.filter-button
+				margin-bottom 0
+
+		.new-search-list
+			.new-search-list-item
+				display inline-block
+				width 100%
+
+				.new-search-list-item-close
+					display inline-block
+					width 12px
+					height 9px
+
+					vertical-align top
+					margin-right 20px
+
+					background-image url("../i/close_red.png")
+					background-repeat no-repeat
+
+				.new-search-list-item-text
+					font-size 14px
+					box-sizing border-box
+
+/*** // filter new search ***/
 
 
 /*** //PAGE SEARCH ***/
