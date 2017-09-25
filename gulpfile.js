@@ -363,7 +363,7 @@ gulp.task("css", function() {
 		}));
 
 	// Для обычных css файлов
-	gulp.src([settings.paths.dev.css + "*.css"])
+	gulp.src([settings.paths.dev.css + "*", settings.paths.dev.css + "**"])
 		.pipe(newer({
 			dest: settings.paths.prod.css,
 			ext: ".css"
