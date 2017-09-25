@@ -1,7 +1,8 @@
 extends ../templates/base
 
 block content
-	div(class="contacts")
+	// HTML
+	div(class="contacts", id="contacts")
 		div(class="page-inner page-inner--w2")
 			div(class="contacts-inner")
 				div(class="contacts-info")
@@ -10,15 +11,47 @@ block content
 					p State
 					p
 						a(href="mailto:email@mail.com", class="link link--blue") email@mail.com
-				div(class="contacts-form")
-					form(class="form")
-						div(class="form-row")
-							div(class="form-item-holder form-item-holder--half")
-								input(type="text", class="form-item form-item--text", placeholder="User name", name="cf1")
-							div(class="form-item-holder form-item-holder--half")
-								input(type="email", class="form-item form-item--text", placeholder="E-mail", name="cf2", required)
-						div(class="form-row")
-							div(class="form-item-holder form-item-holder--full")
-								textarea(class="form-item form-item--textarea", placeholder="Question", , name="cf3")
-						div(class="form-row")
-							button(type="submit", class="btn btn--green") Send
+
+				contactsform()
+
+
+	// Templates
+	script(type="text/x-template", id="contacts-form")
+		div(class="contacts-form")
+			form(class="form", v-bind:action="form.action", @submit.prevent="send")
+				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }} 
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--half")
+						input(type="text", class="form-item form-item--text", placeholder="User name", name="name", v-model="name")
+					div(class="form-item-holder form-item-holder--half")
+						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="email")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="text")
+				div(class="form-row")
+					button(type="submit", class="btn btn--green") Send
+
+
+block scripts
+	// Component
+	script.
+		Vue.component("contactsform", {
+			mixins: [formMixin],
+			template: "#contacts-form",
+			data: function() {
+				return {
+					name: "",
+					email: "",
+					text: "",
+					form: {
+						action: "/api/contacts/message",
+						message: "",
+						success: false
+					}
+				}
+			}
+		});
+
+		new Vue({
+			el: "#contacts"
+		});

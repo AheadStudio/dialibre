@@ -30,8 +30,8 @@ block content
 
 	script(type="text/x-template", id="help-form")
 		div(class="form-holder")
-			div(class="form-result" v-bind:class="") {{ form.message }}
-			form(class="form", v-show="!form.success", v-bind:action="form.action", @submit.prevent="send")
+			form(class="form", v-bind:action="form.action", @submit.prevent="send")
+				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--third")
 						input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="name")

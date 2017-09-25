@@ -22,18 +22,24 @@ var formMixin = {
 			if(!$form.valid()) {
 				return false;
 			}
+			$form.addClass("loading");
+			$form.find(":submit").attr("disabled", "disabled");
 			axios
 				.post($form.attr("action"), $form.serialize())
 				.then(function(r) {
 					var r = r.data;
 					self.form.message = r.message;
 					self.form.success = true;
+					$form.find(":submit").removeAttr("disabled");
+					$form.removeClass("loading");
 				}).catch(function(error) {
 					var r = error.response.data;
 					console.log(r);
 					self.form.message = r.message;
 					self.form.success = false;
 					self.validateFromServer(r.data);
+					$form.find(":submit").removeAttr("disabled");
+					$form.removeClass("loading");
 				});
 		}
 	}
