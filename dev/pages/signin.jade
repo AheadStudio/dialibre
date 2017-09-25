@@ -13,8 +13,8 @@ block content
 	// Template
 	script(type="text/x-template", id="login-form")
 		div(class="form-holder")
-			div(class="form-result") {{ form.message }}
-			form(class="form", @submit.prevent="send", v-show="!form.success", v-bind:action="form.action")
+			form(class="form", @submit.prevent="send", v-bind:action="form.action")
+				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
 						input(type="text", class="form-item form-item--text", placeholder="User name", required, name="login", v-model="login")
@@ -56,7 +56,5 @@ block scripts
 		});
 
 		new Vue({
-			el: "#login",
-			data: {
-			}
+			el: "#login"
 		});
