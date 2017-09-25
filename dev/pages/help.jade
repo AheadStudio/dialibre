@@ -1,56 +1,104 @@
 extends ../templates/base
 
 block content
-	div(class="page-heading")
-		div(class="page-inner page-inner--w1")
-			h1(class="h1") Help
+	// HTML
+	div(id="help")
+		div(class="page-heading")
+			div(class="page-inner page-inner--w1")
+				h1(class="h1") Help
 
-	div(class="help")
+		div(class="help", v-bind:class="{loading:!help.length}")
+			div(class="page-inner page-inner--w2")
+				div(class="help-sections")
+					helpsection(v-for="section in help", v-bind:helpsection="section", v-bind:key="section.id")
+
 		div(class="page-inner page-inner--w2")
-			div(class="help-sections")
-				div(class="help-section-item")
-					h2(class="h2 help-section-item-name") Category 1
-					div(class="help-section-item-blocks")
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Proin efficitur urna a orci congue imperdiet? 
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Nam eget nibh a tellus tempor tempus ut sed turpis. Ut gravida nulla in ultrices maximus?
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Praesent varius tellus at arcu vehicula?
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
+			helpform()
 
-				div(class="help-section-item")
-					h2(class="h2 help-section-item-name") Category 2
-					div(class="help-section-item-blocks")
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Proin efficitur urna a orci congue imperdiet? 
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Nam eget nibh a tellus tempor tempus ut sed turpis. Ut gravida nulla in ultrices maximus?
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
-						div(class="help-section-item-block-item")
-							div(class="help-section-item-block-item-name-holder")
-								a(href="#", class="help-section-item-block-item-name link link--blue") Praesent varius tellus at arcu vehicula?
-							div(class="help-section-item-block-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
+	// Templates
+	script(type="text/x-template", id="help-section")
+		div(class="help-section-item")
+			h2(class="h2 help-section-item-name") {{ helpsection.name }}
+			div(class="help-section-item-blocks")
+				helpitem(v-for="item in helpsection.items", v-bind:helpitem="item", v-bind:key="item.id")
 
-	div(class="page-inner page-inner--w2")
-		form(class="form")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--third")
-					input(type="text", class="form-item form-item--text", placeholder="Name", name="hf1")
-				div(class="form-item-holder form-item-holder--third")
-					input(type="email", class="form-item form-item--text", placeholder="E-mail", name="hf2", required)
-				div(class="form-item-holder form-item-holder--third")
-					input(type="text", class="form-item form-item--text", placeholder="Phone", name="hf3")
-			div(class="form-row")
-				div(class="form-item-holder form-item-holder--full")
-					textarea(class="form-item form-item--textarea", placeholder="Question", name="hf4")
-			div(class="form-row")
-				button(type="submit", class="btn btn--green") Send
+	script(type="text/x-template", id="help-item")
+		div(class="help-section-item-block-item")
+			div(class="help-section-item-block-item-name-holder")
+				a(href="#", class="help-section-item-block-item-name link link--blue") {{ helpitem.question }} 
+			div(class="help-section-item-block-item-text") {{ helpitem.answer }}
+
+	script(type="text/x-template", id="help-form")
+		div(class="form-holder")
+			div(class="form-result" v-bind:class="") {{ form.message }}
+			form(class="form", v-show="!form.success", v-bind:action="form.action", @submit.prevent="send")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--third")
+						input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="name")
+					div(class="form-item-holder form-item-holder--third")
+						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="email")
+					div(class="form-item-holder form-item-holder--third")
+						input(type="text", class="form-item form-item--text", placeholder="Phone", name="phone", v-model="phone")
+				div(class="form-row")
+					div(class="form-item-holder form-item-holder--full")
+						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="text")
+				div(class="form-row")
+					button(type="submit", class="btn btn--green") Send
+
+
+block scripts
+	// Component
+	script.
+		Vue.component("helpitem", {
+			props: ["helpitem"],
+			template: "#help-item"
+		});
+
+		Vue.component("helpsection", {
+			props: ["helpsection"],
+			template: "#help-section"
+		});
+
+		Vue.component("helpform", {
+			mixins: [formMixin],
+			template: "#help-form",
+			data: function() {
+				return {
+					name: "",
+					email: "",
+					phone: "",
+					text: "",
+					form: {
+						action: "/api/support/ask",
+						message: "",
+						success: false
+					}
+				}
+			}
+		});
+
+		new Vue({
+			el: "#help",
+			data: {
+				help: []
+			},
+			created: function() {
+				this.load();
+			},
+			methods: {
+				load: function() {
+					var self = this;
+					axios.get("/api/help").then(function(r) {
+						for(var key in r.data.data) {
+						var section = r.data.data[key];
+							section = {
+								id: section.id,
+								name: section.name,
+								items: section.help_questions
+							};
+							self.help.push(section);
+						}
+					});
+				}
+			}
+		});

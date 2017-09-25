@@ -1,22 +1,48 @@
 extends ../templates/base
 
 block content
+	// HTML
 	div(class="page-heading")
 		div(class="page-inner page-inner--w1")
 			h1(class="h1") Faq
 
-	div(class="faq")
+	div(class="faq", v-bind:class="{loading:!list.length}", id="faq")
 		div(class="page-inner page-inner--w2")
 			div(class="faq-items")
-				div(class="faq-item")
-					div(class="faq-item-title") 1. Proin efficitur urna a orci congue imperdiet?
-					div(class="faq-item-text") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim.
-				div(class="faq-item")
-					div(class="faq-item-title") 2. Nam eget nibh a tellus tempor tempus ut sed turpis. Ut gravida nulla in ultrices maximus?
-					div(class="faq-item-text") Mauris aliquet urna ac massa vulputate, non volutpat sapien sagittis. Integer quis commodo mauris, id vehicula massa. Proin efficitur urna a orci congue imperdiet. Nam eget nibh a tellus tempor tempus ut sed turpis. Ut gravida nulla in ultrices maximus.
-				div(class="faq-item")
-					div(class="faq-item-title") 3. Praesent varius tellus at arcu vehicula?
-					div(class="faq-item-text") Fusce at tristique est. Maecenas condimentum erat ante, a tempus ligula faucibus suscipit. Sed hendrerit arcu lobortis massa pretium pretium. In in quam metus. Integer rhoncus eros sit amet justo luctus elementum. Pellentesque blandit est in luctus varius. Integer eu nisl efficitur, accumsan nunc a, faucibus urna. Pellentesque molestie tellus eget imperdiet eleifend. Nulla imperdiet arcu interdum risus mollis gravida. Curabitur quis lectus sit amet ligula pharetra condimentum. In velit nibh, lacinia euismod sem consectetur, interdum malesuada dolor. Praesent varius tellus at arcu vehicula, vel consequat diam ultrices. Proin vitae auctor ligula. Nullam nec nulla nec nisl faucibus semper. Vestibulum elit magna, pharetra vel sapien ac, consectetur scelerisque massa.
-				div(class="faq-item")
-					div(class="faq-item-title") 4. Proin efficitur urna a orci congue imperdiet?
-					div(class="faq-item-text") Vestibulum finibus felis eget velit fringilla consectetur. Fusce rhoncus egestas lacus, a varius sapien. Nam placerat ex a tincidunt ullamcorper. Praesent placerat suscipit eros ac finibus. Nullam felis urna, elementum eu turpis vitae, suscipit fermentum odio. Aliquam dignissim auctor purus, in ultrices erat imperdiet non. In hac habitasse platea dictumst. Curabitur rhoncus venenatis justo, quis ullamcorper diam bibendum ac. Maecenas mollis et ex a facilisis. Suspendisse id pretium lorem.
+				faqitem(v-for="item in list", v-bind:faq="item", v-bind:key="item.id")
+
+	
+	// Templates
+	script(type="text/x-template", id="faq-item")
+		div(class="faq-item")
+			div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
+			div(class="faq-item-text") {{ faq.answer }}
+
+
+block scripts
+	// Component
+	script.
+		Vue.component("faqitem", {
+			props: ["faq"],
+			template: "#faq-item"
+		});
+
+		new Vue({
+			el: "#faq",
+			data: {
+				list: []
+			},
+			created: function() {
+				this.load();
+			},
+			methods: {
+				load: function() {
+					var self = this;
+					axios.get("/api/faq").then(function(r) {
+						for(var key in r.data.data) {
+							self.list.push(r.data.data[key]);
+						}
+					});
+				}
+			}
+		});

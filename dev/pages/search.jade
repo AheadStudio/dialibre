@@ -1,0 +1,602 @@
+extends ../templates/base_register
+
+block content
+    div(class="main-filter")
+        div(class="main-filter-items", style="background-color: #4c637b")
+            div(class="main-filter-item")
+                a(href="#newsearch", class="btn filter-button popup") new search
+                div(class="filter-radio-items")
+                    label(class="filter-radio")
+                        input(type="radio", name="deals", class="filter-radio-item")
+                        span(class="filter-radio-title") All deals
+                    label(class="filter-radio")
+                        input(type="radio", name="deals", class="filter-radio-item")
+                        span(class="filter-radio-title") My deals
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Industry
+    
+            div(class="filter-accordion", data-color="rgb(86, 114, 142)", data-container="location")
+                div(class="main-filter-item main-filter-item-header")
+                    label(class="filter-checkbox", id="location")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") Location
+                div(class="main-filter-item-content main-filter-item-content--lvl1", data-filter="location")                    
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Africa
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Australia / Oceania
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") Asia
+                    div(class="filter-accordion", data-color="rgb(104, 135, 166)", data-container="europe")
+                        div(class="main-filter-item main-filter-item-header")
+                            label(class="filter-checkbox", id="europe")
+                                input(type="checkbox", class="filter-checkbox-item")
+                                span(class="filter-checkbox-title") Europe
+                        div(class="main-filter-item-content main-filter-item-content--lvl2", data-filter="europe")   
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Albania
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Andorra
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Armenia
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Austria
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belarus                    
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belgium
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Albania
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Andorra
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Armenia
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Austria
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belarus
+                            div(class="main-filter-item")
+                                label(class="filter-checkbox")
+                                    input(type="checkbox", class="filter-checkbox-item")
+                                    span(class="filter-checkbox-title") Belgium    
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") North America
+                    div(class="main-filter-item")
+                        label(class="filter-checkbox")
+                            input(type="checkbox", class="filter-checkbox-item")
+                            span(class="filter-checkbox-title") South America
+            div(class="main-filter-item")
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Revenue
+            div(class="filter-accordion", data-color="rgb(86, 114, 142)", data-container="ebitda")
+                div(class="main-filter-item main-filter-item-header")
+                    label(class="filter-checkbox", id="ebitda")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") EBITDA                
+                div(class="main-filter-item-content", data-filter="ebitda")
+                    div(class="main-filter-item")
+                        input(type="text", placeholder="FROM $", class="filter-text-item filter-text-item--half")
+                        input(type="text", placeholder="TO $", class="filter-text-item filter-text-item--half")
+            div(class="main-filter-item")
+                label(class="filter-checkbox")
+                    input(type="checkbox", class="filter-checkbox-item")
+                    span(class="filter-checkbox-title") Cash Flow
+
+    div(class="main-table")
+        form(action="#", class="main-table-search")
+            div(class="main-table-search-container")
+                input(type="text", class="search-input main-table-search-input")
+                button(type="submit", class="main-table-search-submit")
+            a(href="#unlock", class="btn btn--blue-inverse main-table-search-unlock popup") Unlock | 2
+            a(href="#export", class="btn btn--blue-inverse main-table-search-export popup") Export
+            a(href="#savesearch", class="btn btn--blue main-table-search-save popup") Save search
+            
+        table(class="main-table-result")
+            thead
+                tr
+                    th
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                    th Industry
+                    th Location
+                    th Company name
+                    th Revenue
+                    th ebitda
+                    th cash Flow
+                    th deal type
+                    th posted by
+                    th user rating
+                    th data posted
+                    th unlocked
+                    th sources
+            tbody
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 2
+                    td 2
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 1
+                    td 1
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 5
+                    td 5
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 5
+                    td 5
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                        button(type="button", class="btn btn--green table-btn") 20 | Unlock
+                    td Regional Bank
+                    td USA / South East
+                    td 
+                        img(src="../i/lock.png", class="table-img")
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Food Distributor
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 0
+                    td 0
+                tr
+                    td         
+                        label(class="table-checkbox")
+                            input(type="checkbox", class="table-checkbox-item")
+                            span(class="table-checkbox-title") Export
+                    td Regional Bank
+                    td USA / South East
+                    td Company Name 
+                    td $500 mm
+                    td $1.8 mm
+                    td $1.8 mm
+                    td Sale
+                    td $1.8 mm
+                    td 5.0
+                    td 07/15/2016
+                    td 3
+                    td 3
+    
+
+    div(id="unlock", class="popup-container popup-unlock white-popup mfp-hide")
+        div(class="popup-title") Unlock Selected new deals
+        div(class="popup-unlock-deals-items")
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 1
+                div(class="popup-unlock-deals-item-name") Name deal 1
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 10cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $2000
+                        
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 2
+                div(class="popup-unlock-deals-item-name") Name deal 2
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 3
+                div(class="popup-unlock-deals-item-name") Name deal 3
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 4
+                div(class="popup-unlock-deals-item-name") Name deal 4
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+
+            div(class="popup-unlock-deals-item")
+                div(class="popup-unlock-deals-item-number") 5
+                div(class="popup-unlock-deals-item-name") Name deal 5
+                div(class="popup-unlock-deals-item-count")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") 5cr
+                div(class="popup-unlock-deals-item-price")
+                    label(class="filter-checkbox")
+                        input(type="checkbox", class="filter-checkbox-item")
+                        span(class="filter-checkbox-title") $1000
+        
+        div(class="popup-unlock-deals-information")
+            div(class="popup-unlock-deals-information--left")
+                div(class="popup-unlock-deals-information-total") total cost: 
+                    span 30 credits
+                div(class="popup-unlock-deals-information-balance") You current balance: 200 credits
+                div(class="popup-unlock-deals-information-money") You money: $1000
+                div(class="popup-unlock-deals-information-result") 25cr + $1000
+            div(class="popup-unlock-deals-information--right")
+                button(type="button", class="btn btn--green-inverse popup-unlock-deals-information-btn") Share deal
+                button(type="button", class="btn btn--green popup-unlock-deals-information-btn") unlock
+
+    div(id="export", class="popup-container popup-export white-popup mfp-hide")
+        div(class="popup-title") export
+        div(class="popup-subtitle") Chooseone file format
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") XLSX
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") DOCS
+        label(class="filter-radio")
+            input(type="radio", name="export", class="filter-radio-item")
+            span(class="filter-radio-title") PDF
+            
+        button(type="button", class="btn btn--green popup-export-btn") Share deal
+    
+    div(id="newsearch", class="popup-container popup-newsearch white-popup mfp-hide")
+        div(class="popup-title") Do you want to create a new saved search with currently selected filters?
+        div(class="popup-subtitle") By doing so you will be notified when new deals matching selected criteria become available.
+        a(href="#", class="btn btn--green popup-newsearch-btn") Yes
+        a(href="#", class="btn btn--green-inverse popup-newsearch-btn") No, Start New search
+        
+    div(id="savesearch", class="popup-container popup-savesearch white-popup mfp-hide")
+        div(class="popup-title") Do you want to create a new saved search with currently selected filters?
+        div(class="popup-subtitle") By doing so you will be notified when new deals matching selected criteria become available.
+        form(action"#", class="form popup-savesearch-form")
+            div(class="form-row")
+                div(class="form-item-holder form-item-holder--full")
+                    input(type="text", name="nsearch", class="form-item form-item--text", required, placeholder="Saved search name", aria-required="true")
+            div(class="form-row form-row--btn")
+                button(type="submit", class="btn btn--green popup-savesearch-btn") Yes
+                button(type="button", class="btn btn--green-inverse popup-savesearch-btn") No, Start New search
+
+            div(class="form-row form-row--clearfix")
+                label(class="form-checkbox")
+                    input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+                    span(class="form-checkbox-title") Notify me by email new deal matches my search
+            div(class="form-row form-row--clearfix")
+                label(class="form-checkbox")
+                    input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox")
+                    span(class="form-checkbox-title") Don't need email notification
+            

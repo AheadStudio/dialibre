@@ -275,20 +275,19 @@ gulp.task("upload", function() {
 		host: settings.ftp.host,
 		user: settings.ftp.login,
 		password: settings.ftp.password,
-		parallel: 2,
+		parallel: 10,
 		log: util.log
 	});
 
 	gulp.src([settings.paths.prod.root + "*", settings.paths.prod.root + "**"], {
-			buffer: false,
-			dot: true
+			buffer: false
 		})
 		.pipe(conn.dest("/projects/" + settings.info.code))
-		.pipe(notify({
+		/*.pipe(notify({
 			icon: path.join(settings.paths.front.root, "favicon.png"),
 			title: "Markup",
 			message: "Project successfully uploaded"
-		}));
+		}))*/;
 });
 /*** //UPLOADING TO THE DEMO-SERVER ***/
 
@@ -364,7 +363,7 @@ gulp.task("css", function() {
 		}));
 
 	// Для обычных css файлов
-	gulp.src([settings.paths.dev.css + "*.css"])
+	gulp.src([settings.paths.dev.css + "*", settings.paths.dev.css + "**"])
 		.pipe(newer({
 			dest: settings.paths.prod.css,
 			ext: ".css"
@@ -738,9 +737,9 @@ gulp.task("default", ["browser-sync"], function() {
 // Создание версии для production
 gulp.task("production", function() {
 	runSequence(
-		["clear"],
 		["front", "pages", "dummy", "js"],
 		["sprite"],
+		["fonts"],
 		["css"],
 		["images"]
 	);
@@ -758,8 +757,7 @@ gulp.task("archive", function() {
 gulp.task("deploy", function() {
 	runSequence(
 		["cleanfolder"],
-		["upload"],
-		["copyToBuffer"]
+		["upload"]
 	);
 });
 

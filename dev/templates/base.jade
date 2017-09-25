@@ -10,7 +10,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		+headerMeta({
 			charset: "utf-8",
 			keywords: info.keywords,
-			description: info.description,
+			description: info.description, 
 			title: info.title,
 			robots: "index, follow",
 			viewport: "width=device-width, initial-scale=1.0"
@@ -52,6 +52,14 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				noCache: true,
 			}, {
 				media: "screen",
+				href: "../css/magnific-popup.min.css",
+				noCache: true,
+			}, {
+				media: "screen",
+				href: "../css/plugins/perfect-scrollbar.min.css",
+				noCache: true,
+			}, {
+				media: "screen",
 				href: "../css/" + info.code + ".css",
 				noCache: true
 			}
@@ -59,7 +67,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 	body(itemscope, itemtype="http://schema.org/WebPage", class="#{page.bodyClass ? page.bodyClass : ''}")
 
-		div(class="page")
+		div(class="page", id="dealibre-app")
 			header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
 				div(class="page-inner page-inner--w1")
 					if page.code == "home"
@@ -146,10 +154,30 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, {
 				src: "../js/plugins/jcf.checkbox.js"
 			}, {
+				src: "../js/plugins/jcf.radio.js"
+			}, { 
 				src: "../js/plugins/jquery.validate.min.js"
 			}, { 
 				src: "../js/plugins/slick.min.js"
+			}, { 
+				src: "../js/plugins/perfect-scrollbar.jquery.min.js"
+			}, { 
+				src: "../js/plugins/jquery.magnific-popup.min.js"
+			}, { 
+				src: "../js/plugins/geometryangle.min.js"
+			}, {
+				src: "https://unpkg.com/vue"
+			}, {
+				src: "https://unpkg.com/axios/dist/axios.min.js"
+			}, {
+				src: "../js/plugins/js.cookie.js"
 			}, {
 				src: "../js/" + info.code + ".js"
+			}, {
+				src: "../js/" + info.code + ".app.js"
 			}
 		])
+
+		block scripts
+
+		
