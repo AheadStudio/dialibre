@@ -52,6 +52,14 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				noCache: true,
 			}, {
 				media: "screen",
+				href: "../css/plugins/magnific-popup.min.css",
+				noCache: true,
+			}, {
+				media: "screen",
+				href: "../css/plugins/perfect-scrollbar.min.css",
+				noCache: true,
+			}, {
+				media: "screen",
 				href: "../css/" + info.code + ".css",
 				noCache: true
 			}
@@ -90,12 +98,25 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 						a(href="#", class="header-personal-mail")
 							span(class="header-personal-count") 566
 						button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
-						a(href="#", class="header-personal-avatar")
-						a(href="#", class="header-personal-initials") J. S.
+						a(href="#profile", class="header-personal-avatar popup")
+						a(href="#profile", class="header-personal-initials popup") J. S.
 					
 			main(class="page-content-register")
 				block content
-                
+				
+			div(id="profile", class="popup-container popup-profile white-popup mfp-hide")
+				div(class="popup-profile-holder")
+					img(src="../i/profile.jpg", class="popup-profile-holder-img")
+				div(class="popup-profile-personal")
+					div(class="popup-profile-name") Jon Smit
+					div(class="popup-profile-link") Profile
+					div(class="popup-profile-events")
+						a(href="#", class="popup-profile-events-alerts")
+							span(class="popup-profile-events-count") 566
+						a(href="#", class="popup-profile-events-mail")
+							span(class="popup-profile-events-count") 566
+				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
+
                 
 		+addJS([
 			{
@@ -112,6 +133,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "../js/plugins/jquery.validate.min.js"
 			}, { 
 				src: "../js/plugins/slick.min.js"
+			}, { 
+				src: "../js/plugins/perfect-scrollbar.jquery.min.js"
+			}, { 
+				src: "../js/plugins/jquery.magnific-popup.min.js"
 			}, { 
 				src: "../js/plugins/geometryangle.min.js"
 			}, {

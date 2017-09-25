@@ -606,6 +606,23 @@ body
 		&:hover
 			border-radius 7px
 
+	&--green-inverse
+		background-color #fff
+
+		border 1px solid #1dc818
+
+		font-family "ProximaNovaBold"
+		font-size 24px
+		color #1dc818
+
+		text-transform uppercase
+		letter-spacing 1px
+
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
 	&--blue
 		padding 15px 25px
 
@@ -615,6 +632,31 @@ body
 		color #FFF
 		text-transform uppercase
 		letter-spacing 2px
+
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
+	&--blue-inverse
+		padding 15px 25px
+
+		border 1px solid #2fb0ee
+		box-sizing border-box
+
+		background-color #fff
+
+		font-size 12px
+		color #2fb0ee
+
+		text-transform uppercase
+		letter-spacing 2px
+
+		transition .3s border-radius $transitionAnimation
+
+		&:hover
+			border-radius 7px
+
 
 .link
 	display inline-block
@@ -1595,16 +1637,14 @@ span.form-item--error
 /*** PAGE SEARCH ***/
 
 /*** filter ***/
-.main-table
-	display inline-block
-	vertical-align top
-	width auto
-
-	margin-left -4px
 .main-filter
+	position fixed
 	display inline-block
+
 	width 305px
 	height 100%
+
+	margin-top -10px
 
 	background #4c637b
 
@@ -1762,5 +1802,504 @@ span.form-item--error
 
 
 /*** //filter ***/
+
+/*** table ***/
+
+.main-table
+	display block
+	width auto
+
+	margin-left 305px
+
+.main-table-search
+	display block
+
+	height 40px
+
+	padding-left 60px
+	padding-right 15px
+
+	margin-top 10px
+
+	.main-table-search-container
+		position relative
+
+		display inline-block
+
+		width 72%
+		height 100%
+
+		vertical-align top
+
+		margin-right 15px
+
+		&:hover
+			.search-input
+				border 1px solid #2fb0ee
+
+			.main-table-search-submit
+				&:before
+					opacity 0
+				&:after
+					opacity 1
+
+	.btn
+		padding 13px 25px
+		height auto
+
+		vertical-align top
+
+		font-family ProximaNovaBold
+
+
+	.main-table-search-unlock
+		margin-right 5px
+
+	.main-table-search-save
+		padding 14px 25px
+		margin-left 5px
+
+
+.search-input
+	display inline-block
+	width 100%
+	height 100%
+
+	vertical-align top
+
+	padding-left 20px
+	box-sizing border-box
+
+	border 1px solid #b8c6d6
+
+	background #f2f6fa
+
+	font-family ProximaNovaRegular
+
+	color #2fb0ee
+
+	transition border-color 0.3s $transitionAnimation
+
+.main-table-search-submit
+	position absolute
+	top 50%
+	right 15px
+
+	width 20px
+	height 20px
+
+	margin-top -10px
+
+	&:before
+	&:after
+		content ""
+		position absolute
+		top 0
+		left 0
+
+		width 100%
+		height 100%
+
+		background-repeat no-repeat
+		background-size contain
+
+		transition opacity 0.3s $transitionAnimation
+
+	&:before
+		opacity 1
+		background-image url("../i/loupe.png")
+
+	&:after
+		opacity 0
+		background-image url("../i/loupe_blue.png")
+
+
+.main-table-result
+	width 100%
+	margin-top 25px
+
+	thead
+		tr
+			th
+				padding 15px
+				font-size 12px
+				font-family ProximaNovaBold
+
+				text-transform uppercase
+				border-right 1px solid #c2c9d1
+
+				&:last-child
+				&:first-child
+					border-right none
+
+	tbody
+		tr
+			td
+
+				padding 15px
+				border-right 1px solid #c2c9d1
+
+				font-size 12px
+
+
+				&:last-child
+				&:first-child
+					border-right none
+
+				.table-industry
+					display inline-block
+					width 40%
+
+				.table-checkbox
+					cursor pointer
+
+					.table-checkbox-title
+						margin-left 15px
+						font-size 12px
+						color #2fb0ee
+
+				.table-btn
+					padding 5px
+
+					margin-left 10px
+
+					font-size 12px
+					font-family ProximaNovaRegular
+
+					text-transform inherit
+
+
+
+
+			&:nth-child(2n-1)
+				background #eaf7fd
+
+			&.active
+				background #d7efc6
+
+
+/*** //table ***/
+
+/*** modal window ***/
+
+.mfp-bg
+	background-color rgba(255, 255, 255, 1)
+
+.mfp-popup-window.mfp-bg
+	opacity 0
+
+	transition opacity 0.3s $transitionAnimation
+
+	&.mfp-ready
+		opacity 0.5
+
+	&.mfp-removing
+		opacity 0
+
+.mfp-popup-window.mfp-wrap
+	.mfp-content
+		opacity 0
+
+		transform translateY(-50px)
+
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+	&.mfp-ready
+		.mfp-content
+			opacity 1
+
+			transform translateY(0)
+
+	&.mfp-removing
+		.mfp-content
+			opacity 0
+
+			transform translateY(-50px)
+
+.mfp-popup-window
+	.mfp-container
+		.popup-container
+			.mfp-close
+				right -20px
+				top 0px
+
+				width 28px
+				height 22px
+
+				opacity 1
+
+.popup-container
+	position relative
+	display block
+
+	padding 55px 30px 45px 30px
+	box-sizing border-box
+
+	border 1px solid #dddddd
+	border-radius 5px
+
+	background #fff
+
+	&.popup-unlock
+		width 540px
+		float right
+
+		top -100px
+		right 250px
+
+	&.popup-export
+		width 305px
+		float right
+
+		top -130px
+		right 100px
+
+	&.popup-newsearch
+		width 545px
+		float left
+
+		top -200px
+		left 40px
+
+	&.popup-savesearch
+		width 550px
+		float right
+
+		top -100px
+		right 80px
+
+	&.popup-profile
+		width 460px
+		float right
+
+		top -100px
+		right 80px
+
+
+	.popup-title
+		display block
+		width 100%
+
+		margin-bottom 35px
+
+		text-align center
+
+		font-size 24px
+		font-family ProximaNovaSemiBold
+
+
+	.popup-subtitle
+		display block
+		width 100%
+
+		text-align center
+
+		font-family ProximaNovaBold
+		font-size 18px
+
+
+.popup-unlock
+	.popup-unlock-deals-items
+		display block
+		width 100%
+
+		.popup-unlock-deals-item
+			display flex
+
+			width 100%
+
+			margin-bottom 25px
+
+
+			font-size 16px
+
+			font-family ProximaNovaRegular
+
+			.popup-unlock-deals-item-number
+				display block
+				width 5%
+
+			.popup-unlock-deals-item-name
+				display block
+				width 55%
+
+			.popup-unlock-deals-item-count
+				display block
+				width 20%
+
+			.popup-unlock-deals-item-price
+				display block
+				width auto
+
+			.popup-unlock-deals-item-count
+			.popup-unlock-deals-item-price
+				.filter-checkbox
+					cursor pointer
+
+					.jcf-checkbox
+						vertical-align top
+
+					.filter-checkbox-title
+						margin-left 15px
+
+	.popup-unlock-deals-information
+		display block
+		width 100%
+
+		overflow hidden
+
+		font-family ProximaNovaBold
+		font-weight bold
+
+		font-size 16px
+
+		&--left
+			float left
+			width 50%
+		&--right
+			float right
+			width 40%
+
+		.popup-unlock-deals-information-total
+			display block
+			width 100%
+
+			margin-bottom 15px
+
+			text-transform uppercase
+
+			span
+				color #d0631b
+				text-transform lowercase
+
+		.popup-unlock-deals-information-balance
+		.popup-unlock-deals-information-money
+			display block
+			width 100%
+
+			margin-bottom 15px
+		.popup-unlock-deals-information-result
+			display block
+			width 100%
+
+			margin-top 20px
+
+			font-size 24px
+
+			color #d0631b
+
+		.popup-unlock-deals-information-btn
+			padding 16px 50px
+			font-size 14px
+
+			width 100%
+
+			&:first-child
+				margin-bottom 20px
+
+
+.popup-export
+	.popup-title
+		text-transform uppercase
+
+	.filter-radio
+		display block
+		margin-top 35px
+
+		.filter-radio-title
+			margin-left 10px
+
+			font-size 16px
+
+			text-transform uppercase
+
+	.popup-export-btn
+		display block
+		width 100%
+
+		padding 20px
+
+		margin-top 45px
+
+		font-size 14px
+
+
+.popup-newsearch
+.popup-savesearch
+	.popup-title
+		letter-spacing 1px
+		margin-bottom 15px
+
+	.popup-subtitle
+		font-size 18px
+		letter-spacing 1px
+
+		line-height 25px
+		margin-bottom 40px
+
+	.popup-newsearch-btn
+		display inline-block
+		width 40%
+		padding 15px
+		vertical-align top
+
+		text-align center
+
+		font-size 15px
+
+		&.btn--green
+			margin-right 6%
+
+		&.btn--green-inverse
+			padding 14px
+
+.popup-savesearch
+	.form-row--btn
+		margin-bottom 40px
+
+	.popup-savesearch-btn
+		display inline-block
+		width 47%
+		padding 15px
+		vertical-align top
+
+		text-align center
+
+		font-size 15px
+
+		&.btn--green
+			margin-right 6%
+
+		&.btn--green-inverse
+			padding 14px
+
+
+.popup-profile
+	display flex
+	justify-content space-between
+	align-items flex-end
+
+	.popup-profile-holder
+		display block
+		width 85px
+		height 85px
+
+		border-radius 50%
+
+
+		.popup-profile-holder-img
+			display block
+			width 100%
+			min-width 100%
+
+			height 100%
+
+			object-fit cover
+			object-position right
+			border-radius 50%
+
+/*** //modal window***/
+
+
 
 /*** //PAGE SEARCH ***/
