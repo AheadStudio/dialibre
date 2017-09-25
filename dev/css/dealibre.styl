@@ -64,7 +64,6 @@ body
 		position relative
 
 	&--max
-		max-width 2000px
 		width 100%
 		height 100%
 
@@ -679,9 +678,9 @@ body
 /*** Forms ***/
 .form-result
 	margin-bottom 30px
-	
+
 	text-align center
-	
+
 	font-size 20px
 	
 	&--error
@@ -1620,17 +1619,17 @@ span.form-item--error
 /*** Preloader ***/
 .loading
 	position relative
-	
+
 	min-height 65px
 	overflow hidden
-	
+
 	&:after
 		content ""
-		
+
 		position absolute
 		left 0
 		top 0
-		
+
 		display block
 		width 100%
 		height 100%
@@ -2303,6 +2302,130 @@ span.form-item--error
 			object-fit cover
 			object-position right
 			border-radius 50%
+
+	.popup-profile-personal
+		.popup-profile-name
+			display block
+			width 100%t
+
+			margin-bottom 14px
+
+			font-size 24px
+			font-family ProximaNovaBold
+
+			letter-spacing 3px
+
+		.popup-profile-link
+			display inline-block
+
+			margin-bottom 18px
+
+			font-size 18px
+			font-family ProximaNovaRegular
+
+		.popup-profile-events
+			.popup-profile-events-alerts
+				position relative
+				display inline-block
+
+				width 13px
+				height 13px
+
+				margin-right 45px
+
+				&:before
+				&:after
+					content ""
+
+					position absolute
+					top 0
+					left 0
+
+					width 100%
+					height 100%
+
+					background-repeat no-repeat
+					background-size contain
+
+
+					transition opacity 0.3s $transitionAnimation
+
+				&:before
+					opacity 1
+					background-image url("../i/icon_alerts.png")
+
+				&:after
+					opacity 0
+					background-image url("../i/icon_alerts_blue.png")
+
+				&:hover
+					&:before
+						opacity 0
+					&:after
+						opacity 1
+
+			.popup-profile-events-mail
+				position relative
+				display inline-block
+
+				width 18px
+
+				vertical-align top
+
+				&:before
+				&:after
+					content ""
+
+					position absolute
+					top 0
+					left 0
+
+					width 100%
+					height 100%
+
+					background-repeat no-repeat
+					background-size contain
+
+
+					transition opacity 0.3s $transitionAnimation
+
+				&:before
+					opacity 1
+					background-image url("../i/icon_mail.png")
+
+				&:after
+					opacity 0
+					background-image url("../i/icon_mail_blue.png")
+
+				&:hover
+					&:before
+						opacity 0
+					&:after
+						opacity 1
+
+			.popup-profile-events-mail
+			.popup-profile-events-alerts
+				.popup-profile-events-count
+					display inline-block
+					vertical-align top
+
+					font-size 14px
+					text-decoration none
+
+					margin-left 15px
+
+					color #d0631b
+
+			.popup-profile-events-mail
+				.popup-profile-events-count
+					margin-left 22px
+
+	.popup-profile-btn
+		padding 10px 20px
+		width 140px
+		height 45px
+
+		font-size 14px
 
 /*** //modal window***/
 

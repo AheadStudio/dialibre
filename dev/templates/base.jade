@@ -16,7 +16,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			viewport: "width=device-width, initial-scale=1.0"
 		})
 		+openGraph({
-			type: "website",
+			type: "website", 
 			siteName: info.siteName,
 			title: info.title,
 			description: info.description,
@@ -48,11 +48,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				href: "../css/plugins/slick.css"
 			}, {
 				media: "screen",
-				href: "../css/sprite.css",
-				noCache: true,
-			}, {
-				media: "screen",
-				href: "../css/magnific-popup.min.css",
+				href: "../css/plugins/magnific-popup.min.css",
 				noCache: true,
 			}, {
 				media: "screen",
@@ -169,7 +165,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "https://unpkg.com/vue"
 			}, {
 				src: "https://unpkg.com/axios/dist/axios.min.js"
-			}, {
+			}, { 
 				src: "../js/plugins/js.cookie.js"
 			}, {
 				src: "../js/" + info.code + ".js"
