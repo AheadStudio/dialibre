@@ -656,6 +656,38 @@ body
 		&:hover
 			border-radius 7px
 
+	&--white-inverse
+		border 1px solid #fff
+
+		font-size 12px
+		font-family ProximaNovaBold
+
+		text-transform uppercase
+		color #fff
+
+		transition background 0.6s $transitionAnimation, color 0.6s $transitionAnimation
+
+		&:hover
+			background #fff
+			color #4c637b
+
+	&--white
+		border 1px solid transparent
+
+		font-size 12px
+		font-family ProximaNovaBold
+
+		text-transform uppercase
+		color #67ba2f
+
+		transition background 0.6s $transitionAnimation, color 0.6s $transitionAnimation
+
+		background #fff
+
+		&:hover
+			background #67ba2f
+			color #fff
+
 
 .link
 	display inline-block
@@ -1708,19 +1740,13 @@ span.form-item--error
 				padding 15px 25px 12px 25px
 				box-sizing border-box
 
-				border 1px solid #fff
-
 				font-size 12px
 				font-family ProximaNovaBold
 
 				text-transform uppercase
-				color #fff
 
-				transition background 0.6s $transitionAnimation, color 0.6s $transitionAnimation
-
-				&:hover
-					background #fff
-					color #4c637b
+				&:first-child
+					margin-right 5px
 
 			.filter-radio-items
 				display block
@@ -2558,6 +2584,7 @@ span.form-item--error
 			margin-right 5%
 
 			.popup-infodeals-head-map-holder
+				position relative
 				display block
 				width 100%
 
@@ -2570,6 +2597,12 @@ span.form-item--error
 				.popup-infodeals-head-map-holder-img
 					display block
 					width 100%
+
+				.popup-infodeals-head-map-holder-point
+					position absolute
+					top 70px
+					left 95px
+
 
 		.popup-infodeals-head-name
 			display inline-block
@@ -2868,6 +2901,13 @@ span.form-item--error
 
 				font-size 18px
 
+			.popup-rating-item-count
+				img
+					margin-right 25px
+
+					&:last-child
+						margin-right 0
+
 		.popup-rating-item--full
 			display block
 			width 100%
@@ -2880,7 +2920,7 @@ span.form-item--error
 				width 100%
 				height 100%
 
-				resize: none
+				resize none
 
 				padding 20px
 
@@ -2888,6 +2928,7 @@ span.form-item--error
 
 				border 1px solid #abb1b9
 
+				font-size 18px
 				font-family ProximaNovaRegular
 
 				&::-webkit-input-placeholder
@@ -2943,6 +2984,8 @@ span.form-item--error
 
 			&:last-child
 				margin-bottom 0
+
+
 /*** //modal window***/
 
 

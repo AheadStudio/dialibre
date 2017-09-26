@@ -531,10 +531,30 @@
 				}
 			},
 
+			star: {
+				init: function() {
+					$(".popup-rating-item-count--quality").raty({
+						score: 0,
+						number: 5,
+						scoreName: "result-quality",
+						starOff: "../i/star_gray.png",
+						starOn: "../i/star_green.png",
+					});
+					$(".popup-rating-item-count--opportunity").raty({
+						score: 0,
+						number: 5,
+						scoreName: "result-opportunity",
+						starOff: "../i/star_gray.png",
+						starOn: "../i/star_green.png",
+					});
+
+				},
+			},
+
 		};
 
 	})();
-
+	DEALIBRE.star.init();
 	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
