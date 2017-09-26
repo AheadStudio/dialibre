@@ -293,7 +293,7 @@
 						});
 					});
 
-					$(".form-item--radio, .filter-radio-item", $container).each(function() {
+					$(".form-item--radio, .filter-radio-item, .popup-rating-item-count-radio-item", $container).each(function() {
 						var $rd = $(this);
 
 						jcf.replace($rd, "Radio", {
