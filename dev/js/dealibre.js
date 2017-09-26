@@ -268,7 +268,7 @@
 					if(!$container) {
 						var $container = $sel.body;
 					}
-					
+
 					jcf.setOptions("Select", {
 						wrapNative: false,
 						wrapNativeOnMobile: false
@@ -513,6 +513,24 @@
 				}
 			},
 
+			newSearch: {
+				init: function() {
+					var $newSearch = $(".new-search", $sel.body),
+						$newSearchBlock = $(".main-filter-new-search", $sel.body),
+						$closeNewSearch = $(".new-search-name-close", $newSearchBlock);
+
+					$newSearch.on("click", function() {
+						$newSearchBlock.css("display", "block");
+						$.magnificPopup.close();
+					});
+
+					$closeNewSearch.on("click", function() {
+						$newSearchBlock.css("display", "none");
+					});
+
+				}
+			},
+
 		};
 
 	})();
@@ -520,6 +538,8 @@
 	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
+	DEALIBRE.newSearch.init();
+	//DEALIBRE.scrollBar.init();
 	DEALIBRE.tableSearch.init();
 	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();
