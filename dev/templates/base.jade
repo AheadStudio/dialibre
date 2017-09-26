@@ -63,78 +63,77 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 	body(itemscope, itemtype="http://schema.org/WebPage", class="#{page.bodyClass ? page.bodyClass : ''}")
 
-		div(class="page", id="dealibre-app")
-			header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-				if page.code == "search"
-					div(class="page-inner page-inner--max")
-						div(class="header-logo-container")
-							a(href="home.html", class="header-logo-white")
+		div(class="page")
+			header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+				pageheader()
+
+				script(type="text/x-template", id="header-tmpl")
+					div(class="header-inner")
+						div(class="page-inner page-inner--max", v-show="states.user.authorized")
+							div(class="header-logo-container")
+								a(href="home.html", class="header-logo-white")
+									img(src="", class="header-logo-img")
+							div(class="header-menu-register")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "search",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "my deals",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "help",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+							div(class="header-personal")
+								a(href="#", class="header-personal-alerts")
+									span(class="header-personal-count") 566
+								a(href="#", class="header-personal-mail")
+									span(class="header-personal-count") 566
+								button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
+								a(href="#profile", class="header-personal-avatar popup")
+								a(href="#profile", class="header-personal-initials popup") J. S.
+					
+						div(class="page-inner page-inner--w1", v-show="!states.user.authorized")
+							a(href="home.html", class="header-logo")
 								img(src="", class="header-logo-img")
-						div(class="header-menu-register")
+
 							+menu({
 								rootClass: "header-menu",
 								items: [
 									{
-										name: "search",
+										name: "Company",
 										href: "#",
 										current: (page.code == "#" ? true : false)
 									}, {
-										name: "my deals",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}, {
-										name: "help",
+										name: "Testimonials",
 										href: "#",
 										current: (page.code == "#" ? true : false)
 									}
 								]
 							})
-						div(class="header-personal")
-							a(href="#", class="header-personal-alerts")
-								span(class="header-personal-count") 566
-							a(href="#", class="header-personal-mail")
-								span(class="header-personal-count") 566
-							button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
-							a(href="#profile", class="header-personal-avatar popup")
-							a(href="#profile", class="header-personal-initials popup") J. S.
-				else
-					div(class="page-inner page-inner--w1")
-						if page.code == "home"
-							div(class="header-logo")
-								img(src="", class="header-logo-img")
-						else
-							a(href="home.html", class="header-logo")
-								img(src="", class="header-logo-img")
 
-						+menu({
-							rootClass: "header-menu",
-							items: [
-								{
-									name: "Company",
-									href: "#",
-									current: (page.code == "#" ? true : false)
-								}, {
-									name: "Testimonials",
-									href: "#",
-									current: (page.code == "#" ? true : false)
-								}
-							]
-						})
-
-						+menu({
-							rootClass: "header-bar",
-							items: [
-								{
-									name: "Join free",
-									href: "register.html",
-									current: (page.code == "register" ? true : false)
-								}, {
-									name: "Log in",
-									href: "signin.html",
-									current: (page.code == "signin" ? true : false)
-								}
-							]
-						})
+							+menu({
+								rootClass: "header-bar",
+								items: [
+									{
+										name: "Join free",
+										href: "register.html",
+										current: (page.code == "register" ? true : false)
+									}, {
+										name: "Log in",
+										href: "signin.html",
+										current: (page.code == "signin" ? true : false)
+									}
+								]
+							})
 					
 			if page.code == "search"
 				main(class="page-content-register")
@@ -157,39 +156,45 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
 	
 		if page.code != "search"
-			footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
-				div(class="page-inner page-inner--w1")
-					+menu({
-						rootClass: "footer-menu",
-						items: [
-							{
-								name: "Company",
-								href: "#",
-								current: (page.code == "#" ? true : false)
-							}, {
-								name: "Testimonials",
-								href: "#",
-								current: (page.code == "#" ? true : false)
-							}, {
-								name: "Support && General Q&A",
-								href: "#",
-								current: (page.code == "#" ? true : false)
-							}, {
-								name: "Contact",
-								href: "contacts.html",
-								current: (page.code == "contacts" ? true : false)
-							}
-						]
-					})
+			div(id="footer-holder")
+				pagefooter()
 
-					div(class="footer-social")
-						div(class="footer-social-items")
-							a(href="#", target="_blank", class="footer-social-item")
-								include ../../prod/svg/fb.svg
-							a(href="#", target="_blank", class="footer-social-item")
-								include ../../prod/svg/insta.svg
-							a(href="#", target="_blank", class="footer-social-item")
-								include ../../prod/svg/ln.svg
+			script(type="text/x-template", id="footer-tmpl")
+				footer(class="page-footer", v-show="!states.user.authorized", itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
+					div(class="page-inner page-inner--w1")
+						+menu({
+							rootClass: "footer-menu",
+							items: [
+								{
+									name: "Company",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "Testimonials",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "Support && General Q&A",
+									href: "#",
+									current: (page.code == "#" ? true : false)
+								}, {
+									name: "Contact",
+									href: "contacts.html",
+									current: (page.code == "contacts" ? true : false)
+								}
+							]
+						})
+
+						div(class="footer-social")
+							div(class="footer-social-items")
+								a(href="#", target="_blank", class="footer-social-item")
+									include ../../prod/svg/fb.svg
+								a(href="#", target="_blank", class="footer-social-item")
+									include ../../prod/svg/insta.svg
+								a(href="#", target="_blank", class="footer-social-item")
+									include ../../prod/svg/ln.svg
+
+
 
 		+addJS([
 			{

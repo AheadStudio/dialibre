@@ -52,6 +52,11 @@ block scripts
 						success: false
 					}
 				}
+			},
+			methods: {
+				successCallback: function() {
+					DealibreApp.methods.setAuthorized();
+				}
 			}
 		});
 

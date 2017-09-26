@@ -3,6 +3,23 @@ axios.defaults.baseURL = "http://67.207.95.140";
 //axios.defaults.headers.common["X-CSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
 
 
+
+// Global states
+var DealibreApp = {
+	data: {
+		user: {
+			authorized: false
+		}
+	},
+	methods: {
+		setAuthorized: function() {
+			DealibreApp.data.user.authorized = true;
+		}
+	}
+};
+
+
+
 // Form functions
 var formMixin = {
 	mounted: function() {
@@ -32,9 +49,12 @@ var formMixin = {
 					self.form.success = true;
 					$form.find(":submit").removeAttr("disabled");
 					$form.removeClass("loading");
+
+					if(self.successCallback) {
+						self.successCallback();
+					}
 				}).catch(function(error) {
 					var r = error.response.data;
-					console.log(r);
 					self.form.message = r.message;
 					self.form.success = false;
 					self.validateFromServer(r.data);
@@ -44,3 +64,34 @@ var formMixin = {
 		}
 	}
 }
+
+
+// Header
+Vue.component("pageheader", {
+	mixins: [formMixin],
+	template: "#header-tmpl",
+	data: function() {
+		return {
+			states: DealibreApp.data
+		}
+	}
+});
+new Vue({
+	el: "#page-header"
+});
+
+
+
+// Footer
+Vue.component("pagefooter", {
+	mixins: [formMixin],
+	template: "#footer-tmpl",
+	data: function() {
+		return {
+			states: DealibreApp.data
+		}
+	}
+});
+new Vue({
+	el: "#footer-holder"
+});
