@@ -34,14 +34,14 @@ block content
 				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--third")
-						input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="name")
+						input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="fields.name")
 					div(class="form-item-holder form-item-holder--third")
-						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="email")
+						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="fields.email")
 					div(class="form-item-holder form-item-holder--third")
-						input(type="text", class="form-item form-item--text", placeholder="Phone", name="phone", v-model="phone")
+						input(type="text", class="form-item form-item--text", placeholder="Phone", name="phone", v-model="fields.phone", data-mask="0000-0000")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="text")
+						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="fields.text")
 				div(class="form-row")
 					button(type="submit", class="btn btn--green") Send
 
@@ -64,10 +64,12 @@ block scripts
 			template: "#help-form",
 			data: function() {
 				return {
-					name: "",
-					email: "",
-					phone: "",
-					text: "",
+					fields: {
+						name: "",
+						email: "",
+						phone: "",
+						text: "",
+					},
 					form: {
 						action: "/api/support/ask",
 						message: "",

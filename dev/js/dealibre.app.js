@@ -71,6 +71,12 @@ var formMixin = {
 					if(self.successCallback) {
 						self.successCallback();
 					}
+					if(self.fields) {
+						for(var code in self.fields) {
+							self.fields[code] = "";
+						}
+					}
+					$form.find(".valid").removeClass("valid");
 				}).catch(function(error) {
 					var r = error.response.data;
 					self.form.message = r.message;

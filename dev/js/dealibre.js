@@ -305,10 +305,10 @@
 					jcf.replace($(".form-item--number", $container));
 					jcf.replace($(".form-item--range", $container));
 
-					/*$("[data-pattern]").each(function() {
+					$("[data-mask]").each(function() {
 						var $item = $(this);
-						$item.mask($item.data("pattern"));
-					});*/
+						$item.mask($item.data("mask"));
+					});
 
 					$.validator.setDefaults({
 						errorClass: "form-item--error",

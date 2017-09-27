@@ -21,22 +21,22 @@ block content
 				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="email", class="form-item form-item--text", name="email", v-model="email" placeholder="Work Email", required, data-error="Enter your email")
+						input(type="email", class="form-item form-item--text", name="email", v-model="fields.email" placeholder="Work Email", required, data-error="Enter your email")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="First Name", name="first_name", v-model="first_name")
+						input(type="text", class="form-item form-item--text", placeholder="First Name", name="first_name", v-model="fields.first_name")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="Last Name", name="last_name", v-model="last_name")
+						input(type="text", class="form-item form-item--text", placeholder="Last Name", name="last_name", v-model="fields.last_name")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="Company Name", name="company_name", v-model="company_name")
+						input(type="text", class="form-item form-item--text", placeholder="Company Name", name="company_name", v-model="fields.company_name")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="Position", name="position", v-model="position")
+						input(type="text", class="form-item form-item--text", placeholder="Position", name="position", v-model="fields.position")
 				div(class="form-row")
 					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="Phone" name="phone", v-model="phone", required, data-error="Enter your phone")
+						input(type="text", class="form-item form-item--text", placeholder="Phone" name="phone", v-model="fields.phone", required, data-error="Enter your phone")
 				div(class="form-row form-row--centered")
 					button(type="submit", class="btn btn--green") Join dealibre
 				div(class="form-row form-row--centered")
@@ -51,12 +51,14 @@ block scripts
 			template: "#register-form",
 			data: function() {
 				return {
-					first_name: "",
-					last_name: "",
-					company_name: "",
-					email: "",
-					phone: "",
-					position: "",
+					fields: {
+						first_name: "",
+						last_name: "",
+						company_name: "",
+						email: "",
+						phone: "",
+						position: ""
+					},
 					form: {
 						action: "/api/register",
 						message: "",
