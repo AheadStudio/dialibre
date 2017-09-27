@@ -35,6 +35,22 @@
         "search": {
             "name": "Search",
             "progress": {
+                "desktop": "80",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "register_share_step1": {
+            "name": "Register share deal step-1",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "register_share_step2_files": {
+            "name": "Register share deal step-2 files",
+            "progress": {
                 "desktop": "0",
                 "tablet": "0",
                 "mobile": "0"

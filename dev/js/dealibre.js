@@ -273,7 +273,7 @@
 						wrapNative: false,
 						wrapNativeOnMobile: false
 					});
-					var $selects = $(".form-item--select, .geo-item-select", $container);
+					var $selects = $("select", $container);
 					$selects.each(function(i) {
 						var $select = $(this),
 							selectPlaceholder = $select.attr("placeholder");
@@ -285,7 +285,7 @@
 						jcf.replace($select);
 					});
 
-					$(".form-item--checkbox, .filter-checkbox-item, .table-checkbox-item", $container).each(function() {
+					$("input[type=checkbox]", $container).each(function() {
 						var $ch = $(this);
 
 						jcf.replace($ch, "Checkbox", {
@@ -304,6 +304,12 @@
 
 					jcf.replace($(".form-item--number", $container));
 					jcf.replace($(".form-item--range", $container));
+
+					jcf.setOptions("File", {
+						buttonText: 'Upload files',
+					});
+
+					jcf.replace($("input[type=file]", $container));
 
 					$("[data-mask]").each(function() {
 						var $item = $(this);

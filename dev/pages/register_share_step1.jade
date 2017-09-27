@@ -1,0 +1,27 @@
+extends ../templates/base
+
+block content
+    div(class="page-heading")
+        div(class="page-inner page-inner--w1")
+            h1(class="h1") Share deal
+
+    div(class="page-inner page-inner--w1")
+        div(class="register-share")
+            div(class="register-share-title") Are you an authorized representative for the deal you are looking to share?
+            div(class="register-share-text")
+                ul
+                    li If you are an authorized rep for this deal, Dealibre’ will faclitate you NDA exchange, sharing of CIM, all in one simple interface. As you deal is approved by our analysts you will also get 50 points to be used to unlock other deals of interest.
+                    li If you are sharing a deal from your deal flow, we will award you up to 30 points after you analysts reveiw.
+            div(class="register-share-choose")
+                form(action="#", class="register-share-form-choose")
+                    div(class="register-share-form-choose-row")
+                        div(class="register-share-form-choose-holder")
+                            select(class="register-share-form-choose-item-select", placeholder="Choose One")
+                                option(value="1") I'm an Authorized Rep in is deal
+                                option(value="2") Sharing deal from my deal flow                
+                        button(type="submit", class="btn btn--green register-share-form-choose-submit") next step
+            
+            div(class="register-share-text")
+                p At Dealibre’ we keep deal flow relevant to the M&A industry interest.
+                p Minimum EBITDA/Cash Flow requirement is $500.000.
+                p Or Revenue above $10m in case EBITDA/CF is below $500,000.
