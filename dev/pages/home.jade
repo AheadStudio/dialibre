@@ -1,6 +1,7 @@
 extends ../templates/base
 
 block content
+	// HTML
 	div(class="intro polygon-animate")
 		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
 		div(class="intro-inner ") 
@@ -71,19 +72,8 @@ block content
 						div(class="feature-item-description") Dealibre’ is present in Africa, Asia, Australia/Oceania, Europe, North America, South America.
 
 
-	div(class="reviews polygon-animate")
-		div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
-		div(class="page-inner page-inner--w2")
-			div(class="reviews-items")
-				div(class="review-item")
-					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
-					div(class="review-item-author") John Smit
-				div(class="review-item")
-					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
-					div(class="review-item-author") John Smit
-				div(class="review-item")
-					div(class="review-item-text") Nullam nibh ex, posuere sit amet volutpat consequat, faucibus ut orci. Aenean quis odio sit amet urna suscipit pretium id a urna. Nullam maximus volutpat nibh, nec hendrerit justo eleifend quis. Suspendisse potenti. Mauris in nisl in libero dignissim finibus a eget odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisis tristique orci, id placerat purus consectetur sed.
-					div(class="review-item-author") John Smit
+	div(id="reviews")
+		reviewslist()
 
 	div(class="geo")
 		div(class="page-inner page-inner--w1")
@@ -121,3 +111,48 @@ block content
 							option(value="2") Algir
 				div(class="geo-map")
 					include ../svg/map_big.svg
+
+
+	// Templates
+	script(type="text/x-template", id="reviews-list")
+		div(class="reviews")
+			div(class="page-inner page-inner--w2")
+				div(class="reviews-items")
+					div(class="review-item", v-for="item in list")
+						div(class="review-item-text") {{ item.text }}
+						div(class="review-item-author") {{ item.name }}
+
+
+// Scripts
+block scripts
+	script.
+		Vue.component("reviewslist", {
+			template: "#reviews-list",
+			data: function() {
+				return {
+					list: []
+				}
+			},
+			created: function() {
+				this.load();
+			},
+			updated: function() {
+				DEALIBRE.content.sliders.reviews();
+			},
+			methods: {
+				load: function() {
+					var self = this;
+					axios.get("/api/reviews").then(function(r) {
+						for(var key in r.data.data) {
+							self.list.push(r.data.data[key]);
+						}
+					});
+				}
+			}
+		});
+
+		new Vue({
+			el: "#reviews",
+			data: {
+			}
+		});

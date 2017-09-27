@@ -245,7 +245,7 @@
 
 			content: {
 				sliders: {
-					init: function() {
+					reviews: function() {
 						$(".reviews-items", $sel.body).slick({
 							adaptiveHeight: true,
 							infinite: true,
@@ -259,7 +259,7 @@
 				init: function() {
 					var self = this;
 
-					self.sliders.init();
+					self.sliders.reviews();
 				}
 			},
 
