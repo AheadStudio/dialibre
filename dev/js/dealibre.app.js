@@ -15,6 +15,21 @@ var DealibreApp = {
 		setAuthorized: function() {
 			DealibreApp.data.user.authorized = true;
 		}
+	},
+	utils: {
+		getUrlParameter: function(sParam) {
+		    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		        sURLVariables = sPageURL.split('&'),
+		        sParameterName,
+		        i;
+		    for (i = 0; i < sURLVariables.length; i++) {
+		        sParameterName = sURLVariables[i].split('=');
+
+		        if (sParameterName[0] === sParam) {
+		            return sParameterName[1] === undefined ? true : sParameterName[1];
+		        }
+		    }
+		}
 	}
 };
 
@@ -29,8 +44,11 @@ var formMixin = {
 		validateFromServer: function(form) {
 			var $form = $(this.$el).find("form");
 			for(var code in form) {
-				var field = form[code];
-				$form.find("[name=" + code + "]").addClass("form-item--error").after('<span class="form-item--error" id="' + code + '-error">' + field + '</span>');
+				var fieldError = form[code],
+					$field = $form.find("[name=" + code + "]");
+				if($field.attr("type") != "hidden") {
+					$field.addClass("form-item--error").after('<span class="form-item--error" id="' + code + '-error">' + fieldError + '</span>');
+				}
 			}
 		},
 		send: function() {

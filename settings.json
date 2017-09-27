@@ -96,6 +96,14 @@
                 "tablet": "0",
                 "mobile": "0"
             }
+        },
+        "restore": {
+            "name": "Restore password",
+            "progress": {
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
         }
     },
     "paths": {
