@@ -54,6 +54,11 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				media: "screen",
 				href: "../css/plugins/perfect-scrollbar.min.css",
 				noCache: true,
+			},{
+				media: "screen",
+				href: "../css/plugins/jquery.fileuploader.css",
+				noCache: true,
+
 			}, {
 				media: "screen",
 				href: "../css/" + info.code + ".css",
@@ -135,7 +140,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 								]
 							})
 					
-			if page.code == "search"
+			if page.code == "search" || page.code == "chat"
 				main(class="page-content-register")
 					block content 
 			else
@@ -208,7 +213,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, {
 				src: "../js/plugins/jcf.radio.js"
 			}, {
-				src: "../js/plugins/jcf.file.js"
+				src: "../js/plugins/jquery.fileuploader.js"
 			}, { 
 				src: "../js/plugins/jquery.validate.min.js"
 			}, { 

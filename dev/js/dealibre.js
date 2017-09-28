@@ -305,11 +305,13 @@
 					jcf.replace($(".form-item--number", $container));
 					jcf.replace($(".form-item--range", $container));
 
-					jcf.setOptions("File", {
-						buttonText: 'Upload files',
+
+					$('input[name="files"]').fileuploader({
+						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
+						theme: "One-button",
+						changeInput: '<button type="button" class="btn btn--blue register-share-form-upload-submit">Upload files</button>'
 					});
 
-					jcf.replace($("input[type=file]", $container));
 
 					$("[data-mask]").each(function() {
 						var $item = $(this);

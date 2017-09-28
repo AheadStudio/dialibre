@@ -26,7 +26,7 @@
         "home": {
             "name": "Home",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             },
@@ -35,7 +35,7 @@
         "search": {
             "name": "Search",
             "progress": {
-                "desktop": "80",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -51,15 +51,41 @@
         "register_share_step2_files": {
             "name": "Register share deal step-2 files",
             "progress": {
-                "desktop": "0",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
         },
+        "register_share_step2_form": {
+            "name": "Register share deal step-2 form",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "register_share_success": {
+            "name": "Register share deal success",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+
+        "chat": {
+            "name": "Chat",
+            "progress": {
+                "desktop": "30",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+
         "faq": {
             "name": "FAQ",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -67,7 +93,7 @@
         "help": {
             "name": "Help",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -75,7 +101,7 @@
         "text": {
             "name": "Text",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -83,7 +109,7 @@
         "contacts": {
             "name": "Contacts",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             },
@@ -92,7 +118,7 @@
         "register": {
             "name": "Register",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -100,7 +126,7 @@
         "signin": {
             "name": "SignIn",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -108,7 +134,7 @@
         "recover": {
             "name": "Recover password",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -116,7 +142,7 @@
         "restore": {
             "name": "Restore password",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }

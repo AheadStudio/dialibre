@@ -94,6 +94,9 @@ body
 
 
 /*** Header ***/
+
+.header-inner
+	height 100%
 .page-header
 	position fixed
 	left 0
@@ -1683,6 +1686,10 @@ span.form-item--error
 /*** filter ***/
 .main-filter
 	position fixed
+	left 0
+	top 0
+	bottom 0
+
 	display inline-block
 
 	width 305px
@@ -1693,11 +1700,13 @@ span.form-item--error
 
 	background #4c637b
 
-	overflow-y auto
+	overflow auto
 
 	.main-filter-items
 		display block
 		width 100%
+
+		padding-top 70px
 
 		.main-filter-item
 			display block
@@ -2035,6 +2044,7 @@ span.form-item--error
 	tbody
 		tr
 			cursor pointer
+			transition box-shadow 0.3s $transitionAnimation
 			td
 
 				padding 15px
@@ -2077,6 +2087,10 @@ span.form-item--error
 
 			&.active
 				background #d7efc6
+
+			&:hover
+				box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+
 
 
 /*** //table ***/
@@ -2834,29 +2848,37 @@ span.form-item--error
 		.popup-infodeals-navigation-prev
 		.popup-infodeals-navigation-next
 			position relative
-			display block
-
-			font-size 12px
-			font-family ProximaNovaRegular
-
-			text-transform uppercase
-			color #000
+			display flex
+			align-items center
 
 			&--w60
 				width 60px
 			&--w30
 				width 30px
 
+			.popup-infodeals-navigation-item
+				display inline-block
+				vertical-align middle
+				font-size 12px
+				font-family ProximaNovaRegular
+
+				text-transform uppercase
+				color #000
+
+
 		.popup-infodeals-navigation-prev
-			&:before
-				content "\2039"
+		.popup-infodeals-navigation-next
+			.popup-infodeals-navigation-icon
 				position absolute
+				left -20px
 
-				left - 20px
+				display inline-block
+				vertical-align middle
 
-				margin-top -15px
 
-				font-size 30px
+				font-size 20px
+				line-height 1
+
 				color #000
 
 		.popup-infodeals-navigation-btn
@@ -2866,16 +2888,9 @@ span.form-item--error
 
 
 		.popup-infodeals-navigation-next
-			&:after
-				content "\203A"
-				position absolute
-
-				right - 20px
-
-				margin-top -15px
-
-				font-size 30px
-				color #000
+			.popup-infodeals-navigation-icon
+				left auto
+				right -20px
 
 		.btn--blue-inverse
 			padding 19px 50px
@@ -3056,25 +3071,29 @@ span.form-item--error
 				display inline-block
 				width 100%
 
-				.new-search-list-item-text
-					font-size 14px
-					box-sizing border-box
+				.new-search-list-item-link
+					position relative
+					padding-left 30px
 
-					margin-left 30px
+					.new-search-list-item-link-text
+						display inline
 
-					text-decoration none
+						font-size 14px
+						box-sizing border-box
+						line-height 20px
 
-					color #fff
+						text-decoration none
 
-					transition all 0.3s $transitionAnimation
-					border-bottom 1px solid transparent
+						color #fff
 
-					&:hover
-						border-color #fff
+						transition all 0.3s $transitionAnimation
+						border-bottom 1px solid transparent
 
-					.new-search-list-item-close
+					.new-search-list-item-link-close
 						position absolute
-						left 15px
+						top 50%
+						margin-top -4.5px
+						left 0
 
 						display inline-block
 
@@ -3083,6 +3102,11 @@ span.form-item--error
 
 						background-image url(../i/close_red.png)
 						background-repeat no-repeat
+
+					&:hover
+						.new-search-list-item-link-text
+							border-color #fff
+
 
 /*** // filter new search ***/
 
@@ -3106,6 +3130,10 @@ span.form-item--error
 
 		text-align center
 
+		&-success
+			width 60%
+			line-height 2
+
 	.register-share-subtitle
 		display block
 		width 70%
@@ -3117,6 +3145,10 @@ span.form-item--error
 		font-family ProximaNovaRegular
 
 		text-align center
+
+		&.register-share-subtitle-form
+			margin-top -25px
+
 
 	.register-share-text
 		display block
@@ -3208,7 +3240,7 @@ span.form-item--error
 						transition border 0.3s $transitionAnimation
 
 						.jcf-select-text
-							.jcf-option-hideme
+							span
 								font-size 24px
 
 								color #abb1b9
@@ -3222,7 +3254,7 @@ span.form-item--error
 							width 0
 							height 0
 
-							border-top 8px solid #abb1b9
+							border-top 8px solid #6284ab
 							border-left 4px solid transparent
 							border-right 4px solid transparent
 
@@ -3236,10 +3268,6 @@ span.form-item--error
 								.jcf-option-hideme
 									color $colorBlue
 
-							.jcf-select-opener
-								border-top 8px solid $colorBlue
-								border-left 4px solid transparent
-								border-right 4px solid transparent
 
 						&.jcf-drop-active
 							.jcf-select-opener
@@ -3281,11 +3309,6 @@ span.form-item--error
 							background $colorBlue
 
 
-
-
-
-
-
 				.register-share-form-choose-submit
 					display block
 					width 45%
@@ -3303,65 +3326,39 @@ span.form-item--error
 			margin-bottom 20px
 			text-align center
 
-		.jcf-file
-			position relative
+			.register-share-form-upload-holder
+				.fileuploader
+					text-align center
+					background #fff
 
-			display flex
-			flex-direction column-reverse
+					.register-share-form-upload-submit
+						font-size 16px
+						font-family ProximaNovaRegular
+						font-weight 600
 
-			.jcf-fake-list
-				width 72%
-				display block
-				margin 0 auto
-				
-				font-size 14px
-				font-family ProximaNovaBold
+					.fileuploader-items
+						.fileuploader-items-list
+							.columns
+								.column-thumbnail
+									display none
 
-				color #1dc818
+								.column-title
+									text-align left
+									div
+										font-size 14px
+										font-family ProximaNovaBold
+										color #1dc818
+									span
+										display none
 
-				text-align left
-
-				.fake-list-item
-					margin-bottom 20px
-
-
-
-		.jcf-upload-button
-			display block
-
-			margin 0 auto
-			margin-bottom 40px
-
-			padding 20px 30px
-			box-sizing border-box
-
-			font-size 16px
-			cursor pointer
-
-			background #2fb0ee
-
-			text-transform uppercase
-			color #fff
-
-			transition .3s border-radius $transitionAnimation
-
-			&:hover
-				border-radius 7px
-
-		.register-share-form-upload-item-file
-			top 0
-			left 0
-			right 0
-
-			display block
-			width 220px
-			height 58px
-
-			margin 0 auto
-
-			cursor pointer
-
-
+								.column-actions
+									.fileuploader-action-remove
+										border-radius 0
+										border none
+										background url("../i/close_red.png")
+										background-repeat no-repeat
+										i
+											display none
 
 		.register-share-form-upload-item-checkbox
 			display block
@@ -3374,4 +3371,391 @@ span.form-item--error
 				vertical-align middle
 
 				cursor pointer
+
+
+
+/** Register share big form **/
+
+.register-share-form-big
+	display block
+	width 70%
+	margin 0 auto
+
+	.register-share-form-big-row-joint
+		margin 50px 0
+
+	.register-share-form-big-row
+		clearfix()
+		display block
+		width 100%
+
+		margin-bottom 30px
+
+		&--center
+			text-align center
+
+		.register-share-form-big-row-title
+			display block
+			width 100%
+
+			margin-bottom 10px
+			margin-top 30px
+
+			font-size 14px
+			font-family ProximaNovaBold
+
+			text-align left
+			text-transform uppercase
+
+		.register-share-form-big-row-info
+			display block
+			width 100%
+
+			font-size 14px
+			font-family ProximaNovaRegular
+
+
+		.register-share-form-big-item-holder
+			display block
+			float left
+
+			margin-right 4%
+
+			&:last-child
+				margin-right 0
+
+			&--w1
+				width 100%
+			&--w2
+				width 48%
+			&--w3
+				width 73%
+			&--w4
+				width 23%
+
+
+			.register-share-form-big-item
+				display block
+				width 100%
+
+				padding 20px
+				box-sizing border-box
+
+				border 1px solid #abb1b9
+
+				font-size 18px
+				font-family ProximaNovaRegular
+
+				color #8191a2
+
+				transition border-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+				&::-webkit-input-placeholder
+					width 100%
+					color #8191a2
+
+					transition transform .3s $transitionAnimation, font-size .3s $transitionAnimation
+
+				&:hover
+				&:focus
+					border-color $colorBlue
+					color $colorBlue
+
+				&:focus
+					&::-webkit-input-placeholder
+						font-size 14px
+
+						transform translateY(-20px)
+
+				&--textarea
+					resize none
+
+				&--table
+					width 100%
+
+					thead
+						tr
+							th
+								padding 10px
+
+								text-transform uppercase
+								text-align right
+
+								font-size 15px
+								font-family ProximaNovaBold
+
+								&:last-child
+									padding-right 0
+					tbody
+						tr
+							td
+								position relative
+								border-bottom none
+
+								border-right 1px solid #000
+
+								padding 15px 10px
+
+								color #000
+
+								text-align right
+
+								&:last-child
+									padding-right 0
+									border-right none
+
+								&:first-child
+									padding-left 0
+
+									color #000
+
+									text-align left
+									border-right none
+
+							&:nth-child(2n-1)
+
+								background-color #eaf7fd
+
+								td
+									color #4c637b
+
+									&:before
+										content ""
+										position absolute
+
+										display block
+
+										top 0
+										left 50%
+
+										width 130%
+										height 100%
+
+										background-color #eaf7fd
+
+										transform translateX(-47%)
+
+										z-index -10
+
+			.register-share-form-big-checkbox
+				.register-share-form-big-checkbox-title
+					display inline-block
+					margin-left 15px
+
+					vertical-align middle
+
+					cursor pointer
+
+					.register-share-form-big-checkbox-title-link
+						border-bottom 1px solid #bfbfbf
+
+						font-size 14px
+						font-family  ProximaNovaBold
+
+						color #000
+
+						transition border-bottom-color 0.3s $transitionAnimation
+
+						&:hover
+							border-bottom-color transparent
+
+			.jcf-select-register-share-form-big-item--select
+				position relative
+				display block
+				width 100%
+				height 100%
+
+				padding 20px
+
+				border 1px solid #abb1b9
+
+				box-sizing border-box
+
+				cursor pointer
+
+				transition border 0.3s $transitionAnimation
+
+				.jcf-select-text
+
+					span
+						font-size 18px
+
+						color $colorBlue
+						transition color 0.3s $transitionAnimation
+
+					.jcf-option-hideme
+						font-size 18px
+
+						color #8191a2
+
+						transition color 0.3s $transitionAnimation
+				.jcf-select-opener
+					position absolute
+					top 27px
+					right 20px
+
+					width 0
+					height 0
+
+					border-top 8px solid #6284ab
+					border-left 4px solid transparent
+					border-right 4px solid transparent
+
+					transition transform 0.3s $transitionAnimation, border 0.3s $transitionAnimation
+
+				&.jcf-drop-active
+				&:hover
+					border 1px solid $colorBlue
+
+				&.jcf-drop-active
+					.jcf-select-text
+						.jcf-option-hideme
+							color $colorBlue
+
+
+				&.jcf-drop-active
+					.jcf-select-opener
+						transform rotate(-180deg)
+
+
+		.register-share-form-big-item--submit
+			padding 31px
+			width 35%
+		.register-share-form-big-item--btn
+			padding 30px
+			margin-right 5%
+			width 35%
+
+.jcf-select-drop
+	&.jcf-select-register-share-form-big-item--select
+		border 1px solid $colorBlue
+		border-top-color transparent
+		box-sizing border-box
+
+		.jcf-select-drop-content
+			background #fff
+
+			ul
+				li
+					display block
+					cursor pointer
+
+					&:first-child
+						display none
+
+					span
+						display block
+						width 100%
+						padding 20px
+						box-sizing border-box
+
+						font-size 18px
+
+						color $colorBlue
+
+						background #fff
+
+						transition background 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+						&:hover
+							color #fff
+							background $colorBlue
+
+
+				.register-share-form-choose-submit
+					display block
+					width 45%
+
+
+/** //Register share big form **/
+
+.register-share-success
+	display block
+	margin-top 100px
+
+	text-align center
+
+	.register-share-success-link
+		border-bottom 1px solid #ccd2d9
+
+		margin-bottom 10px
+
+		font-family ProximaNovaRegular
+		font-size 14px
+
+		color $colorDarkBlue
+
+		transition border-bottom-color 0.3s $transitionAnimation
+
+		&:hover
+			border-bottom-color transparent
+
+
+
+
+
 /*** //PAGE REGISTER SHARE DEAL ***/
+
+
+/*** PAGE CHAT ***/
+
+.page-chat
+	display block
+	width 100%
+
+	overflow hidden
+
+	.page-chat-dialogues
+		display block
+		width 40%
+
+		float left
+
+		.page-chat-dialogues-info
+			display block
+			width 100%
+
+			padding 0 40px 0 95px
+			box-sizing border-box
+
+			margin-top 25px
+			margin-bottom 25px
+
+			.page-chat-dialogues-title
+				display inline-block
+				vertical-align middle
+
+				line-height 1
+
+				margin-right 25px
+				font-family ProximaNovaSemiBold
+
+				font-size 24px
+
+			.page-chat-dialogues-opproved
+			.page-chat-dialogues-declined
+				display inline-block
+				vertical-align sub
+
+				font-family  ProximaNovaRegular
+				font-size 16px
+
+				line-height 1
+
+				margin-right 15px
+
+			.page-chat-dialogues-declined
+				padding-left 15px
+
+				border-left 1px solid #000
+
+
+
+	.page-chat-message
+		display block
+		width 60%
+
+		float right
+
+
+/*** //PAGE CHAT ***/
