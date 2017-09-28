@@ -87,7 +87,6 @@ body
 	padding 50px 0 320px 0
 
 .page-content-register
-	height 100vh
 	padding 0
 /*** //Base ***/
 
@@ -1695,9 +1694,6 @@ span.form-item--error
 	width 305px
 	height 100%
 	min-height 100%
-
-	margin-top -10px
-
 	background #4c637b
 
 	overflow auto
@@ -3314,6 +3310,43 @@ span.form-item--error
 					width 45%
 
 
+.fileuploader
+	text-align center
+	background #fff
+
+	.register-share-form-upload-submit
+		font-size 16px
+		font-family ProximaNovaRegular
+		font-weight 600
+
+	.fileuploader-items
+		.fileuploader-items-list
+			.columns
+				.column-thumbnail
+					display none
+
+				.column-title
+					text-align left
+					div
+						font-size 14px
+						font-family ProximaNovaBold
+						color #1dc818
+					span
+						display none
+
+				.column-actions
+					.fileuploader-action
+						width 10px
+						height 10px
+
+					.fileuploader-action-remove
+						border-radius 0
+						border none
+						background url("../i/close_red.png")
+						background-repeat no-repeat
+						background-size cover
+						i
+							display none
 
 .register-share-upload
 	display block
@@ -3325,40 +3358,6 @@ span.form-item--error
 		.register-share-form-upload-row
 			margin-bottom 20px
 			text-align center
-
-			.register-share-form-upload-holder
-				.fileuploader
-					text-align center
-					background #fff
-
-					.register-share-form-upload-submit
-						font-size 16px
-						font-family ProximaNovaRegular
-						font-weight 600
-
-					.fileuploader-items
-						.fileuploader-items-list
-							.columns
-								.column-thumbnail
-									display none
-
-								.column-title
-									text-align left
-									div
-										font-size 14px
-										font-family ProximaNovaBold
-										color #1dc818
-									span
-										display none
-
-								.column-actions
-									.fileuploader-action-remove
-										border-radius 0
-										border none
-										background url("../i/close_red.png")
-										background-repeat no-repeat
-										i
-											display none
 
 		.register-share-form-upload-item-checkbox
 			display block
@@ -3393,6 +3392,10 @@ span.form-item--error
 
 		&--center
 			text-align center
+
+		&--w50
+			width 50%
+			margin 0 auto
 
 		.register-share-form-big-row-title
 			display block
@@ -3707,9 +3710,12 @@ span.form-item--error
 
 	.page-chat-dialogues
 		display block
-		width 40%
+		width 35%
+		min-height 100vh
 
 		float left
+
+		background #f2f5fa
 
 		.page-chat-dialogues-info
 			display block
@@ -3749,11 +3755,247 @@ span.form-item--error
 
 				border-left 1px solid #000
 
+		.page-chat-dialogues-search
+			display block
+			width 100%
+
+			padding 0 40px 0 95px
+			box-sizing border-box
+
+			margin-bottom 25px
+
+			.page-chat-dialogues-search-form
+				position relative
+				display block
+				width 100%
+				height 100%
+
+				.page-chat-dialogues-search-input
+					display block
+					width 100%
+
+					border 1px solid #b8c6d6
+
+					padding 10px
+					box-sizing border-box
+
+					background #f2f6fa
+
+					font-family ProximaNovaRegular
+					font-size 16px
+
+					color #2fb0ee
+
+					transition border-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+				.page-chat-dialogues-search-submit
+					position absolute
+					top 50%
+					right 55px
+					width 20px
+					height 20px
+					margin-top -10px
+
+					&:before
+					&:after
+						content ""
+						position absolute
+						top 0
+						left 0
+						width 100%
+						height 100%
+						background-repeat no-repeat
+						background-size contain
+
+						transition opacity 0.3s $transitionAnimation
+
+					&:before
+						background-image url("../i/loupe.png")
+						opacity 1
+					&:after
+						background-image url("../i/loupe_blue.png")
+						opacity 0
+
+				.page-chat-dialogues-search-filter
+					position absolute
+					top 50%
+					right 20px
+					width 20px
+					height 20px
+					margin-top -10px
+
+					&:before
+					&:after
+						content ""
+						position absolute
+						top 0
+						left 0
+						width 100%
+						height 100%
+						background-repeat no-repeat
+						background-size contain
+
+						transition opacity 0.3s $transitionAnimation
+
+					&:before
+						background-image url("../i/settings_grey.png")
+						opacity 1
+					&:after
+						background-image url("../i/settings_blue.png")
+						opacity 0
+
+
+				&:hover
+					.page-chat-dialogues-search-input
+						border-color $colorBlue
+						color $colorBlue
+
+					.page-chat-dialogues-search-submit
+					.page-chat-dialogues-search-filter
+						&:before
+							opacity 0
+						&:after
+							opacity 1
+
+
+		.page-chat-dialogues-items
+			display block
+			width 100%
+
+			.page-chat-dialogues-item
+				position relative
+				display block
+
+				padding 0 40px 0 95px
+				box-sizing border-box
+
+				transition box-shadow 0.3s $transitionAnimation
+
+				cursor pointer
+
+				.page-chat-dialogues-item-container
+					position relative
+
+					display flex
+					flex-wrap wrap
+					width 100%
+
+					padding 30px
+					box-sizing border-box
+
+					border-bottom 1px solid #b9c2ce
+
+				&:last-child
+					.page-chat-dialogues-item-container
+						border-bottom none
+
+				&.active
+					box-shadow 0px 0px 36px 0px rgba(0,0,0,0.3)
+
+					.page-chat-dialogues-item-container
+						border-bottom none
+
+
+				&.active
+					&:after
+						position absolute
+						top 0
+						right -30px
+						content ""
+						width 0
+						height 0
+
+						border-top 87px solid transparent
+						border-left 30px solid #f2f5fa
+						border-bottom 87px solid transparent
+
+				.page-chat-dialogues-item-holder
+					position: relative
+
+					display inline-block
+
+					width 100px
+					height 100px
+
+					.page-chat-dialogues-item-holder-img
+						position absolute
+						width 100%
+						height 100%
+
+						object-fit cover
+
+				.page-chat-dialogues-item-info
+					display block
+					width 300px
+					margin-left 30px
+
+					.page-chat-dialogues-item-info-row
+						display flex
+						flex-wrap wrap
+						align-items center
+
+						width 100%
+
+						margin-bottom 10px
+
+						&:first-child
+							margin-bottom 15px
+
+						.page-chat-dialogues-item-info-name
+							display block
+
+							margin-right 15px
+
+							font-size 24px
+							font-family ProximaNovaBold
+
+						.page-chat-dialogues-item-info-quantity
+							position relative
+							display block
+
+							width 25px
+							height 25px
+
+							border-radius 50%
+
+							background #2fb0ee
+
+							margin-right 15px
+							span
+								position absolute
+
+								left 50%
+								top 50%
+
+								font-size 14px
+								font-family ProximaNovaRegular
+
+								color #fff
+
+								transform translate(-50%,-50%)
+
+						.page-chat-dialogues-item-info-email
+						.page-chat-dialogues-item-info-phone
+						.page-chat-dialogues-item-info-company
+						.page-chat-dialogues-item-info-position
+						.page-chat-dialogues-item-info-country
+							display block
+							font-size 12px
+							font-family ProximaNovaRegular
+
+						.page-chat-dialogues-item-info-email
+						.page-chat-dialogues-item-info-company
+							margin-right 10px
+
+						.page-chat-dialogues-item-info-phone
+						.page-chat-dialogues-item-info-position
+							padding-left 10px
+							border-left 1px solid #000
 
 
 	.page-chat-message
 		display block
-		width 60%
+		width 65%
 
 		float right
 

@@ -1,123 +1,142 @@
 extends ../templates/base
 
 block content
-    div(class="page-chat")
-        div(class="page-chat-dialogues")
-            div(class="page-chat-dialogues-info")
-                span(class="page-chat-dialogues-title") Messaging
-                span(class="page-chat-dialogues-opproved") 5 opproved
-                span(class="page-chat-dialogues-declined") 2 declined
-            div(class="page-chat-dialogues-search")
-                input(type="text", class="page-chat-dialogues-search-input")
-                button(type="submit", class="main-table-search-submit")
-                button(type="button", class="main-table-search-filter")
-            div(class="page-chat-dialogues-items")
-                div(class="page-chat-dialogues-item")
-                    div(class="page-chat-dialogues-item-holder")
-                        img(src="", class="page-chat-dialogues-item-holder-img")
-                    div(class="page-chat-dialogues-item-info")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-name") Robert Smit
-                            img(src="", class="page-chat-dialogues-item-info-mail")
-                            img(src="", class="page-chat-dialogues-item-info-mail-icon")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-country") Country
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
-                            div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-company") Company
-                            div(class="page-chat-dialogues-item-info-position") Position
-            
-                div(class="page-chat-dialogues-item")
-                    div(class="page-chat-dialogues-item-holder")
-                        img(src="", class="page-chat-dialogues-item-holder-img")
-                    div(class="page-chat-dialogues-item-info")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-name") Amely Fox
-                            img(src="", class="page-chat-dialogues-item-info-mail")
-                            img(src="", class="page-chat-dialogues-item-info-mail-icon")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-country") Country
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
-                            div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-company") Company
-                            div(class="page-chat-dialogues-item-info-position") Position
-                            
-                div(class="page-chat-dialogues-item")
-                    div(class="page-chat-dialogues-item-holder")
-                        img(src="", class="page-chat-dialogues-item-holder-img")
-                    div(class="page-chat-dialogues-item-info")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-name") Oliver Brown
-                            img(src="", class="page-chat-dialogues-item-info-mailopen-icon")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-country") Country
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
-                            div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-company") Company
-                            div(class="page-chat-dialogues-item-info-position") Position
-                            
-                div(class="page-chat-dialogues-item")
-                    div(class="page-chat-dialogues-item-holder")
-                        img(src="", class="page-chat-dialogues-item-holder-img")
-                    div(class="page-chat-dialogues-item-info")
-                        div(class="page-chat-dialogues-item-info-row")
-                            div(class="page-chat-dialogues-item-info-name") Administrator
-                            
-        div(class="page-chat-message")
-            div(class="page-chat-message-filter")
-                div(class="page-chat-message-filter-item")
-                    label(class="page-chat-message-filter-checkbox")
-                        input(type="checkbox", class="page-chat-message-filter-item-checkbox-item")
-                        span(class="page-chat-message-filter-checkbox-title") All communication
-                div(class="page-chat-message-filter-item")
-                    select(class="message-filter-select", placeholder="Select deal")
-                        option(value="1") Deal 1
-                        option(value="2") Deal 2 
-                                   
-            div(class="page-chat-message-name-deal")
-                div(class="page-chat-message-name-deal-info")
-                    div(class="page-chat-message-name-deal-title") Name Deal
-                    div(class="page-chat-message-name-deal-text") Information of Deal Information of Deal Information of Deal Information of Deal Information of Deal
-                div(class="page-chat-message-name-deal-control")
-                    button(type="button", class="btn btn--blue page-chat-message-name-deal-control-approve") Approve
-                    button(type="button", class="btn btn--blue-page-chat-inverse message-name-deal-control-decline") decline
-            div(class="page-chat-message-items")
-                div(class="page-chat-message-item page-chat-message-item--user")
-                    div(class="page-chat-message-item-text")
-                        p(class="page-chat-message-item-text-data") mm/dd/yy
-                        p Donec imperdiet arcu et imperdiet rhoncus. Phasellus egestas purus eros, nec ultricies arcu suscipit sit amet. Sed cursus sed ipsum eu eleifend. Orci varius natoque penatibus et magnis dis parturient motes, nascetur ridiculus mus.
-                    div(class="page-chat-message-item-holder")
-                        img(src="", class="page-chat-message-item-holder-img")
-                        span(src="", class="page-chat-message-item-holder-name") Jon Smit
-                div(class="page-chat-message-item page-chat-message-item--companion")
-                    div(class="page-chat-message-item-text")
-                        p(class="page-chat-message-item-text-data") mm/dd/yy
-                        p Donec imperdiet arcu et imperdiet rhoncus. Phasellus egestas purus eros, nec ultricies arcu suscipit sit amet. Sed cursus sed ipsum eu eleifend. Orci varius natoque penatibus et magnis dis parturient motes, nascetur ridiculus mus.
-                        a(href="#", class="page-chat-message-item-text-link")
-                            span(class="page-chat-message-item-text-link-icon")
-                            span(class="page-chat-message-item-text-link-title") Name document.format
-                    div(class="page-chat-message-item-holder")
-                        img(src="", class="page-chat-message-item-holder-img")
-                        span(src="", class="page-chat-message-item-holder-name") Robert Smit
+    div(id="chat")
+        div(class="page-chat")
+            div(class="page-chat-dialogues")
+                div(class="page-chat-dialogues-info")
+                    span(class="page-chat-dialogues-title") Messaging
+                    span(class="page-chat-dialogues-opproved") 5 opproved
+                    span(class="page-chat-dialogues-declined") 2 declined
+                div(class="page-chat-dialogues-search")
+                    form(action"#", class="page-chat-dialogues-search-form")
+                        input(type="text", class="page-chat-dialogues-search-input")
+                        button(type="submit", class="page-chat-dialogues-search-submit")
+                        button(type="button", class="page-chat-dialogues-search-filter")
+                div(class="page-chat-dialogues-items")
+                    div(class="page-chat-dialogues-item active")
+                        div(class="page-chat-dialogues-item-container")
+                            div(class="page-chat-dialogues-item-holder")
+                                img(src="../dummy/Robert_Smit.jpg", class="page-chat-dialogues-item-holder-img")
+                            div(class="page-chat-dialogues-item-info")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-name") Robert Smit
+                                    span(class="page-chat-dialogues-item-info-quantity") 
+                                        span 1
+                                    img(src="../i/icon_mail.png", class="page-chat-dialogues-item-info-mail-icon")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-country") Country
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
+                                    div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-company") Company
+                                    div(class="page-chat-dialogues-item-info-position") Position
+                
+                    div(class="page-chat-dialogues-item")
+                        div(class="page-chat-dialogues-item-container")
+                            div(class="page-chat-dialogues-item-holder")
+                                img(src="../dummy/Amely_Fox.jpg", class="page-chat-dialogues-item-holder-img")
+                            div(class="page-chat-dialogues-item-info")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-name") Amely Fox
+                                    span(class="page-chat-dialogues-item-info-quantity") 
+                                        span 5
+                                    img(src="../i/icon_mail.png", class="page-chat-dialogues-item-info-mail-icon")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-country") Country
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
+                                    div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-company") Company
+                                    div(class="page-chat-dialogues-item-info-position") Position
+                                
+                    div(class="page-chat-dialogues-item")
+                        div(class="page-chat-dialogues-item-container")
+                            div(class="page-chat-dialogues-item-holder")
+                                img(src="../dummy/Oliver_Brown.jpg", class="page-chat-dialogues-item-holder-img")
+                            div(class="page-chat-dialogues-item-info")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-name") Oliver Brown
+                                    img(src="../i/icon_mail_open.png", class="page-chat-dialogues-item-info-mailopen-icon")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-country") Country
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-email") Rober@ro.ro
+                                    div(class="page-chat-dialogues-item-info-phone") +7 950 858 54 56
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-company") Company
+                                    div(class="page-chat-dialogues-item-info-position") Position
+                                
+                    div(class="page-chat-dialogues-item")
+                        div(class="page-chat-dialogues-item-container")
+                            div(class="page-chat-dialogues-item-holder")
+                                img(src="../dummy/admin.jpg", class="page-chat-dialogues-item-holder-img")
+                            div(class="page-chat-dialogues-item-info")
+                                div(class="page-chat-dialogues-item-info-row")
+                                    div(class="page-chat-dialogues-item-info-name") Administrator
 
-            div(class="page-chat-message-name-deal")
-                div(class="page-chat-message-name-deal-info")
-                    div(class="page-chat-message-name-deal-title") Name Deal
-                    div(class="page-chat-message-name-deal-text") Information of Deal Information of Deal Information of Deal Information of Deal Information of Deal
-                div(class="page-chat-message-name-deal-control")
-                    span(class="page-chat-message-name-deal-control-information") declined
-                    span(class="page-chat-message-name-deal-control-information") 13.07.2017
+    
 
-            form(class="page-chat-message-send") 
-                div(class="page-chat-message-send-row")
-                    div(class="page-chat-message-send-item-holder page-chat-message-send-item-holder--w4")
-                        textarea(rows="4", class="page-chat-message-send-item--textarea")
-                    div(class="page-chat-message-send-item-holder page-chat-message-send-item-holder--w5")
-                        button(type="button", class="btn btn--green page-chat-message-send-item-btn") 
-                        button(type="button", class="btn btn--blue page-chat-message-send-item-btn")
+            div(class="page-chat-message")
+                div(class="page-chat-message-filter")
+                    div(class="page-chat-message-filter-item")
+                        label(class="page-chat-message-filter-checkbox")
+                            input(type="checkbox", class="page-chat-message-filter-item-checkbox-item")
+                            span(class="page-chat-message-filter-checkbox-title") All communication
+                    div(class="page-chat-message-filter-item")
+                        select(class="message-filter-select", placeholder="Select deal")
+                            option(value="1") Deal 1
+                            option(value="2") Deal 2 
+                                       
+                div(class="page-chat-message-name-deal")
+                    div(class="page-chat-message-name-deal-info")
+                        div(class="page-chat-message-name-deal-title") Name Deal
+                        div(class="page-chat-message-name-deal-text") Information of Deal Information of Deal Information of Deal Information of Deal Information of Deal
+                    div(class="page-chat-message-name-deal-control")
+                        button(type="button", class="btn btn--blue page-chat-message-name-deal-control-approve") Approve
+                        button(type="button", class="btn btn--blue-page-chat-inverse message-name-deal-control-decline") decline
+                div(class="page-chat-message-items")
+                    div(class="page-chat-message-item page-chat-message-item--user")
+                        div(class="page-chat-message-item-text")
+                            p(class="page-chat-message-item-text-data") mm/dd/yy
+                            p Donec imperdiet arcu et imperdiet rhoncus. Phasellus egestas purus eros, nec ultricies arcu suscipit sit amet. Sed cursus sed ipsum eu eleifend. Orci varius natoque penatibus et magnis dis parturient motes, nascetur ridiculus mus.
+                        div(class="page-chat-message-item-holder")
+                            img(src="", class="page-chat-message-item-holder-img")
+                            span(src="", class="page-chat-message-item-holder-name") Jon Smit
+                    div(class="page-chat-message-item page-chat-message-item--companion")
+                        div(class="page-chat-message-item-text")
+                            p(class="page-chat-message-item-text-data") mm/dd/yy
+                            p Donec imperdiet arcu et imperdiet rhoncus. Phasellus egestas purus eros, nec ultricies arcu suscipit sit amet. Sed cursus sed ipsum eu eleifend. Orci varius natoque penatibus et magnis dis parturient motes, nascetur ridiculus mus.
+                            a(href="#", class="page-chat-message-item-text-link")
+                                span(class="page-chat-message-item-text-link-icon")
+                                span(class="page-chat-message-item-text-link-title") Name document.format
+                        div(class="page-chat-message-item-holder")
+                            img(src="", class="page-chat-message-item-holder-img")
+                            span(src="", class="page-chat-message-item-holder-name") Robert Smit
+
+                div(class="page-chat-message-name-deal")
+                    div(class="page-chat-message-name-deal-info")
+                        div(class="page-chat-message-name-deal-title") Name Deal
+                        div(class="page-chat-message-name-deal-text") Information of Deal Information of Deal Information of Deal Information of Deal Information of Deal
+                    div(class="page-chat-message-name-deal-control")
+                        span(class="page-chat-message-name-deal-control-information") declined
+                        span(class="page-chat-message-name-deal-control-information") 13.07.2017
+
+                form(class="page-chat-message-send") 
+                    div(class="page-chat-message-send-row")
+                        div(class="page-chat-message-send-item-holder page-chat-message-send-item-holder--w4")
+                            textarea(rows="4", class="page-chat-message-send-item--textarea")
+                        div(class="page-chat-message-send-item-holder page-chat-message-send-item-holder--w5")
+                            button(type="button", class="btn btn--green page-chat-message-send-item-btn") 
+                            button(type="button", class="btn btn--blue page-chat-message-send-item-btn")
+
+block scripts
+    script.
+        new Vue({
+            el: "#login",
+            created: function() {
+                DealibreApp.methods.setAuthorized();
+            }
+        });

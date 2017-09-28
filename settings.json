@@ -35,7 +35,7 @@
         "search": {
             "name": "Search",
             "progress": {
-                "desktop": "100",
+                "desktop": "90",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -51,7 +51,7 @@
         "register_share_step2_files": {
             "name": "Register share deal step-2 files",
             "progress": {
-                "desktop": "100",
+                "desktop": "90",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -59,7 +59,7 @@
         "register_share_step2_form": {
             "name": "Register share deal step-2 form",
             "progress": {
-                "desktop": "100",
+                "desktop": "90",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -76,7 +76,7 @@
         "chat": {
             "name": "Chat",
             "progress": {
-                "desktop": "30",
+                "desktop": "50",
                 "tablet": "0",
                 "mobile": "0"
             }

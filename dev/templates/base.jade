@@ -160,7 +160,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							span(class="popup-profile-events-count") 566
 				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
 	
-		if page.code != "search"
+		if page.code != "search" || page.code != "chat" 
 			div(id="footer-holder")
 				pagefooter()
 
