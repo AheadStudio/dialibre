@@ -2,7 +2,7 @@ extends ../templates/base
 
 block content
     div(id="dashboard")
-        div(class="main-filter")
+        div(class="main-filter", data-toggle-hide="main-filter-new")
             div(class="main-filter-items", style="background-color: #4c637b")
                 div(class="main-filter-item")
                     a(href="#newsearch", class="btn btn--white-inverse filter-button popup") new search
@@ -118,12 +118,12 @@ block content
                         input(type="checkbox", class="filter-checkbox-item")
                         span(class="filter-checkbox-title") Cash Flow
 
-        div(class="main-filter main-filter-new-search")
+        div(class="main-filter main-filter-new-search not-active-toggle", data-toggle="main-filter-new")
             div(class="main-filter-items", style="background-color: #4c637b")
                 div(class="main-filter-item main-filter-new-search-item-btn")
                     a(href="#newsearch", class="btn btn--white-inverse filter-button popup") new search
                     div(class="main-filter-name-search") My search
-                        a(href="#", class="new-search-name-close")
+                        a(href="#", class="new-search-name-close toggle-content", id="main-filter-new")
                 div(class="new-search-list", style="background-color: rgb(86, 114, 142)")
                     div(class="main-filter-item new-search-list-item")
                         a(href="#", class="link new-search-list-item-link")
@@ -670,7 +670,7 @@ block content
             div(class="popup-title") Do you want to create a new saved search with currently selected filters?
             div(class="popup-subtitle") By doing so you will be notified when new deals matching selected criteria become available.
             a(href="#", class="btn btn--green popup-newsearch-btn") Yes
-            a(href="#", class="btn btn--green-inverse popup-newsearch-btn new-search") No, Start New search
+            a(href="#", class="btn btn--green-inverse popup-newsearch-btn toggle-content", id="main-filter-new") No, Start New search
             
         div(id="savesearch", class="popup-container popup-savesearch white-popup mfp-hide")
             div(class="popup-title") Do you want to create a new saved search with currently selected filters?

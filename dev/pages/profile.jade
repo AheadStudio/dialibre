@@ -1,0 +1,40 @@
+extends ../templates/base
+
+block content
+    div(class="page-heading")
+        div(class="page-inner page-inner--w1")
+            h1(class="h1") Profile
+
+    div(class="page-inner page-inner--w2")
+        div(class="page-profile")
+            div(class="page-profile-personal")
+                div(class="page-profile-personal--left")
+                    div(class="page-profile-personal-holder")
+                        img(src="../dummy/Jon_Smit.jpg", class="page-profile-personal-holder-img")
+                    div(class="page-profile-personal-info")
+                        div(class="page-profile-personal-info-name") Jon Smit
+                        div(class="page-profile-personal-info-company") Comapny
+                        div(class="page-profile-personal-info-position") Position
+                        a(href="mailto:JonSmit@ro.ro", class="link page-profile-personal-info-email") JonSmit@ro.ro
+                        a(href="tell:+00000000000", class="link page-profile-personal-info-phone") + 0 000 000 00 00
+                        a(href="#", class="btn btn--blue page-profile-personal-info-btn") Edit profile
+                        a(href="#", class="btn btn--blue-inverse page-profile-personal-info-btn") Edit password
+                        
+                div(class="page-profile-personal--right")
+                    div(class="page-profile-personal-credits")
+                        span(class="page-profile-personal-credits-quantity") 566
+                            span credits
+                        button(class="btn btn--green page-profile-personal-credits-btn") Edit password
+                    div(class="page-profile-personal-credits-items")
+                        div(class="page-profile-personal-credits-item")
+                            label(class="page-profile-personal-credits-radio")
+                                input(type="radio", name="credits", class="page-profile-personal-credits-radio-item")
+                                span(class="page-profile-personal-credits-radio-title") MasterCard
+                            div(class="page-profile-personal-credits-item-number") 5678
+                        div(class="page-profile-personal-credits-item")
+                            label(class="page-profile-personal-credits-radio")
+                                input(type="radio", name="credits", class="page-profile-personal-credits-radio-item")
+                                span(class="page-profile-personal-credits-radio-title") Visa
+                            div(class="page-profile-personal-credits-item-number") 5678
+                    a(href="#addcard", class="btn btn--blue-inverse page-profile-personal-info-btn") Edit password
+                        

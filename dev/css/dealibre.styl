@@ -1698,6 +1698,9 @@ span.form-item--error
 
 	overflow auto
 
+	&.not-active-toggle
+		display none
+
 	.main-filter-items
 		display block
 		width 100%
@@ -2075,6 +2078,8 @@ span.form-item--error
 
 					text-transform inherit
 
+					vertical-align middle
+
 
 
 
@@ -2085,7 +2090,7 @@ span.form-item--error
 				background #d7efc6
 
 			&:hover
-				box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+				box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.3);
 
 
 
@@ -2966,6 +2971,8 @@ span.form-item--error
 
 			.popup-rating-item-count
 				img
+					width 20px
+					height 20px
 					margin-right 25px
 
 					&:last-child
@@ -3055,7 +3062,8 @@ span.form-item--error
 /*** filter new search ***/
 
 .main-filter-new-search
-	display none
+	&.not-active-toggle
+		display none
 
 	.main-filter-items
 		.main-filter-new-search-item-btn
@@ -3862,6 +3870,9 @@ span.form-item--error
 			display block
 			width 100%
 
+			&.not-active-toggle
+				display none
+
 			.page-chat-dialogues-item
 				position relative
 				display block
@@ -3880,7 +3891,7 @@ span.form-item--error
 					flex-wrap wrap
 					width 100%
 
-					padding 30px
+					padding 20px 0
 					box-sizing border-box
 
 					border-bottom 1px solid #b9c2ce
@@ -3890,7 +3901,7 @@ span.form-item--error
 						border-bottom none
 
 				&.active
-					box-shadow 0px 0px 36px 0px rgba(0,0,0,0.3)
+					box-shadow -5px 0px 36px 0px rgba(0,0,0,0.3)
 
 					.page-chat-dialogues-item-container
 						border-bottom none
@@ -3905,9 +3916,9 @@ span.form-item--error
 						width 0
 						height 0
 
-						border-top 87px solid transparent
+						border-top 73px solid transparent
 						border-left 30px solid #f2f5fa
-						border-bottom 87px solid transparent
+						border-bottom 73px solid transparent
 
 				.page-chat-dialogues-item-holder
 					position: relative
@@ -3947,7 +3958,7 @@ span.form-item--error
 							margin-right 15px
 
 							font-size 24px
-							font-family ProximaNovaBold
+							font-family ProximaNovaSemiBold
 
 						.page-chat-dialogues-item-info-quantity
 							position relative
@@ -3992,6 +4003,120 @@ span.form-item--error
 							padding-left 10px
 							border-left 1px solid #000
 
+		.page-chat-dialogues-item-detail
+			position relative
+			display block
+			width 100%
+
+			padding 0 40px 0 95px
+			box-sizing border-box
+
+			&:after
+				position absolute
+				top 0
+				right -30px
+				content ""
+				width 0
+				height 0
+
+				border-top 87px solid transparent
+				border-left 30px solid #f2f5fa
+				border-bottom 87px solid transparent
+
+			&.not-active-toggle
+				display none
+
+			.page-chat-dialogues-item-detai-info-row
+				display block
+				margin-bottom 15px
+
+			.page-chat-dialogues-item-detail-holder
+				position relative
+				display block
+
+				width 320px
+				height 320px
+
+				.page-chat-dialogues-item-detail-holder-img
+					position absolute
+					display block
+					width 100%
+					height 100%
+
+					min-width 100%
+
+					object-fit cover
+
+					cursor pointer
+
+			.page-chat-dialogues-item-detai-info-name
+				display inline-block
+				vertical-align middle
+
+				margin-right 15px
+
+				font-size 24px
+				font-family ProximaNovaSemiBold
+
+			.page-chat-dialogues-item-detai-info-quantity
+				position relative
+				display inline-block
+				vertical-align middle
+
+				margin-right 15px
+
+				font-size 24px
+				font-family ProximaNovaSemiBold
+
+				width 25px
+				height 25px
+
+				border-radius 50%
+
+				background #2fb0ee
+
+				margin-right 15px
+				span
+					position absolute
+
+					left 50%
+					top 50%
+
+					font-size 14px
+					font-family ProximaNovaRegular
+
+					color #fff
+
+					transform translate(-50%,-50%)
+
+
+			.page-chat-dialogues-item-detai-info-mail-icon
+				display inline-block
+				vertical-align middle
+			.page-chat-dialogues-item-detai-info
+				display block
+				width 100%
+				box-sizing border-box
+
+
+				.page-chat-dialogues-item-detai-info-email
+				.page-chat-dialogues-item-detai-info-phone
+				.page-chat-dialogues-item-detai-info-company
+				.page-chat-dialogues-item-detai-info-position
+				.page-chat-dialogues-item-detai-info-country
+					display inline-block
+					vertical-align middle
+					font-size 16px
+
+					font-family ProximaNovaRegular
+
+				.page-chat-dialogues-item-detai-info-phone
+				.page-chat-dialogues-item-detai-info-position
+					margin-left 10px
+					padding-left 10px
+
+					border-left 1px solid #000
+
 
 	.page-chat-message
 		display block
@@ -3999,5 +4124,436 @@ span.form-item--error
 
 		float right
 
+		.page-chat-message-filter
+			display block
+			width 100%
+
+			padding 20px 0
+			padding-left 70px
+
+			margin-bottom 105px
+
+			box-sizing border-box
+
+			border-bottom 1px solid #c2c9d1
+
+
+			.page-chat-message-filter-item
+				display inline-block
+				vertical-align middle
+
+				margin-right 85px
+
+				.page-chat-message-filter-checkbox
+					cursor pointer
+					.page-chat-message-filter-checkbox-title
+						display inline-block
+						vertical-align middle
+						margin-left 15px
+
+						font-size 12px
+						font-family ProximaNovaRegular
+
+				.jcf-select-message-filter-select
+					position relative
+					display block
+					width 265px
+					height 100%
+
+					padding 10px
+
+					border 1px solid #abb1b9
+
+					box-sizing border-box
+
+					cursor pointer
+
+					transition border 0.3s $transitionAnimation
+
+					.jcf-select-text
+
+						span
+							font-size 12px
+
+							color $colorBlue
+							transition color 0.3s $transitionAnimation
+
+						.jcf-option-hideme
+							font-size 12px
+
+							color #8191a2
+
+							transition color 0.3s $transitionAnimation
+					.jcf-select-opener
+						position absolute
+						top 15px
+						right 20px
+
+						width 0
+						height 0
+
+						border-top 6px solid #6284ab
+						border-left 3px solid transparent
+						border-right 3px solid transparent
+
+						transition transform 0.3s $transitionAnimation, border 0.3s $transitionAnimation
+
+					&.jcf-drop-active
+					&:hover
+						border 1px solid $colorBlue
+
+					&.jcf-drop-active
+						.jcf-select-text
+							.jcf-option-hideme
+								color $colorBlue
+
+
+					&.jcf-drop-active
+						.jcf-select-opener
+							transform rotate(-180deg)
+
+		.page-chat-message-name-deal
+			display block
+			width 100%
+			padding 0 30px
+			box-sizing border-box
+
+			.page-chat-message-name-deal-inner
+				display flex
+				flex-wrap wrap
+				align-items center
+				justify-content space-between
+
+				width 100%
+
+				border-top 1px solid #c2c9d1
+				border-bottom 1px solid #c2c9d1
+
+				padding 30px
+				padding-right 130px
+				box-sizing border-box
+
+				.page-chat-message-name-deal-info
+					display block
+					width 65%
+
+					.page-chat-message-name-deal-title
+						display block
+						width 100%
+
+						margin-bottom 20px
+
+						font-size 24px
+						font-family ProximaNovaSemiBold
+
+						text-align left
+
+					.page-chat-message-name-deal-text
+						display block
+						width 100%
+
+						p
+							display block
+
+							font-size 16px
+							font-family  ProximaNovaRegular
+
+							margin-bottom 20px
+
+							&:last-child
+								margin-bottom 0
+
+
+				.page-chat-message-name-deal-control
+					display block
+
+					.btn
+						display block
+						width 165px
+
+						padding 15px
+						box-sizing border-box
+
+						text-align center
+
+						font-size 12px
+						font-family ProximaNovaBold
+
+					.page-chat-message-name-deal-control-approve
+						margin-bottom 10px
+					.page-chat-message-name-deal-control-decline
+						padding 14px 0
+
+					.page-chat-message-name-deal-control-information
+						display block
+
+						margin-bottom 10px
+
+						font-size 12px
+						font-family ProximaNovaBold
+
+						text-transform uppercase
+
+						color #2fb0ee
+
+						&:last-child
+							margin-bottom 0
+
+		.page-chat-message-items
+			display block
+			padding 35px 160px 0 60px
+
+			box-sizing border-box
+
+			.page-chat-message-item
+				display flex
+				flex-wrap wrap
+				align-items flex-start
+				justify-content space-between
+
+				margin-bottom 40px
+
+				&.page-chat-message-item--user
+					.page-chat-message-item-text
+						&:after
+							content ""
+							position absolute
+							left 100%
+							top calc(50% - 20px)
+
+							width 0
+							height 0
+
+							border-top 12px solid transparent
+							border-left 24px solid #e1ebfa
+							border-bottom 12px solid transparent
+
+				&.page-chat-message-item--companion
+					flex-direction row-reverse
+
+					.page-chat-message-item-text
+						&:before
+							content ""
+							position absolute
+							right 100%
+							top calc(50% - 20px)
+
+							width 0
+							height 0
+
+							border-top 12px solid transparent
+							border-right 24px solid #e1ebfa
+							border-bottom 12px solid transparent
+
+
+				.page-chat-message-item-text
+					position: relative
+
+					display block
+					width 85%
+
+					padding 15px 55px
+					box-sizing border-box
+
+					border-radius 5px
+
+					background: #e1ebfa
+
+
+					.page-chat-message-item-text-data
+					p
+						display block
+						width 100%
+
+						font-size 14px
+						font-family ProximaNovaRegular
+
+						margin-bottom 10px
+
+					.page-chat-message-item-text-link
+						display block
+
+						.page-chat-message-item-text-link-icon
+							display inline-block
+							vertical-align middle
+
+							margin-right 5px
+
+						.page-chat-message-item-text-link-title
+							display inline-block
+							vertical-align middle
+
+							font-size 14px
+							font-family ProximaNovaBold
+
+							border-bottom 1px solid #000
+
+							color #000
+
+							transition border-bottom-color 0.3s $transitionAnimation
+
+						&:hover
+							.page-chat-message-item-text-link-title
+								border-bottom 1px solid transparent
+
+
+
+
+
+
+
+				.page-chat-message-item-holder
+					display block
+
+					min-height 110px
+					min-width 100px
+
+					.page-chat-message-item-holder-img
+						display block
+						width 100%
+						min-width 100%
+
+					.page-chat-message-item-holder-name
+						display block
+						width 100%
+
+						margin-top 5px
+
+						font-size 14px
+						font-family  ProximaNovaSemiBold
+
+		.page-chat-message-send
+			display block
+			width 100%
+
+			margin-top 30px
+			margin-bottom 30px
+
+			padding-left 60px
+			padding-right 160px
+			box-sizing border-box
+
+			.page-chat-message-send-row
+				display block
+
+				.page-chat-message-send-item-holder
+					display inline-block
+					vertical-align: bottom
+
+
+					&--w4
+						width 87%
+					&--w5
+						width 11.7%
+
+					.page-chat-message-send-item--textarea
+						display block
+
+						width 100%
+
+						padding 15px 20px
+						box-sizing border-box
+
+						background-color #FF
+						border 1px solid #abb1b9
+
+						font-family "ProximaNovaRegular"
+						font-size 18px
+						line-height 18px
+
+						transition color .3s $transitionAnimation, border-color .3s $transitionAnimation
+
+						resize none
+
+						&::-webkit-input-placeholder
+							width 100%
+							color #4c637b
+
+							transition transform .3s $transitionAnimation, font-size .3s $transitionAnimation
+
+						&:hover
+						&:focus
+							border-color $colorBlue
+
+							color $colorBlue
+
+						&:focus
+							&::-webkit-input-placeholder
+								font-size 12px
+
+								transform translateY(-15px)
+
+
+
+
+
+
+					.page-chat-message-send-item-btn
+						position relative
+						display inline-block
+						padding 15px 20px
+
+						width 55px
+						height 40px
+
+						font-size 0
+						line-height 0
+
+						margin-right 5px
+
+						&:last-child
+							margin-right 0
+
+						img
+							position absolute
+							top 50%
+							left 50%
+
+							transform translate(-50%,-50%)
+
+
+
+
+.jcf-select-drop
+	&.jcf-select-message-filter-select
+		border 1px solid $colorBlue
+		border-top-color transparent
+		box-sizing border-box
+
+		.jcf-select-drop-content
+			background #fff
+
+			ul
+				li
+					display block
+					cursor pointer
+
+					&:first-child
+						display none
+
+					span
+						display block
+						width 100%
+						padding 10px
+						box-sizing border-box
+
+						font-size 12px
+
+						color $colorBlue
+
+						background #fff
+
+						transition background 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+						&:hover
+							color #fff
+							background $colorBlue
+
 
 /*** //PAGE CHAT ***/
+
+
+/*** PAGE PROFILE ***/
+
+
+/*** //PAGE PROFILE ***/

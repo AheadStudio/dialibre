@@ -293,7 +293,7 @@
 						});
 					});
 
-					$(".form-item--radio, .filter-radio-item, .popup-rating-item-count-radio-item", $container).each(function() {
+					$("input[type=radio]", $container).each(function() {
 						var $rd = $(this);
 
 						jcf.replace($rd, "Radio", {
@@ -521,25 +521,40 @@
 				}
 			},
 
-			newSearch: {
+			toggleContent: {
 				init: function() {
-					var $newSearch = $(".new-search", $sel.body),
-						$newSearchBlock = $(".main-filter-new-search", $sel.body),
-						$closeNewSearch = $(".new-search-name-close", $newSearchBlock);
+					var $elementToggle = $(".toggle-content", $sel.body),
+						elementToggleId = $elementToggle.attr("id"),
+						$contentToggle = $sel.body.find("[data-toggle='" + elementToggleId + "']");
+						$contentToggleHide = $sel.body.find("[data-toggle-hide='" + elementToggleId + "']");
 
-					$newSearch.on("click", function() {
-						$newSearchBlock.css("display", "block");
-						$.magnificPopup.close();
+					$elementToggle.on("click", function() {
+						if ($contentToggle.hasClass("not-active-toggle")) {
+							$contentToggle.removeClass("not-active-toggle");
+							$contentToggleHide.addClass("not-active-toggle");
+							$.magnificPopup.close();
+						} else {
+							$contentToggle.addClass("not-active-toggle");
+							$contentToggleHide.removeClass("not-active-toggle");
+						}
 					});
 
-					$closeNewSearch.on("click", function() {
-						$newSearchBlock.css("display", "none");
+
+				}
+			},
+
+			scrollFix: {
+				init: function() {
+					$containerStick = $(".page-chat-message");
+					$containerStick.stick_in_parent({
+						container: $(".page-chat"),
 					});
 
 				}
 			},
 
-			star: {
+
+			rating: {
 				init: function() {
 					$(".popup-rating-item-count--quality").raty({
 						score: 0,
@@ -562,11 +577,12 @@
 		};
 
 	})();
-	DEALIBRE.star.init();
+	DEALIBRE.rating.init();
+	DEALIBRE.scrollFix.init();
 	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
-	DEALIBRE.newSearch.init();
+	DEALIBRE.toggleContent.init();
 	//DEALIBRE.scrollBar.init();
 	DEALIBRE.tableSearch.init();
 	DEALIBRE.modalWindow.init();

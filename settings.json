@@ -15,7 +15,7 @@
         "name": "Александр",
         "company": "GoodCode",
         "email": "akiricovich@gmail.com",
-        "removeCopyrights": false
+        "removeCopyrights": true
     },
     "ftp": {
         "host": "wemakesites.ru",
@@ -76,7 +76,16 @@
         "chat": {
             "name": "Chat",
             "progress": {
-                "desktop": "50",
+                "desktop": "90",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+
+        "profile": {
+            "name": "Profile",
+            "progress": {
+                "desktop": "0",
                 "tablet": "0",
                 "mobile": "0"
             }
