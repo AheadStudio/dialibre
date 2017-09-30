@@ -265,6 +265,8 @@
 
 			forms: {
 				init: function($container) {
+					var self = this;
+
 					if(!$container) {
 						var $container = $sel.body;
 					}
@@ -306,17 +308,12 @@
 					jcf.replace($(".form-item--range", $container));
 
 
-					$('input[name="files"]').fileuploader({
-						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
-						theme: "One-button",
-						changeInput: '<button type="button" class="btn btn--blue register-share-form-upload-submit">Upload files</button>'
-					});
-
-
 					$("[data-mask]").each(function() {
 						var $item = $(this);
 						$item.mask($item.data("mask"));
 					});
+
+					self.fileUpload();
 
 					$.validator.setDefaults({
 						errorClass: "form-item--error",
@@ -353,7 +350,16 @@
 						$form.validate(formParams);
 					});
 
-				}
+				},
+
+				fileUpload: function() {
+					$('input[name="files"]').fileuploader({
+						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
+						theme: "One-button",
+						changeInput: '<button type="button" class="btn btn--blue register-share-form-upload-submit">Upload files</button>'
+					});
+
+				},
 			},
 
 			map: {
@@ -517,7 +523,11 @@
 
 			scrollBar: {
 				init: function() {
-					$(".main-filter-item-content").perfectScrollbar();
+					$(".replace-scrollbar").mCustomScrollbar({
+						theme: "minimal-dark",
+						scrollInertia: "450",
+						documentTouchScroll: true,
+					});
 				}
 			},
 
@@ -583,7 +593,7 @@
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
 	DEALIBRE.toggleContent.init();
-	//DEALIBRE.scrollBar.init();
+	DEALIBRE.scrollBar.init();
 	DEALIBRE.tableSearch.init();
 	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();

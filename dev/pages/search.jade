@@ -2,7 +2,7 @@ extends ../templates/base
 
 block content
     div(id="dashboard")
-        div(class="main-filter", data-toggle-hide="main-filter-new")
+        div(class="main-filter replace-scrollbar", data-toggle-hide="main-filter-new")
             div(class="main-filter-items", style="background-color: #4c637b")
                 div(class="main-filter-item")
                     a(href="#newsearch", class="btn btn--white-inverse filter-button popup") new search
@@ -43,7 +43,7 @@ block content
                                 label(class="filter-checkbox", id="europe")
                                     input(type="checkbox", class="filter-checkbox-item")
                                     span(class="filter-checkbox-title") Europe
-                            div(class="main-filter-item-content main-filter-item-content--lvl2", data-filter="europe")   
+                            div(class="main-filter-item-content main-filter-item-content--lvl2 replace-scrollbar", data-filter="europe")   
                                 div(class="main-filter-item")
                                     label(class="filter-checkbox")
                                         input(type="checkbox", class="filter-checkbox-item")
@@ -1046,7 +1046,7 @@ block content
             
         div(id="nda", class="popup-container popup-nda white-popup mfp-hide")
             div(class="popup-nda-info")
-                div(class="popup-nda-info-text") 
+                div(class="popup-nda-info-text replace-scrollbar") 
                     p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna tortor, cursus nec velit nec, ultrices elementum dui. Nulla tempus eget dui vitae condimentum. Nullam posuere lorem mollis, pharetra nisl in, venenatis purus. In vestibulum ante a ipsum tristique, eu bibendum elit pharetra. Aliquam tempus id eros id dignissim. Mauris aliquet urna ac massa vulputate, non volutpat sapien sagittis. Integer quis commodo mauris, id vehicula massa. Proin efficitur urna a orci congue imperdiet. Nam eget nibh a tellus tempor tempus ut sed turpis. Ut gravida nulla in ultrices maximus. 
                     p Fusce at tristique est. Maecenas condimentum erat ante, a tempus ligula faucibus suscipit. Sed hendrerit arcu lobortis massa pretium pretium. In in quam metus. Integer rhoncus eros sit amet justo luctus elementum. Pellentesque blandit est in luctus varius. Integer eu nisl efficitur, accumsan nunc a, faucibus urna. Duis eu ante tempus lectus porttitor sollicitudin. Pellentesque molestie tellus eget imperdiet eleifend. Nulla imperdiet arcu interdum risus mollis gravida. Curabitur quis lectus sit amet ligula pharetra condimentum. In velit nibh, lacinia euismod sem consectetur, interdum malesuada dolor. Praesent varius tellus at arcu vehicula, vel consequat diam ultrices. Proin vitae auctor ligula. Nullam nec nulla nec nisl faucibus semper. Vestibulum elit magna, pharetra vel sapien ac, consectetur scelerisque massa.In in quam metus. Integer rhoncus eros sit amet justo luctus elementum. Pellentesque blandit est in luctus varius. Integer eu nisl efficitur, accumsan nunc a, faucibus urna. Duis eu ante tempus lectus porttitor sollicitudin. 
                     p Pellentesque molestie tellus eget imperdiet eleifend. Nulla imperdiet arcu interdum risus mollis gravida. Nulla ut blandit augue, sed rhoncus tellus. Donec faucibus posuere turpis vel viverra.Mauris condimentum efficitur velit, vitae fringilla quam iaculis et.Fusce elementum in lorem non tristique.
