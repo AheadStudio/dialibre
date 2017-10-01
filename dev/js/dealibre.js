@@ -630,11 +630,12 @@
 
 								$.magnificPopup.close()
 
-
 							} else {
 
 								$contentToggle.removeClass("not-active-toggle");
 								contentToggleHide.addClass("not-active-toggle");
+
+								$.magnificPopup.close()
 
 							}
 					});
