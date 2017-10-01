@@ -3156,7 +3156,9 @@ span.form-item--error
 		width 70%
 
 		margin 0 auto
-		margin-bottom 30px
+		margin-bottom 45px
+
+		line-height 20px
 
 		font-size 16px
 		font-family ProximaNovaRegular
@@ -3164,7 +3166,7 @@ span.form-item--error
 		text-align center
 
 		&.register-share-subtitle-form
-			margin-top -25px
+			margin-top -45px
 
 
 	.register-share-text
@@ -3331,47 +3333,102 @@ span.form-item--error
 					width 45%
 
 
+/** custom file uploader **/
+.file-upload-form
+	.fileuploader
+		text-align left
+		padding 10px 0
+
+		.fileuploader-items
+			.fileuploader-items-list
+				.fileuploader-item
+					margin-top 10px
+					padding 10px 0
+
+
 .fileuploader
 	text-align center
 	background #fff
 
-	.register-share-form-upload-submit
+	.register-share-form-upload-button
+		font-family "ProximaNovaBold"
 		font-size 16px
-		font-family ProximaNovaRegular
-		font-weight 600
 
 	.fileuploader-items
+		width 360px
+		margin 0 auto
+		margin-top 25px
+
+
 		.fileuploader-items-list
+			margin 0
+
+			.fileuploader-item
+				padding 10px 15px
+				border-bottom none
+
+				text-align left
+
 			.columns
+				display flex
+				flex-wrap wrap
+				align-items center
+
 				.column-thumbnail
 					display none
 
 				.column-title
-					text-align left
+					display inline-block
+					max-width 300px
+
+					padding 0
+
+					vertical-align middle
+
 					div
 						font-size 14px
-						font-family ProximaNovaBold
+						font-family "ProximaNovaBold"
+
 						color #1dc818
+
 					span
 						display none
 
 				.column-actions
+					position initial
+
+					display inline-block
+					width 10px
+					height 10px
+
+					margin 0
+					margin-left 10px
+
+					vertical-align middle
+
+
 					.fileuploader-action
-						width 10px
-						height 10px
+						width 100%
+						height 100%
 
 					.fileuploader-action-remove
-						border-radius 0
 						border none
+						border-radius 0
+
+
 						background url("../i/close_red.png")
 						background-repeat no-repeat
 						background-size cover
+
 						i
 							display none
 
+/** //custom file uploader **/
+
+
 .register-share-upload
 	display block
-	width 30%
+	max-width 700px
 	margin 0 auto
 
 	.register-share-form-upload
@@ -3380,9 +3437,12 @@ span.form-item--error
 			margin-bottom 20px
 			text-align center
 
+			.register-share-form-upload-submit
+				padding 27px 80px
+
 		.register-share-form-upload-item-checkbox
 			display block
-			margin-top 70px
+			margin-top 60px
 
 			.register-share-form-upload-item-checkbox-title
 				margin-left 10px
@@ -3402,7 +3462,7 @@ span.form-item--error
 	margin 0 auto
 
 	.register-share-form-big-row-joint
-		margin 50px 0
+		margin 45px 0
 
 	.register-share-form-big-row
 		clearfix()
@@ -3418,11 +3478,14 @@ span.form-item--error
 			width 50%
 			margin 0 auto
 
+		&:left
+			text-align  left
+
 		.register-share-form-big-row-title
 			display block
 			width 100%
 
-			margin-bottom 10px
+			margin-bottom 5px
 			margin-top 30px
 
 			font-size 14px
@@ -3462,7 +3525,7 @@ span.form-item--error
 				display block
 				width 100%
 
-				padding 20px
+				padding 15px 20px
 				box-sizing border-box
 
 				border 1px solid #abb1b9
@@ -3489,7 +3552,7 @@ span.form-item--error
 					&::-webkit-input-placeholder
 						font-size 14px
 
-						transform translateY(-20px)
+						transform translateY(-15px)
 
 				&--textarea
 					resize none
@@ -3589,7 +3652,7 @@ span.form-item--error
 				width 100%
 				height 100%
 
-				padding 20px
+				padding 15px 20px
 
 				border 1px solid #abb1b9
 
@@ -3615,7 +3678,7 @@ span.form-item--error
 						transition color 0.3s $transitionAnimation
 				.jcf-select-opener
 					position absolute
-					top 27px
+					top 25px
 					right 20px
 
 					width 0
@@ -3647,7 +3710,7 @@ span.form-item--error
 			width 35%
 		.register-share-form-big-item--btn
 			padding 30px
-			margin-right 5%
+			margin-right 4%
 			width 35%
 
 .jcf-select-drop
@@ -3909,18 +3972,35 @@ span.form-item--error
 
 					border-bottom 1px solid #b9c2ce
 
+				&:not(.active-tabs):after
+					position absolute
+					top 0
+					right -20px
+					content ""
+					width 0
+					height 0
+
+					border-top 73px solid transparent
+					border-left 20px solid #f2f5fa
+					border-bottom 73px solid transparent
+
+					transform translateX(-20px) scale(0.5)
+
+					transition transform 0.3s $transitionAnimation
+
 				&:last-child
 					.page-chat-dialogues-item-container
 						border-bottom none
 
-				&.active
+				&.active-tabs
 					box-shadow -5px 0px 36px 0px rgba(0,0,0,0.3)
 
 					.page-chat-dialogues-item-container
-						border-bottom none
+						border none
 
 
-				&.active
+
+				&.active-tabs
 					&:after
 						position absolute
 						top 0
@@ -3933,13 +4013,19 @@ span.form-item--error
 						border-left 30px solid #f2f5fa
 						border-bottom 73px solid transparent
 
+				&:hover:not(.active-tabspage-chat-dialogues-item)
+					&:after
+						transform translateX(0px) scale(1)
+
+
+
 				.page-chat-dialogues-item-holder
 					position: relative
 
 					display inline-block
 
-					width 100px
-					height 100px
+					width 90px
+					height 90px
 
 					.page-chat-dialogues-item-holder-img
 						position absolute
@@ -3963,7 +4049,7 @@ span.form-item--error
 						margin-bottom 10px
 
 						&:first-child
-							margin-bottom 15px
+							margin-bottom 5px
 
 						.page-chat-dialogues-item-info-name
 							display block
@@ -4006,6 +4092,8 @@ span.form-item--error
 							display block
 							font-size 12px
 							font-family ProximaNovaRegular
+
+							color #000
 
 						.page-chat-dialogues-item-info-email
 						.page-chat-dialogues-item-info-company
@@ -4137,6 +4225,13 @@ span.form-item--error
 
 		float right
 
+		.tabs-content-item
+			display none
+
+			&.active-tabs
+				display block
+				height 100%
+
 		.page-chat-message-filter
 			display block
 			width 100%
@@ -4248,13 +4343,13 @@ span.form-item--error
 
 				.page-chat-message-name-deal-info
 					display block
-					width 65%
+					width 70%
 
 					.page-chat-message-name-deal-title
 						display block
 						width 100%
 
-						margin-bottom 20px
+						margin-bottom 15px
 
 						font-size 24px
 						font-family ProximaNovaSemiBold
@@ -4271,7 +4366,7 @@ span.form-item--error
 							font-size 16px
 							font-family  ProximaNovaRegular
 
-							margin-bottom 20px
+							margin-bottom 15px
 
 							&:last-child
 								margin-bottom 0
@@ -4446,8 +4541,49 @@ span.form-item--error
 			padding-right 160px
 			box-sizing border-box
 
+
+			.page-chat-message-send-form
+				position relative
+
+
 			.page-chat-message-send-row
 				display block
+
+				.fileuploader
+					display inline-block
+					width 55px
+					height 40px
+
+					margin 0
+					padding 0
+
+					vertical-align top
+
+					font-size 0
+					line-height 0
+
+					border-radius 0
+
+					.fileuploader-items
+						position absolute
+						left 0
+						top 100px
+
+						display block
+
+						overflow hidden
+
+						.fileuploader-item
+							display block
+							padding 0
+							margin-bottom 15px
+							border 0
+
+							.columns
+								display block
+								.column-title
+									div
+										overflow inherit
 
 				.page-chat-message-send-item-holder
 					display inline-block
@@ -4495,10 +4631,6 @@ span.form-item--error
 								font-size 12px
 
 								transform translateY(-15px)
-
-
-
-
 
 
 					.page-chat-message-send-item-btn
@@ -4563,10 +4695,193 @@ span.form-item--error
 							background $colorBlue
 
 
+
+
 /*** //PAGE CHAT ***/
 
 
 /*** PAGE PROFILE ***/
+
+.page-profile-personal
+	display flex
+	justify-content space-between
+	flex-wrap wrap
+
+	margin-bottom 85px
+
+	overflow hidden
+
+	.page-profile-personal--left
+		display inline-block
+
+		width 48%
+
+		.page-profile-personal-holder
+			position relative
+			display inline-block
+			vertical-align top
+
+			width 55%
+			min-height 240px
+
+			.page-profile-personal-holder-img
+				position absolute
+				width 100%
+				height 100%
+
+				min-width 100%
+				min-height 100%
+
+				object-fit cover
+
+		.page-profile-personal-info
+			display inline-block
+			vertical-align top
+
+			width 38%
+
+			margin-left 25px
+
+			.page-profile-personal-info-name
+				display block
+				width 100%
+
+				font-family ProximaNovaSemiBold
+				font-size 24px
+
+				margin-bottom 15px
+
+			.page-profile-personal-info-company
+			.page-profile-personal-info-position
+			.page-profile-personal-info-email
+			.page-profile-personal-info-phone
+				display block
+				width 100%
+
+				margin-bottom 10px
+
+				font-family ProximaNovaRegular
+				font-size 16px
+
+				color #000
+
+			.page-profile-personal-info-btn
+				display block
+				width 100%
+				padding 15px 0 15px 0
+
+				text-align center
+
+				font-family ProximaNovaBold
+
+				&.btn--blue
+					padding 16px 0 16px 0
+
+				&:last-child
+					margin-top 8px
+
+	.page-profile-personal--right
+		position relative
+		display inline-block
+		width 35%
+
+		padding-left 30px
+
+		border-left 1px solid #c2c9d1
+
+		.page-profile-personal-credits
+			display block
+			width 100%
+
+			margin-bottom 30px
+
+			span
+				display inline-block
+				margin-right 55px
+
+				vertical-align middle
+
+				font-size 16px
+				font-family ProximaNovaRegular
+
+			.page-profile-personal-credits-quantity
+				margin-right 15px
+				font-size 24px
+				font-family ProximaNovaBold
+
+				color #d01212
+
+			.page-profile-personal-credits-btn
+				display inline-block
+				vertical-align bottom
+
+				padding 0
+
+				width 165px
+				height 40px
+
+				font-size 12px
+				font-family ProximaNovaBold
+
+
+		.page-profile-personal-credits-items
+			display block
+			width 100%
+
+			.page-profile-personal-credits-item
+				display flex
+				flex-wrap wrap
+				align-items center
+
+				margin-bottom 25px
+
+				.page-profile-personal-credits-radio
+					cursor pointer
+					.page-profile-personal-credits-radio-title
+						margin-left 15px
+
+						font-size 16px
+						font-family ProximaNovaRegular
+
+				.page-profile-personal-credits-item-number
+					display block
+
+					margin-left 25px
+
+					padding-left 20px
+
+					border-left 1px solid #000
+
+				.page-profile-personal-credits-item-close
+					display block
+					width 13px
+					height 12px
+
+
+					margin-left 45px
+					background url(../i/close_popup_gray.png)
+					background-repeat no-repeat
+
+		.page-profile-personal-info-btn
+			position absolute
+			left 30px
+			bottom 0
+
+			display block
+			width 165px
+			height 40px
+
+			padding 15px
+
+			font-family ProximaNovaBold
+
+			text-align center
+
+
+
+
+
+
 
 
 /*** //PAGE PROFILE ***/

@@ -7,8 +7,10 @@ block content
 
     div(class="page-inner page-inner--w1")
         div(class="register-share")
-            div(class="register-share-subtitle register-share-subtitle-form") You are a company representative such as broker, owner, manager.
-            div(class="register-share-subtitle register-share-subtitle-form") You will ba ableto accept NDA’s and exchange CIM’s making communication with interested parties easy.
+            div(class="register-share-subtitle register-share-subtitle-form") 
+                | You are a company representative such as broker, owner, 
+                br
+                | You will ba ableto accept NDA’s and exchange CIM’s making communication with interested parties easy.
             
             div(class="register-share-form-big")
                 form(action="#", class="register-share-form-big-container")
@@ -49,10 +51,10 @@ block content
         
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
-                            textarea(rows="2", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Shot company description (up to 100 characters)")
+                            textarea(rows="3", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Shot company description (up to 100 characters)")
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
-                            textarea(rows="4", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Long company description (up to 1500 characters)")
+                            textarea(rows="6", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Long company description (up to 1500 characters)")
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-row-title") Transaction info
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
@@ -70,10 +72,12 @@ block content
                             input(type="text", class="register-share-form-big-item register-share-form-big-item--text", placeholder="Fees")
                             
                     div(class="register-share-form-big-row register-share-form-big-row--text")
-                        div(class="register-share-form-big-row-title") Deal info
+                        div(class="register-share-form-big-row-title") Financials
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
-                            div(class="register-share-form-big-row-info") Praesent ullamcorper sapien nec dolor tincidunt molestie. Suspendisse ex tortor, porttitor nec diam non, porta laoreet tellus.
-                            div(class="register-share-form-big-row-info") Sed gravida ultrices lectus, et feugiat orci luctus nec. Donec luctus, nulla et euismod condimentum, magna libero aliquam metus, quis feugiat tellus nunc ut lacus.
+                            div(class="register-share-form-big-row-info") 
+                                | Praesent ullamcorper sapien nec dolor tincidunt molestie. Suspendisse ex tortor, porttitor nec diam non, porta laoreet tellus.
+                                br
+                                | Sed gravida ultrices lectus, et feugiat orci luctus nec. Donec luctus, nulla et euismod condimentum, magna libero aliquam metus, quis feugiat tellus nunc ut lacus.
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
                             table(class="register-share-form-big-item--table")
@@ -120,7 +124,7 @@ block content
                     
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
-                            textarea(rows="6", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Text of specil custom NDA")
+                            textarea(rows="7", class="register-share-form-big-item register-share-form-big-item--textarea", placeholder="Text of specil custom NDA")
 
                     div(class="register-share-form-big-row")
                         div(class="register-share-form-big-row-title") CIM (Confidential Information Memorandum)
@@ -128,8 +132,8 @@ block content
                             label(class="register-share-form-big-checkbox")
                                 input(type="checkbox", class="register-share-form-big-item--checkbox")
                                 span(class="register-share-form-big-checkbox-title") Text  Text explanation
-                    div(class="register-share-form-big-row register-share-form-big-row--w50")
-                        div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w1")
+                    div(class="register-share-form-big-row register-share-form-big-row--left")
+                        div(class="register-share-form-big-item-holder file-upload-form")
                             input(type="file", name="files", class="register-share-form-big--file")
                             
                     div(class="register-share-form-big-row register-share-form-big-row--center")

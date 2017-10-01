@@ -354,12 +354,90 @@
 
 				fileUpload: function() {
 					$('input[name="files"]').fileuploader({
+						limit: 10,
 						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
 						theme: "One-button",
-						changeInput: '<button type="button" class="btn btn--blue register-share-form-upload-submit">Upload files</button>'
+						changeInput: '<button type="button" class="btn btn--blue register-share-form-upload-button">Upload files</button>',
+						addMore: true,
+						captions: {
+			            	button: function(options) {
+				            	return 'Choose ' + (options.limit == 1 ? 'File' : 'Files');
+				            },
+			            	feedback: function(options) {
+				            	return 'Choose ' + (options.limit == 1 ? 'file' : 'files') + ' to upload';
+				            },
+				            feedback2: function(options) {
+					            return options.length + ' ' + (options.length > 1 ? ' files were' : ' file was') + ' chosen';
+					       	},
+						   	drop: 'Перетащите файлы для загрузки',
+					       	removeConfirmation: "Are you sure you want to remove this file?",
+					       	errors: {
+						       	filesLimit: "Only ${limit} files are allowed to be uploaded.",
+						       	filesType: "Only ${extensions} files are allowed to be uploaded."
+					       	}
+		            	},
 					});
 
+					$('input[name="files-chat"]').fileuploader({
+						limit: 5,
+						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
+						theme: "One-button",
+						changeInput: '<button type="button" class="btn btn--green page-chat-message-send-item-btn"><img src="../i/affix.png" page-chat-message-send-item-btn-img=""></button>',
+						addMore: true,
+						captions: {
+			            	button: function(options) {
+				            	return 'Choose ' + (options.limit == 1 ? 'File' : 'Files');
+				            },
+			            	feedback: function(options) {
+				            	return 'Choose ' + (options.limit == 1 ? 'file' : 'files') + ' to upload';
+				            },
+				            feedback2: function(options) {
+					            return options.length + ' ' + (options.length > 1 ? ' files were' : ' file was') + ' chosen';
+					       	},
+						   	drop: 'Перетащите файлы для загрузки',
+					       	removeConfirmation: "Are you sure you want to remove this file?",
+					       	errors: {
+						       	filesLimit: "Only ${limit} files are allowed to be uploaded.",
+						       	filesType: "Only ${extensions} files are allowed to be uploaded."
+					       	}
+		            	},
+					});
+
+
 				},
+			},
+
+			tabs: {
+				init: function() {
+					var self = this;
+					$(".tabs-heading-item").on("click", function(e) {
+						var $item = $(this),
+							$tabs = $sel.body,
+							itemID = $item.data("tabs");
+
+						if(!$tabs.hasClass("inactive")) {
+							if(!$item.hasClass("active-tabs")) {
+								self.hideAll($tabs);
+								self.show(itemID, $tabs);
+
+							}
+							e.preventDefault();
+						}
+					});
+				},
+				show: function(tabID, $tabs) {
+					$(".tabs-heading-item[data-tabs*=" + tabID + "]", $tabs).addClass("active-tabs");
+					$(".tabs-content-item[id*=" + tabID + "]", $tabs).addClass("active-tabs");
+					$(".slick-initialized", $(".tabs-content-item[id*=" + tabID + "]", $tabs)).slick("setPosition");
+				},
+				hide: function(tabID, $tabs) {
+					$(".tabs-heading-item[data-tabs*=" + tabID + "]", $tabs).removeClass("active-tabs");
+					$(".tabs-content-item[id*=" + tabID + "]", $tabs).removeClass("active-tabs");
+				},
+				hideAll: function($tabs) {
+					$(".tabs-heading-item", $tabs).removeClass("active-tabs");
+					$(".tabs-content-item", $tabs).removeClass("active-tabs");
+				}
 			},
 
 			map: {
@@ -534,19 +612,31 @@
 			toggleContent: {
 				init: function() {
 					var $elementToggle = $(".toggle-content", $sel.body),
-						elementToggleId = $elementToggle.attr("id"),
-						$contentToggle = $sel.body.find("[data-toggle='" + elementToggleId + "']");
-						$contentToggleHide = $sel.body.find("[data-toggle-hide='" + elementToggleId + "']");
+						$contentToggle = $sel.body.find(".toggle-container");
+
 
 					$elementToggle.on("click", function() {
-						if ($contentToggle.hasClass("not-active-toggle")) {
-							$contentToggle.removeClass("not-active-toggle");
-							$contentToggleHide.addClass("not-active-toggle");
-							$.magnificPopup.close();
-						} else {
-							$contentToggle.addClass("not-active-toggle");
-							$contentToggleHide.removeClass("not-active-toggle");
-						}
+						var element = $(this),
+
+							elementToggleId = element.attr("id"),
+
+							contentToggleHide = $sel.body.find("[data-toggle-hide='" + elementToggleId + "']");
+
+
+							if (!$contentToggle.hasClass("not-active-toggle")) {
+
+								$contentToggle.addClass("not-active-toggle");
+								contentToggleHide.removeClass("not-active-toggle");
+
+								$.magnificPopup.close()
+
+
+							} else {
+
+								$contentToggle.removeClass("not-active-toggle");
+								contentToggleHide.addClass("not-active-toggle");
+
+							}
 					});
 
 
@@ -589,6 +679,7 @@
 	})();
 	DEALIBRE.rating.init();
 	DEALIBRE.scrollFix.init();
+	DEALIBRE.tabs.init();
 	DEALIBRE.accordionFilter.init();
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
