@@ -3966,7 +3966,7 @@ span.form-item--error
 				padding 0 40px 0 95px
 				box-sizing border-box
 
-				transition box-shadow 0.3s $transitionAnimation
+				transition box-shadow 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
 
 				cursor pointer
 
@@ -4004,6 +4004,8 @@ span.form-item--error
 
 				&.active-tabs
 					box-shadow -5px 0px 36px 0px rgba(0,0,0,0.3)
+					transform scale(1.02)
+					background #f2f5fa
 
 					.page-chat-dialogues-item-container
 						border none
@@ -5051,5 +5053,183 @@ span.form-item--error
 									z-index -10
 
 
+/** modal window **/
+
+.popup-addcard
+	display block
+	.popup-addcard-form
+		display block
+		width 100%
+
+		padding 45px
+		box-sizing border-box
+
+		background #f2f6fa
+
+		.popup-addcard-form-row
+			display flex
+
+			justify-content space-between
+
+			margin-bottom 20px
+
+			&--left
+				text-align left
+
+			.popup-addcard-form-holder-item--btn
+				display block
+				width 180px
+
+				padding 16px
+
+				margin-top 10px
+
+				font-family ProximaNovaBold
+				font-size 15px
+
+				text-transform uppercase
+
+
+			.popup-addcard-form-holder
+				display inline-block
+
+				vertical-align top
+
+				&--w1
+					width 100%
+
+				&--w2
+					width 45%
+
+				&--w3
+					width 30%
+
+				.popup-addcard-form-holder-item
+					display block
+					width 100%
+					display block
+					width 100%
+
+					padding 15px 20px
+					box-sizing border-box
+
+					border 1px solid #abb1b9
+
+					font-size 18px
+					font-family ProximaNovaRegular
+
+					color #8191a2
+
+					transition border-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+					&::-webkit-input-placeholder
+						width 100%
+						color #8191a2
+
+						transition transform .3s $transitionAnimation, font-size .3s $transitionAnimation
+
+					&:hover
+					&:focus
+						border-color $colorBlue
+						color $colorBlue
+
+					&:focus
+						&::-webkit-input-placeholder
+							font-size 14px
+
+							transform translateY(-18px)
+
+
+				.jcf-select-popup-addcard-form-holder-item-select
+					position relative
+					display flex
+					align-items center
+					width 100%
+					height 100%
+
+					padding 15px
+
+					border 1px solid #abb1b9
+
+					box-sizing border-box
+
+					cursor pointer
+
+					transition border 0.3s $transitionAnimation
+
+					.jcf-select-text
+						span
+							font-size 18px
+
+							color #8191a2
+
+							transition color 0.3s $transitionAnimation
+					.jcf-select-opener
+						position absolute
+						top 24px
+						right 20px
+
+						width 0
+						height 0
+
+						border-top 8px solid #6284ab
+						border-left 4px solid transparent
+						border-right 4px solid transparent
+
+						transition transform 0.3s $transitionAnimation, border 0.3s $transitionAnimation
+
+					&.jcf-drop-active
+					&:hover
+						border 1px solid $colorBlue
+
+						.jcf-select-text
+							.jcf-option-hideme
+								color $colorBlue
+
+
+					&.jcf-drop-active
+						.jcf-select-opener
+							transform rotate(-180deg)
+
+.jcf-select-drop
+	&.jcf-select-popup-addcard-form-holder-item-select
+		border 1px solid $colorBlue
+		border-top-color transparent
+		box-sizing border-box
+
+		z-index 1111
+
+		.jcf-select-drop-content
+			background #fff
+
+			ul
+				li
+					display block
+					cursor pointer
+
+					&:first-child
+						display none
+
+					span
+						display block
+						width 100%
+						padding 15px
+						box-sizing border-box
+
+						font-size 18px
+
+						color $colorBlue
+
+						background #fff
+
+						transition background 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+						&:hover
+							color #fff
+							background $colorBlue
+
+
+
+/** //modal window **/
 
 /*** //PAGE PROFILE ***/
