@@ -10,6 +10,7 @@
 		$sel.bigMap = $(".geo-map", $sel.geo);
 
 		$sel.colorFilter = $(".main-filter-items").css("background-color");
+		$sel.menuBurger = $(".header-mobile-burger", $sel.body);
 
 		return {
 			page: {
@@ -223,6 +224,50 @@
 						});
 
 					},
+
+				},
+
+				menuMobile: {
+					isShow: false,
+					init: function() {
+						var self = this;
+						$sel.menuBurger.on("click", function() {
+							self.isShow ? self.hide() : self.show();
+						});
+
+						$(".menu-overlay", $sel.body).on("click", function() {
+							self.hide();
+						});
+					},
+					show: function() {
+						this.isShow = true;
+						$sel.menuBurger.addClass("active");
+						$sel.body.addClass("show-menu");
+					},
+					hide: function() {
+						this.isShow = false;
+						$sel.menuBurger.removeClass("active");
+						$sel.body.removeClass("show-menu");
+					}
+				},
+
+				// Initialize scripts for each window size
+				initSSM: function() {
+					var self = this;
+
+					ssm.addStates([
+						{
+							// Tablets in landscape orientation
+							id: "tabletLandscape",
+							query: "(max-width: 1000px)",
+							onEnter: function() {
+								self.menuMobile.init();
+							},
+							onLeave: function() {
+
+							}
+						}
+					]);
 
 				},
 

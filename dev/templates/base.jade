@@ -62,6 +62,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				media: "screen",
 				href: "../css/" + info.code + ".css",
 				noCache: true
+			},  {
+				media: "screen",
+				href: "../css/dealibre.responsive.css",
+				noCache: true
 			}
 		])
 
@@ -72,11 +76,38 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				pageheader()
 
 				script(type="text/x-template", id="header-tmpl")
-					div(class="header-inner")
+					div(class="header-inner header-mobile")
+						div(class="header-logo-container")
+							a(href="home.html", class="header-logo-white")
+						div(class="header-mobile-burger")
+							div(class="header-mobile-burger-inner")
+						div(class="header-mobile-menu")
+							+menu({
+								rootClass: "header-menu",
+								items: [
+									{
+										name: "company",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}, {
+										name: "testimonials",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}, {
+										name: "join free",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}, {
+										name: "log in",
+										href: "#",
+										current: (page.code == "#" ? true : false)
+									}
+								]
+							})
+					div(class="header-inner header-desktop")
 						div(class="page-inner page-inner--max", v-show="states.user.authorized")
 							div(class="header-logo-container")
 								a(href="home.html", class="header-logo-white")
-									img(src="", class="header-logo-img")
 							div(class="header-menu-register")
 								+menu({
 									rootClass: "header-menu",
@@ -104,11 +135,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 								button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
 								a(href="#profile", class="header-personal-avatar popup")
 								a(href="#profile", class="header-personal-initials popup") J. S.
-					
 						div(class="page-inner page-inner--w1", v-show="!states.user.authorized")
 							a(href="home.html", class="header-logo")
-								img(src="", class="header-logo-img")
-
 							+menu({
 								rootClass: "header-menu",
 								items: [
@@ -138,7 +166,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 									}
 								]
 							})
-					
+						
 			if page.code == "search" || page.code == "chat"
 				main(class="page-content-register")
 					block content 
@@ -220,7 +248,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			}, { 
 				src: "../js/plugins/jquery.mCustomScrollbar.concat.min.js"
 			}, { 
-				src: "../js/plugins/jquery.raty.js"
+				src: "../js/plugins/jquery.raty.js" 
 			}, { 
 				src: "../js/plugins/jquery.magnific-popup.min.js"
 			}, { 

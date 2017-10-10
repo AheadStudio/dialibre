@@ -4,13 +4,13 @@
 	left 0
 	top 14px
 	z-index 1000
-	
+
 	display block
 	width 30px
 	height 25px
 
 	cursor pointer
-	
+
 	.menu-burger-inner
 		position absolute
 		left 0
@@ -19,44 +19,44 @@
 
 		width 100%
 		height 4px
-		
+
 		border-radius 4px
 		background-color red
-		
+
 		transition opacity 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
-	
+
 	&:before
 	&:after
 		content ""
-		
+
 		position absolute
 		left 0
-		
+
 		display block
 		width 100%
 		height 4px
-		
+
 		border-radius 4px
 		background-color red
-		
+
 		transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
-		
+
 	&:before
 		top 0
-		
+
 	&:after
 		bottom 0
-		
+
 	&.active
 		.menu-burger-inner
 			opacity 0
 
 		&:before
 			transform rotate(-45deg) translateY(10px) translateX(-5px)
-			
+
 		&:after
 			transform rotate(45deg) translateY(-10px) translateX(-5px)
-		
+
 .menu-overlay
 	position fixed
 	z-index 10
@@ -64,7 +64,7 @@
 	top 0
 	right 0
 	bottom 0
-	
+
 	display none
 
 .show-menu
@@ -78,10 +78,10 @@
 .mobile-scroll-holder
 	overflow-x scroll
 	overflow-y hidden
-	
+
 	.mobile-scroll
 		white-space nowrap
-	
+
 	&::-webkit-scrollbar
 		display none
 // //Scroll
@@ -91,7 +91,7 @@
 // Adaptive table
 .adaptive-table
 	display block
-	
+
 	thead
 	tbody
 	tfoot
@@ -99,28 +99,28 @@
 	th
 	td
 		display block
-		
+
 	thead
 		tr
 			position absolute
 			left -9999px
 			top -9999px
-			
+
 	td
 		position relative
-		
+
 		padding-left 50%
-		
+
 		&:before
 			content attr(data-header)
 
 			position absolute
 			left 6px
 			top 6px
-			
+
 			width 45%
 			padding-right 5%
-			
+
 			white-space nowrap
 // //Adaptive table
 
@@ -129,10 +129,10 @@
 // Panels
 .panel-title
 	cursor pointer
-	
+
 .panel-content
 	display none
-	
+
 	&.active
 		display block
 // //Panels
@@ -145,7 +145,7 @@
 
 .page-content
 	transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
-		
+
 .header-menu
 	position absolute
 	z-index 20
@@ -153,14 +153,71 @@
 	top 0
 
 	transform translateX(-100%)
-	
+
 	transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
 
 body.show-menu
 	.header-menu
 		transform translateX(0)
-		
+
 	.page-content
 		transform translateX(200px)
 // //
-	
+
+
+/*** Main Page ***/
+
+/** mobile menu **/
+
+.header-mobile
+	display block
+	width 100%
+	height 205px
+
+	padding 35px 25px 0 25px
+	box-sizing border-box
+
+	background rgba(61, 85, 106, 0.85)
+
+	.header-logo-container
+		background none
+		height auto
+
+		.header-logo-white
+			margin 0
+			padding 0
+
+	.header-mobile-burger
+		display inline-block
+		float right
+
+		.header-mobile-burger-inner
+			display block
+			width 35px
+			height 5px
+
+			background #fff
+
+	.header-mobile-menu
+		position relative
+		display block
+		width 100%
+
+		overflow hidden
+
+		line-height 130px
+
+		.header-menu
+			position relative
+			top auto
+			left auto
+			transform none
+
+			z-index 40px
+
+
+
+/** //mobile menu **/
+
+
+/*** //Main Page ***/
