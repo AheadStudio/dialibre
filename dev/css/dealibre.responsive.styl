@@ -146,16 +146,6 @@
 .page-content
 	transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
 
-.header-menu
-	position absolute
-	z-index 20
-	left 0
-	top 0
-
-	transform translateX(-100%)
-
-	transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
-
 body.show-menu
 	.header-menu
 		transform translateX(0)
@@ -168,13 +158,12 @@ body.show-menu
 /*** Main Page ***/
 
 /** mobile menu **/
-
 .header-mobile
-	display block
+	display none
 	width 100%
-	height 205px
+	height auto
 
-	padding 35px 25px 0 25px
+	padding 35px 25px 35px 25px
 	box-sizing border-box
 
 	background rgba(61, 85, 106, 0.85)
@@ -188,24 +177,76 @@ body.show-menu
 			padding 0
 
 	.header-mobile-burger
+		position relative
 		display inline-block
 		float right
 
+		width 30px
+		height 30px
+
+		z-index 1000
+		overflow hidden
+
 		.header-mobile-burger-inner
+			display block
+			width 30px
+			height 5px
+
+			margin-top 12.5px
+
+			background #fff
+
+		&:before
+		&:after
+			content ""
+
+			position absolute
+			left 0
+
 			display block
 			width 35px
 			height 5px
 
-			background #fff
+			background-color #fff
+
+			transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+
+		&:before
+			top 0
+
+		&:after
+			bottom 0
+
+		&.active
+			.header-mobile-burger-inner
+				opacity 0
+
+			&:before
+				transform rotate(-45deg) translateY(7px) translateX(-10px)
+
+			&:after
+				transform rotate(45deg) translateY(-7px) translateX(-10px)
+
 
 	.header-mobile-menu
 		position relative
-		display block
+		display none
 		width 100%
+
+		margin-top 50px
 
 		overflow hidden
 
-		line-height 130px
+		line-height 1
+		opacity 0
+		z-index 1000
+
+		transform translateY(-30px)
+		transition transform 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940), opacity 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+
+		&.active
+			opacity 1
+			transform translateY(0)
 
 		.header-menu
 			position relative
@@ -213,11 +254,21 @@ body.show-menu
 			left auto
 			transform none
 
-			z-index 40px
+			z-index 40
+
+			line-height 1
 
 
 
 /** //mobile menu **/
+@media screen and (max-width: 800px)
+	.header-desktop
+		display none
+
+	.header-mobile
+		display block
+
+
 
 
 /*** //Main Page ***/

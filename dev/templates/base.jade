@@ -76,96 +76,97 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				pageheader()
 
 				script(type="text/x-template", id="header-tmpl")
-					div(class="header-inner header-mobile")
-						div(class="header-logo-container")
-							a(href="home.html", class="header-logo-white")
-						div(class="header-mobile-burger")
-							div(class="header-mobile-burger-inner")
-						div(class="header-mobile-menu")
-							+menu({
-								rootClass: "header-menu",
-								items: [
-									{
-										name: "company",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}, {
-										name: "testimonials",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}, {
-										name: "join free",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}, {
-										name: "log in",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}
-								]
-							})
-					div(class="header-inner header-desktop")
-						div(class="page-inner page-inner--max", v-show="states.user.authorized")
+					div(class="header-inner")
+						div(class="header-mobile")
 							div(class="header-logo-container")
 								a(href="home.html", class="header-logo-white")
-							div(class="header-menu-register")
+							div(class="header-mobile-burger")
+								div(class="header-mobile-burger-inner")
+							div(class="header-mobile-menu")
 								+menu({
 									rootClass: "header-menu",
 									items: [
 										{
-											name: "search",
+											name: "company",
 											href: "#",
 											current: (page.code == "#" ? true : false)
 										}, {
-											name: "my deals",
+											name: "testimonials",
 											href: "#",
 											current: (page.code == "#" ? true : false)
 										}, {
-											name: "help",
+											name: "join free",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "log in",
 											href: "#",
 											current: (page.code == "#" ? true : false)
 										}
 									]
 								})
-							div(class="header-personal")
-								a(href="#", class="header-personal-alerts")
-									span(class="header-personal-count") 566
-								a(href="#", class="header-personal-mail")
-									span(class="header-personal-count") 566
-								button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
-								a(href="#profile", class="header-personal-avatar popup")
-								a(href="#profile", class="header-personal-initials popup") J. S.
-						div(class="page-inner page-inner--w1", v-show="!states.user.authorized")
-							a(href="home.html", class="header-logo")
-							+menu({
-								rootClass: "header-menu",
-								items: [
-									{
-										name: "Company",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}, {
-										name: "Testimonials",
-										href: "#",
-										current: (page.code == "#" ? true : false)
-									}
-								]
-							})
+						div(class="header-desktop")
+							div(class="page-inner page-inner--max", v-show="states.user.authorized")
+								div(class="header-logo-container")
+									a(href="home.html", class="header-logo-white")
+								div(class="header-menu-register")
+									+menu({
+										rootClass: "header-menu",
+										items: [
+											{
+												name: "search",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}, {
+												name: "my deals",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}, {
+												name: "help",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}
+										]
+									})
+								div(class="header-personal")
+									a(href="#", class="header-personal-alerts")
+										span(class="header-personal-count") 566
+									a(href="#", class="header-personal-mail")
+										span(class="header-personal-count") 566
+									button(type="submit", class="btn btn--green subscribe-form-submit header-personal-btn") Share deal
+									a(href="#profile", class="header-personal-avatar popup")
+									a(href="#profile", class="header-personal-initials popup") J. S.
+							div(class="page-inner page-inner--w1", v-show="!states.user.authorized")
+								a(href="home.html", class="header-logo")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "Company",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "Testimonials",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
 
-							+menu({
-								rootClass: "header-bar",
-								items: [
-									{
-										name: "Join free",
-										href: "register.html",
-										current: (page.code == "register" ? true : false)
-									}, {
-										name: "Log in",
-										href: "signin.html",
-										current: (page.code == "signin" ? true : false)
-									}
-								]
-							})
+								+menu({
+									rootClass: "header-bar",
+									items: [
+										{
+											name: "Join free",
+											href: "register.html",
+											current: (page.code == "register" ? true : false)
+										}, {
+											name: "Log in",
+											href: "signin.html",
+											current: (page.code == "signin" ? true : false)
+										}
+									]
+								})
 						
 			if page.code == "search" || page.code == "chat"
 				main(class="page-content-register")
@@ -261,6 +262,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "https://unpkg.com/axios/dist/axios.min.js"
 			}, { 
 				src: "../js/plugins/js.cookie.js"
+			}, { 
+				src: "../js/plugins/ssm.min.js"
 			}, {
 				src: "../js/plugins/jquery.mask.min.js"
 			}, {

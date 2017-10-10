@@ -10,7 +10,9 @@
 		$sel.bigMap = $(".geo-map", $sel.geo);
 
 		$sel.colorFilter = $(".main-filter-items").css("background-color");
+
 		$sel.menuBurger = $(".header-mobile-burger", $sel.body);
+		$sel.headerMobile = $(".header-mobile-menu", $sel.body);
 
 		return {
 			page: {
@@ -230,24 +232,33 @@
 				menuMobile: {
 					isShow: false,
 					init: function() {
+						console.log($(".header-mobile-burger", $sel.body));
 						var self = this;
 						$sel.menuBurger.on("click", function() {
+							console.log("asdasdasd");
 							self.isShow ? self.hide() : self.show();
 						});
 
-						$(".menu-overlay", $sel.body).on("click", function() {
-							self.hide();
-						});
 					},
 					show: function() {
+
 						this.isShow = true;
 						$sel.menuBurger.addClass("active");
-						$sel.body.addClass("show-menu");
+
+						$sel.headerMobile.css("display", "block");
+						setTimeout(function() {
+							$sel.headerMobile.addClass("active");
+						}, 300);
 					},
 					hide: function() {
 						this.isShow = false;
 						$sel.menuBurger.removeClass("active");
-						$sel.body.removeClass("show-menu");
+
+						$sel.headerMobile.removeClass("active");
+						setTimeout(function() {
+							$sel.headerMobile.css("display", "none");
+						}, 300);
+
 					}
 				},
 
@@ -735,6 +746,7 @@
 	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();
 
+	DEALIBRE.page.initSSM();
 	DEALIBRE.page.header.init();
 	DEALIBRE.page.polygonAnimate.init();
 	DEALIBRE.page.scrollAnimation.init();
