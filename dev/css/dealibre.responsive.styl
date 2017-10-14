@@ -155,8 +155,6 @@ body.show-menu
 // //
 
 
-/*** Main Page ***/
-
 /** mobile menu **/
 .header-mobile
 	display none
@@ -268,7 +266,208 @@ body.show-menu
 	.header-mobile
 		display block
 
+	.footer-menu
+		.footer-menu-inner
+			display flex
+			flex-wrap wrap
+			justify-content space-between
+			align-items center
+
+			.footer-menu-item-holder
+				width auto
+				margin 0
+	.intro
+		padding-top 250px
+
+		.intro-title
+			margin-bottom 36px
+			font-size 36px
+
+		.intro-description
+			margin-bottom 120px
+
+			font-size 24px
+
+			line-height 2
+
+		.intro-features
+			.intro-feature-item
+				display block
+				margin 0 auto
+				margin-bottom 65px
+
+				&:last-child
+					margin-right auto
+
+	.video
+		display block
+
+		.page-inner--w2
+			width 100%
+			max-width 100%
+			padding 0
+
+			.video-view
+				background none
+				min-height 100%
+
+				.video-play
+					top 38%
+					left 54%
+					margin-left auto
+					margin-top auto
+					transform rotate(-45deg) translate(-50%,-50%)
+
+				.video-source
+					position initial
+					left 0
+					top 0
+
+					width 100%
+					height auto
+					min-height 100%
+	.subscribe
+		padding 0
+		padding-top 80px
+		margin-bottom 90px
+
+		.subscribe-title
+			margin-bottom 40px
+
+			line-height 2
+
+			white-space pre-wrap
+			text-align center
+
+		.subscribe-form-holder
+			padding 0
+
+			.subscribe-form-input-holder
+				padding 0
+				width 68%
+
+			.subscribe-form-submit
+				padding 27px 0
+				width 30%
+				text-align center
+
+	.features
+		padding 0
+		margin-bottom 40px
+
+		&:before
+			content ""
+			width 0
+			height 0
+			background none
+
+		.features-title
+			text-align center
+			line-height 2
 
 
+	.geo
+		.geo-info
+			float none
+			margin 0 auto
 
-/*** //Main Page ***/
+			.geo-item
+				.jcf-select
+					background transparent
+		.geo-map
+			svg
+				width 100%
+				opacity 0.25
+
+
+@media screen and (max-width: 580px)
+	.intro
+		height auto
+
+		.intro-title
+			margin-bottom 36px
+			font-size 30px
+
+		.intro-features
+			.intro-feature-item
+				display block
+				width 75%
+
+				margin 0 auto
+				margin-bottom 65px
+
+				&:last-child
+					margin-right auto
+		.intro-icon
+			display none
+
+	.subscribe
+		padding 0
+		padding-top 110px
+		padding-bottom 35px
+
+		background #f1f5fa
+
+		.subscribe-form-holder
+			padding 0
+
+			.subscribe-form-input-holder
+				display block
+				width 100%
+
+				padding 0
+
+				margin-bottom 40px
+
+			.subscribe-form-submit
+				position inherit
+				display block
+				width 65%
+
+				padding 27px 0
+
+				margin 0 auto
+
+				text-align center
+
+
+	.features
+		padding 0
+		margin-bottom 40px
+
+		.feature-item
+			.feature-item-icon
+				position inherit
+				display block
+
+				float none
+
+				margin 0 auto
+				margin-bottom 40px
+
+			.feature-item-content
+				display block
+				width 100%
+				padding 0
+
+				text-align center
+
+	.geo
+		padding 50px 0 110px 0
+
+		.geo-title
+			margin-bottom 50px
+
+		.geo-info
+			width 100%
+
+			.geo-item
+				.jcf-select
+					background transparent
+		.geo-map
+			left 50%
+			top 0
+			bottom 0
+			right 0
+			width 155%
+			transform translate(-50%)
