@@ -27,8 +27,8 @@
             "name": "Home",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             },
             "bodyClass": "page-home"
         },
@@ -44,32 +44,32 @@
             "name": "Register share deal step-1",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "register_share_step2_files": {
             "name": "Register share deal step-2 files",
             "progress": {
-                "desktop": "90",
-                "tablet": "0",
-                "mobile": "0"
+                "desktop": "100",
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "register_share_step2_form": {
             "name": "Register share deal step-2 form",
             "progress": {
-                "desktop": "90",
-                "tablet": "0",
-                "mobile": "0"
+                "desktop": "100",
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "register_share_success": {
             "name": "Register share deal success",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
 
@@ -95,32 +95,32 @@
             "name": "FAQ",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "help": {
             "name": "Help",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "text": {
             "name": "Text",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "contacts": {
             "name": "Contacts",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             },
             "bodyClass": "page-contacts"
         },
@@ -128,32 +128,32 @@
             "name": "Register",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "signin": {
             "name": "SignIn",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "recover": {
             "name": "Recover password",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "restore": {
             "name": "Restore password",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         }
     },
