@@ -9,11 +9,16 @@ var DealibreApp = {
 	data: {
 		user: {
 			authorized: false
-		}
+		},
+		header: "",
 	},
 	methods: {
 		setAuthorized: function() {
+			DEALIBRE.modalWindow.init();
 			DealibreApp.data.user.authorized = true;
+		},
+		typeHeader: function(type) {
+			DealibreApp.data.header = type;
 		}
 	},
 	utils: {

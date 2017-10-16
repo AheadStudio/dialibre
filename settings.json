@@ -35,7 +35,7 @@
         "search": {
             "name": "Search",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -76,7 +76,7 @@
         "chat": {
             "name": "Chat",
             "progress": {
-                "desktop": "90",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -85,9 +85,9 @@
         "profile": {
             "name": "Profile",
             "progress": {
-                "desktop": "0",
-                "tablet": "0",
-                "mobile": "0"
+                "desktop": "100",
+                "tablet": "100",
+                "mobile": "100"
             }
         },
 

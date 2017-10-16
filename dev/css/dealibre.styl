@@ -126,10 +126,18 @@ body
 
 		background $colorDarkBlue
 
+		&--light
+			background #e9eef5
+
 		.header-logo-white
 			margin-left 15px
+			
+		.header-logo-black
+			margin-left 96px
 
 	.header-logo
+	.header-logo-white
+	.header-logo-black
 		float left
 		margin 7px 100px 0 0
 
@@ -143,17 +151,7 @@ body
 		text-decoration none
 
 	.header-logo-white
-		float left
-		margin 7px 100px 0 0
-
-		display block
-		width 170px
-		height 35px
-
 		background url("../i/logo_white.png") no-repeat center center
-		background-size contain
-
-		text-decoration none
 
 	.header-menu
 		float left
@@ -4024,7 +4022,7 @@ span.form-item--error
 					&:after
 						position absolute
 						top 0
-						right -30px
+						right -28px
 						content ""
 						width 0
 						height 0
@@ -4870,7 +4868,7 @@ span.form-item--error
 
 					padding-left 20px
 
-					border-left 1px solid #000
+					border-left 2px solid #888888
 
 				.page-profile-personal-credits-item-close
 					display block
@@ -4949,6 +4947,11 @@ span.form-item--error
 				cursor pointer
 				margin-right 35px
 
+				.page-profile-history-radio
+					margin-right 35px
+					&:last-child
+						margin-right 0
+
 				.page-profile-history-container-radio-title
 					margin-left 15px
 
@@ -5010,6 +5013,8 @@ span.form-item--error
 				width 100%
 
 				margin-top 55px
+
+				font-size 16px
 
 				thead
 					tr

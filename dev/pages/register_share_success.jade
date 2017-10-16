@@ -19,8 +19,8 @@ block content
 block scripts
     script.
         new Vue({
-            el: "#login",
             created: function() {
                 DealibreApp.methods.setAuthorized();
+                DealibreApp.methods.typeHeader("light");
             }
         });

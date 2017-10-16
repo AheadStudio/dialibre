@@ -262,10 +262,44 @@ body.show-menu
 
 
 /** //mobile menu **/
+@media screen and (max-width: 1200px)
+	.page-header
+		.header-logo-container
+			width auto
+			margin-right 0
 
-
+			.header-logo-black
+				margin-left 20px
 
 @media screen and (max-width: 1180px)
+	.page-header
+		.header-logo-container
+			width auto
+			margin-right 0
+
+			.header-logo-black
+				margin-left 10px
+				margin-right 0px
+		.header-menu
+			.header-menu-item-holder
+				margin-right 10px
+				&:last-child
+					margin-right 0
+
+	.header-personal
+		.header-personal-initials
+			margin-right 10px
+
+		.header-personal-alerts
+		.header-personal-mail
+			margin-right 30px
+
+		.header-personal-btn
+			margin-right 10px
+
+		.header-personal-avatar
+			margin 0 10px
+
 	.subscribe
 		.subscribe-title
 			white-space pre-wrap
@@ -309,8 +343,65 @@ body.show-menu
 				width 100%
 				height 100%
 
+	.page-profile-personal
+		flex-direction column
+
+		.page-profile-personal--left
+			display block
+			width 100%
+			margin-bottom 30px
+
+			.page-profile-personal-holder
+				width 270px
+
+			.page-profile-personal-info
+				margin-left 45px
+				width 50%
+
+				.page-profile-personal-info-btn
+					display inline-block
+					width 45%
+
+					vertical-align top
+
+					padding-left 0
+					padding-right 0
+
+					text-align center
+
+					margin 0
+
+					&:last-child
+						margin-left 30px
+						margin-top 0
+
+		.page-profile-personal--right
+			display block
+			width 100%
+
+			padding 0
+			padding-top 25px
+
+			border-left none
+			border-top 1px solid #c2c9d1
+
+			.page-profile-personal-info-btn
+				position inherit
+				top 0
+				left 0
+
+				display block
+
+				margin 0
 
 
+	.page-profile-history
+		.page-profile-history-container
+			padding 50px 35px
+
+	.popup-container
+		&.popup-addcard
+			width 80%
 
 @media screen and (max-width: 800px)
 	.header-desktop
@@ -479,6 +570,54 @@ body.show-menu
 				margin 0 auto
 
 				margin-bottom 55px
+
+
+	.page-profile-history
+		width 110%
+		margin-left -5%
+
+
+@media screen and (max-width: 760px)
+
+	.page-profile-history
+		.page-profile-history-container
+			.page-profile-history-container-item
+				.page-profile-history-container-radio
+					display block
+					margin-bottom 30px
+
+	.popup-addcard
+		.popup-addcard-form
+			.popup-addcard-form-row
+				flex-direction column
+
+				.popup-addcard-form-holder
+					display block
+					margin 0
+
+					&--w2
+					&--w3
+						width 100%
+						margin-bottom 20px
+
+						&:last-child
+							margin-bottom 0
+
+@media screen and (max-width: 700px)
+
+	.page-profile-personal
+		.page-profile-personal--left
+			.page-profile-personal-info
+				width auto
+				.page-profile-personal-info-btn
+					display block
+					width 100%
+					min-width 170px
+					margin 0
+
+					&:last-child
+						margin 0
+						margin-top 10px
 
 
 @media screen and (max-width: 580px)
@@ -681,6 +820,25 @@ body.show-menu
 				&:last-child
 					margin-bottom 0
 
+	.page-profile-personal
+		.page-profile-personal--left
+			.page-profile-personal-holder
+				display block
+				width 100%
+				margin-bottom 30px
+
+				.page-profile-personal-holder-img
+					position relative
+
+			.page-profile-personal-info
+				display block
+				width 100%
+				margin 0
+
+	.popup-container
+		&.popup-addcard
+			width 85%
+
 @media screen and (max-width: 460px)
 	.page-header
 		.header-mobile
@@ -849,3 +1007,53 @@ body.show-menu
 				&--right
 					display block
 					float none
+
+	.page-profile
+		.page-inner--w2
+			padding 0 10px
+	.page-profile-history
+		width 110%
+		margin-left -5%
+
+		.page-profile-history-container
+			padding 50px 20px
+
+			.page-profile-history-container-item
+				.page-profile-history-container-text
+					width 130px
+					margin-bottom 30px
+
+				.page-profile-history-container-btn
+					display block
+					width 110px
+					margin 0
+
+				.page-profile-history-container-table
+					font-size 10px
+
+					thead
+						tr
+							th
+								font-size 10px
+
+	.popup-container
+		&.popup-addcard
+
+			.popup-addcard-form
+				padding 40px 20px 0 20px
+
+
+
+@media screen and (max-width: 345px)
+	.page-profile-history
+		.page-profile-history-container
+			.page-profile-history-container-item
+				.page-profile-history-container-table
+					width 110%
+					margin-left -5%
+
+
+	.popup-container
+		&.popup-addcard
+			width 90%
+			left 44%

@@ -6,8 +6,8 @@ block content
             div(class="page-inner page-inner--w1")
                 h1(class="h1") Profile
 
-        div(class="page-inner page-inner--w2")
-            div(class="page-profile")
+        div(class="page-profile")
+            div(class="page-inner page-inner--w2")
                 div(class="page-profile-personal")
                     div(class="page-profile-personal--left")
                         div(class="page-profile-personal-holder")
@@ -52,12 +52,13 @@ block content
                             
                     div(class="page-profile-history-container")
                         div(class="page-profile-history-container-item tabs-content-item active-tabs", id="history-1")
-                            label(class="page-profile-history-container-radio")
-                                input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                span(class="page-profile-history-container-radio-title") MasterCard
-                            label(class="page-profile-history-container-radio")
-                                input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                span(class="page-profile-history-container-radio-title") Visa
+                            div(class="page-profile-history-container-radio")
+                                label(class="page-profile-history-radio")
+                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
+                                    span(class="page-profile-history-container-radio-title") MasterCard
+                                label(class="page-profile-history-radio")
+                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
+                                    span(class="page-profile-history-container-radio-title") Visa
                                 
                             input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
                             
@@ -134,5 +135,6 @@ block scripts
             el: "#login",
             created: function() {
                 DealibreApp.methods.setAuthorized();
+                DealibreApp.methods.typeHeader("light");
             }
         });
