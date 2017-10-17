@@ -77,7 +77,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 				script(type="text/x-template", id="header-tmpl")
 					div(class="header-inner")
-						div(class="header-mobile")
+						div(class="header-mobile", v-show="states.mobileMenu == 'dark-noaut'")
 							div(class="header-logo-container")
 								a(href="home.html", class="header-logo-white")
 							div(class="header-mobile-burger")
@@ -105,6 +105,118 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 										}
 									]
 								})
+						div(class="header-mobile header-mobile--white", v-show="states.mobileMenu == 'light-noaut'")
+							div(class="header-logo-container header-logo-container--light")
+								a(href="home.html", class="header-logo-black")
+							div(class="header-mobile-burger")
+								div(class="header-mobile-burger-inner")
+							div(class="header-mobile-menu")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "company",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "testimonials",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "join free",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "log in",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+						div(class="header-mobile header-mobile--white header-mobile--aut", v-show="states.mobileMenu == 'light-aut' && states.page == ''")
+							div(class="header-logo-container header-logo-container--light")
+								a(href="home.html", class="header-logo-black")
+							div(class="header-mobile-burger")
+								div(class="header-mobile-burger-inner")
+							div(class="header-mobile-menu")
+								div(class="header-mobile-container")
+									+menu({
+										rootClass: "header-menu",
+										items: [
+											{
+												name: "search",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}, {
+												name: "my deals",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}, {
+												name: "help",
+												href: "#",
+												current: (page.code == "#" ? true : false)
+											}
+										]
+									})		
+									div(class="header-personal")
+										a(href="#", class="header-personal-alerts")
+											span(class="header-personal-count") 566
+										a(href="#", class="header-personal-mail")
+											span(class="header-personal-count") 566
+										button(type="submit", class="btn btn--green header-personal-btn") Share deal
+										a(href="#profile_popup", class="header-personal-avatar popup")
+										a(href="#profile_popup", class="header-personal-initials popup") J. S.
+						div(class="header-mobile header-mobile--white header-mobile--aut header-mobile--full", v-show="states.mobileMenu == 'light-aut' && states.page == 'chat'")
+							div(class="header-mobile-open")
+								img(src="../i/chat_group.png", class="header-mobile-open-img")
+							div(class="header-mobile-burger")
+								div(class="header-mobile-burger-inner")
+							div(class="header-menu-register")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "search",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "my deals",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "help",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+							div(class="header-personal")
+								a(href="#", class="header-personal-alerts")
+									span(class="header-personal-count") 566
+								a(href="#", class="header-personal-mail")
+									span(class="header-personal-count") 566
+								button(type="submit", class="btn btn--green header-personal-btn") Get Credits
+								a(href="#profile_popup", class="header-personal-avatar popup")
+							div(class="header-mobile-menu")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "search",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "my deals",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "help",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+
 						div(class="header-desktop")
 							div(class="page-inner page-inner--max", v-show="states.user.authorized && states.header == 'dark'")
 								div(class="header-logo-container")
@@ -223,7 +335,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				pagefooter()
 
 			script(type="text/x-template", id="footer-tmpl")
-				footer(class="page-footer", v-show="states.header != 'dark'", itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
+				footer(class="page-footer", v-show="!states.user.authorized",itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
 					div(class="page-inner page-inner--w1")
 						+menu({
 							rootClass: "footer-menu",

@@ -71,5 +71,8 @@ block scripts
 		new Vue({
 			el: "#register",
 			data: {
+			},
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
 			}
 		});

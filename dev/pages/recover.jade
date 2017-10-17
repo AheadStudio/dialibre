@@ -56,5 +56,8 @@ block scripts
 		new Vue({
 			el: "#recover",
 			data: {
+			},
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
 			}
 		});

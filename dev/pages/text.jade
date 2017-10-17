@@ -17,3 +17,12 @@ block content
 			p
 				img(src="../dummy/text.jpg", align="left")
 				| Fusce ac ultricies sapien. Donec nec vestibulum magna. Quisque dictum ornare metus sit amet fermentum. Donec vel nulla tortor. Nunc ac nunc lectus. Sed nisi risus, viverra id eros at, dignissim dictum magna. Donec a porta nisi, et feugiat nibh. Cras vitae pretium erat. Nulla non fringilla turpis. Vivamus nec urna nec ante congue tempor. Cras blandit nulla a arcu tincidunt tempor. Pellentesque ligula sapien, vestibulum ut nisl porta, dictum porttitor nisi.
+
+block scripts
+	script.
+		new Vue({
+			el: "#login",
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+			}
+		});

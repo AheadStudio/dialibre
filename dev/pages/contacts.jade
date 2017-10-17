@@ -55,5 +55,8 @@ block scripts
 		});
 
 		new Vue({
-			el: "#contacts"
+			el: "#contacts",
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+			}
 		});

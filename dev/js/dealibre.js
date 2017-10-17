@@ -232,10 +232,9 @@
 				menuMobile: {
 					isShow: false,
 					init: function() {
-						console.log($(".header-mobile-burger", $sel.body));
+
 						var self = this;
 						$sel.menuBurger.on("click", function() {
-							console.log("asdasdasd");
 							self.isShow ? self.hide() : self.show();
 						});
 

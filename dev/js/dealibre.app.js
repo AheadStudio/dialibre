@@ -11,6 +11,8 @@ var DealibreApp = {
 			authorized: false
 		},
 		header: "",
+		mobileMenu: "",
+		page: "",
 	},
 	methods: {
 		setAuthorized: function() {
@@ -19,6 +21,10 @@ var DealibreApp = {
 		},
 		typeHeader: function(type) {
 			DealibreApp.data.header = type;
+		},
+		typeMobileMenu: function(type, page = false) {
+			DealibreApp.data.mobileMenu = type;
+			DealibreApp.data.page = page;
 		}
 	},
 	utils: {

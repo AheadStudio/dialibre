@@ -154,5 +154,8 @@ block scripts
 		new Vue({
 			el: "#reviews",
 			data: {
+			},
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("dark-noaut", false);
 			}
 		});

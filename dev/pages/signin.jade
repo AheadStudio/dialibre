@@ -63,5 +63,8 @@ block scripts
 		});
 
 		new Vue({
-			el: "#login"
+			el: "#login",
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+			}
 		});

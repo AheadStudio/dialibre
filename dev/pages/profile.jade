@@ -11,7 +11,7 @@ block content
                 div(class="page-profile-personal")
                     div(class="page-profile-personal--left")
                         div(class="page-profile-personal-holder")
-                            img(src="../dummy/Jon_Smit.jpg", class="page-profile-personal-holder-img")
+                            img(src="../dummy/Jon_Smit_1.jpg", class="page-profile-personal-holder-img")
                         div(class="page-profile-personal-info")
                             div(class="page-profile-personal-info-name") Jon Smit
                             div(class="page-profile-personal-info-company") Company
@@ -136,5 +136,6 @@ block scripts
             created: function() {
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.typeHeader("light");
+                DealibreApp.methods.typeMobileMenu("light-aut", false);
             }
         });
