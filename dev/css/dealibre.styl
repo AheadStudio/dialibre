@@ -48,6 +48,14 @@ body
 	line-height 1
 	cursor default
 
+
+.menu-overlay
+	position fixed
+	top 0
+	left 0
+	right 0
+	bottom 0
+
 .page
 	width 100%
 	min-height 100%
@@ -3815,871 +3823,888 @@ span.form-item--error
 
 	overflow hidden
 
-	.page-chat-dialogues
+.chat-dialogues
+	display block
+	width 35%
+	min-height 100vh
+
+	float left
+
+	background #f2f5fa
+
+	.chat-dialogues-info
 		display block
-		width 35%
-		min-height 100vh
+		width 100%
 
-		float left
+		padding 0 40px 0 95px
+		box-sizing border-box
 
-		background #f2f5fa
+		margin-top 25px
+		margin-bottom 25px
 
-		.page-chat-dialogues-info
+		.chat-dialogues-title
+			display inline-block
+			vertical-align middle
+
+			line-height 1
+
+			margin-right 25px
+			font-family ProximaNovaSemiBold
+
+			font-size 24px
+
+		.chat-dialogues-opproved
+		.chat-dialogues-declined
+			display inline-block
+			vertical-align sub
+
+			font-family  ProximaNovaRegular
+			font-size 16px
+
+			line-height 1
+
+			margin-right 15px
+
+		.chat-dialogues-declined
+			padding-left 15px
+
+			border-left 1px solid #000
+
+	.chat-dialogues-search
+		display block
+		width 100%
+
+		padding 0 40px 0 95px
+		box-sizing border-box
+
+		margin-bottom 25px
+
+		.chat-dialogues-search-form
+			position relative
 			display block
 			width 100%
+			height 100%
 
-			padding 0 40px 0 95px
-			box-sizing border-box
-
-			margin-top 25px
-			margin-bottom 25px
-
-			.page-chat-dialogues-title
-				display inline-block
-				vertical-align middle
-
-				line-height 1
-
-				margin-right 25px
-				font-family ProximaNovaSemiBold
-
-				font-size 24px
-
-			.page-chat-dialogues-opproved
-			.page-chat-dialogues-declined
-				display inline-block
-				vertical-align sub
-
-				font-family  ProximaNovaRegular
-				font-size 16px
-
-				line-height 1
-
-				margin-right 15px
-
-			.page-chat-dialogues-declined
-				padding-left 15px
-
-				border-left 1px solid #000
-
-		.page-chat-dialogues-search
-			display block
-			width 100%
-
-			padding 0 40px 0 95px
-			box-sizing border-box
-
-			margin-bottom 25px
-
-			.page-chat-dialogues-search-form
-				position relative
+			.chat-dialogues-search-input
 				display block
 				width 100%
-				height 100%
 
-				.page-chat-dialogues-search-input
-					display block
-					width 100%
+				border 1px solid #b8c6d6
 
-					border 1px solid #b8c6d6
-
-					padding 10px
-					box-sizing border-box
-
-					background #f2f6fa
-
-					font-family ProximaNovaRegular
-					font-size 16px
-
-					color #2fb0ee
-
-					transition border-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
-
-				.page-chat-dialogues-search-submit
-					position absolute
-					top 50%
-					right 55px
-					width 20px
-					height 20px
-					margin-top -10px
-
-					&:before
-					&:after
-						content ""
-						position absolute
-						top 0
-						left 0
-						width 100%
-						height 100%
-						background-repeat no-repeat
-						background-size contain
-
-						transition opacity 0.3s $transitionAnimation
-
-					&:before
-						background-image url("../i/loupe.png")
-						opacity 1
-					&:after
-						background-image url("../i/loupe_blue.png")
-						opacity 0
-
-				.page-chat-dialogues-search-filter
-					position absolute
-					top 50%
-					right 20px
-					width 20px
-					height 20px
-					margin-top -10px
-
-					&:before
-					&:after
-						content ""
-						position absolute
-						top 0
-						left 0
-						width 100%
-						height 100%
-						background-repeat no-repeat
-						background-size contain
-
-						transition opacity 0.3s $transitionAnimation
-
-					&:before
-						background-image url("../i/settings_grey.png")
-						opacity 1
-					&:after
-						background-image url("../i/settings_blue.png")
-						opacity 0
-
-
-				&:hover
-					.page-chat-dialogues-search-input
-						border-color $colorBlue
-						color $colorBlue
-
-					.page-chat-dialogues-search-submit
-					.page-chat-dialogues-search-filter
-						&:before
-							opacity 0
-						&:after
-							opacity 1
-
-
-		.page-chat-dialogues-items
-			display block
-			width 100%
-
-			&.not-active-toggle
-				display none
-
-			.page-chat-dialogues-item
-				position relative
-				display block
-
-				padding 0 40px 0 95px
+				padding 10px
 				box-sizing border-box
 
-				transition box-shadow 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+				background #f2f6fa
 
-				cursor pointer
+				font-family ProximaNovaRegular
+				font-size 16px
 
-				.page-chat-dialogues-item-container
-					position relative
+				color #2fb0ee
 
-					display flex
-					flex-wrap wrap
-					width 100%
+				transition border-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
 
-					padding 20px 0
-					box-sizing border-box
+			.chat-dialogues-search-submit
+				position absolute
+				top 50%
+				right 55px
+				width 20px
+				height 20px
+				margin-top -10px
 
-					border-bottom 1px solid #b9c2ce
-
-				&:not(.active-tabs):after
+				&:before
+				&:after
+					content ""
 					position absolute
 					top 0
-					right -20px
+					left 0
+					width 100%
+					height 100%
+					background-repeat no-repeat
+					background-size contain
+
+					transition opacity 0.3s $transitionAnimation
+
+				&:before
+					background-image url("../i/loupe.png")
+					opacity 1
+				&:after
+					background-image url("../i/loupe_blue.png")
+					opacity 0
+
+			.chat-dialogues-search-filter
+				position absolute
+				top 50%
+				right 20px
+				width 20px
+				height 20px
+				margin-top -10px
+
+				&:before
+				&:after
+					content ""
+					position absolute
+					top 0
+					left 0
+					width 100%
+					height 100%
+					background-repeat no-repeat
+					background-size contain
+
+					transition opacity 0.3s $transitionAnimation
+
+				&:before
+					background-image url("../i/settings_grey.png")
+					opacity 1
+				&:after
+					background-image url("../i/settings_blue.png")
+					opacity 0
+
+
+			&:hover
+				.chat-dialogues-search-input
+					border-color $colorBlue
+					color $colorBlue
+
+				.chat-dialogues-search-submit
+				.chat-dialogues-search-filter
+					&:before
+						opacity 0
+					&:after
+						opacity 1
+
+
+	.chat-dialogues-items
+		display block
+		width 100%
+
+		&.not-active-toggle
+			display none
+
+		.chat-dialogues-item
+			position relative
+			display block
+
+			padding 0 40px 0 95px
+			box-sizing border-box
+
+			transition box-shadow 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+			cursor pointer
+
+			.chat-dialogues-item-container
+				position relative
+
+				display flex
+				flex-wrap wrap
+				width 100%
+
+				padding 20px 0
+				box-sizing border-box
+
+				border-bottom 1px solid #b9c2ce
+
+			&:not(.active-tabs):after
+				position absolute
+				top 0
+				right -20px
+				content ""
+				width 0
+				height 0
+
+				border-top 73px solid transparent
+				border-left 20px solid #f2f5fa
+				border-bottom 73px solid transparent
+
+				transform translateX(-20px) scale(0.5)
+
+				transition transform 0.3s $transitionAnimation
+
+			&:last-child
+				.chat-dialogues-item-container
+					border-bottom none
+
+			&.active-tabs
+				box-shadow -5px 0px 36px 0px rgba(0,0,0,0.3)
+				transform scale(1.02)
+				background #f2f5fa
+
+				.chat-dialogues-item-container
+					border none
+
+
+
+			&.active-tabs
+				&:after
+					position absolute
+					top 0
+					right -28px
 					content ""
 					width 0
 					height 0
 
 					border-top 73px solid transparent
-					border-left 20px solid #f2f5fa
+					border-left 30px solid #f2f5fa
 					border-bottom 73px solid transparent
 
-					transform translateX(-20px) scale(0.5)
-
-					transition transform 0.3s $transitionAnimation
-
-				&:last-child
-					.page-chat-dialogues-item-container
-						border-bottom none
-
-				&.active-tabs
-					box-shadow -5px 0px 36px 0px rgba(0,0,0,0.3)
-					transform scale(1.02)
-					background #f2f5fa
-
-					.page-chat-dialogues-item-container
-						border none
+			&:hover:not(.active-tabschat-dialogues-item)
+				&:after
+					transform translateX(0px) scale(1)
 
 
 
-				&.active-tabs
-					&:after
-						position absolute
-						top 0
-						right -28px
-						content ""
-						width 0
-						height 0
+			.chat-dialogues-item-holder
+				position: relative
 
-						border-top 73px solid transparent
-						border-left 30px solid #f2f5fa
-						border-bottom 73px solid transparent
+				display inline-block
 
-				&:hover:not(.active-tabspage-chat-dialogues-item)
-					&:after
-						transform translateX(0px) scale(1)
+				width 90px
+				height 90px
 
-
-
-				.page-chat-dialogues-item-holder
-					position: relative
-
-					display inline-block
-
-					width 90px
-					height 90px
-
-					.page-chat-dialogues-item-holder-img
-						position absolute
-						width 100%
-						height 100%
-
-						object-fit cover
-
-				.page-chat-dialogues-item-info
-					display block
-					width 300px
-					margin-left 30px
-
-					.page-chat-dialogues-item-info-row
-						display flex
-						flex-wrap wrap
-						align-items center
-
-						width 100%
-
-						margin-bottom 10px
-
-						&:first-child
-							margin-bottom 5px
-
-						.page-chat-dialogues-item-info-name
-							display block
-
-							margin-right 15px
-
-							font-size 24px
-							font-family ProximaNovaSemiBold
-
-						.page-chat-dialogues-item-info-quantity
-							position relative
-							display block
-
-							width 25px
-							height 25px
-
-							border-radius 50%
-
-							background #2fb0ee
-
-							margin-right 15px
-							span
-								position absolute
-
-								left 50%
-								top 50%
-
-								font-size 14px
-								font-family ProximaNovaRegular
-
-								color #fff
-
-								transform translate(-50%,-50%)
-
-						.page-chat-dialogues-item-info-email
-						.page-chat-dialogues-item-info-phone
-						.page-chat-dialogues-item-info-company
-						.page-chat-dialogues-item-info-position
-						.page-chat-dialogues-item-info-country
-							display block
-							font-size 12px
-							font-family ProximaNovaRegular
-
-							color #000
-
-						.page-chat-dialogues-item-info-email
-						.page-chat-dialogues-item-info-company
-							margin-right 10px
-
-						.page-chat-dialogues-item-info-phone
-						.page-chat-dialogues-item-info-position
-							padding-left 10px
-							border-left 1px solid #000
-
-		.page-chat-dialogues-item-detail
-			position relative
-			display block
-			width 100%
-
-			padding 0 40px 0 95px
-			box-sizing border-box
-
-			&:after
-				position absolute
-				top 0
-				right -30px
-				content ""
-				width 0
-				height 0
-
-				border-top 87px solid transparent
-				border-left 30px solid #f2f5fa
-				border-bottom 87px solid transparent
-
-			&.not-active-toggle
-				display none
-
-			.page-chat-dialogues-item-detai-info-row
-				display block
-				margin-bottom 15px
-
-			.page-chat-dialogues-item-detail-holder
-				position relative
-				display block
-
-				width 320px
-				height 320px
-
-				.page-chat-dialogues-item-detail-holder-img
+				.chat-dialogues-item-holder-img
 					position absolute
-					display block
 					width 100%
 					height 100%
 
-					min-width 100%
-
 					object-fit cover
 
-					cursor pointer
-
-			.page-chat-dialogues-item-detai-info-name
-				display inline-block
-				vertical-align middle
-
-				margin-right 15px
-
-				font-size 24px
-				font-family ProximaNovaSemiBold
-
-			.page-chat-dialogues-item-detai-info-quantity
-				position relative
-				display inline-block
-				vertical-align middle
-
-				margin-right 15px
-
-				font-size 24px
-				font-family ProximaNovaSemiBold
-
-				width 25px
-				height 25px
-
-				border-radius 50%
-
-				background #2fb0ee
-
-				margin-right 15px
-				span
-					position absolute
-
-					left 50%
-					top 50%
-
-					font-size 14px
-					font-family ProximaNovaRegular
-
-					color #fff
-
-					transform translate(-50%,-50%)
-
-
-			.page-chat-dialogues-item-detai-info-mail-icon
-				display inline-block
-				vertical-align middle
-			.page-chat-dialogues-item-detai-info
+			.chat-dialogues-item-info
 				display block
-				width 100%
-				box-sizing border-box
+				width auto
+				margin-left 30px
 
+				.chat-dialogues-item-info-row
+					display flex
+					flex-wrap wrap
+					align-items center
 
-				.page-chat-dialogues-item-detai-info-email
-				.page-chat-dialogues-item-detai-info-phone
-				.page-chat-dialogues-item-detai-info-company
-				.page-chat-dialogues-item-detai-info-position
-				.page-chat-dialogues-item-detai-info-country
-					display inline-block
-					vertical-align middle
-					font-size 16px
+					width 100%
 
-					font-family ProximaNovaRegular
+					margin-bottom 10px
 
-				.page-chat-dialogues-item-detai-info-phone
-				.page-chat-dialogues-item-detai-info-position
-					margin-left 10px
-					padding-left 10px
+					&:first-child
+						margin-bottom 5px
 
-					border-left 1px solid #000
-
-
-	.page-chat-message
-		display block
-		width 65%
-
-		float right
-
-		.tabs-content-item
-			display none
-
-			&.active-tabs
-				display block
-				height 100%
-
-		.page-chat-message-filter
-			display block
-			width 100%
-
-			padding 20px 0
-			padding-left 70px
-
-			margin-bottom 105px
-
-			box-sizing border-box
-
-			border-bottom 1px solid #c2c9d1
-
-
-			.page-chat-message-filter-item
-				display inline-block
-				vertical-align middle
-
-				margin-right 85px
-
-				.page-chat-message-filter-checkbox
-					cursor pointer
-					.page-chat-message-filter-checkbox-title
-						display inline-block
-						vertical-align middle
-						margin-left 15px
-
-						font-size 12px
-						font-family ProximaNovaRegular
-
-				.jcf-select-message-filter-select
-					position relative
-					display block
-					width 265px
-					height 100%
-
-					padding 10px
-
-					border 1px solid #abb1b9
-
-					box-sizing border-box
-
-					cursor pointer
-
-					transition border 0.3s $transitionAnimation
-
-					.jcf-select-text
-
-						span
-							font-size 12px
-
-							color $colorBlue
-							transition color 0.3s $transitionAnimation
-
-						.jcf-option-hideme
-							font-size 12px
-
-							color #8191a2
-
-							transition color 0.3s $transitionAnimation
-					.jcf-select-opener
-						position absolute
-						top 15px
-						right 20px
-
-						width 0
-						height 0
-
-						border-top 6px solid #6284ab
-						border-left 3px solid transparent
-						border-right 3px solid transparent
-
-						transition transform 0.3s $transitionAnimation, border 0.3s $transitionAnimation
-
-					&.jcf-drop-active
-					&:hover
-						border 1px solid $colorBlue
-
-					&.jcf-drop-active
-						.jcf-select-text
-							.jcf-option-hideme
-								color $colorBlue
-
-
-					&.jcf-drop-active
-						.jcf-select-opener
-							transform rotate(-180deg)
-
-		.page-chat-message-name-deal
-			display block
-			width 100%
-			padding 0 30px
-			box-sizing border-box
-
-			.page-chat-message-name-deal-inner
-				display flex
-				flex-wrap wrap
-				align-items center
-				justify-content space-between
-
-				width 100%
-
-				border-top 1px solid #c2c9d1
-				border-bottom 1px solid #c2c9d1
-
-				padding 30px
-				padding-right 130px
-				box-sizing border-box
-
-				.page-chat-message-name-deal-info
-					display block
-					width 70%
-
-					.page-chat-message-name-deal-title
+					.chat-dialogues-item-info-name
 						display block
-						width 100%
 
-						margin-bottom 15px
+						margin-right 15px
 
 						font-size 24px
 						font-family ProximaNovaSemiBold
 
-						text-align left
-
-					.page-chat-message-name-deal-text
+					.chat-dialogues-item-info-quantity
+						position relative
 						display block
-						width 100%
 
-						p
-							display block
+						width 25px
+						height 25px
 
-							font-size 16px
-							font-family  ProximaNovaRegular
+						border-radius 50%
 
-							margin-bottom 15px
+						background #2fb0ee
 
-							&:last-child
-								margin-bottom 0
+						margin-right 15px
+						span
+							position absolute
+
+							left 50%
+							top 50%
+
+							font-size 14px
+							font-family ProximaNovaRegular
+
+							color #fff
+
+							transform translate(-50%,-50%)
+
+					.chat-dialogues-item-info-email
+					.chat-dialogues-item-info-phone
+					.chat-dialogues-item-info-company
+					.chat-dialogues-item-info-position
+					.chat-dialogues-item-info-country
+						display block
+						font-size 12px
+						font-family ProximaNovaRegular
+
+						color #000
+
+					.chat-dialogues-item-info-email
+					.chat-dialogues-item-info-company
+						margin-right 10px
+
+					.chat-dialogues-item-info-phone
+					.chat-dialogues-item-info-position
+						padding-left 10px
+						border-left 1px solid #000
+
+	.chat-dialogues-item-detail
+		position relative
+		display block
+		width 100%
+
+		padding 0 40px 0 95px
+		box-sizing border-box
+
+		&:after
+			position absolute
+			top 0
+			right -30px
+			content ""
+			width 0
+			height 0
+
+			border-top 87px solid transparent
+			border-left 30px solid #f2f5fa
+			border-bottom 87px solid transparent
+
+		&.not-active-toggle
+			display none
+
+		.chat-dialogues-item-detai-info-row
+			display block
+			margin-bottom 15px
+
+		.chat-dialogues-item-detail-holder
+			position relative
+			display block
+
+			width 320px
+			height 320px
+
+			.chat-dialogues-item-detail-holder-img
+				position absolute
+				display block
+				width 100%
+				height 100%
+
+				min-width 100%
+
+				object-fit cover
+
+				cursor pointer
+
+		.chat-dialogues-item-detai-info-name
+			display inline-block
+			vertical-align middle
+
+			margin-right 15px
+
+			font-size 24px
+			font-family ProximaNovaSemiBold
+
+		.chat-dialogues-item-detai-info-quantity
+			position relative
+			display inline-block
+			vertical-align middle
+
+			margin-right 15px
+
+			font-size 24px
+			font-family ProximaNovaSemiBold
+
+			width 25px
+			height 25px
+
+			border-radius 50%
+
+			background #2fb0ee
+
+			margin-right 15px
+			span
+				position absolute
+
+				left 50%
+				top 50%
+
+				font-size 14px
+				font-family ProximaNovaRegular
+
+				color #fff
+
+				transform translate(-50%,-50%)
 
 
-				.page-chat-message-name-deal-control
+		.chat-dialogues-item-detai-info-mail-icon
+			display inline-block
+			vertical-align middle
+		.chat-dialogues-item-detai-info
+			display block
+			width 100%
+			box-sizing border-box
+
+
+			.chat-dialogues-item-detai-info-email
+			.chat-dialogues-item-detai-info-phone
+			.chat-dialogues-item-detai-info-company
+			.chat-dialogues-item-detai-info-position
+			.chat-dialogues-item-detai-info-country
+				display inline-block
+				vertical-align middle
+				font-size 16px
+
+				font-family ProximaNovaRegular
+
+			.chat-dialogues-item-detai-info-phone
+			.chat-dialogues-item-detai-info-position
+				margin-left 10px
+				padding-left 10px
+
+				border-left 1px solid #000
+
+
+.chat-message
+	display block
+	width 65%
+
+	float right
+
+	.tabs-content-item
+		display none
+
+		&.active-tabs
+			display block
+			height 100%
+
+	.chat-message-filter
+		display block
+		width 100%
+
+		padding 20px 0
+		padding-left 70px
+
+		margin-bottom 105px
+
+		box-sizing border-box
+
+		border-bottom 1px solid #c2c9d1
+
+
+		.chat-message-filter-item
+			display inline-block
+			vertical-align middle
+
+			margin-right 85px
+
+			.chat-message-filter-checkbox
+				cursor pointer
+				.chat-message-filter-checkbox-title
+					display inline-block
+					vertical-align middle
+					margin-left 15px
+
+					font-size 12px
+					font-family ProximaNovaRegular
+
+			.jcf-select-message-filter-select
+				position relative
+				display block
+				width 265px
+				height 100%
+
+				padding 10px
+
+				border 1px solid #abb1b9
+
+				box-sizing border-box
+
+				cursor pointer
+
+				transition border 0.3s $transitionAnimation
+
+				.jcf-select-text
+
+					span
+						font-size 12px
+
+						color $colorBlue
+						transition color 0.3s $transitionAnimation
+
+					.jcf-option-hideme
+						font-size 12px
+
+						color #8191a2
+
+						transition color 0.3s $transitionAnimation
+				.jcf-select-opener
+					position absolute
+					top 15px
+					right 20px
+
+					width 0
+					height 0
+
+					border-top 6px solid #6284ab
+					border-left 3px solid transparent
+					border-right 3px solid transparent
+
+					transition transform 0.3s $transitionAnimation, border 0.3s $transitionAnimation
+
+				&.jcf-drop-active
+				&:hover
+					border 1px solid $colorBlue
+
+				&.jcf-drop-active
+					.jcf-select-text
+						.jcf-option-hideme
+							color $colorBlue
+
+
+				&.jcf-drop-active
+					.jcf-select-opener
+						transform rotate(-180deg)
+
+	.chat-message-name-deal
+		display block
+		width 100%
+		padding 0 30px
+		box-sizing border-box
+
+		.chat-message-name-deal-inner
+			display flex
+			flex-wrap wrap
+			align-items center
+			justify-content space-between
+
+			width 100%
+
+			border-top 1px solid #c2c9d1
+			border-bottom 1px solid #c2c9d1
+
+			padding 30px
+			padding-right 130px
+			box-sizing border-box
+
+			.chat-message-name-deal-info
+				display block
+				width 70%
+
+				.chat-message-name-deal-title
 					display block
+					width 100%
 
-					.btn
-						display block
-						width 165px
+					margin-bottom 15px
 
-						padding 15px
-						box-sizing border-box
+					font-size 24px
+					font-family ProximaNovaSemiBold
 
-						text-align center
+					text-align left
 
-						font-size 12px
-						font-family ProximaNovaBold
+				.chat-message-name-deal-text
+					display block
+					width 100%
 
-					.page-chat-message-name-deal-control-approve
-						margin-bottom 10px
-					.page-chat-message-name-deal-control-decline
-						padding 14px 0
+					font-size 16px
+					font-family  ProximaNovaRegular
 
-					.page-chat-message-name-deal-control-information
+					p
 						display block
 
-						margin-bottom 10px
+						font-size 16px
+						font-family  ProximaNovaRegular
 
-						font-size 12px
-						font-family ProximaNovaBold
-
-						text-transform uppercase
-
-						color #2fb0ee
+						margin-bottom 15px
 
 						&:last-child
 							margin-bottom 0
 
-		.page-chat-message-items
-			display block
-			padding 35px 160px 0 60px
 
-			box-sizing border-box
-
-			.page-chat-message-item
-				display flex
-				flex-wrap wrap
-				align-items flex-start
-				justify-content space-between
-
-				margin-bottom 40px
-
-				&.page-chat-message-item--user
-					.page-chat-message-item-text
-						&:after
-							content ""
-							position absolute
-							left 100%
-							top calc(50% - 20px)
-
-							width 0
-							height 0
-
-							border-top 12px solid transparent
-							border-left 24px solid #e1ebfa
-							border-bottom 12px solid transparent
-
-				&.page-chat-message-item--companion
-					flex-direction row-reverse
-
-					.page-chat-message-item-text
-						&:before
-							content ""
-							position absolute
-							right 100%
-							top calc(50% - 20px)
-
-							width 0
-							height 0
-
-							border-top 12px solid transparent
-							border-right 24px solid #e1ebfa
-							border-bottom 12px solid transparent
-
-
-				.page-chat-message-item-text
-					position: relative
-
-					display block
-					width 85%
-
-					padding 15px 55px
-					box-sizing border-box
-
-					border-radius 5px
-
-					background: #e1ebfa
-
-
-					.page-chat-message-item-text-data
-					p
-						display block
-						width 100%
-
-						font-size 14px
-						font-family ProximaNovaRegular
-
-						margin-bottom 10px
-
-					.page-chat-message-item-text-link
-						display block
-
-						.page-chat-message-item-text-link-icon
-							display inline-block
-							vertical-align middle
-
-							margin-right 5px
-
-						.page-chat-message-item-text-link-title
-							display inline-block
-							vertical-align middle
-
-							font-size 14px
-							font-family ProximaNovaBold
-
-							border-bottom 1px solid #000
-
-							color #000
-
-							transition border-bottom-color 0.3s $transitionAnimation
-
-						&:hover
-							.page-chat-message-item-text-link-title
-								border-bottom 1px solid transparent
-
-
-
-
-
-
-
-				.page-chat-message-item-holder
-					display block
-
-					min-height 110px
-					min-width 100px
-
-					.page-chat-message-item-holder-img
-						display block
-						width 100%
-						min-width 100%
-
-					.page-chat-message-item-holder-name
-						display block
-						width 100%
-
-						margin-top 5px
-
-						font-size 14px
-						font-family  ProximaNovaSemiBold
-
-		.page-chat-message-send
-			display block
-			width 100%
-
-			margin-top 30px
-			margin-bottom 30px
-
-			padding-left 60px
-			padding-right 160px
-			box-sizing border-box
-
-
-			.page-chat-message-send-form
-				position relative
-
-
-			.page-chat-message-send-row
+			.chat-message-name-deal-control
 				display block
 
-				.fileuploader
+				.btn
+					display block
+					width 165px
+
+					padding 15px
+					box-sizing border-box
+
+					text-align center
+
+					font-size 12px
+					font-family ProximaNovaBold
+
+				.chat-message-name-deal-control-approve
+					margin-bottom 10px
+				.chat-message-name-deal-control-decline
+					padding 14px 0
+
+				.chat-message-name-deal-control-information
+					display block
+
+					margin-bottom 10px
+
+					font-size 12px
+					font-family ProximaNovaBold
+
+					text-transform uppercase
+
+					color #2fb0ee
+
+					&:last-child
+						margin-bottom 0
+
+	.chat-message-items
+		display block
+		padding 35px 160px 0 60px
+
+		box-sizing border-box
+
+		.chat-message-item
+			display flex
+			align-items flex-start
+			justify-content space-between
+
+			margin-bottom 40px
+
+			&.chat-message-item--user
+				.chat-message-item-text
+					margin-right 5%
+
+					&:after
+						content ""
+						position absolute
+						left 100%
+						top calc(50% - 20px)
+
+						width 0
+						height 0
+
+						border-top 12px solid transparent
+						border-left 24px solid #e1ebfa
+						border-bottom 12px solid transparent
+
+				.chat-message-item-holder
+					.chat-message-item-holder-name
+						text-align right
+
+			&.chat-message-item--companion
+				flex-direction row-reverse
+
+				.chat-message-item-text
+					margin-left 5%
+
+					&:before
+						content ""
+						position absolute
+						right 100%
+						top calc(50% - 20px)
+
+						width 0
+						height 0
+
+						border-top 12px solid transparent
+						border-right 24px solid #e1ebfa
+						border-bottom 12px solid transparent
+
+				.chat-message-item-holder
+					.chat-message-item-holder-name
+						text-align left
+
+			.chat-message-item-text
+				position: relative
+
+				display block
+				width 80%
+
+				padding 15px 55px
+				box-sizing border-box
+
+				border-radius 5px
+
+				background: #e1ebfa
+
+				font-size 14px
+
+				.chat-message-item-text-data
+				p
+					display block
+					width 100%
+
+					font-size 14px
+					font-family ProximaNovaRegular
+
+					margin-bottom 10px
+
+				.chat-message-item-text-link
+					display block
+
+					.chat-message-item-text-link-icon
+						display inline-block
+						vertical-align middle
+
+						margin-right 5px
+
+					.chat-message-item-text-link-title
+						display inline-block
+						vertical-align middle
+
+						font-size 14px
+						font-family ProximaNovaBold
+
+						border-bottom 1px solid #000
+
+						color #000
+
+						transition border-bottom-color 0.3s $transitionAnimation
+
+					&:hover
+						.chat-message-item-text-link-title
+							border-bottom 1px solid transparent
+
+
+			.chat-message-item-holder
+				display block
+				width 15%
+
+				.chat-message-item-holder-img
+					display block
+					width 100%
+					min-width 100%
+
+				.chat-message-item-holder-name
+					display block
+					width 100%
+
+					margin-top 5px
+
+					font-size 14px
+					font-family  ProximaNovaSemiBold
+
+	.chat-message-send
+		display block
+		width 100%
+
+		margin-top 30px
+		margin-bottom 30px
+
+		padding-left 60px
+		padding-right 160px
+		box-sizing border-box
+
+
+		.chat-message-send-form
+			position relative
+
+
+		.chat-message-send-row
+			display block
+
+			.fileuploader
+				display inline-block
+				width 55px
+				height 40px
+
+				margin 0
+				padding 0
+
+				vertical-align top
+
+				font-size 0
+				line-height 0
+
+				border-radius 0
+
+				.fileuploader-items
+					position absolute
+					left 0
+					top 100px
+
+					display block
+
+					overflow hidden
+
+					.fileuploader-item
+						display block
+						padding 0
+						margin-bottom 15px
+						border 0
+
+						.columns
+							display block
+							.column-title
+								div
+									overflow inherit
+
+			.chat-message-send-item-holder
+				display inline-block
+				vertical-align: bottom
+
+
+				&--w4
+					display block
+					width 100%
+					padding-right 125px
+
+					box-sizing border-box
+
+				&--w5
+					position relative
+
+					width 120px
+					bottom 40px
+
+					float right
+
+				.chat-message-send-item--textarea
+					display block
+
+					width 100%
+
+					padding 15px 20px
+					box-sizing border-box
+
+					background-color #FF
+					border 1px solid #abb1b9
+
+					font-family "ProximaNovaRegular"
+					font-size 18px
+					line-height 18px
+
+					transition color .3s $transitionAnimation, border-color .3s $transitionAnimation
+
+					resize none
+
+					&::-webkit-input-placeholder
+						width 100%
+						color #4c637b
+
+						transition transform .3s $transitionAnimation, font-size .3s $transitionAnimation
+
+					&:hover
+					&:focus
+						border-color $colorBlue
+
+						color $colorBlue
+
+					&:focus
+						&::-webkit-input-placeholder
+							font-size 12px
+
+							transform translateY(-15px)
+
+
+				.chat-message-send-item-btn
+					position relative
 					display inline-block
+					padding 15px 20px
+
 					width 55px
 					height 40px
-
-					margin 0
-					padding 0
-
-					vertical-align top
 
 					font-size 0
 					line-height 0
 
-					border-radius 0
+					margin-right 5px
 
-					.fileuploader-items
+					&:last-child
+						margin-right 0
+
+					img
 						position absolute
-						left 0
-						top 100px
+						top 50%
+						left 50%
 
-						display block
-
-						overflow hidden
-
-						.fileuploader-item
-							display block
-							padding 0
-							margin-bottom 15px
-							border 0
-
-							.columns
-								display block
-								.column-title
-									div
-										overflow inherit
-
-				.page-chat-message-send-item-holder
-					display inline-block
-					vertical-align: bottom
-
-
-					&--w4
-						width 87%
-					&--w5
-						width 11.7%
-
-					.page-chat-message-send-item--textarea
-						display block
-
-						width 100%
-
-						padding 15px 20px
-						box-sizing border-box
-
-						background-color #FF
-						border 1px solid #abb1b9
-
-						font-family "ProximaNovaRegular"
-						font-size 18px
-						line-height 18px
-
-						transition color .3s $transitionAnimation, border-color .3s $transitionAnimation
-
-						resize none
-
-						&::-webkit-input-placeholder
-							width 100%
-							color #4c637b
-
-							transition transform .3s $transitionAnimation, font-size .3s $transitionAnimation
-
-						&:hover
-						&:focus
-							border-color $colorBlue
-
-							color $colorBlue
-
-						&:focus
-							&::-webkit-input-placeholder
-								font-size 12px
-
-								transform translateY(-15px)
-
-
-					.page-chat-message-send-item-btn
-						position relative
-						display inline-block
-						padding 15px 20px
-
-						width 55px
-						height 40px
-
-						font-size 0
-						line-height 0
-
-						margin-right 5px
-
-						&:last-child
-							margin-right 0
-
-						img
-							position absolute
-							top 50%
-							left 50%
-
-							transform translate(-50%,-50%)
+						transform translate(-50%,-50%)
 
 
 
@@ -5253,3 +5278,121 @@ span.form-item--error
 /** //modal window **/
 
 /*** //PAGE PROFILE ***/
+
+/** mobile panels **/
+
+.mobile-panel
+	position fixed
+	top 0
+	left 0
+	bottom 0
+
+	display none
+	width 305px
+	min-height 100vh
+
+	z-index 99999999
+
+	transform translateX(-300px)
+	opacity 0
+
+	transition 0.3s opacity $transitionAnimation, 0.3s transform $transitionAnimation
+
+	&.active
+		transform translateX(0px)
+		opacity 1
+	&--chat
+		.chat-logo
+			position relative
+			display block
+
+			height 70px
+			background $colorDarkBlue
+
+			&:after
+				content ""
+
+				position absolute
+				top 29px
+				right 35px
+
+				display block
+				width 10px
+				height 16px
+
+				background-image url("../i/arrow_left.png")
+				background-repeat no-repeat
+
+			.chat-logo-img
+				display block
+				width 100%
+				min-width 100%
+
+				padding 15px 125px 25px 15px
+
+				box-sizing border-box
+
+		.chat-dialogues
+			width 100%
+
+			.chat-dialogues-info
+				padding 0px 10px
+				margin-bottom 15px
+
+				.chat-dialogues-title
+					margin-right 45px
+					font-size 18px
+
+				.chat-dialogues-opproved
+					margin-right 18px
+					font-size 12px
+
+				.chat-dialogues-declined
+					margin-right 0
+					padding-left 17px
+					font-size 12px
+
+			.chat-dialogues-search
+				padding 0 10px
+				margin-bottom 5px
+
+			.chat-dialogues-items
+				position fixed
+
+				top 185px
+				bottom 0
+				left 0
+
+				display block
+				width 100%
+
+				overflow-y auto
+
+				.chat-dialogues-item
+					padding 0 10px
+
+					&.active-tabs:after
+						border-top 55px solid transparent
+						border-left 30px solid #f2f5fa
+						border-bottom 55px solid transparent
+
+					.chat-dialogues-item-container
+						padding 10px 0
+
+					.chat-dialogues-item-info
+						width auto
+						margin-left 10px
+
+						.chat-dialogues-item-info-row
+							.chat-dialogues-item-info-name
+								font-size 16px
+
+							.chat-dialogues-item-info-country
+							.chat-dialogues-item-info-email
+							.chat-dialogues-item-info-phone
+							.chat-dialogues-item-info-company
+							.chat-dialogues-item-info-position
+								font-size 10px
+
+
+/** //mobile panels **/

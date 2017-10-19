@@ -11,8 +11,7 @@
 
 		$sel.colorFilter = $(".main-filter-items").css("background-color");
 
-		$sel.menuBurger = $(".header-mobile-burger", $sel.body);
-		$sel.headerMobile = $(".header-mobile-menu", $sel.body);
+
 
 		return {
 			page: {
@@ -232,31 +231,48 @@
 				menuMobile: {
 					isShow: false,
 					init: function() {
-
 						var self = this;
-						$sel.menuBurger.on("click", function() {
-							self.isShow ? self.hide() : self.show();
+
+
+						$sel.body.on("click", ".header-mobile-burger", function() {
+							$panel = $(".header-mobile-menu", $sel.body);
+							self.isShow ? self.hide($(this), $panel, 300) : self.show($(this), $panel, 300);
 						});
 
+						$sel.body.on("click", ".header-mobile-open",  function() {
+							$panel = $(".mobile-panel", $sel.body);
+
+							self.isShow ? self.hide($(this), $panel, 100) : self.show($(this), $panel, 100);
+
+							$(".menu-overlay").on("click", $sel.body, function() {
+								self.hide($(this), $panel, 100)
+							});
+
+						});
+
+
 					},
-					show: function() {
+					show: function($menu, $panel, time) {
 
 						this.isShow = true;
-						$sel.menuBurger.addClass("active");
+						$menu.addClass("active");
 
-						$sel.headerMobile.css("display", "block");
+						$panel.css("display", "block");
 						setTimeout(function() {
-							$sel.headerMobile.addClass("active");
-						}, 300);
+							$panel.addClass("active");
+							$sel.body.addClass("show-menu");
+
+						}, time);
 					},
-					hide: function() {
+					hide: function($menu, $panel, time) {
 						this.isShow = false;
-						$sel.menuBurger.removeClass("active");
+						$menu.removeClass("active");
 
-						$sel.headerMobile.removeClass("active");
+						$panel.removeClass("active");
 						setTimeout(function() {
-							$sel.headerMobile.css("display", "none");
-						}, 300);
+							$panel.css("display", "none");
+							$sel.body.removeClass("show-menu");
+						}, time);
 
 					}
 				},
@@ -437,7 +453,7 @@
 						limit: 5,
 						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
 						theme: "One-button",
-						changeInput: '<button type="button" class="btn btn--green page-chat-message-send-item-btn"><img src="../i/affix.png" page-chat-message-send-item-btn-img=""></button>',
+						changeInput: '<button type="button" class="btn btn--green chat-message-send-item-btn"><img src="../i/affix.png" class="chat-message-send-item-btn-img"></button>',
 						addMore: true,
 						captions: {
 			            	button: function(options) {
@@ -701,7 +717,7 @@
 
 			scrollFix: {
 				init: function() {
-					$containerStick = $(".page-chat-message");
+					$containerStick = $(".chat-message");
 					$containerStick.stick_in_parent({
 						container: $(".page-chat"),
 					});

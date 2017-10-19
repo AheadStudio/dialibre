@@ -70,6 +70,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		])
 
 	body(itemscope, itemtype="http://schema.org/WebPage", class="#{page.bodyClass ? page.bodyClass : ''}")
+		div(class="menu-overlay")
 
 		div(class="page")
 			header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
@@ -329,7 +330,163 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 						a(href="#", class="popup-profile-events-mail")
 							span(class="popup-profile-events-count") 566
 				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
-	
+		
+		div(class="mobile-panel mobile-panel--chat")
+			div(class="chat-logo header-mobile-open")
+				img(src="../i/logo_white.png", class="chat-logo-img")
+			div(class="chat-dialogues")
+				div(class="chat-dialogues-info")
+					span(class="chat-dialogues-title") Messaging
+					span(class="chat-dialogues-opproved") 5 opproved
+					span(class="chat-dialogues-declined") 2 declined
+				div(class="chat-dialogues-search")
+					form(action"#", class="chat-dialogues-search-form")
+						input(type="text", class="chat-dialogues-search-input")
+						button(type="submit", class="chat-dialogues-search-submit")
+						button(type="button", class="chat-dialogues-search-filter")
+				
+				div(class="chat-dialogues-items toggle-container replace-scrollbar")
+					div(data-tabs="chat-1", class="chat-dialogues-item tabs-heading-item active-tabs")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Robert_Smit.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Robert Smit
+									span(class="chat-dialogues-item-info-quantity") 
+										span 1
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position
+				
+					div(data-tabs="chat-2", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Amely_Fox.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Amely Fox
+									span(class="chat-dialogues-item-info-quantity") 
+										span 5
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position
+					div(data-tabs="chat-3", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Oliver_Brown.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Oliver Brown
+									img(src="../i/icon_mail_open.png", class="chat-dialogues-item-info-mailopen-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position
+								
+					div(data-tabs="chat-4", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/admin.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Administrator
+									
+					div(data-tabs="chat-5", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Robert_Smit.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Robert Smit
+									span(class="chat-dialogues-item-info-quantity") 
+										span 1
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position			
+										
+					div(data-tabs="chat-5", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Robert_Smit.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Robert Smit
+									span(class="chat-dialogues-item-info-quantity") 
+										span 1
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position	
+						
+						
+					div(data-tabs="chat-5", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Robert_Smit.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Robert Smit
+									span(class="chat-dialogues-item-info-quantity") 
+										span 1
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position			
+										
+					div(data-tabs="chat-5", class="chat-dialogues-item tabs-heading-item")
+						div(class="chat-dialogues-item-container")
+							div(class="chat-dialogues-item-holder")
+								img(src="../dummy/Robert_Smit.jpg", class="chat-dialogues-item-holder-img")
+							div(class="chat-dialogues-item-info")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-name") Robert Smit
+									span(class="chat-dialogues-item-info-quantity") 
+										span 1
+									img(src="../i/icon_mail.png", class="chat-dialogues-item-info-mail-icon")
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-country") Country
+								div(class="chat-dialogues-item-info-row")
+									a(href="mailto:Rober@ro.ro", class="link chat-dialogues-item-info-email") Rober@ro.ro
+									a(href="tel:+79508585456", class="link chat-dialogues-item-info-phone") +7 950 858 54 56
+								div(class="chat-dialogues-item-info-row")
+									div(class="chat-dialogues-item-info-company") Company
+									div(class="chat-dialogues-item-info-position") Position				
+
+									
+												
 		if page.code != "search" || page.code != "chat" 
 			div(id="footer-holder")
 				pagefooter()
