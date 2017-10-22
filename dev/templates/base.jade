@@ -168,7 +168,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 										a(href="#profile_popup", class="header-personal-avatar popup")
 										a(href="#profile_popup", class="header-personal-initials popup") J. S.
 						div(class="header-mobile header-mobile--white header-mobile--aut header-mobile--full", v-show="states.mobileMenu == 'light-aut' && states.page == 'chat'")
-							div(class="header-mobile-open")
+							div(class="header-mobile-open", id="open-chat")
 								img(src="../i/chat_group.png", class="header-mobile-open-img")
 							div(class="header-mobile-burger")
 								div(class="header-mobile-burger-inner")
@@ -197,6 +197,56 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 								a(href="#", class="header-personal-mail")
 									span(class="header-personal-count") 566
 								button(type="submit", class="btn btn--green header-personal-btn") Get Credits
+								a(href="#profile_popup", class="header-personal-avatar popup")
+							div(class="header-mobile-menu")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "search",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "my deals",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "help",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+						div(class="header-mobile header-mobile--white header-mobile--aut header-mobile--full", v-show="states.mobileMenu == 'light-aut' && states.page == 'search'")
+							div(class="header-mobile-open", id="open-search")
+								img(src="../i/filter.png", class="header-mobile-open-img")
+							div(class="header-mobile-burger")
+								div(class="header-mobile-burger-inner")
+							div(class="header-menu-register")
+								+menu({
+									rootClass: "header-menu",
+									items: [
+										{
+											name: "search",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "my deals",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}, {
+											name: "help",
+											href: "#",
+											current: (page.code == "#" ? true : false)
+										}
+									]
+								})
+							div(class="header-personal")
+								a(href="#", class="header-personal-alerts")
+									span(class="header-personal-count") 566
+								a(href="#", class="header-personal-mail")
+									span(class="header-personal-count") 566
+								button(type="submit", class="btn btn--green header-personal-btn") Share you deal
 								a(href="#profile_popup", class="header-personal-avatar popup")
 							div(class="header-mobile-menu")
 								+menu({
@@ -331,9 +381,9 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							span(class="popup-profile-events-count") 566
 				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
 		
-		div(class="mobile-panel mobile-panel--chat")
-			div(class="chat-logo header-mobile-open")
-				img(src="../i/logo_white.png", class="chat-logo-img")
+		div(class="mobile-panel mobile-panel--chat", data-open="open-chat")
+			div(class="mobile-logo header-mobile-open", id="open-chat")
+				img(src="../i/logo_white.png", class="mobile-logo-img")
 			div(class="chat-dialogues")
 				div(class="chat-dialogues-info")
 					span(class="chat-dialogues-title") Messaging
@@ -485,8 +535,163 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 									div(class="chat-dialogues-item-info-company") Company
 									div(class="chat-dialogues-item-info-position") Position				
 
-									
-												
+		div(class="mobile-panel mobile-panel--search", data-open="open-search")
+			div(class="mobile-logo header-mobile-open", id="open-search")
+				img(src="../i/logo_white.png", class="mobile-logo-img")
+
+			div(class="main-filter replace-scrollbar", data-toggle-hide="main-filter-new")
+				div(class="main-filter-items", style="background-color: #4c637b")
+					div(class="main-filter-item")
+						a(href="#newsearch", class="btn btn--white-inverse filter-button popup") new search
+						a(href="#newsearch", class="btn btn--white filter-button popup") my search
+
+						div(class="filter-radio-items")
+							label(class="filter-radio")
+								input(type="radio", name="deals", class="filter-radio-item")
+								span(class="filter-radio-title") All deals
+							label(class="filter-radio")
+								input(type="radio", name="deals", class="filter-radio-item")
+								span(class="filter-radio-title") My deals
+						label(class="filter-checkbox")
+							input(type="checkbox", class="filter-checkbox-item")
+							span(class="filter-checkbox-title") Industry
+							
+
+					div(class="filter-accordion", data-color="rgb(86, 114, 142)", data-container="location")
+						div(class="main-filter-item main-filter-item-header")
+							label(class="filter-checkbox", id="location")
+								input(type="checkbox", class="filter-checkbox-item")
+								span(class="filter-checkbox-title") Location
+						div(class="main-filter-item-content main-filter-item-content--lvl1", data-filter="location")                    
+							div(class="main-filter-item")
+								label(class="filter-checkbox")
+									input(type="checkbox", class="filter-checkbox-item")
+									span(class="filter-checkbox-title") Africa
+							div(class="main-filter-item")
+								label(class="filter-checkbox")
+									input(type="checkbox", class="filter-checkbox-item")
+									span(class="filter-checkbox-title") Australia / Oceania
+							div(class="main-filter-item")
+								label(class="filter-checkbox")
+									input(type="checkbox", class="filter-checkbox-item")
+									span(class="filter-checkbox-title") Asia
+							div(class="filter-accordion", data-color="rgb(104, 135, 166)", data-container="europe")
+								div(class="main-filter-item main-filter-item-header")
+									label(class="filter-checkbox", id="europe")
+										input(type="checkbox", class="filter-checkbox-item")
+										span(class="filter-checkbox-title") Europe
+								div(class="main-filter-item-content main-filter-item-content--lvl2 replace-scrollbar", data-filter="europe")   
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Albania
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Andorra
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Armenia
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Austria
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Belarus                    
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Belgium
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Albania
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Andorra
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Armenia
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Austria
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Belarus
+									div(class="main-filter-item")
+										label(class="filter-checkbox")
+											input(type="checkbox", class="filter-checkbox-item")
+											span(class="filter-checkbox-title") Belgium    
+							div(class="main-filter-item")
+								label(class="filter-checkbox")
+									input(type="checkbox", class="filter-checkbox-item")
+									span(class="filter-checkbox-title") North America
+							div(class="main-filter-item")
+								label(class="filter-checkbox")
+									input(type="checkbox", class="filter-checkbox-item")
+									span(class="filter-checkbox-title") South America
+					div(class="main-filter-item")
+						label(class="filter-checkbox")
+							input(type="checkbox", class="filter-checkbox-item")
+							span(class="filter-checkbox-title") Revenue
+					div(class="filter-accordion", data-color="rgb(86, 114, 142)", data-container="ebitda")
+						div(class="main-filter-item main-filter-item-header")
+							label(class="filter-checkbox", id="ebitda")
+								input(type="checkbox", class="filter-checkbox-item")
+								span(class="filter-checkbox-title") EBITDA                
+						div(class="main-filter-item-content", data-filter="ebitda")
+							div(class="main-filter-item")
+								input(type="text", placeholder="FROM $", class="filter-text-item filter-text-item--half")
+								input(type="text", placeholder="TO $", class="filter-text-item filter-text-item--half")
+					div(class="main-filter-item")
+						label(class="filter-checkbox")
+							input(type="checkbox", class="filter-checkbox-item")
+							span(class="filter-checkbox-title") Cash Flow
+
+			div(class="main-filter main-filter-new-search replace-scrollbar toggle-container not-active-toggle")
+				div(class="main-filter-items", style="background-color: #4c637b")
+					div(class="main-filter-item main-filter-new-search-item-btn")
+						a(href="#newsearch", class="btn btn--white-inverse filter-button popup") new search
+						div(class="main-filter-name-search") My search
+							a(href="#", class="new-search-name-close toggle-content", id="main-filter-new")
+					div(class="new-search-list", style="background-color: rgb(86, 114, 142)")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link")
+								span(class="new-search-list-item-link-text")  Name 1
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link")
+								span(class="new-search-list-item-link-text")  Name 2
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link") 
+								span(class="new-search-list-item-link-text")  Name 3  Name 3  Name 3  Name 3  Name 3  
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link") 
+								span(class="new-search-list-item-link-text")  Name 4
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link")
+								span(class="new-search-list-item-link-text")  Name 5
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link") 
+								span(class="new-search-list-item-link-text")  Name 6
+								span(class="new-search-list-item-link-close")
+						div(class="main-filter-item new-search-list-item")
+							a(href="#", class="link new-search-list-item-link")
+								span(class="new-search-list-item-link-text")  Name 7
+								span(class="new-search-list-item-link-close")
+
+										
 		if page.code != "search" || page.code != "chat" 
 			div(id="footer-holder")
 				pagefooter()

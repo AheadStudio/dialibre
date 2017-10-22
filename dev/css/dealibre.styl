@@ -1693,6 +1693,10 @@ span.form-item--error
 
 /*** PAGE SEARCH ***/
 
+.page-search
+	display block
+	width 100%
+
 /*** filter ***/
 .main-filter
 	position fixed
@@ -1905,12 +1909,10 @@ span.form-item--error
 	display block
 	width auto
 
-	margin-left 305px
+	margin-left 306px
 
 .main-table-search
 	display block
-
-	height 40px
 
 	padding-left 60px
 	padding-right 15px
@@ -1923,7 +1925,7 @@ span.form-item--error
 		display inline-block
 
 		width 48%
-		height 100%
+		height 40px
 
 		vertical-align top
 
@@ -1959,6 +1961,8 @@ span.form-item--error
 	.main-table-search-save
 		padding 15px 25px 13px 25px
 		margin-left 5px
+
+		box-sizing border-box
 
 
 .search-input
@@ -2020,102 +2024,114 @@ span.form-item--error
 	width 100%
 	margin-top 25px
 
-	thead
-		tr
-			th
-				padding 15px
-				font-size 12px
-				font-family ProximaNovaBold
+	overflow-x auto
 
-				text-transform uppercase
-				border-right 1px solid #344c67
+	table
+		width 100%
+		thead
+			tr
+				th
+					padding 15px
+					font-size 12px
+					font-family ProximaNovaBold
 
-				&:last-child
-				&:first-child
-					border-right none
+					text-transform uppercase
+					border-right 1px solid #344c67
 
-	tbody
-		tr
-			cursor pointer
+					&:last-child
+					&:first-child
+						border-right none
 
-			td
-				position relative
-				padding 15px
-				border-right 1px solid #344c67
+		tbody
+			tr
+				cursor pointer
 
-				font-size 12px
-
-
-				&:last-child
-				&:first-child
-					border-right none
-
-					&:before
-						content ''
-						transition box-shadow 0.3s $transitionAnimation
-
-
-				.table-industry
-					display inline-block
-					width 40%
-
-				.table-checkbox
-					cursor pointer
-
-					.table-checkbox-title
-						margin-left 15px
-						font-size 12px
-						color #2fb0ee
-
-				.table-btn-unlock
-					padding 5px
-
-					margin-left 10px
+				td
+					position relative
+					padding 15px
+					border-right 1px solid #344c67
 
 					font-size 12px
-					font-family ProximaNovaRegular
-
-					text-transform inherit
-
-					vertical-align middle
 
 
+					&:last-child
+					&:first-child
+						border-right none
+
+						&:before
+							content ''
+							transition box-shadow 0.3s $transitionAnimation
 
 
-			&:nth-child(2n-1)
-				background #eaf7fd
+					.table-industry
+						display inline-block
+						width 40%
 
-			&.active
-				background rgb(215,239,198)
-				td
-					&:first-child:before
-						content ''
+					.table-checkbox
+						display block
+						width 65px
+
+						cursor pointer
+
+						.table-checkbox-title
+							margin-left 15px
+							font-size 12px
+							color #2fb0ee
+
+					.table-btn-unlock
 						position absolute
-						top 0
-						bottom 0
-						left 0px
-						right 0
+						top 12px
+						left 25px
 
-						width 1000em
+						padding 5px
+						box-sizing border-box
 
-						box-shadow 10px 0px 25px 0px rgba(215,239,198,0.6)
-						pointer-events none
+						margin-left 10px
+
+						font-size 12px
+						font-family ProximaNovaRegular
+
+						text-transform inherit
+
+						vertical-align middle
 
 
-			&:hover
-				td
-					&:first-child:before
-						content ''
-						position absolute
-						top 0
-						bottom 0
-						left 0px
-						right 0
 
-						width 1000em
 
-						box-shadow 10px 0px 25px 0px rgba(0,0,0,0.3)
-						pointer-events none
+				&:nth-child(2n-1)
+					background #eaf7fd
+
+				&.active
+					background rgb(215,239,198)
+					td
+						&:first-child:before
+							content ''
+							position absolute
+							top 0
+							bottom 0
+							left 0px
+							right 0
+
+							width 1000em
+
+							box-shadow 10px 0px 25px 0px rgba(215,239,198,0.6)
+							pointer-events none
+
+
+				&:hover
+					td
+						&:first-child:before
+							content ''
+							position absolute
+							top 0
+							bottom 0
+							left 0px
+							right 0
+
+							width 1000em
+
+							box-shadow 10px 0px 25px 0px rgba(0,0,0,0.3)
+							pointer-events none
 
 
 
@@ -2229,7 +2245,7 @@ span.form-item--error
 
 	&.popup-infodeals
 		width 1200px
-
+		top 40px
 		left 50%
 
 		transform translate(-50%)
@@ -5298,40 +5314,40 @@ span.form-item--error
 
 	transition 0.3s opacity $transitionAnimation, 0.3s transform $transitionAnimation
 
+	.mobile-logo
+		position relative
+		display block
+
+		height 70px
+		background $colorDarkBlue
+
+		&:after
+			content ""
+
+			position absolute
+			top 29px
+			right 35px
+
+			display block
+			width 10px
+			height 16px
+
+			background-image url("../i/arrow_left.png")
+			background-repeat no-repeat
+
+		.mobile-logo-img
+			display block
+			width 100%
+			min-width 100%
+
+			padding 15px 125px 25px 15px
+
+			box-sizing border-box
+
 	&.active
 		transform translateX(0px)
 		opacity 1
 	&--chat
-		.chat-logo
-			position relative
-			display block
-
-			height 70px
-			background $colorDarkBlue
-
-			&:after
-				content ""
-
-				position absolute
-				top 29px
-				right 35px
-
-				display block
-				width 10px
-				height 16px
-
-				background-image url("../i/arrow_left.png")
-				background-repeat no-repeat
-
-			.chat-logo-img
-				display block
-				width 100%
-				min-width 100%
-
-				padding 15px 125px 25px 15px
-
-				box-sizing border-box
-
 		.chat-dialogues
 			width 100%
 

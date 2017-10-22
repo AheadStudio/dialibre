@@ -307,7 +307,7 @@
 		.header-mobile-open
 			display inline-block
 			background #4c637b
-			padding 25px
+			padding 26px
 
 		.header-menu-register
 			margin-left 30px
@@ -380,6 +380,32 @@
 			.chat-dialogues-item
 				.chat-dialogues-item-info
 					margin-right 10px
+
+	.popup-container
+		&.popup-infodeals
+			width 90%
+
+			.popup-infodeals-head
+				display flex
+				justify-content space-between
+
+				.popup-infodeals-head-map
+				.popup-infodeals-head-name
+				.popup-infodeals-head-price-items
+					width auto
+					margin-right 0
+
+			.popup-infodeals-content
+				display grid
+				grid-template-columns repeat(auto-fit, 29%)
+				grid-gap 50px
+
+				padding 30px
+
+				.popup-infodeals-content-item
+					width auto
+					margin-right 0
+
 @media screen and (max-width: 1300px)
 	.chat-message
 		.chat-message-items
@@ -390,13 +416,12 @@
 				.chat-message-item-holder
 					width 20%
 
-
 @media screen and (max-width: 1200px)
 	.page-header
 		.header-desktop
 			.header-logo-container
 				width auto
-				margin-right 0
+				margin-right 10px
 
 				.header-logo-black
 					margin-left 20px
@@ -447,6 +472,40 @@
 				.chat-message-item-holder
 					width 25%
 
+
+	.page-search
+		.main-filter
+			width 285px
+
+		.main-table
+			margin-left 285px
+
+		.main-table-search
+			padding-left 0
+			padding-right 0
+			margin-left 15px
+
+	.main-table-result
+		table
+			tbody
+				tr
+					td
+						.table-btn-unlock
+							position absolute
+							top 0
+							left 25px
+
+							display block
+							width 55px
+							height 100%
+
+							padding 8px
+							box-sizing border-box
+
+							line-height 1.5
+
+							white-space pre-line
+							text-align center
 
 @media screen and (max-width: 1180px)
 	.page-header
@@ -521,6 +580,16 @@
 					.chat-dialogues-item-info-row
 						.chat-dialogues-item-info-name
 							font-size 22px
+
+	.main-table-search
+		.main-table-search-container
+			width 100%
+			padding-right 10px
+			box-sizing border-box
+
+		.main-table-search-container-btn
+			padding-left 0
+			margin-top 15px
 
 @media screen and (max-width: 1010px)
 	.video
@@ -685,6 +754,7 @@
 			.footer-menu-item-holder
 				width auto
 				margin 0
+
 	.intro
 		padding-top 250px
 
@@ -738,6 +808,7 @@
 					width 100%
 					height auto
 					min-height 100%
+
 	.subscribe
 		padding 0
 		padding-top 80px
@@ -777,7 +848,6 @@
 			text-align center
 			line-height 2
 
-
 	.geo
 		.geo-info
 			float none
@@ -790,7 +860,6 @@
 			svg
 				width 100%
 				opacity 0.25
-
 
 	.register-share-form-big
 		width 100%
@@ -878,6 +947,20 @@
 						width 120px
 						float right
 
+	.page-search
+		.main-filter
+			display none
+
+		.main-table
+			width 100%
+			margin-left 0
+
+	.main-table-search
+		.main-table-search-container
+			padding-right 25px
+
+	.main-table-search-submit
+		right 35px
 
 @media screen and (max-width: 760px)
 
@@ -924,6 +1007,13 @@
 			.header-mobile-burger
 				display inline-block
 
+	.main-table-search
+		.main-table-search-container
+			padding-right 20px
+
+	.main-table-search-submit
+		right 30px
+
 @media screen and (max-width: 700px)
 
 	.page-profile-personal
@@ -963,11 +1053,6 @@
 					&:last-child
 						margin-right 0
 		&--full
-			.header-mobile-open
-				display inline-block
-				background #4c637b
-				padding 25px
-
 			.header-menu-register
 				margin-left 20px
 
@@ -1107,7 +1192,6 @@
 
 				text-align center
 
-
 	.features
 		padding 0
 		margin-bottom 40px
@@ -1156,7 +1240,6 @@
 					width 100px
 					height 100px
 					border-radius 5px
-
 
 	.register-share-form-big
 		.register-share-form-big-row
@@ -1244,8 +1327,7 @@
 				.header-personal-btn
 					width 100px
 					margin-right 0
-					font-size 12px
-
+					font-size 8px
 
 	.chat-message
 		.chat-message-filter
@@ -1304,6 +1386,14 @@
 			padding-left 20px
 			padding-right 20px
 
+	.main-table-search
+		.main-table-search-container-btn
+			display flex
+			justify-content space-between
+			width 100%
+			padding-right 20px
+			flex-wrap wrap
+
 @media screen and (max-width: 500px)
 	.register-share-form-big
 		.register-share-form-big-row
@@ -1320,8 +1410,6 @@
 								&:nth-child(2)
 								&:last-child
 									display table-cell
-
-
 
 @media screen and (max-width: 460px)
 	.page-header
@@ -1494,6 +1582,7 @@
 	.page-profile
 		.page-inner--w2
 			padding 0 10px
+
 	.page-profile-history
 		width 110%
 		margin-left -5%
@@ -1525,7 +1614,6 @@
 			.popup-addcard-form
 				padding 40px 20px 0 20px
 
-
 	.header-mobile
 		.header-mobile-menu
 			.header-menu
@@ -1537,7 +1625,6 @@
 					&:last-child
 						margin-right 0
 						margin-bottom 0
-
 
 	.header-mobile
 		&--aut
@@ -1574,6 +1661,7 @@
 				.header-personal-btn
 					margin-right: 5px
 
+					font-size 8px
 
 	.chat-message
 		.chat-message-filter
@@ -1613,6 +1701,22 @@
 				.chat-message-send-item-holder--w4
 					padding-right 88px
 
+
+	.main-table-search
+		.main-table-search-container-btn
+			.main-table-search-unlock
+			.main-table-search-export
+				width 30%
+				padding 15px 5px
+				text-align center
+				font-size 12px
+
+			.main-table-search-save
+				width 30%
+				padding 17px 5px
+				text-align center
+				font-size 12px
+
 @media screen and (max-width: 395px)
 	.header-mobile
 		&--aut
@@ -1632,6 +1736,18 @@
 					width  75px
 
 					font-size 8px
+
+	.main-table-search
+		.main-table-search-container-btn
+			.main-table-search-unlock
+			.main-table-search-export
+				padding 16px 0
+				font-size 9px
+			.main-table-search-save
+				width 35%
+				padding 16px 0
+				font-size 9px
+
 @media screen and (max-width: 345px)
 	.page-inner--w1
 	.page-inner--w2

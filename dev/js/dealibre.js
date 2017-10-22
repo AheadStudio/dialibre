@@ -11,8 +11,6 @@
 
 		$sel.colorFilter = $(".main-filter-items").css("background-color");
 
-
-
 		return {
 			page: {
 				header: {
@@ -155,6 +153,7 @@
 
 
 				},
+
 				scrollAnimation: {
 
 					blocks: [],
@@ -240,7 +239,14 @@
 						});
 
 						$sel.body.on("click", ".header-mobile-open",  function() {
-							$panel = $(".mobile-panel", $sel.body);
+							var buttonOpen = $(this),
+								buttonOpenId = buttonOpen.attr("id");
+
+							if (!buttonOpenId) {
+								return;
+							}
+
+							$panel = $(".mobile-panel[data-open=" + buttonOpenId + "]", $sel.body);
 
 							self.isShow ? self.hide($(this), $panel, 100) : self.show($(this), $panel, 100);
 
@@ -676,6 +682,16 @@
 						theme: "minimal-dark",
 						scrollInertia: "450",
 						documentTouchScroll: true,
+					});
+
+					$(".replace-scrollbar-table").mCustomScrollbar({
+						theme: "minimal-dark",
+						scrollInertia: "450",
+						axis: 'x',
+						documentTouchScroll: true,
+						advanced: {
+							autoExpandHorizontalScroll: true
+						},
 					});
 				}
 			},
