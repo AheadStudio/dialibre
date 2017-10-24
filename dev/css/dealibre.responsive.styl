@@ -397,7 +397,7 @@
 
 			.popup-infodeals-content
 				display grid
-				grid-template-columns repeat(auto-fit, 29%)
+				grid-template-columns 1fr 1fr 1fr
 				grid-gap 50px
 
 				padding 30px
@@ -406,6 +406,8 @@
 					width auto
 					margin-right 0
 
+			.popup-infodeals-navigation
+				padding 0px 30px 45px 30px
 @media screen and (max-width: 1300px)
 	.chat-message
 		.chat-message-items
@@ -415,6 +417,10 @@
 
 				.chat-message-item-holder
 					width 20%
+	.popup-infodeals
+		.popup-infodeals-navigation
+			.popup-infodeals-navigation-btn
+				font-size 12px
 
 @media screen and (max-width: 1200px)
 	.page-header
@@ -472,7 +478,6 @@
 				.chat-message-item-holder
 					width 25%
 
-
 	.page-search
 		.main-filter
 			width 285px
@@ -506,6 +511,13 @@
 
 							white-space pre-line
 							text-align center
+
+	.popup-infodeals
+		.popup-infodeals-navigation
+			.popup-infodeals-navigation-btn
+				padding 20px 25px
+				width auto
+				text-align: center
 
 @media screen and (max-width: 1180px)
 	.page-header
@@ -591,6 +603,68 @@
 			padding-left 0
 			margin-top 15px
 
+	.popup-infodeals
+		.popup-infodeals-head
+			height 175px
+
+			.popup-infodeals-head-map
+				.popup-infodeals-head-map-holder
+					width 385px
+					height 100%
+					min-width auto
+
+					padding 5px 0 12px 0
+
+					.popup-infodeals-head-map-holder-point
+						top 43px
+						left 75px
+
+			.popup-infodeals-head-name
+				.popup-infodeals-head-name-title
+					font-size 20px
+					margin-top 30px
+
+				.popup-infodeals-head-name-location
+				.popup-infodeals-head-name-count
+					font-size 12px
+
+			.popup-infodeals-head-price-items
+				padding 15px 35px  20px 35px
+
+				.popup-infodeals-head-price-item
+					.popup-infodeals-head-price-item-text
+						font-size 10px
+
+					.popup-infodeals-head-price-item-quantity
+						font-size 16px
+
+				.popup-infodeals-head-price-items-btn
+					width 133px
+					height 40px
+
+					padding 15px
+
+					box-sizing border-box
+
+					text-align center
+					font-size 12px
+
+		.popup-infodeals-content
+			.popup-infodeals-content-item
+				.popup-infodeals-content-item-table
+					thead
+						tr
+							th
+								font-size 12px
+					tbody
+						tr
+							td
+								font-size 12px
+
+								.full-text
+									font-size 10px
+
+
 @media screen and (max-width: 1010px)
 	.video
 		.video-view
@@ -672,7 +746,6 @@
 		&.popup-addcard
 			width 80%
 
-
 	.chat-dialogues
 		.chat-dialogues-info
 		.chat-dialogues-search
@@ -736,6 +809,44 @@
 			padding-right 30px
 			margin-right 35px
 			padding-left 30px
+
+	.popup-container
+		&.popup-infodeals
+			width 95%
+			left 48%
+
+	.popup-infodeals
+		.popup-infodeals-navigation
+			.popup-infodeals-navigation-btn
+				padding 14px 25px
+
+			.btn--blue-inverse
+				padding  13px 25px
+
+@media screen and (max-width: 980px)
+	.popup-container
+		&.popup-infodeals
+			.popup-infodeals-head
+				.popup-infodeals-head-map
+					.popup-infodeals-head-map-holder
+						width 300px
+						padding 20px 0 12px 0
+
+				.popup-infodeals-head-price-items
+					padding 20px
+
+			.popup-infodeals-content
+				grid-template-columns auto
+				grid-gap 0
+
+				.popup-infodeals-content-item
+					.popup-infodeals-content-item-table--background
+						tbody
+							tr
+								&:nth-child(2n)
+									td
+										&:before
+											width 0%
 
 @media screen and (max-width: 890px)
 	.header-desktop
@@ -962,6 +1073,62 @@
 	.main-table-search-submit
 		right 35px
 
+	.popup-container
+		&.popup-infodeals
+			display flex
+			flex-direction column
+
+			.popup-infodeals-head
+				order 1
+				.popup-infodeals-head-map
+					display none
+
+				.popup-infodeals-head-name
+					padding-left 20px
+
+			.popup-infodeals-content
+				order 3
+
+			.popup-infodeals-navigation
+				order 2
+
+				padding 30px
+				margin-top auto
+
+@media screen and (max-width: 820px)
+	.popup-container
+		&.popup-infodeals
+			display flex
+			flex-direction column
+
+			.popup-infodeals-head
+				order 1
+				.popup-infodeals-head-map
+					display none
+
+				.popup-infodeals-head-name
+					padding-left 20px
+
+			.popup-infodeals-content
+				order 3
+
+			.popup-infodeals-navigation
+				display grid
+				grid-template-columns 1fr 1fr
+				grid-gap 20px
+
+				order 2
+
+				padding 30px
+				margin-top auto
+
+				.popup-infodeals-navigation-prev
+					&--w60
+						display none
+				.popup-infodeals-navigation-next
+					&--w30
+						display none
+
 @media screen and (max-width: 760px)
 
 	.page-profile-history
@@ -1098,6 +1265,12 @@
 					.chat-message-item-text-data
 					p
 						font-size 12px
+
+	.popup-container
+		&.popup-infodeals
+			width 100%
+			left auto
+			transform: translate(0)
 
 @media screen and (max-width: 580px)
 	.page-footer
