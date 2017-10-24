@@ -737,7 +737,6 @@
 
 				margin 0
 
-
 	.page-profile-history
 		.page-profile-history-container
 			padding 50px 35px
@@ -812,8 +811,8 @@
 
 	.popup-container
 		&.popup-infodeals
-			width 95%
-			left 48%
+			width 93%
+			left 46%
 
 	.popup-infodeals
 		.popup-infodeals-navigation
@@ -1102,7 +1101,6 @@
 			flex-direction column
 
 			.popup-infodeals-head
-				order 1
 				.popup-infodeals-head-map
 					display none
 
@@ -1110,15 +1108,8 @@
 					padding-left 20px
 
 			.popup-infodeals-content
-				order 3
 
 			.popup-infodeals-navigation
-				display grid
-				grid-template-columns 1fr 1fr
-				grid-gap 20px
-
-				order 2
-
 				padding 30px
 				margin-top auto
 
@@ -1128,6 +1119,12 @@
 				.popup-infodeals-navigation-next
 					&--w30
 						display none
+
+			&#infodeals2
+				.popup-infodeals-navigation
+					display grid
+					grid-template-columns 1fr 1fr
+					grid-gap 20px
 
 @media screen and (max-width: 760px)
 
@@ -1181,6 +1178,31 @@
 	.main-table-search-submit
 		right 30px
 
+	.popup-container
+		&.popup-infodeals
+			width 100%
+			left 50%
+
+			.popup-infodeals-head
+				height 195px
+
+				.popup-infodeals-head-price-items
+					padding 45px 20px
+
+					.popup-infodeals-head-price-item
+						margin-bottom 15px
+
+	.mfp-popup-window
+		.mfp-container
+			.popup-container
+				&.popup-infodeals
+					.mfp-close
+						top 5px
+						right 3px
+
+						&.mfp-close-icn
+							background url("../i/close_popup_white.png") no-repeat
+
 @media screen and (max-width: 700px)
 
 	.page-profile-personal
@@ -1197,7 +1219,6 @@
 						margin 0
 						margin-top 10px
 
-
 	.header-mobile
 		&--aut
 			.header-mobile-menu
@@ -1205,11 +1226,9 @@
 					align-items baseline
 					flex-direction column-reverse
 
-
 				.header-personal
 					flex-wrap wrap
 					margin-bottom 20px
-
 
 	.header-mobile
 		.header-mobile-menu
@@ -1583,6 +1602,39 @@
 								&:nth-child(2)
 								&:last-child
 									display table-cell
+
+	.popup-container
+		&.popup-infodeals
+			.popup-infodeals-head
+				flex-direction column
+				height auto
+
+				.popup-infodeals-head-name
+					padding 35px 15px 15px 15px
+
+					.popup-infodeals-head-name-title
+						margin-top 0
+						font-size 12px
+
+					.popup-infodeals-head-name-location
+					.popup-infodeals-head-name-count
+						font-size 8px
+
+			.popup-infodeals-navigation
+				grid-gap 10px
+				.popup-infodeals-navigation-prev
+					left 20px
+
+				.popup-infodeals-navigation-next
+					right 20px
+
+				.popup-infodeals-navigation-btn
+					padding 14px 0
+					font-size 8px
+
+			.popup-infodeals-content
+			.popup-infodeals-navigation
+				padding 15px
 
 @media screen and (max-width: 460px)
 	.page-header

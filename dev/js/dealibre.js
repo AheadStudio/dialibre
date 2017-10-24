@@ -668,7 +668,7 @@
 					$(".popup").magnificPopup({
 						type: "inline",
 						mainClass: "mfp-popup-window",
-						closeMarkup: '<button title="%title%" class="mfp-close"><img src="../i/close_popup.png" width="20" height="20" class="mfp-close-icn mfp-close"/></button>',
+						closeMarkup: '<button title="%title%" class="mfp-close"><span width="20" height="20" class="mfp-close-icn mfp-close"/></button>',
 						removalDelay: 300,
 					});
 
