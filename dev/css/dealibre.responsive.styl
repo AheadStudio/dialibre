@@ -383,6 +383,7 @@
 
 	.popup-container
 		&.popup-infodeals
+		&.popup-rating
 			width 90%
 
 			.popup-infodeals-head
@@ -408,6 +409,7 @@
 
 			.popup-infodeals-navigation
 				padding 0px 30px 45px 30px
+
 @media screen and (max-width: 1300px)
 	.chat-message
 		.chat-message-items
@@ -603,67 +605,92 @@
 			padding-left 0
 			margin-top 15px
 
-	.popup-infodeals
-		.popup-infodeals-head
-			height 175px
+	.page-search
+		.main-table-search
+			margin-left 5px
 
-			.popup-infodeals-head-map
-				.popup-infodeals-head-map-holder
-					width 385px
-					height 100%
-					min-width auto
+	.popup-container
+		.popup-title
+			font-size 20px
+			margin-bottom 25px
 
-					padding 5px 0 12px 0
+		.popup-subtitle
+			font-size 16px
 
-					.popup-infodeals-head-map-holder-point
-						top 43px
-						left 75px
+		&.popup-infodeals
+			.popup-infodeals-head
+				height 175px
 
-			.popup-infodeals-head-name
-				.popup-infodeals-head-name-title
-					font-size 20px
-					margin-top 30px
+				.popup-infodeals-head-map
+					.popup-infodeals-head-map-holder
+						width 385px
+						height 100%
+						min-width auto
 
-				.popup-infodeals-head-name-location
-				.popup-infodeals-head-name-count
-					font-size 12px
+						padding 5px 0 12px 0
 
-			.popup-infodeals-head-price-items
-				padding 15px 35px  20px 35px
+						.popup-infodeals-head-map-holder-point
+							top 43px
+							left 75px
 
-				.popup-infodeals-head-price-item
-					.popup-infodeals-head-price-item-text
-						font-size 10px
+				.popup-infodeals-head-name
+					.popup-infodeals-head-name-title
+						font-size 20px
+						margin-top 30px
 
-					.popup-infodeals-head-price-item-quantity
-						font-size 16px
+					.popup-infodeals-head-name-location
+					.popup-infodeals-head-name-count
+						font-size 12px
 
-				.popup-infodeals-head-price-items-btn
-					width 133px
-					height 40px
+				.popup-infodeals-head-price-items
+					padding 15px 35px  20px 35px
 
-					padding 15px
+					.popup-infodeals-head-price-item
+						.popup-infodeals-head-price-item-text
+							font-size 10px
 
-					box-sizing border-box
+						.popup-infodeals-head-price-item-quantity
+							font-size 16px
 
-					text-align center
-					font-size 12px
+					.popup-infodeals-head-price-items-btn
+						width 133px
+						height 40px
 
-		.popup-infodeals-content
-			.popup-infodeals-content-item
-				.popup-infodeals-content-item-table
-					thead
-						tr
-							th
-								font-size 12px
-					tbody
-						tr
-							td
-								font-size 12px
+						padding 15px
 
-								.full-text
-									font-size 10px
+						box-sizing border-box
 
+						text-align center
+						font-size 12px
+
+			.popup-infodeals-content
+				.popup-infodeals-content-item
+					.popup-infodeals-content-item-table
+						thead
+							tr
+								th
+									font-size 12px
+						tbody
+							tr
+								td
+									font-size 12px
+
+									.full-text
+										font-size 10px
+		&.popup-export
+			top 0
+
+			.filter-radio
+				margin-top 25px
+
+			.popup-export-btn
+				margin-top 25px
+
+		&.popup-savesearch
+		&.popup-unlock
+		&.popup-unlock2
+			top 0
+			right 40px
 
 @media screen and (max-width: 1010px)
 	.video
@@ -823,6 +850,7 @@
 				padding  13px 25px
 
 @media screen and (max-width: 980px)
+
 	.popup-container
 		&.popup-infodeals
 			.popup-infodeals-head
@@ -1192,6 +1220,18 @@
 					.popup-infodeals-head-price-item
 						margin-bottom 15px
 
+		&.popup-savesearch
+			width 100%
+			float none
+			right inherit
+
+		&.popup-unlock
+		&.popup-unlock2
+			width 100%
+			right 0
+			float none
+
+
 	.mfp-popup-window
 		.mfp-container
 			.popup-container
@@ -1202,6 +1242,13 @@
 
 						&.mfp-close-icn
 							background url("../i/close_popup_white.png") no-repeat
+
+				&.popup-savesearch
+				&.popup-unlock
+				&.popup-unlock2
+					.mfp-close
+						top 5px
+						right 3px
 
 @media screen and (max-width: 700px)
 
@@ -1604,6 +1651,13 @@
 									display table-cell
 
 	.popup-container
+		.popup-title
+			font-size 16px
+			margin-bottom 25px
+
+		.popup-subtitle
+			font-size 12px
+
 		&.popup-infodeals
 			.popup-infodeals-head
 				flex-direction column
@@ -1614,11 +1668,11 @@
 
 					.popup-infodeals-head-name-title
 						margin-top 0
-						font-size 12px
+						font-size 16px
 
 					.popup-infodeals-head-name-location
 					.popup-infodeals-head-name-count
-						font-size 8px
+						font-size 12px
 
 			.popup-infodeals-navigation
 				grid-gap 10px
@@ -1630,11 +1684,81 @@
 
 				.popup-infodeals-navigation-btn
 					padding 14px 0
-					font-size 8px
+					font-size 10px
 
 			.popup-infodeals-content
 			.popup-infodeals-navigation
 				padding 15px
+
+		&.popup-export
+			top 0
+			width 100%
+			float none
+			right inherit
+
+			.filter-radio
+				margin-top 15px
+
+			.popup-export-btn
+				margin-top 20px
+				font-size 10px
+
+		&.popup-savesearch
+			.popup-savesearch-btn
+				display block
+				width 100%
+
+				padding 15px
+
+				margin-right 0 !important
+
+				&:last-child
+					margin-top 15px
+
+			.form-checkbox
+				.form-checkbox-title
+					width 85%
+
+		&.popup-unlock
+		&.popup-unlock2
+		&.popup-savesearch
+		&.popup-export
+			padding 35px 15px
+
+		&.popup-unlock
+		&.popup-unlock2
+			.popup-unlock-deals-items
+				.popup-unlock-deals-item
+					grid-template-columns 1fr 3fr 2fr 3fr
+
+					.popup-unlock-deals-item-number
+					.popup-unlock-deals-item-name
+						font-size 14px
+
+					.popup-unlock-deals-item-count
+					.popup-unlock-deals-item-price
+						.filter-checkbox
+							.filter-checkbox-title
+								font-size 14px
+
+			.popup-unlock-deals-information--left
+				width 100%
+				margin-bottom 25px
+			.popup-unlock-deals-information--right
+				width 100%
+
+		&.popup-unlock2
+			.popup-unlock-deals-items
+				.popup-unlock-deals-item
+					grid-template-columns 1fr 6fr 2fr
+
+	.mfp-popup-window
+		.mfp-container
+			.popup-container
+				&.popup-export
+					.mfp-close
+						top 5px
+						right 3px
 
 @media screen and (max-width: 460px)
 	.page-header
@@ -1926,13 +2050,12 @@
 				.chat-message-send-item-holder--w4
 					padding-right 88px
 
-
 	.main-table-search
 		.main-table-search-container-btn
 			.main-table-search-unlock
 			.main-table-search-export
 				width 30%
-				padding 15px 5px
+				padding 16px 5px
 				text-align center
 				font-size 12px
 
@@ -1960,7 +2083,7 @@
 					height 35px
 					width  75px
 
-					font-size 8px
+					font-size 6.5px
 
 	.main-table-search
 		.main-table-search-container-btn

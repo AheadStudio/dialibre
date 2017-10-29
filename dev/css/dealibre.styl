@@ -1713,6 +1713,8 @@ span.form-item--error
 
 	overflow auto
 
+	z-index 1000
+
 	&.not-active-toggle
 		display none
 
@@ -2019,12 +2021,18 @@ span.form-item--error
 		background-image url("../i/loupe_blue.png")
 
 
+.main-table-result-scroll
+	display block
+	width 100%
+
+	overflow-x auto
+
 .main-table-result
 	position relative
 	width 100%
 	margin-top 25px
 
-	overflow-x auto
+	overflow hidden
 
 	table
 		width 100%
@@ -2316,7 +2324,8 @@ span.form-item--error
 		width 100%
 
 		.popup-unlock-deals-item
-			display flex
+			display grid
+			grid-template-columns 1fr 6fr 2fr 2fr
 
 			width 100%
 
@@ -2326,23 +2335,7 @@ span.form-item--error
 			font-size 16px
 
 			font-family ProximaNovaRegular
-
-			.popup-unlock-deals-item-number
-				display block
-				width 5%
-
-			.popup-unlock-deals-item-name
-				display block
-				width 55%
-
-			.popup-unlock-deals-item-count
-				display block
-				width 20%
-
-			.popup-unlock-deals-item-price
-				display block
-				width auto
-
+			
 			.popup-unlock-deals-item-count
 			.popup-unlock-deals-item-price
 				.filter-checkbox
@@ -2484,7 +2477,7 @@ span.form-item--error
 
 		text-align center
 
-		font-size 15px
+		font-size 14px
 
 		&.btn--green
 			margin-right 6%

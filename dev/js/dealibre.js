@@ -678,6 +678,8 @@
 
 			scrollBar: {
 				init: function() {
+					var self = this;
+
 					$(".replace-scrollbar").mCustomScrollbar({
 						theme: "minimal-dark",
 						scrollInertia: "450",
@@ -693,7 +695,9 @@
 							autoExpandHorizontalScroll: true
 						},
 					});
-				}
+
+
+				},
 			},
 
 			toggleContent: {
@@ -765,6 +769,8 @@
 		};
 
 	})();
+
+	DEALIBRE.scrollBar.init();
 	DEALIBRE.rating.init();
 	DEALIBRE.scrollFix.init();
 	DEALIBRE.tabs.init();
@@ -772,7 +778,7 @@
 	DEALIBRE.help.init();
 	DEALIBRE.forms.init();
 	DEALIBRE.toggleContent.init();
-	DEALIBRE.scrollBar.init();
+
 	DEALIBRE.tableSearch.init();
 	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();
