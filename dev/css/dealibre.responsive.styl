@@ -410,6 +410,21 @@
 			.popup-infodeals-navigation
 				padding 0px 30px 45px 30px
 
+		&.popup-nda
+			width 100%
+			left auto
+			transform translate(0%)
+
+	.mfp-popup-window
+		.mfp-container
+			.popup-container
+				&.popup-nda
+					.popup-rating-items
+						width 100%
+					.mfp-close
+						top 5px
+						right 3px
+
 @media screen and (max-width: 1300px)
 	.chat-message
 		.chat-message-items
@@ -677,6 +692,7 @@
 
 									.full-text
 										font-size 10px
+
 		&.popup-export
 			top 0
 
@@ -689,8 +705,15 @@
 		&.popup-savesearch
 		&.popup-unlock
 		&.popup-unlock2
+		&.popup-newsearch
 			top 0
 			right 40px
+
+		&.popup-nda
+			padding 50px 75px 40px 75px
+
+			.popup-nda-info
+				padding 0
 
 @media screen and (max-width: 1010px)
 	.video
@@ -874,6 +897,21 @@
 									td
 										&:before
 											width 0%
+
+	.popup-nda
+		.popup-nda-info
+			.popup-nda-info-btn
+				display flex
+				justify-content space-between
+
+				margin-top 50px
+
+				.popup-nda-info-btn-item
+					width auto
+					min-width 185px
+					padding 15px 0
+					margin-right 0
+
 
 @media screen and (max-width: 890px)
 	.header-desktop
@@ -1154,6 +1192,38 @@
 					grid-template-columns 1fr 1fr
 					grid-gap 20px
 
+		&.popup-rating
+			width 100%
+			top 40px
+
+			left auto
+			transform translate(0)
+
+			.popup-rating-items
+				box-sizing border-box
+				text-align center
+
+				.popup-rating-item--full
+					padding 0 20px
+					box-sizing border-box
+					margin 20px 0 40px 0
+
+				.popup-rating-btn
+					margin 0
+					transform translate(0)
+
+
+
+	.mfp-popup-window
+		.mfp-container
+			.popup-container
+				&.popup-rating
+					.popup-rating-items
+						width 100%
+					.mfp-close
+						top 5px
+						right 3px
+
 @media screen and (max-width: 760px)
 
 	.page-profile-history
@@ -1227,9 +1297,16 @@
 
 		&.popup-unlock
 		&.popup-unlock2
+		&.popup-newsearch
 			width 100%
 			right 0
 			float none
+
+		&.popup-newsearch
+			left 0
+
+		&.popup-nda
+			padding 50px 55px 20px 55px
 
 
 	.mfp-popup-window
@@ -1246,6 +1323,7 @@
 				&.popup-savesearch
 				&.popup-unlock
 				&.popup-unlock2
+				&.popup-newsearch
 					.mfp-close
 						top 5px
 						right 3px
@@ -1299,6 +1377,12 @@
 			.header-personal
 				margin-right 15px
 
+	.popup-nda
+		.popup-nda-info
+			.popup-nda-info-btn
+				.popup-nda-info-btn-item
+					min-width 160px
+
 @media screen and (max-width: 650px)
 
 	.chat-message
@@ -1338,6 +1422,21 @@
 			left auto
 			transform: translate(0)
 
+		&.popup-nda
+			padding 50px 20px 20px 20px
+
+	.popup-nda
+		.popup-nda-info
+			.popup-nda-info-btn
+				display block
+
+				.popup-nda-info-btn-item
+					width 100%
+					margin-bottom 20px
+
+			.popup-nda-info-text
+				p
+					font-size 14px
 @media screen and (max-width: 580px)
 	.page-footer
 		height auto
@@ -1632,6 +1731,24 @@
 			width 100%
 			padding-right 20px
 			flex-wrap wrap
+
+	.popup-newsearch
+		.popup-newsearch-btn
+			padding 15px 0
+			display block
+			width 100%
+
+			text-align center
+
+			margin-bottom 15px
+
+			box-sizing border-box
+
+	.popup-nda
+		.popup-nda-info
+			.popup-nda-info-btn
+				.popup-nda-info-btn-item
+					font-size 12px
 
 @media screen and (max-width: 500px)
 	.register-share-form-big
