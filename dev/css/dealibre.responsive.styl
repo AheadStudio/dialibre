@@ -1298,6 +1298,7 @@
 		&.popup-unlock
 		&.popup-unlock2
 		&.popup-newsearch
+		&.popup-profile
 			width 100%
 			right 0
 			float none
@@ -1307,6 +1308,9 @@
 
 		&.popup-nda
 			padding 50px 55px 20px 55px
+
+		&.popup-profile
+			top 40px
 
 
 	.mfp-popup-window
@@ -1324,6 +1328,7 @@
 				&.popup-unlock
 				&.popup-unlock2
 				&.popup-newsearch
+				&.popup-profile
 					.mfp-close
 						top 5px
 						right 3px
@@ -1383,6 +1388,22 @@
 				.popup-nda-info-btn-item
 					min-width 160px
 
+	.popup-rating
+		.popup-rating-result
+			padding 105px 20px
+			box-sizing border-box
+
+	.popup-rating
+		.popup-rating-items
+			.popup-rating-item
+				display block
+				width 100%
+				margin-right 0 !important
+				margin-bottom 25px
+
+				padding 0 20px
+				box-sizing border-box
+
 @media screen and (max-width: 650px)
 
 	.chat-message
@@ -1437,6 +1458,7 @@
 			.popup-nda-info-text
 				p
 					font-size 14px
+
 @media screen and (max-width: 580px)
 	.page-footer
 		height auto
@@ -1750,6 +1772,13 @@
 				.popup-nda-info-btn-item
 					font-size 12px
 
+	.popup-rating
+		.popup-rating-result
+			width 100%
+
+			p
+				font-size 20px
+
 @media screen and (max-width: 500px)
 	.register-share-form-big
 		.register-share-form-big-row
@@ -1815,10 +1844,6 @@
 
 			.filter-radio
 				margin-top 15px
-
-			.popup-export-btn
-				margin-top 20px
-				font-size 10px
 
 		&.popup-savesearch
 			.popup-savesearch-btn
@@ -2182,6 +2207,38 @@
 				text-align center
 				font-size 12px
 
+@media screen and (max-width: 460px)
+	.popup-container
+		&.popup-profile
+			flex-direction column
+			align-items baseline
+
+			.popup-profile-holder
+				margin-bottom 25px
+
+			.popup-profile-personal
+				display block
+				width 100%
+
+				margin-bottom 25px
+
+			.popup-profile-btn
+				width 100%
+
+	.chat-message
+		.chat-message-items
+			.chat-message-item
+				.chat-message-item-text
+					.chat-message-item-text-link
+						.chat-message-item-text-link-title
+							font-size 12px
+
+		.chat-message-send
+			.chat-message-send-row
+				.chat-message-send-item-holder
+					.chat-message-send-item--textarea
+						font-size 12px
+
 @media screen and (max-width: 395px)
 	.header-mobile
 		&--aut
@@ -2210,8 +2267,13 @@
 				font-size 9px
 			.main-table-search-save
 				width 35%
-				padding 16px 0
+				padding 17px 0
 				font-size 9px
+
+	.popup-profile
+		.popup-profile-holder
+			width 180px
+			height 180px
 
 @media screen and (max-width: 345px)
 	.page-inner--w1
