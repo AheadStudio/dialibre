@@ -381,6 +381,9 @@
 				.chat-dialogues-item-info
 					margin-right 10px
 
+		.chat-dialogues-item-detail
+			padding 0 40px 0 60px
+
 	.popup-container
 		&.popup-infodeals
 		&.popup-rating
@@ -439,16 +442,8 @@
 			.popup-infodeals-navigation-btn
 				font-size 12px
 
-@media screen and (max-width: 1200px)
-	.page-header
-		.header-desktop
-			.header-logo-container
-				width auto
-				margin-right 10px
 
-				.header-logo-black
-					margin-left 20px
-
+@media screen and (max-width: 1230px)
 	.chat-dialogues
 		.chat-dialogues-info
 		.chat-dialogues-search
@@ -461,6 +456,9 @@
 		.chat-dialogues-items
 			.chat-dialogues-item
 				padding 0 45px 0 20px
+
+		.chat-dialogues-item-detail
+			padding 0 40px 0 20px
 
 	.chat-message
 		.chat-message-name-deal
@@ -494,6 +492,16 @@
 
 				.chat-message-item-holder
 					width 25%
+
+@media screen and (max-width: 1200px)
+	.page-header
+		.header-desktop
+			.header-logo-container
+				width auto
+				margin-right 10px
+
+				.header-logo-black
+					margin-left 20px
 
 	.page-search
 		.main-filter
@@ -601,6 +609,13 @@
 			.chat-dialogues-declined
 				font-size 14px
 
+		.chat-dialogues-item-detail
+			padding 0 40px 0 10px
+
+			.chat-dialogues-item-detail-holder
+				width 200px
+				height 200px
+
 		.chat-dialogues-items
 			.chat-dialogues-item
 				padding 0 20px 0 10px
@@ -677,6 +692,9 @@
 
 						text-align center
 						font-size 12px
+						margin-left 15px
+
+						transform translate(0)
 
 			.popup-infodeals-content
 				.popup-infodeals-content-item
@@ -1279,7 +1297,8 @@
 	.popup-container
 		&.popup-infodeals
 			width 100%
-			left 50%
+			left 0
+			transform translate(0)
 
 			.popup-infodeals-head
 				height 195px
@@ -1299,6 +1318,7 @@
 		&.popup-unlock2
 		&.popup-newsearch
 		&.popup-profile
+		&.popup-addcard
 			width 100%
 			right 0
 			float none
@@ -1327,6 +1347,7 @@
 				&.popup-savesearch
 				&.popup-unlock
 				&.popup-unlock2
+				&.popup-addcard
 				&.popup-newsearch
 				&.popup-profile
 					.mfp-close
@@ -1443,6 +1464,11 @@
 			left auto
 			transform: translate(0)
 
+			.popup-infodeals-head
+				.popup-infodeals-head-price-items
+					.popup-infodeals-head-price-items-btn
+						margin-left 50%
+						transform translate(-50%)
 		&.popup-nda
 			padding 50px 20px 20px 20px
 
@@ -1458,6 +1484,30 @@
 			.popup-nda-info-text
 				p
 					font-size 14px
+	.page-text
+		ol
+			li
+				font-size 14px
+				margin-bottom 15px
+		p
+			font-size 14px
+			margin-bottom 15px
+
+		img
+			&[align=left]
+				display block
+				width 100%
+
+	.help-section-item
+		.help-section-item-name
+			font-size 18px
+			margin-bottom 20px
+
+	.help-section-item-block-item
+		margin-bottom 15px
+		.help-section-item-block-item-name-holder
+		.help-section-item-block-item-text
+			font-size 14px
 
 @media screen and (max-width: 580px)
 	.page-footer
@@ -1671,10 +1721,6 @@
 				display block
 				width 100%
 				margin 0
-
-	.popup-container
-		&.popup-addcard
-			width 85%
 
 	.header-mobile
 		&--full
@@ -2032,17 +2078,6 @@
 			.register-share-form-big-item--submit
 				width 100%
 
-	.help
-		.help-sections
-			.help-section-item
-				.help-section-item-name
-					font-size 20px
-
-				.help-section-item-blocks
-					.help-section-item-block-item
-						.help-section-item-block-item-name-holder
-						.help-section-item-block-item-text
-							font-size 16px
 
 	.form-row
 		.btn
@@ -2239,6 +2274,11 @@
 					.chat-message-send-item--textarea
 						font-size 12px
 
+	.popup-profile
+		.popup-profile-holder
+			width 180px
+			height 180px
+
 @media screen and (max-width: 395px)
 	.header-mobile
 		&--aut
@@ -2286,12 +2326,6 @@
 				.page-profile-history-container-table
 					width 110%
 					margin-left -5%
-
-
-	.popup-container
-		&.popup-addcard
-			width 90%
-			left 44%
 
 	.chat-message
 		.chat-message-name-deal
