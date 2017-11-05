@@ -286,8 +286,9 @@
 				// Initialize scripts for each window size
 				initSSM: function() {
 					var self = this;
+					self.menuMobile.init();
 
-					ssm.addStates([
+					/*ssm.addStates([
 						{
 							// Tablets in landscape orientation
 							id: "tabletLandscape",
@@ -299,7 +300,7 @@
 
 							}
 						}
-					]);
+					]);*/
 
 				},
 

@@ -192,17 +192,6 @@ body
 
 				color $colorBlue
 
-	.header-desktop
-		.page-inner--w1
-			.header-menu
-				.header-menu-item
-					color #fff
-
-					&:hover
-						border-bottom-color $colorBlue
-
-						color $colorBlue
-
 	.header-bar
 		float right
 
@@ -233,6 +222,26 @@ body
 				border-bottom-color $colorBlue
 
 				color $colorBlue
+
+.page-home
+	.page-header
+		.header-desktop
+			.page-inner--w1
+				.header-menu
+					.header-menu-item
+						color #fff
+						transition .3s border-bottom-color $transitionAnimation, .3s color $transitionAnimation
+
+						&:hover
+							border-bottom-color $colorBlue
+							color $colorBlue
+
+	.page-header
+		.header-mobile-menu
+			.header-menu
+				.header-menu-item
+					color #fff
+
 
 .page-heading
 	padding 40px 0 45px 0
