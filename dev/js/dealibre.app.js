@@ -134,30 +134,5 @@ new Vue({
 
 
 // page: FAQ //
-Vue.component("faqitem", {
-	props: ["faq"],
-	template: "#faq-item"
-});
 
-
-var FAQ = new Vue({
-	el: "#faq",
-	data: {
-		list: []
-	},
-	created: function() {
-		this.load();
-		DealibreApp.methods.typeMobileMenu("light-noaut", false);
-	},
-	methods: {
-		load: function() {
-			var self = this;
-			axios.get("/api/faq").then(function(answer) {
-				for(var key in answer.data.data) {
-					self.list.push(answer.data.data[key]);
-				}
-			});
-		}
-	}
-});
 // //page: FAQ //

@@ -1085,9 +1085,24 @@ block content
 block scripts
     script.
         new Vue({
+            data: {
+                list: []    
+            },
             created: function() {
+                this.load();
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.typeHeader("dark");
                 DealibreApp.methods.typeMobileMenu("light-aut","search");
+            },
+            methods: {
+                load: function() {
+                    var self = this;
+                    axios.get("/api/deal",{ params: { id: 12345 }}).then(function(answer) {
+                        for(var key in answer.data.data) {
+                            self.list.push(answer.data.data[key]);
+                        }
+                    });
+                    console.log(self.list);
+                }
             }
         });
