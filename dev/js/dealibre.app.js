@@ -1,8 +1,7 @@
 // Configure axios
 axios.defaults.baseURL = "http://67.207.95.140";
+//axios.defaults.withCredentials = true;
 //axios.defaults.headers.common["X-CSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
-
-
 
 // Global states
 var DealibreApp = {
@@ -73,6 +72,7 @@ var formMixin = {
 			axios
 				.post($form.attr("action"), $form.serialize())
 				.then(function(r) {
+					console.log(r);
 					var r = r.data;
 					self.form.message = r.message;
 					self.form.success = true;
@@ -130,3 +130,34 @@ Vue.component("pagefooter", {
 new Vue({
 	el: "#footer-holder"
 });
+
+
+
+// page: FAQ //
+Vue.component("faqitem", {
+	props: ["faq"],
+	template: "#faq-item"
+});
+
+
+var FAQ = new Vue({
+	el: "#faq",
+	data: {
+		list: []
+	},
+	created: function() {
+		this.load();
+		DealibreApp.methods.typeMobileMenu("light-noaut", false);
+	},
+	methods: {
+		load: function() {
+			var self = this;
+			axios.get("/api/faq").then(function(answer) {
+				for(var key in answer.data.data) {
+					self.list.push(answer.data.data[key]);
+				}
+			});
+		}
+	}
+});
+// //page: FAQ //
