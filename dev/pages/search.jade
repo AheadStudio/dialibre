@@ -1084,25 +1084,37 @@ block content
 
 block scripts
     script.
-        new Vue({
-            data: {
-                list: []    
+        Vue.component("getdeals", {
+            data: function() {
+                return {
+                    listDeals: [],
+                }    
             },
+            template: "#vue-deals-information",
             created: function() {
-                this.load();
+                var self = this;
+                
+                self.sendRequest();
+            },
+            methods: {
+                sendRequest: function(){
+                    var self = this;
+                    axios.get("/api/deals").then(function(answer) {
+                        for(var key in answer.data.data) {
+                            var itemDeals = answer.data.data[key];
+                            self.listDeals.push(itemDeals);
+                        }
+                    });
+                },
+            },
+            mounted: function() {
+                DEALIBRE.reload();
+            }
+        });
+        new Vue({
+            created: function() {
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.typeHeader("dark");
                 DealibreApp.methods.typeMobileMenu("light-aut","search");
             },
-            methods: {
-                load: function() {
-                    var self = this;
-                    axios.get("/api/deal",{ params: { id: 12345 }}).then(function(answer) {
-                        for(var key in answer.data.data) {
-                            self.list.push(answer.data.data[key]);
-                        }
-                    });
-                    console.log(self.list);
-                }
-            }
         });
