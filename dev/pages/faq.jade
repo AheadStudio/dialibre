@@ -6,41 +6,46 @@ block content
 		div(class="page-inner page-inner--w1")
 			h1(class="h1") Faq
 
-	div(id="faq", class="faq", v-bind:class="{ loading:!list.length }")
+	div(id="faq", class="faq")
 		div(class="page-inner page-inner--w2")
 			div(class="faq-items")
-				faqitem(v-for="item in list", v-bind:faq="item", v-bind:key="item.id")
+				faqitem()
 
 	
 	// Templates
 	script(id="faq-item", type="text/x-template")
-		div(class="faq-item")
-			div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
-			div(class="faq-item-text") {{ faq.answer }}
+		div(v-bind:class="{ loading:!faqList.length }")
+			div(class="faq-item", v-for="faq in faqList")
+				div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
+				div(class="faq-item-text") {{ faq.answer }}
 
 block scripts
 	script.
 		Vue.component("faqitem", {
-			props: ["faq"],
-			template: "#faq-item"
-		});
-		new Vue({
-			el: "#faq",
-			data: {
-				list: []
+			data: function() {
+				return {
+					faqList: [],
+				}
 			},
+			props: ["faq"],
 			created: function() {
 				this.load();
-				DealibreApp.methods.typeMobileMenu("light-noaut", false);
 			},
 			methods: {
 				load: function() {
 					var self = this;
 					axios.get("/api/faq").then(function(answer) {
 						for(var key in answer.data.data) {
-							self.list.push(answer.data.data[key]);
+							self.faqList.push(answer.data.data[key]);
 						}
 					});
 				}
-			}
+			},
+			template: "#faq-item"
+		});
+		new Vue({
+			el: "#faq",
+			created: function() {
+				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+			},
 		});

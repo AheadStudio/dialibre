@@ -4,20 +4,16 @@ block content
     div(class="page-heading")
         div(class="page-inner page-inner--w1")
             h1(class="h1") Profile
-
-    div(class="page-profile")
-        div(class="page-inner page-inner--w2")
-            div(id="profile")
+            
+    div(id="profile")
+        div(class="page-profile")
+            div(class="page-inner page-inner--w2")
                 div(class="page-profile-personal")
                     div(class="page-profile-personal--left")
                         div(class="page-profile-personal-holder")
                             img(src="../dummy/Jon_Smit_1.jpg", class="page-profile-personal-holder-img")
                         div(class="page-profile-personal-info")
-                            div(class="page-profile-personal-info-name") Jon Smit
-                            div(class="page-profile-personal-info-company") Company
-                            div(class="page-profile-personal-info-position") Position
-                            a(href="mailto:JonSmit@ro.ro", class="link page-profile-personal-info-email") JonSmit@ro.ro
-                            a(href="tell:+00000000000", class="link page-profile-personal-info-phone") + 0 000 000 00 00
+                            profileinformation()
                             a(href="#edit-profile", class="btn btn--blue page-profile-personal-info-btn popup") Edit profile
                             a(href="#", class="btn btn--blue-inverse page-profile-personal-info-btn") Edit password
                             
@@ -41,139 +37,217 @@ block content
                                 div(class="page-profile-personal-credits-item-number") 5678
                                 a(href="#",class="page-profile-personal-credits-item-close")
                         a(href="#addcard", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Add card
+                                
+                div(class="page-profile-history")
+                    div(class="page-profile-history-header")
+                        div(class="page-profile-history-header-item tabs-heading-item active-tabs", data-tabs="history-1")
+                            div(class="page-profile-history-header-item-title") Billing History    
+                        div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
+                            div(class="page-profile-history-header-item-title") Credit History
                             
-            div(class="page-profile-history")   
-                div(class="page-profile-history-header")
-                    div(class="page-profile-history-header-item tabs-heading-item active-tabs", data-tabs="history-1")
-                        div(class="page-profile-history-header-item-title") Billing History    
-                    div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
-                        div(class="page-profile-history-header-item-title") Credit History
-                        
-                div(class="page-profile-history-container")
-                    div(class="page-profile-history-container-item tabs-content-item active-tabs", id="history-1")
-                        div(class="page-profile-history-container-radio")
-                            label(class="page-profile-history-radio")
-                                input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                span(class="page-profile-history-container-radio-title") MasterCard
-                            label(class="page-profile-history-radio")
-                                input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                span(class="page-profile-history-container-radio-title") Visa
+                    div(class="page-profile-history-container")
+                        div(class="page-profile-history-container-item tabs-content-item active-tabs", id="history-1")
+                            div(class="page-profile-history-container-radio")
+                                label(class="page-profile-history-radio")
+                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
+                                    span(class="page-profile-history-container-radio-title") MasterCard
+                                label(class="page-profile-history-radio")
+                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
+                                    span(class="page-profile-history-container-radio-title") Visa
+                                
+                            input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
                             
-                        input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
+                            input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
+                            
+                            a(href="#", class="btn btn--blue page-profile-history-container-btn") View
                         
-                        input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
-                        
-                        a(href="#", class="btn btn--blue page-profile-history-container-btn") View
+                            table(class="page-profile-history-container-table")
+                                thead
+                                    tr
+                                        th Date
+                                        th Time
+                                        th Card
+                                        th Amount
+                                        th Deal #
+                                tbody
+                                    tr
+                                        td 06/21/2017
+                                        td 07:13PM
+                                        td XXXX
+                                        td $10.60
+                                        td # 15
+                                    tr
+                                        td 06/21/2017
+                                        td 07:13PM
+                                        td XXXX
+                                        td $10.60
+                                        td # 15
+                                    tr
+                                        td 06/21/2017
+                                        td 07:13PM
+                                        td XXXX
+                                        td $10.60
+                                        td # 15
+            
+                                
+                        div(class="page-profile-history-container-item tabs-content-item", id="history-2")
                     
-                        table(class="page-profile-history-container-table")
-                            thead
-                                tr
-                                    th Date
-                                    th Time
-                                    th Card
-                                    th Amount
-                                    th Deal #
-                            tbody
-                                tr
-                                    td 06/21/2017
-                                    td 07:13PM
-                                    td XXXX
-                                    td $10.60
-                                    td # 15
-                                tr
-                                    td 06/21/2017
-                                    td 07:13PM
-                                    td XXXX
-                                    td $10.60
-                                    td # 15
-                                tr
-                                    td 06/21/2017
-                                    td 07:13PM
-                                    td XXXX
-                                    td $10.60
-                                    td # 15
-        
-                            
-                    div(class="page-profile-history-container-item tabs-content-item", id="history-2")
-                    
-    div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
-        form(action="#", class="popup-addcard-form")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Name as it apperears on the card")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Billing Adress")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="City")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    select(class="popup-addcard-form-holder-item-select", placeholder="State")
-                        option(value="1") some text
-                        option(value="2") some text
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="ZIP")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w2")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Country")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Card Number")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Security Code")
+        div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
+            form(action="#", class="popup-addcard-form")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Name as it apperears on the card")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Billing Adress")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="City")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        select(class="popup-addcard-form-holder-item-select", placeholder="State")
+                            option(value="1") some text
+                            option(value="2") some text
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="ZIP")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w2")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Country")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Card Number")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Security Code")
 
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Expiration")
-                    
-            div(class="popup-addcard-form-row popup-addcard-form-row--left")
-                button(class="btn btn--green popup-addcard-form-holder-item--btn") Add card
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Expiration")
+                        
+                div(class="popup-addcard-form-row popup-addcard-form-row--left")
+                    button(class="btn btn--green popup-addcard-form-holder-item--btn") Add card
+        
+        div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
+            profileupdate()
     
-    div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
-        form(action="#", class="popup-addcard-form")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your name")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your company")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your phone")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your position")
-            div(class="popup-addcard-form-row")
-                div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="nda")
-            div(class="popup-addcard-form-row popup-addcard-form-row--left")
-                button(class="btn btn--green popup-addcard-form-holder-item--btn") Update
+    script(type="text/x-template", id="vue-profile-information")
+        div()    
+            div(class="page-profile-personal-info-name") {{ fullname }}
+            div(class="page-profile-personal-info-company") {{ user.company }}
+            div(class="page-profile-personal-info-position") {{ user.position }}
+            a(href="mailto:JonSmit@ro.ro", class="link page-profile-personal-info-email") {{ user.email }}
+            a(href="tell:+00000000000", class="link page-profile-personal-info-phone") {{ user.phone }}
+            
+    script(type="text/x-template", id="vue-profile-update")
+        div()
+            form(class="form popup-addcard-form", @submit.prevent="send", v-bind:action="form.action")
+                div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your first name", v-model="fields.first_name")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your  last name", v-model="fields.last_name")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your company", v-model="fields.company_name")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your phone", v-model="fields.phone")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your position" v-model="fields.position")
+                div(class="popup-addcard-form-row")
+                    div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="nda", v-model="fields.nda")
+                div(class="popup-addcard-form-row popup-addcard-form-row--left")
+                    button(class="btn btn--green popup-addcard-form-holder-item--btn") Update
 
 block scripts
     script.
-        new Vue({
-            el: "#pro",
-            data: {
-                first_name: "",
-                last_name: "",
-                company_name: "",
-                email: "",
-                phone: "",
-                position: "",
-                nda: ""
+        Vue.component("profileinformation", {
+            data: function() {
+                return {
+                    user: {
+                        first_name :  "loading...",
+                        last_name  :  "loading...",
+                        company    :  "loading...",
+                        position   :  "loading...",
+                        email      :  "loading...",
+                        phone      :  "loading...",
+                    }
+                }    
+            },
+            template: "#vue-profile-information",
+            computed: {
+                fullname: function() {
+                    var self = this;
+                    
+                    return self.user.first_name + " " + self.user.last_name;  
+                } 
             },
             created: function() {
-                DealibreApp.methods.setAuthorized();
-
-                DealibreApp.methods.typeHeader("light");
-                DealibreApp.methods.typeMobileMenu("light-aut", false);
-                //this.load();
+                var self = this;
+                
+                setTimeout(function() {
+                     self.user.name = "Mister Smith";
+                     self.user.company = "BIG SMITH INDUSTRIALS";
+                }, 800);
+                
+                self.sendRequest();
             },
             methods: {
-                load: function() {
+                sendRequest: function(){
                     var self = this;
-                    axios.get("/api/user/profile").then(function(data) {
-                        console.log(data);
+                    
+                    axios.get("/api/faq").then(function(answer) {
+                        console.log(answer);
                     });
-                }
+                    
+                },
+            },
+            mounted: function() {
+                DEALIBRE.reload();
             }
+        });
+        Vue.component("profileupdate", {
+            data: function() {
+                return {
+                    fields: {
+                        first_name     :  "",
+                        last_name      :  "",
+                        company_name   :  "",
+                        phone          :  "",
+                        position       :  "",
+                        nda            :  "", 
+                    },
+                    form: {
+                        action: "/api/user/profile",
+                        message: "",
+                        success: false
+                    }
+                }
+            },
+            mixins: [formMixin],
+            template: "#vue-profile-update",
+            created: function functionName() {
+                axios.get("/api/user/source/default/get").then(function(answer) {
+                    console.log(answer);
+                });
+            },
+            methods: {
+                successCallback: function() {
+                    DealibreApp.methods.setAuthorized();
+                }
+            },
+            mounted: function() {
+                $form = $(this.$el).find("form");
+                console.log($form);
+            }
+
+        });
+        new Vue({
+            el: "#profile",
+            created: function() {
+                DealibreApp.methods.setAuthorized();
+                DealibreApp.methods.typeHeader("light");
+                DealibreApp.methods.typeMobileMenu("light-aut", false);
+            },
         });

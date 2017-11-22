@@ -53,12 +53,10 @@ block scripts
 			props: ["helpitem"],
 			template: "#help-item"
 		});
-
 		Vue.component("helpsection", {
 			props: ["helpsection"],
 			template: "#help-section"
 		});
-
 		Vue.component("helpform", {
 			mixins: [formMixin],
 			template: "#help-form",
@@ -78,7 +76,6 @@ block scripts
 				}
 			}
 		});
-
 		new Vue({
 			el: "#help",
 			data: {

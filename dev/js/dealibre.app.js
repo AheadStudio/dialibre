@@ -64,35 +64,55 @@ var formMixin = {
 		send: function() {
 			var self = this,
 				$form = $(this.$el).find("form");
+
 			if(!$form.valid()) {
 				return false;
 			}
+
 			$form.addClass("loading");
 			$form.find(":submit").attr("disabled", "disabled");
-			axios
-				.post($form.attr("action"), $form.serialize())
-				.then(function(r) {
-					console.log(r);
-					var r = r.data;
-					self.form.message = r.message;
+
+			/*
+			var xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			xhr.open("POST", "http://67.207.95.140/api/login", true);
+			xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://67.207.95.140/api/login');
+			xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+			xhr.send($form.serialize());
+			console.log( xhr.responseText );
+			*/
+
+
+			axios.post($form.attr("action"), $form.serialize())
+				.then(function(answer) {
+					var data = answer.data;
+
+					self.form.message = data.message;
 					self.form.success = true;
+
 					$form.find(":submit").removeAttr("disabled");
 					$form.removeClass("loading");
 
 					if(self.successCallback) {
 						self.successCallback();
 					}
+
 					if(self.fields) {
 						for(var code in self.fields) {
 							self.fields[code] = "";
 						}
 					}
+
 					$form.find(".valid").removeClass("valid");
-				}).catch(function(error) {
-					var r = error.response.data;
-					self.form.message = r.message;
+
+					if (!Cookies.get("dealibre_session")) {
+						Cookies.set("dealibre_session","eyJpdiI6ImtBVGswd1JkTGVhY1BJcUsxN0ZYWEE9PSIsInZhbHVlIjoiQ1Y4UStUTGxvVUpkRGg5cGlnejJUaHBYdUNaUkJKeFRTdUFGZ09LVTVFWjdZeFh6OTd6a1ZUM3cyamE5dlBKOG1cL3JoZzZcL0tiTVNxRWZWTWFZK1AyZz09IiwibWFjIjoiNWQyZTZiMDVlODdiNjE0ZGU1YzI5OTU4N2ZjNGFkYjMwOTdkZjlkOTcwZWI5OGM5MmFlZjkwZjJiMTg5NTkwNCJ9");
+					}
+				}).catch(function(info) {
+					var dataError = info.response.data;
+					self.form.message = dataError.message;
 					self.form.success = false;
-					self.validateFromServer(r.data);
+					self.validateFromServer(dataError.data);
 					$form.find(":submit").removeAttr("disabled");
 					$form.removeClass("loading");
 				});
@@ -130,9 +150,3 @@ Vue.component("pagefooter", {
 new Vue({
 	el: "#footer-holder"
 });
-
-
-
-// page: FAQ //
-
-// //page: FAQ //

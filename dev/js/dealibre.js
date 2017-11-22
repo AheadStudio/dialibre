@@ -793,24 +793,10 @@
 	DEALIBRE.map.init();
 
 	DEALIBRE.reload = function() {
-		DEALIBRE.scrollBar.init();
-		DEALIBRE.rating.init();
-		DEALIBRE.scrollFix.init();
 		DEALIBRE.tabs.init();
 		DEALIBRE.accordionFilter.init();
-		DEALIBRE.help.init();
-		DEALIBRE.forms.init();
 		DEALIBRE.toggleContent.init();
-
-		DEALIBRE.tableSearch.init();
 		DEALIBRE.modalWindow.init();
-		DEALIBRE.content.init();
-
-		DEALIBRE.page.initSSM();
-		DEALIBRE.page.header.init();
-		DEALIBRE.page.scrollAnimation.init();
-
-		DEALIBRE.map.init();
 	}
 
 	window.DEALIBRE = DEALIBRE;
