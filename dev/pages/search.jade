@@ -1081,16 +1081,82 @@ block content
                     
                 a(href="#ratingresult", class="btn btn--green popup-rating-btn popup") Report deal
 
-
 block scripts
     script.
         Vue.component("getdeals", {
             data: function() {
                 return {
                     listDeals: [],
+                    params:{
+                        per_page: 1,
+                        sort: "asc",
+                        order_by: "",
+                        source_type: "",
+                        location: "",
+                        industry: "",
+                        deal_type: "",
+                        transaction_type: "",
+                        created_at: {
+                            from: "",
+                            to: ""
+                        },
+                        financials: {
+                            years: {
+                                from: "",
+                                to: ""
+                            },
+                            values: {
+                                ebitda: {
+                                    from: "",
+                                    to: ""
+                                },
+                                cash_flow: {
+                                    from: "",
+                                    to: ""
+                                },
+                                revenue: {
+                                    from: "",
+                                    to: ""
+                                }
+                            }
+                        }
+                    }
                 }    
             },
             template: "#vue-deals-information",
+            created: function() {
+                var self = this;
+                
+                self.sendRequest(self.params);
+            },
+            methods: {
+                sendRequest: function(params) {
+                    var self = this;
+                    axios.get("/api/deals", params).then(function(answer) {
+                        for(var key in answer.data.data) {
+                            var itemDeals = answer.data.data[key];
+                            self.listDeals.push(itemDeals);
+                        }
+                    });
+                },
+                sortDeals: function(event) {
+                    var self = this;
+                        params = $(event.event.currentTarget).data("sort");
+                                            
+                    self.sendRequest(params);
+                }
+            },
+            mounted: function() {
+                DEALIBRE.reload();
+            }
+        });
+        Vue.component("getdeal", {
+            data: function() {
+                return {
+                    deal: "",
+                }    
+            },
+            template: "#vue-deal",
             created: function() {
                 var self = this;
                 
@@ -1099,11 +1165,8 @@ block scripts
             methods: {
                 sendRequest: function(){
                     var self = this;
-                    axios.get("/api/deals").then(function(answer) {
-                        for(var key in answer.data.data) {
-                            var itemDeals = answer.data.data[key];
-                            self.listDeals.push(itemDeals);
-                        }
+                    axios.get("/api/deal").then(function(answer) {
+                        self.deal = answer;
                     });
                 },
             },
@@ -1111,10 +1174,31 @@ block scripts
                 DEALIBRE.reload();
             }
         });
+        Vue.component("getoptions", {
+            data: function() {
+                return {
+                    data: "",
+                }
+            },
+            template: "#vue-get-options",
+            created: function() {
+                var self = this;
+                
+                self.sendRequest();
+            },
+            methods: {
+                sendRequest: function(){
+                    var self = this;
+                    axios.get("/api/deal/options").then(function(answer) {
+                        self.data = answer;
+                        console.log(self.data);
+                    });
+                },
+            },
+        });
         new Vue({
             created: function() {
                 DealibreApp.methods.setAuthorized();
-                DealibreApp.methods.typeHeader("dark");
-                DealibreApp.methods.typeMobileMenu("light-aut","search");
+                DealibreApp.methods.setHeader("search", "header-mobile--aut header-mobile--full");
             },
         });

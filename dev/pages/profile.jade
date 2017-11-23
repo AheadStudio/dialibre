@@ -166,8 +166,8 @@ block scripts
             data: function() {
                 return {
                     user: {
-                        first_name :  "loading...",
-                        last_name  :  "loading...",
+                        first_name :  "Victor",
+                        last_name  :  "Smith",
                         company    :  "loading...",
                         position   :  "loading...",
                         email      :  "loading...",
@@ -199,9 +199,8 @@ block scripts
                     
                     axios.get("/api/faq").then(function(answer) {
                         console.log(answer);
-                    });
-                    
-                },
+                    });        
+                }
             },
             mounted: function() {
                 DEALIBRE.reload();

@@ -328,7 +328,6 @@ block scripts
         new Vue({
             created: function() {
                 DealibreApp.methods.setAuthorized();
-                DealibreApp.methods.typeHeader("light");
-                DealibreApp.methods.typeMobileMenu("light-aut","chat");
+                DealibreApp.methods.setHeader("chat", "header-mobile--aut header-mobile--full");
             }
         });

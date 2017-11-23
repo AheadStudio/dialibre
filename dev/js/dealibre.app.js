@@ -9,21 +9,22 @@ var DealibreApp = {
 		user: {
 			authorized: false
 		},
-		header: "",
-		mobileMenu: "",
-		page: "",
+		page: {
+			header: "",
+			mobileMenu: "",
+			textButton: "",
+			pageTitle: "",
+			class: "",
+		}
 	},
 	methods: {
 		setAuthorized: function() {
 			DEALIBRE.modalWindow.init();
 			DealibreApp.data.user.authorized = true;
 		},
-		typeHeader: function(type) {
-			DealibreApp.data.header = type;
-		},
-		typeMobileMenu: function(type, page = false) {
-			DealibreApp.data.mobileMenu = type;
-			DealibreApp.data.page = page;
+		setHeader: function(pageTitle, pageClass) {
+			DealibreApp.data.page.pageTitle = pageTitle;
+			DealibreApp.data.page.class = pageClass;
 		}
 	},
 	utils: {
@@ -127,7 +128,21 @@ Vue.component("pageheader", {
 	template: "#header-tmpl",
 	data: function() {
 		return {
-			states: DealibreApp.data
+			states: DealibreApp.data,
+		}
+	},
+	created: function() {
+		var self = this;
+		if (!Cookies.get("dealibre_session")) {
+			self.checkAuth();
+		}
+	},
+	methods:{
+		checkAuth: function() {
+			var self = this;
+			axios.get("/api/auth/check").then(function(answer) {
+				//self.authorized = answer.data.data.authenticated;
+			});
 		}
 	}
 });

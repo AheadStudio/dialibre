@@ -167,9 +167,11 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 										button(type="submit", class="btn btn--green header-personal-btn") Share deal
 										a(href="#profile_popup", class="header-personal-avatar popup")
 										a(href="#profile_popup", class="header-personal-initials popup") J. S.
-						div(class="header-mobile header-mobile--white header-mobile--aut header-mobile--full", v-show="states.mobileMenu == 'light-aut' && states.page == 'chat'")
-							div(class="header-mobile-open", id="open-chat")
+						div(v-bind:class="states.page.class", class="header-mobile header-mobile--white", v-show="states.page.pageTitle === 'chat' || states.page.pageTitle === 'search'")
+							div(class="header-mobile-open", id="open-chat", v-if="states.page.pageTitle === 'chat'")
 								img(src="../i/chat_group.png", class="header-mobile-open-img")
+							div(class="header-mobile-open", id="open-search", v-else-if="states.page.pageTitle === 'search'")
+								img(src="../i/filter.png", class="header-mobile-open-img")
 							div(class="header-mobile-burger")
 								div(class="header-mobile-burger-inner")
 							div(class="header-menu-register")
@@ -217,57 +219,6 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 										}
 									]
 								})
-						div(class="header-mobile header-mobile--white header-mobile--aut header-mobile--full", v-show="states.mobileMenu == 'light-aut' && states.page == 'search'")
-							div(class="header-mobile-open", id="open-search")
-								img(src="../i/filter.png", class="header-mobile-open-img")
-							div(class="header-mobile-burger")
-								div(class="header-mobile-burger-inner")
-							div(class="header-menu-register")
-								+menu({
-									rootClass: "header-menu",
-									items: [
-										{
-											name: "search",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}, {
-											name: "my deals",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}, {
-											name: "help",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}
-									]
-								})
-							div(class="header-personal")
-								a(href="#", class="header-personal-alerts")
-									span(class="header-personal-count") 566
-								a(href="#", class="header-personal-mail")
-									span(class="header-personal-count") 566
-								button(type="submit", class="btn btn--green header-personal-btn") Share you deal
-								a(href="#profile_popup", class="header-personal-avatar popup")
-							div(class="header-mobile-menu")
-								+menu({
-									rootClass: "header-menu",
-									items: [
-										{
-											name: "search",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}, {
-											name: "my deals",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}, {
-											name: "help",
-											href: "#",
-											current: (page.code == "#" ? true : false)
-										}
-									]
-								})
-
 						div(class="header-desktop")
 							div(class="page-inner page-inner--max", v-show="states.user.authorized && states.header == 'dark'")
 								div(class="header-logo-container")

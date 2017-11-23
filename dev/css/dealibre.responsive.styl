@@ -152,11 +152,12 @@
 
 /** mobile menu **/
 .header-mobile
+	position relative
 	display none
 	width 100%
 	height auto
 
-	padding 35px 25px 35px 25px
+	padding 25px
 	box-sizing border-box
 
 	background rgba(61, 85, 106, 0.85)
@@ -175,18 +176,16 @@
 			padding 0
 
 	.header-mobile-burger
-		position relative
+		position absolute
+		top 28px
+		right 25px
 		display inline-block
-		float right
-
-		width 35px
+		width 30px
 		height 30px
-
-		margin-top 5px
-
 
 		z-index 1000
 		overflow hidden
+
 
 		.header-mobile-burger-inner
 			display block
@@ -214,10 +213,8 @@
 
 		&:before
 			top 0
-
 		&:after
 			bottom 0
-
 		&.active
 			.header-mobile-burger-inner
 				opacity 0
@@ -269,8 +266,6 @@
 
 	&--white
 		background #e9eef5
-		padding 25px 40px 15px 20px
-
 		.header-mobile-burger
 			.header-mobile-burger-inner
 				background #344c67
@@ -278,12 +273,8 @@
 			&:after
 				background-color #344c67
 
-		.header-mobile-menu
-			margin-bottom 30px
-
 	&--aut
 		.header-mobile-menu
-
 			.header-mobile-container
 				display flex
 
@@ -303,11 +294,24 @@
 					margin-right 0
 
 	&--full
-		padding 0
+		padding 0 !important
+
 		.header-mobile-open
+			position relative
 			display inline-block
 			background #4c637b
-			padding 26px
+			height 70px
+			width 70px
+			box-sizing border-box
+			padding 27px
+
+			img
+				display block
+				position absolute
+				width 20px
+				left 50%
+				top 50%
+				transform translate(-50%,-50%)
 
 		.header-menu-register
 			margin-left 30px
@@ -325,32 +329,14 @@
 			.header-personal-avatar
 				margin-right 0
 
-		.header-mobile-burger
-			top 4px
-			display none
-			width 25px
-			height 25px
-
-			margin-left 25px
-
-			float none
-
-			.header-mobile-burger-inner
-				margin-top 10.5px
-
-			&:before
-			&:after
-				width 30px
-
-			&.active
-				&:before
-					transform rotate(-45deg) translateY(6px) translateX(-9px)
-				&:after
-					transform rotate(45deg) translateY(-7px) translateX(-9px)
-
 		.header-mobile-menu
-			margin 30px 0 30px 20px
-			padding-bottom 20px
+			padding  20px
+			margin-top 0
+
+		.header-mobile-burger
+			right auto
+			top 22px
+			left 72px
 
 /** //mobile menu **/
 
@@ -1724,9 +1710,6 @@
 
 	.header-mobile
 		&--full
-			.header-mobile-burger
-				margin-left 15px
-
 			.header-personal
 				margin-right 15px
 
@@ -2153,9 +2136,9 @@
 						margin-bottom 0
 
 	.header-mobile
-		&--aut
-			padding 25px 20px 15px 20px
+		padding 20px
 
+		&--aut
 			.header-personal
 				flex-flow row-reverse
 
@@ -2169,8 +2152,6 @@
 					margin-right 0
 
 		&--full
-			padding 0
-
 			.header-mobile-burger
 				margin-left 10px
 
