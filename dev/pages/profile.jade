@@ -246,7 +246,6 @@ block scripts
             el: "#profile",
             created: function() {
                 DealibreApp.methods.setAuthorized();
-                DealibreApp.methods.typeHeader("light");
-                DealibreApp.methods.typeMobileMenu("light-aut", false);
+                DealibreApp.methods.setHeader("profile", "header-mobile--aut", "black");
             },
         });

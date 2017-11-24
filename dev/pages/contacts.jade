@@ -53,10 +53,9 @@ block scripts
 				}
 			}
 		});
-
 		new Vue({
 			el: "#contacts",
 			created: function() {
-				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+				DealibreApp.methods.setHeader("contacts", "header-mobile--white header-mobile--aut", "black");
 			}
 		});

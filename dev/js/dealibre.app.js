@@ -7,14 +7,16 @@ axios.defaults.baseURL = "http://67.207.95.140";
 var DealibreApp = {
 	data: {
 		user: {
-			authorized: false
+			authorized: false,
+			authorizedUser: ""
 		},
 		page: {
 			header: "",
 			mobileMenu: "",
 			textButton: "",
 			pageTitle: "",
-			class: "",
+			classMobile: "",
+			headerType: ""
 		}
 	},
 	methods: {
@@ -22,9 +24,10 @@ var DealibreApp = {
 			DEALIBRE.modalWindow.init();
 			DealibreApp.data.user.authorized = true;
 		},
-		setHeader: function(pageTitle, pageClass) {
+		setHeader: function(pageTitle, pageClass, headerType) {
 			DealibreApp.data.page.pageTitle = pageTitle;
-			DealibreApp.data.page.class = pageClass;
+			DealibreApp.data.page.classMobile = pageClass;
+			DealibreApp.data.page.headerType = headerType;
 		}
 	},
 	utils: {
@@ -106,9 +109,6 @@ var formMixin = {
 
 					$form.find(".valid").removeClass("valid");
 
-					if (!Cookies.get("dealibre_session")) {
-						Cookies.set("dealibre_session","eyJpdiI6ImtBVGswd1JkTGVhY1BJcUsxN0ZYWEE9PSIsInZhbHVlIjoiQ1Y4UStUTGxvVUpkRGg5cGlnejJUaHBYdUNaUkJKeFRTdUFGZ09LVTVFWjdZeFh6OTd6a1ZUM3cyamE5dlBKOG1cL3JoZzZcL0tiTVNxRWZWTWFZK1AyZz09IiwibWFjIjoiNWQyZTZiMDVlODdiNjE0ZGU1YzI5OTU4N2ZjNGFkYjMwOTdkZjlkOTcwZWI5OGM5MmFlZjkwZjJiMTg5NTkwNCJ9");
-					}
 				}).catch(function(info) {
 					var dataError = info.response.data;
 					self.form.message = dataError.message;
@@ -133,15 +133,13 @@ Vue.component("pageheader", {
 	},
 	created: function() {
 		var self = this;
-		if (!Cookies.get("dealibre_session")) {
-			self.checkAuth();
-		}
+		self.checkAuth();
 	},
 	methods:{
 		checkAuth: function() {
 			var self = this;
 			axios.get("/api/auth/check").then(function(answer) {
-				//self.authorized = answer.data.data.authenticated;
+				//if (answer.data.data.authenticated == false)
 			});
 		}
 	}

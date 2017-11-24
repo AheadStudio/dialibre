@@ -55,10 +55,9 @@ block scripts
 				}
 			}
 		});
-
 		new Vue({
 			el: "#reset",
 			created: function() {
-				DealibreApp.methods.typeMobileMenu("light-noaut", false);
+				DealibreApp.methods.setHeader("restore-user", "header-mobile--white", "black");
 			}
 		});

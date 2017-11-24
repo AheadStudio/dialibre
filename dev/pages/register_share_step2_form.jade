@@ -154,7 +154,6 @@ block scripts
         new Vue({
             created: function() {
                 DealibreApp.methods.setAuthorized();
-                DealibreApp.methods.typeHeader("light");
-                DealibreApp.methods.typeMobileMenu("light-aut", false);
+                DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
             }
         });
