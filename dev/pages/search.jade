@@ -1058,7 +1058,7 @@ block content
                     a(href="#rating", class="btn btn--green-inverse popup-nda-info-btn-item popup") Edit
         
         div(id="rating", class="popup-container popup-rating white-popup mfp-hide")
-            form(action="#", class="form popup-rating-items")
+            form(class="form form popup-rating-items", v-bind:action="form.action", @submit.prevent="send")
                 div(class="popup-rating-item")
                     div(class="popup-rating-item-text") What is your opinion of this deal’s information quality?
                     div(class="popup-rating-item-count popup-rating-item-count--quality")
@@ -1066,9 +1066,8 @@ block content
                     div(class="popup-rating-item-text") How would you rate this investment opportunity?
                     div(class="popup-rating-item-count popup-rating-item-count--opportunity")
                 div(class="popup-rating-item popup-rating-item--full")
-                    textarea(placeholder="Do tell more", class="popup-rating-item--textarea")
-                    
-                a(href="#ratingresult", class="btn btn--green popup-rating-btn popup") Rate this deal
+                    textarea(placeholder="Do tell more", class="popup-rating-item--textarea")        
+                button(type="submit", class="btn btn--green popup-rating-btn popup") Rate this deal
                 
         div(id="ratingresult", class="popup-container popup-rating white-popup mfp-hide")
             div(class="popup-rating-result")
@@ -1080,7 +1079,24 @@ block content
                 div(class="popup-rating-item popup-rating-item--full")
                     textarea(placeholder="Comment", class="popup-rating-item--textarea")
                     
-                a(href="#ratingresult", class="btn btn--green popup-rating-btn popup") Report deal
+                button(type="submit", class="btn btn--green popup-rating-btn popup") Report deal
+                
+    script(type="text/x-template", id="vue-profile-information")
+        div()
+            form(class="form form popup-rating-items", v-bind:action="form.action", @submit.prevent="send")
+                div(class="popup-rating-item")
+                    div(class="popup-rating-item-text") What is your opinion of this deal’s information quality?
+                    div(class="popup-rating-item-count popup-rating-item-count--quality")
+                div(class="popup-rating-item")
+                    div(class="popup-rating-item-text") How would you rate this investment opportunity?
+                    div(class="popup-rating-item-count popup-rating-item-count--opportunity")
+                div(class="popup-rating-item popup-rating-item--full")
+                    textarea(placeholder="Do tell more", class="popup-rating-item--textarea")        
+                button(type="submit", class="btn btn--green popup-rating-btn popup") Rate this deal
+
+
+
+
 
 block scripts
     script.
@@ -1203,6 +1219,25 @@ block scripts
                     });
                 },
             },
+        });
+        Vue.component("sendrate", {
+            mixins: [formMixin],
+            template: "#vue-send-rate",
+            data: function() {
+                return {
+                    fields: {
+                        deal_id: "",
+                        quality: "",
+                        opportunity: "",
+                        comment: "",
+                    },
+                    form: {
+                        action: "/api/deal/rate",
+                        message: "",
+                        success: false
+                    }
+                }
+            }
         });
         new Vue({
             created: function() {

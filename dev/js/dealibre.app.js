@@ -28,6 +28,14 @@ var DealibreApp = {
 			DealibreApp.data.page.pageTitle = pageTitle;
 			DealibreApp.data.page.classMobile = pageClass;
 			DealibreApp.data.page.headerType = headerType;
+		},
+		getDealId: function(idDeal) {
+			id = {
+				id: idDeal
+			};
+			axios.get("/api/deals", id).then(function(answer) {
+				console.log(answer);
+			});
 		}
 	},
 	utils: {
@@ -44,7 +52,7 @@ var DealibreApp = {
 		        }
 		    }
 		}
-	}
+	},
 };
 
 
