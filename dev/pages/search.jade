@@ -1067,7 +1067,7 @@ block content
                     div(class="popup-rating-item-count popup-rating-item-count--opportunity")
                 div(class="popup-rating-item popup-rating-item--full")
                     textarea(placeholder="Do tell more", class="popup-rating-item--textarea")        
-                button(type="submit", class="btn btn--green popup-rating-btn popup") Rate this deal
+                button(href="#ratingresult", type="submit", class="btn btn--green popup-rating-btn popup") Rate this deal
                 
         div(id="ratingresult", class="popup-container popup-rating white-popup mfp-hide")
             div(class="popup-rating-result")
@@ -1075,12 +1075,16 @@ block content
                 p Our analysts will evaluate this deal closely.
                 
         div(id="reportdeal", class="popup-container popup-rating white-popup mfp-hide")
-            form(action="#", class="form popup-rating-items")
+            sendreport()
+    
+    script(type="text/x-template", id="vue-send-report")
+        div()
+            form(class="form popup-rating-items", v-bind:action="form.action", @submit.prevent="send")
                 div(class="popup-rating-item popup-rating-item--full")
-                    textarea(placeholder="Comment", class="popup-rating-item--textarea")
-                    
-                button(type="submit", class="btn btn--green popup-rating-btn popup") Report deal
-                
+                    textarea(placeholder="Comment", class="popup-rating-item--textarea", v-model="fidels.comment")
+                button(href="#ratingresult", type="submit", class="btn btn--green popup-rating-btn popup") Report deal
+
+        
     script(type="text/x-template", id="vue-profile-information")
         div()
             form(class="form form popup-rating-items", v-bind:action="form.action", @submit.prevent="send")
@@ -1094,13 +1098,10 @@ block content
                     textarea(placeholder="Do tell more", class="popup-rating-item--textarea")        
                 button(type="submit", class="btn btn--green popup-rating-btn popup") Rate this deal
 
-
-
-
-
 block scripts
     script.
         Vue.component("getdeals", {
+            mixins: [formMixin],
             data: function() {
                 return {
                     listDeals: [],
@@ -1143,7 +1144,8 @@ block scripts
                                     to: ""
                                 }
                             }
-                        }
+                        },
+                        somment: "",
                     }
                 }    
             },
@@ -1163,9 +1165,9 @@ block scripts
                         }
                     });
                 },
-                sortDeals: function(event) {
+                sortDeal: function(event) {
                     var self = this;
-                        params = $(event.event.currentTarget).data("sort");
+                        params = $(event.event.currentTarget).data("id-deal");
                                             
                     self.sendRequest(params);
                 }
@@ -1233,6 +1235,40 @@ block scripts
                     },
                     form: {
                         action: "/api/deal/rate",
+                        message: "",
+                        success: false
+                    }
+                }
+            }
+        });
+        Vue.component("sendreport", {
+            mixins: [formMixin],
+            template: "#vue-send-report",
+            data: function() {
+                return {
+                    fields: {
+                        deal_id: "",
+                        comment: '',
+                    },
+                    form: {
+                        action: "/api/deal/report",
+                        message: "",
+                        success: false
+                    }
+                }
+            }
+        });
+        Vue.component("unlockdeal", {
+            mixins: [formMixin],
+            template: "#vue-unlock-deal",
+            data: function() {
+                return {
+                    fields: {
+                        deal_id: "",
+                        comment: '',
+                    },
+                    form: {
+                        action: "/api/deal/unlock",
                         message: "",
                         success: false
                     }

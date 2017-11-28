@@ -293,8 +293,28 @@ block scripts
             mixins: [formMixin],
             template: "#vue-add-card",
         });
+        Vue.component("getdefsource", {
+            data: function() {
+                return {
+                    defSource: [],
+                }    
+            },
+            created: function() {
+                var self = this;
+                self.sendRequest();
+            },
+            methods: {
+                sendRequest: function(){
+                    var self = this;
+                    
+                    axios.get("/api/user/source/default/get").then(function(answer) {
+                        console.log(answer);
+                    });        
+                }
+            },            
+        });
         new Vue({
-            el: "#profile",
+            //el: "#profile",
             created: function() {
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.setHeader("profile", "header-mobile--aut", "black");

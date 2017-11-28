@@ -1,6 +1,6 @@
 // Configure axios
 axios.defaults.baseURL = "http://67.207.95.140";
-//axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 //axios.defaults.headers.common["X-CSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
 
 // Global states
@@ -94,10 +94,11 @@ var formMixin = {
 			console.log( xhr.responseText );
 			*/
 
-
 			axios.post($form.attr("action"), $form.serialize())
 				.then(function(answer) {
 					var data = answer.data;
+
+					console.log(answer);
 
 					self.form.message = data.message;
 					self.form.success = true;
