@@ -12,6 +12,7 @@ var DealibreApp = {
 		},
 		page: {
 			header: "",
+			footer: false,
 			mobileMenu: "",
 			textButton: "",
 			pageTitle: "",
@@ -36,6 +37,9 @@ var DealibreApp = {
 			axios.get("/api/deals", id).then(function(answer) {
 				console.log(answer);
 			});
+		},
+		showFooter: function() {
+			DealibreApp.data.page.footer = true;
 		}
 	},
 	utils: {

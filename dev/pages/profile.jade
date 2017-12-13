@@ -15,7 +15,7 @@ block content
                         div(class="page-profile-personal-info")
                             profileinformation()
                             a(href="#edit-profile", class="btn btn--blue page-profile-personal-info-btn popup") Edit profile
-                            a(href="#", class="btn btn--blue-inverse page-profile-personal-info-btn") Edit password
+                            a(href="#", class="btn btn--blue-inverse page-profile-personal-info-btn") Change password
                             
                     div(class="page-profile-personal--right")
                         div(class="page-profile-personal-credits")
@@ -42,9 +42,9 @@ block content
                                     input(type="radio", name="credits", class="page-profile-history-container-radio-item")
                                     span(class="page-profile-history-container-radio-title") Visa
                                 
-                            input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
+                            input(type="text", class="page-profile-history-container-text", placeholder="MM/DD/YY")
                             
-                            input(type="text", class="page-profile-history-container-text", placeholder="MM DD YY")
+                            input(type="text", class="page-profile-history-container-text", placeholder="MM/DD/YY")
                             
                             a(href="#", class="btn btn--blue page-profile-history-container-btn") View
                         
@@ -80,8 +80,7 @@ block content
                         div(class="page-profile-history-container-item tabs-content-item", id="history-2")
                     
         div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
-            addcard()
-        
+            addcard()        
         div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
             profileupdate()
     
@@ -138,10 +137,10 @@ block content
             form(class="form popup-addcard-form", @submit.prevent="send", v-bind:action="form.action")
                 div(class="popup-addcard-form-row")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Name as it apperears on the card", v-model="fields.name")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Name as it appears on the card", v-model="fields.name")
                 div(class="popup-addcard-form-row")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Billing Adress", v-model="fields.line1")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Billing Address", v-model="fields.line1")
                 div(class="popup-addcard-form-row")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
                         input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="City", v-model="fields.city")
@@ -150,17 +149,21 @@ block content
                             option(value="1") some text
                             option(value="2") some text
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="ZIP", v-model="fields.zip")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="ZIP / Postal Code", v-model="fields.zip")
                 div(class="popup-addcard-form-row")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w2")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Country", v-model="fields.country")
+                        select(class="popup-addcard-form-holder-item-select", placeholder="Country", v-model="fields.country")
+                            option(value="1") USA
+                            option(value="2") France
+                            option(value="3") China
+                            option(value="3") Italy
                 div(class="popup-addcard-form-row")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Card Number", v-model="fields.number")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Card Number", v-model="fields.number", data-mask="0000 0000 0000 0000")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Security Code", v-model="fields.cvc")
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Expiration", v-model="fields.exp_year")
                     div(class="popup-addcard-form-holder popup-addcard-form-holder--w3")
-                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Expiration", v-model="fields.exp_year")            
+                        input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Security Code", v-model="fields.cvc")            
                 div(class="popup-addcard-form-row popup-addcard-form-row--left")
                     button(type="submit", class="btn btn--green popup-addcard-form-holder-item--btn") Add card    
 
@@ -314,9 +317,10 @@ block scripts
             },            
         });
         new Vue({
-            //el: "#profile",
+            el: "#profile",
             created: function() {
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.setHeader("profile", "header-mobile--aut", "black");
+                DealibreApp.methods.showFooter();
             },
         });

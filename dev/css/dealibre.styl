@@ -374,8 +374,8 @@ body
 		padding-top 3px
 		box-sizing border-box
 
-
 		font-size 14px
+		font-family ProximaNovaSemiBold
 
 	.header-personal-avatar
 		position relative
@@ -928,6 +928,9 @@ span.form-item--error
 
 			&--right
 				float right
+			span
+				font-size 14px
+				color #000
 
 .form-checkbox
 	display inline-block
@@ -937,12 +940,14 @@ span.form-item--error
 	.jcf-checkbox
 		margin-right 10px
 
-	.form-checkbox-title
-		vertical-align middle
+	.form-radio-title
 		position relative
 		top 2px
 
 		display inline-block
+		margin-left 5px
+
+		vertical-align middle
 
 		font-size 14px
 		line-height 1
@@ -1811,7 +1816,7 @@ span.form-item--error
 				box-sizing border-box
 
 				font-size 12px
-				font-family ProximaNovaBold
+				font-family ProximaNovaSemiBold
 
 				text-transform uppercase
 
@@ -1955,6 +1960,7 @@ span.form-item--error
 	margin-left 306px
 
 .main-table-search
+	position relative
 	display block
 
 	padding-left 60px
@@ -1963,14 +1969,11 @@ span.form-item--error
 	margin-top 10px
 
 	.main-table-search-container
-		position relative
-
-		display inline-block
-
-		width 48%
+		display block
+		width 100%
+		padding-right 420px
+		box-sizing border-box
 		height 40px
-
-		vertical-align top
 
 		&:hover
 			.search-input
@@ -1982,8 +1985,16 @@ span.form-item--error
 				&:after
 					opacity 1
 
+		.main-table-search-container-holder
+			position relative
+			display block
+			height 100%
+			width 100%
+
 	.main-table-search-container-btn
-		display inline-block
+		position absolute
+		top  0
+		right 0
 		width 420px
 
 		padding-left 10px
@@ -1995,7 +2006,7 @@ span.form-item--error
 
 		vertical-align top
 
-		font-family ProximaNovaBold
+		font-family ProximaNovaSemiBold
 
 
 	.main-table-search-unlock
@@ -2073,30 +2084,48 @@ span.form-item--error
 	width 100%
 	margin-top 25px
 
-	overflow hidden
+	overflow-x auto
 
 	table
 		width 100%
 		thead
 			tr
 				th
+					position relative
 					padding 15px
 					font-size 12px
 					font-family ProximaNovaBold
 
 					text-transform uppercase
 					border-right 1px solid #c2c9d1
-
 					color #344c67
+					cursor pointer
+
+					&:after
+						content none
+						position absolute
+						top 19px
+						margin-left 5px
+						width 0
+						height 0
+						border-left 3px solid transparent
+						border-right 3px solid transparent
+						border-top 5px solid #000
+					&:hover
+						&:after
+							content ""
 
 					&:last-child
 					&:first-child
 						border-right none
 
+					&:first-child
+						&:after
+							content none
 		tbody
 			tr
 				cursor pointer
-
+				transition background 0.3s $transitionAnimation
 				td
 					position relative
 					padding 15px
@@ -2147,15 +2176,14 @@ span.form-item--error
 
 						vertical-align middle
 
-
-
+						background #67ba2f
 
 				&:nth-child(2n-1)
 					background #eaf7fd
 
 				&.active
 					background rgb(215,239,198)
-					td
+					/*td
 						&:first-child:before
 							content ''
 							position absolute
@@ -2167,29 +2195,7 @@ span.form-item--error
 							width 1000em
 
 							box-shadow 10px 0px 25px 0px rgba(215,239,198,0.6)
-							pointer-events none
-
-
-				&:hover
-					td
-						&:first-child:before
-							content ''
-							position absolute
-							top 0
-							bottom 0
-							left 0px
-							right 0
-
-							width 1000em
-
-							box-shadow 10px 0px 25px 0px rgba(0,0,0,0.3)
-							pointer-events none
-
-
-
-
-
-
+							pointer-events none*/
 
 /*** //table ***/
 
@@ -2204,7 +2210,7 @@ span.form-item--error
 	transition opacity 0.3s $transitionAnimation
 
 	&.mfp-ready
-		opacity 0.5
+		opacity 0.8
 
 	&.mfp-removing
 		opacity 0
@@ -2300,7 +2306,7 @@ span.form-item--error
 
 	&.popup-infodeals
 		width 1200px
-		top 40px
+		top 0px
 		left 49%
 
 		transform translate(-50%)
@@ -2351,9 +2357,9 @@ span.form-item--error
 		width 100%
 
 		text-align center
-
-		font-family ProximaNovaBold
+|
 		font-size 18px
+		font-family ProximaNovaSemiBold
 
 
 
@@ -2365,7 +2371,7 @@ span.form-item--error
 
 		.popup-unlock-deals-item
 			display grid
-			grid-template-columns 1fr 6fr 2fr 2fr
+			grid-template-columns 1fr 5fr 2fr 2fr
 
 			width 100%
 
@@ -2415,27 +2421,29 @@ span.form-item--error
 				color #d0631b
 				text-transform lowercase
 
-		.popup-unlock-deals-information-balance
 		.popup-unlock-deals-information-money
 			display block
 			width 100%
 
 			margin-bottom 8px
+
 		.popup-unlock-deals-information-result
 			display block
 			width 100%
-
-			margin-top 15px
+			margin-bottom 8px
 
 			font-size 24px
 
 			color #d0631b
 
+		.popup-unlock-deals-information-balance
+			margin-top 15px
+
 		.popup-unlock-deals-information-btn
+			width 100%
 			padding 16px 50px
 			font-size 14px
-
-			width 100%
+			font-family ProximaNovaSemiBold
 
 			&:first-child
 				margin-bottom 20px
@@ -2472,6 +2480,7 @@ span.form-item--error
 		margin-top 45px
 
 		font-size 14px
+		font-family ProximaNovaSemiBold
 
 
 .popup-newsearch
@@ -2519,6 +2528,7 @@ span.form-item--error
 		text-align center
 
 		font-size 14px
+		font-family ProximaNovaSemiBold
 
 		&.btn--green
 			margin-right 6%
@@ -2676,6 +2686,7 @@ span.form-item--error
 		height 45px
 
 		font-size 14px
+		font-family ProximaNovaSemiBold
 
 /** modal with map **/
 
@@ -2695,21 +2706,23 @@ span.form-item--error
 
 			width 40%
 			margin-right 5%
+			height 100%
 
 			.popup-infodeals-head-map-holder
 				position relative
 				display block
 				width 100%
-
+				height 100%
 				min-width 100%
 
 				padding 20px
 				box-sizing border-box
 
 
-				.popup-infodeals-head-map-holder-img
+				svg
 					display block
 					width 100%
+					fill #fff
 
 				.popup-infodeals-head-map-holder-point
 					position absolute
@@ -2801,6 +2814,8 @@ span.form-item--error
 
 				margin-left 50%
 				transform translate(-50%)
+
+				font-family ProximaNovaSemiBold
 
 	.popup-infodeals-content
 		display flex
@@ -2980,7 +2995,7 @@ span.form-item--error
 			padding 20px 50px
 
 			font-size 15px
-			font-family ProximaNovaBold
+			font-family ProximaNovaSemiBold
 
 
 		.popup-infodeals-navigation-next
@@ -3131,6 +3146,7 @@ span.form-item--error
 			transform translateX(-50%)
 
 			font-size 15px
+			font-family ProximaNovaSemiBold
 
 	.popup-rating-result
 		display block
@@ -3430,17 +3446,21 @@ span.form-item--error
 
 
 .fileuploader
+	display flex
+	flex-flow column-reverse
 	text-align center
 	background #fff
 
 	.register-share-form-upload-button
+		width 155px
+		margin-top 25px
+
 		font-family "ProximaNovaBold"
 		font-size 12px
 
 	.fileuploader-items
 		width 360px
 		margin 0 auto
-		margin-top 25px
 
 
 		.fileuploader-items-list
@@ -3522,6 +3542,10 @@ span.form-item--error
 
 			.register-share-form-upload-submit
 				padding 27px 80px
+
+			.register-share-form-upload-button
+				margin-left auto
+				margin-right auto
 
 		.register-share-form-upload-item-checkbox
 			display block
@@ -3876,17 +3900,14 @@ span.form-item--error
 /*** PAGE CHAT ***/
 
 .page-chat
-	display block
+	display grid
+	grid-template-columns 35% 65%
 	width 100%
 
 	overflow hidden
 
 .chat-dialogues
 	display block
-	width 35%
-	min-height 100vh
-
-	float left
 
 	background #f2f5fa
 
@@ -4316,9 +4337,6 @@ span.form-item--error
 
 .chat-message
 	display block
-	width 65%
-
-	float right
 
 	.tabs-content-item
 		display none
@@ -5369,8 +5387,6 @@ span.form-item--error
 	.mobile-logo
 		position relative
 		display block
-
-		height 70px
 		background $colorDarkBlue
 
 		&:after
@@ -5403,10 +5419,14 @@ span.form-item--error
 	&--chat
 		.chat-dialogues
 			width 100%
+			height 100%
+			margin-top 0
 
 			.chat-dialogues-info
 				padding 0px 10px
+				padding-top 15px
 				margin-bottom 15px
+				margin-top 0
 
 				.chat-dialogues-title
 					margin-right 45px

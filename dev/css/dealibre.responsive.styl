@@ -620,6 +620,7 @@
 			box-sizing border-box
 
 		.main-table-search-container-btn
+			position inherit
 			padding-left 0
 			margin-top 15px
 
@@ -1166,6 +1167,8 @@
 				padding 30px
 				margin-top auto
 
+	.page-chat
+		display block
 @media screen and (max-width: 820px)
 	.popup-container
 		&.popup-infodeals
@@ -2099,20 +2102,25 @@
 		margin-left -5%
 
 		.page-profile-history-container
-			padding 50px 20px
+			padding 30px 20px
 
 			.page-profile-history-container-item
 				.page-profile-history-container-text
-					width 130px
+					padding 10px 7px
+					box-sizing border-box
+					width 95px
 					margin-bottom 30px
 
 				.page-profile-history-container-btn
-					display block
-					width 110px
+					display inline-block
+					vertical-align top
+					width 88px
 					margin 0
+					margin-left 3px
 
 				.page-profile-history-container-table
 					font-size 10px
+					margin-top 0
 
 					thead
 						tr
@@ -2261,6 +2269,17 @@
 			width 180px
 			height 180px
 
+	.page-profile-personal
+		.page-profile-personal--right
+			.page-profile-personal-credits
+				margin-bottom 30px
+				.page-profile-personal-credits-btn
+					width 125px
+
+			.page-profile-personal-credits-items
+				.page-profile-personal-credits-item
+					margin-bottom 30px
+
 @media screen and (max-width: 395px)
 	.header-mobile
 		&--aut
@@ -2296,6 +2315,7 @@
 		.popup-profile-holder
 			width 180px
 			height 180px
+
 
 @media screen and (max-width: 345px)
 	.page-inner--w1

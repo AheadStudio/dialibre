@@ -304,6 +304,58 @@
 
 				},
 
+				summCr: {
+					init: function() {
+						var $cr = $(".filter-checkbox-item",".popup-container");
+
+						$cr.on("click", function() {
+							var $item = $(this),
+								itemPrice = Number($item.data("cr")),
+								$container = $item.closest(".popup-container"),
+								$finalCr = $container.find("[data-finalprice]"),
+								finalCrPrice = Number($finalCr.attr("data-finalprice")),
+								price = 0;
+
+							if ($item.prop('checked')) {
+								price = finalCrPrice + itemPrice;
+								$finalCr.attr("data-finalprice", price);
+								$finalCr.html(price + " credits");
+							} else {
+								price = finalCrPrice - itemPrice;
+
+								if (price > 0) {
+									price = finalCrPrice - itemPrice;
+									$finalCr.attr("data-finalprice", price);
+									$finalCr.html(price + " credits");
+								} else {
+									$finalCr.attr("data-finalprice", 0);
+									$finalCr.html("0" + " credits");
+								}
+							}
+						});
+
+						// filter checkbox table
+						var $checkboxFilter = $(".table-checkbox-item", "th"),
+							$checkElement = $(".table-checkbox-item", "td");
+
+						$checkboxFilter.on("click", function () {
+							var $item = $(this);
+							if ($item.prop('checked')) {
+								$checkElement.each(function(i) {
+									$el = $(this);
+									$el.prop('checked', true);
+									jcf.getInstance($el).refresh();
+								});
+							} else {
+								$checkElement.each(function(i) {
+									$el = $(this);
+									$el.prop('checked', false);
+									jcf.getInstance($el).refresh();
+								});
+							}
+						});
+					},
+				},
 			},
 
 			help: {
@@ -740,7 +792,12 @@
 				init: function() {
 					$containerStick = $(".chat-message");
 					$containerStick.stick_in_parent({
-						container: $(".page-chat"),
+						container: $(".chat-messages"),
+					});
+
+					$containerStickMess = $(".chat-message-send");
+					$containerStickMess.stick_in_parent({
+						container: $(".tabs-content-item"),
 					});
 
 				}
@@ -789,6 +846,8 @@
 	DEALIBRE.page.polygonAnimate.init();
 	DEALIBRE.page.scrollAnimation.init();
 	DEALIBRE.page.playVideo.init();
+	DEALIBRE.page.summCr.init();
+
 
 	DEALIBRE.map.init();
 

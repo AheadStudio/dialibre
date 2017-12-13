@@ -150,12 +150,12 @@ block scripts
 				}
 			}
 		});
-
 		new Vue({
 			el: "#reviews",
 			data: {
 			},
 			created: function() {
 				DealibreApp.methods.setHeader("home", "", "black");
+				DealibreApp.methods.showFooter();
 			}
 		});

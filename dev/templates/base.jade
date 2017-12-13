@@ -140,7 +140,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 									span(class="header-personal-count") 566
 								a(href="#", class="header-personal-mail")
 									span(class="header-personal-count") 566
-								button(type="submit", class="btn btn--green header-personal-btn") Get Credits
+								button(type="submit", class="btn btn--green header-personal-btn",v-if="states.page.pageTitle === 'chat'") Get Credits
+								button(type="submit", class="btn btn--green header-personal-btn",v-else-if="states.page.pageTitle === 'search'") Share you deal
 								a(href="#profile_popup", class="header-personal-avatar popup")
 							div(class="header-mobile-menu", v-if="states.page.pageTitle === 'chat' || states.page.pageTitle === 'search'")
 								+menu({
@@ -590,7 +591,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				pagefooter()
 
 			script(type="text/x-template", id="footer-tmpl")
-				footer(class="page-footer", v-show="!states.user.authorized",itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
+				footer(class="page-footer", v-show="states.page.footer",itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
 					div(class="page-inner page-inner--w1")
 						+menu({
 							rootClass: "footer-menu",

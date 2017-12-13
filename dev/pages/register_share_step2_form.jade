@@ -118,8 +118,9 @@ block content
                             div(class="register-share-form-big-row-title") nda
                             div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
                                 select(class="register-share-form-big-item register-share-form-big-item--select", placeholder="Type NDA")
-                                    option(value="1") some text
-                                    option(value="2") some text               
+                                    option(value="1") Standart
+                                    option(value="2") Own               
+                                    option(value="3") Custom               
                             div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
                                 div(class="register-share-form-big-row-info") Praesent ullamcorper sapien nec dolor tincidunt molestie. Suspendisse ex tortor, porttitor nec diam non, porta laoreet tellus. Sed gravida ultrices lectus, et feugiat orci luctus nec.
                         
@@ -155,5 +156,6 @@ block scripts
             created: function() {
                 DealibreApp.methods.setAuthorized();
                 DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
+                DealibreApp.methods.showFooter();
             }
         });
