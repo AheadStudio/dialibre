@@ -111,7 +111,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							div(class="header-mobile-open", id="open-chat", v-if="states.page.pageTitle === 'chat'")
 								img(src="../i/chat_group.png", class="header-mobile-open-img")
 							div(class="header-mobile-open", id="open-search", v-else-if="states.page.pageTitle === 'search'")
-								img(src="../i/filter.png", class="header-mobile-open-img")
+								img(src="../../svg/filter_white.svg", class="header-mobile-open-img")
 							div(class="header-logo-container header-logo-container--light", v-else)
 								a(href="home.html", class="header-logo-black")
 							div(class="header-mobile-burger")
@@ -656,6 +656,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "../js/plugins/sticky-kit.js"
 			}, {
 				src: "https://unpkg.com/vue"
+			}, {
+				src: "../js/vue-router.js"
 			}, {
 				src: "https://unpkg.com/axios/dist/axios.min.js"
 			}, { 

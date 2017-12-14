@@ -1,0 +1,18 @@
+<svg id="Слой_1" data-name="Слой 1" fill="#2fb0ee" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.06 13.19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3c4d64;
+      }
+    </style>
+  </defs>
+  <title>kolokol</title>
+  <g>
+    <ellipse class="cls-1" cx="6.66" cy="5.72" rx="3.97" ry="4.84"/>
+    <ellipse class="cls-1" cx="6.55" cy="0.98" rx="0.85" ry="0.98"/>
+    <rect class="cls-1" y="10.34" width="13.06" height="1.16"/>
+    <ellipse class="cls-1" cx="6.8" cy="10.31" rx="2.45" ry="2.88"/>
+    <path class="cls-1" d="M147.34,273.41h-4.77a11.5,11.5,0,0,0,1.7-3.14,7.64,7.64,0,0,0,.41-1.79,10.89,10.89,0,0,1,.75-2.25,6,6,0,0,1,1.9-2.14v9.33Z" transform="translate(-141.99 -262.88)"/>
+    <path class="cls-1" d="M150,273.45h4.77a11.5,11.5,0,0,1-1.7-3.14,7.64,7.64,0,0,1-.41-1.79,10.89,10.89,0,0,0-.75-2.25,6,6,0,0,0-1.9-2.14v9.33Z" transform="translate(-141.99 -262.88)"/>
+  </g>
+</svg>

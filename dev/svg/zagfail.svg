@@ -1,0 +1,15 @@
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.92">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000002;
+      }
+    </style>
+  </defs>
+  <title>zagfail</title>
+  <g>
+    <path class="cls-1" d="M64.6,259.22v1.24a5.91,5.91,0,0,1,2.75,5,6.09,6.09,0,0,1-12.18,0,5.89,5.89,0,0,1,2.52-4.81v-1.26A7,7,0,1,0,64.6,259.22Z" transform="translate(-54.21 -257.56)"/>
+    <rect class="cls-1" x="5.85" width="2.13" height="7.44"/>
+    <path class="cls-1" d="M61.13,268.35l-3.35-3.73h6.75Z" transform="translate(-54.21 -257.56)"/>
+  </g>
+</svg>

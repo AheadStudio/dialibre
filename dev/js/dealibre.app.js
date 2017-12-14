@@ -3,6 +3,27 @@ axios.defaults.baseURL = "http://67.207.95.140";
 axios.defaults.withCredentials = true;
 //axios.defaults.headers.common["X-CSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
 
+// routers
+const Foo = { template: '<div>foo</div>' }
+
+
+var routes = [
+	{
+		path: "/",
+		component: Foo
+	}
+]
+
+const router = new VueRouter({
+	routes
+});
+
+var app = new Vue({
+	el: "#ungov",
+	router: router,
+})
+
+
 // Global states
 var DealibreApp = {
 	data: {

@@ -306,7 +306,7 @@
 
 				summCr: {
 					init: function() {
-						var $cr = $(".filter-checkbox-item",".popup-container");
+						var $cr = $(".filter-checkbox-item[data-cr]",".popup-container");
 
 						$cr.on("click", function() {
 							var $item = $(this),
@@ -512,7 +512,7 @@
 						limit: 5,
 						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
 						theme: "One-button",
-						changeInput: '<button type="button" class="btn btn--green chat-message-send-item-btn"><img src="../i/affix.png" class="chat-message-send-item-btn-img"></button>',
+						changeInput: '<button type="button" class="btn btn--green chat-message-send-item-btn"><img src="../../svg/skrepka.svg" class="chat-message-send-item-btn-img"></button>',
 						addMore: true,
 						captions: {
 			            	button: function(options) {
@@ -795,11 +795,6 @@
 						container: $(".chat-messages"),
 					});
 
-					$containerStickMess = $(".chat-message-send");
-					$containerStickMess.stick_in_parent({
-						container: $(".tabs-content-item"),
-					});
-
 				}
 			},
 
@@ -810,15 +805,15 @@
 						score: 0,
 						number: 5,
 						scoreName: "result-quality",
-						starOff: "../i/star_gray.png",
-						starOn: "../i/star_green.png",
+						starOff: "../../svg/zvezda.svg",
+						starOn: "../../svg/zvezda_green.svg",
 					});
 					$(".popup-rating-item-count--opportunity").raty({
 						score: 0,
 						number: 5,
 						scoreName: "result-opportunity",
-						starOff: "../i/star_gray.png",
-						starOn: "../i/star_green.png",
+						starOff: "../../svg/zvezda.svg",
+						starOn: "../../svg/zvezda_green.svg",
 					});
 
 				},

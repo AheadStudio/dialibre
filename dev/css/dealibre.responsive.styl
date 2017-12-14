@@ -155,7 +155,7 @@
 	position relative
 	display none
 	width 100%
-	height auto
+	height 100%
 
 	padding 25px
 	box-sizing border-box
@@ -268,6 +268,8 @@
 
 	&--white
 		background #e9eef5
+		height auto
+
 		.header-mobile-burger
 			.header-mobile-burger-inner
 				background #344c67
@@ -297,6 +299,7 @@
 
 	&--full
 		padding 0 !important
+		height 100%
 
 		.header-mobile-open
 			position relative
@@ -332,8 +335,10 @@
 				margin-right 0
 
 		.header-mobile-menu
+			box-sizing border-box
+			background #e9eef5
 			padding  20px
-			margin-top 0
+			margin-top -3px
 
 		.header-mobile-burger
 			right auto

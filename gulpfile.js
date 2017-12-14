@@ -38,13 +38,13 @@ var paths = {
 };
 
 var gulp = require("gulp"),
-	
+
 	jade = require("gulp-jade"),
 	htmlmin = require("gulp-htmlmin")
 
 	stylus = require("gulp-stylus"),
 	nib = require("nib"),
-	
+
 	imagemin = require('gulp-imagemin'),
 	imageminJpegtran = require('imagemin-jpegtran'),
 
@@ -90,7 +90,10 @@ var gulp = require("gulp"),
 
 	exec = require('child_process').exec,
 
-	generator = require('generate-password');
+	generator = require('generate-password'),
+
+	browserify = require('browserify'),
+	source = require('vinyl-source-stream');
 
 // Слияние параметров и путей
 settings.paths = paths;
@@ -101,7 +104,7 @@ settings.paths = paths;
 /*** SEND EMAIL NOTIFICATIONS ***/
 gulp.task("mail", function(params) {
 	var mailgun = require("mailgun-js")({
-		apiKey: "key-3b0b10d9337c3dd5c31b363e74ab18d8", 
+		apiKey: "key-3b0b10d9337c3dd5c31b363e74ab18d8",
 		domain: "mg.goodcode.ru"
 	});
 	var states = {
@@ -212,11 +215,11 @@ gulp.task("front", function() {
 				fileInfo = fileName.split("_"),
 				fileDate = fileInfo[1].replace(/-/g, "."),
 				fileTime = fileInfo[2].replace(/-/g, ":");
-	
+
 			// File info
 			var fileStats = fs.statSync(settings.paths.prod.archives + file);
 			//console.log(fileStats);
-	
+
 			archives.push({
 				name: fileInfo[0],
 				size: (fileStats.size / 1024 / 1024).toFixed(2),
@@ -224,8 +227,8 @@ gulp.task("front", function() {
 				dateFormat: new Date(fileDate.replace(/(\d+)\.(\d+)\.(\d+)/, '$2/$1/$3') + " " + fileTime).getTime(),
 				url: settings.info.productionUrl + "archives/" + fileName + ".zip"
 			});
-	
-		});	
+
+		});
 	}
 
 	// Сортировка по убыванию времени создания
@@ -328,23 +331,6 @@ gulp.task("pages", function() {
 			stream: true
 		}));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Стили
@@ -489,8 +475,14 @@ gulp.task("js", function() {
 		.pipe(browserSync.reload({
 			stream: true
 		}));
+	/*browserify("./dev/js/dealibre.app.js")
+		.bundle()
+		.pipe(source("dealibre.app.js"))
+		.pipe(gulp.dest(settings.paths.prod.js))
+		.pipe(browserSync.reload({
+			stream: true
+		}));*/
 });
-
 
 
 // Контентная медиа
@@ -501,11 +493,6 @@ gulp.task("dummy", function() {
 		}))
 		.pipe(gulp.dest(settings.paths.prod.dummy));
 });
-
-
-
-
-
 
 
 // Веб-сервер
@@ -548,7 +535,7 @@ gulp.task("docs", function() {
 
 // Создание базовых файлов и директорий проекта
 gulp.task("assembly", function() {
-	
+
 	// Pages
 	if(!fs.existsSync(settings.paths.dev.pages)) {
 		fs.mkdirSync(settings.paths.dev.pages);
@@ -576,7 +563,7 @@ gulp.task("assembly", function() {
 		baseCssFilePath = settings.paths.dev.cssLib + "markup.styl",
 		cssResponsiveFilePath = settings.paths.dev.css + settings.info.code + ".responsive.styl",
 		baseCssResponsiveFilePath = settings.paths.dev.cssLib + "markup.responsive.styl";
-	
+
 	if(!fs.existsSync(settings.paths.dev.css)) {
 		fs.mkdirSync(settings.paths.dev.css);
 	}
@@ -593,7 +580,7 @@ gulp.task("assembly", function() {
 		jsResponsiveFilePath = settings.paths.dev.js + settings.info.code + ".responsive.js",
 		baseJsResponsiveFilePath = settings.paths.dev.jsLib + "markup.responsive.js";
 
-	if(!fs.existsSync(settings.paths.dev.js)) {	
+	if(!fs.existsSync(settings.paths.dev.js)) {
 		fs.mkdirSync(settings.paths.dev.js);
 	}
 	if(!fs.existsSync(jsFilePath)) {
@@ -604,28 +591,28 @@ gulp.task("assembly", function() {
 	}
 
 	// Fonts
-	if(!fs.existsSync(settings.paths.dev.fonts)) {	
+	if(!fs.existsSync(settings.paths.dev.fonts)) {
 		fs.mkdirSync(settings.paths.dev.fonts);
 	}
 
 	// Images
-	if(!fs.existsSync(settings.paths.dev.images)) {	
+	if(!fs.existsSync(settings.paths.dev.images)) {
 		fs.mkdirSync(settings.paths.dev.images);
 	}
 	if(!fs.existsSync(settings.paths.dev.icons)) {
-		fs.mkdirSync(settings.paths.dev.icons);	
+		fs.mkdirSync(settings.paths.dev.icons);
 	}
 
 	// SVG
-	if(!fs.existsSync(settings.paths.dev.svg)) {	
+	if(!fs.existsSync(settings.paths.dev.svg)) {
 		fs.mkdirSync(settings.paths.dev.svg);
 	}
 	if(!fs.existsSync(settings.paths.dev.svgIcons)) {
-		fs.mkdirSync(settings.paths.dev.svgIcons);	
+		fs.mkdirSync(settings.paths.dev.svgIcons);
 	}
-	
+
 	// Dummy
-	if(!fs.existsSync(settings.paths.dev.dummy)) {	
+	if(!fs.existsSync(settings.paths.dev.dummy)) {
 		fs.mkdirSync(settings.paths.dev.dummy);
 	}
 
@@ -696,7 +683,7 @@ gulp.task("default", ["browser-sync"], function() {
 	watch([settings.paths.dev.fonts + "*"], function(e) {
 		gulp.start("fonts");
 	});
-	
+
 	// Документация
 	watch([settings.paths.front.root + "docs.jade"], function(e) {
 		gulp.start("docs");
@@ -721,7 +708,7 @@ gulp.task("default", ["browser-sync"], function() {
 		checkJadeFiles = false;
 		gulp.start("pages");
 	});
-	
+
 
 	// Главная страница
 	watch([settings.paths.front + "index.jade", "./settings.json"], function() {
@@ -793,4 +780,4 @@ gulp.task("make", function() {
 		["cleanfolder", "upload"],
 		["copyToBuffer"]
 	);
-});	
+});
