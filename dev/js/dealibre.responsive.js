@@ -1,7 +1,7 @@
 (function($) {
 
 	var siteResponsive = (function() {
-
+ 
 		// Selections
 		var $sel = {};
 		$sel.window = $(window);

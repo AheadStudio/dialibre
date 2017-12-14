@@ -18,7 +18,7 @@ block content
 	// Templates
 	script(type="text/x-template", id="help-section")
 		div(class="help-section-item")
-			h2(class="h2 help-section-item-name") {{ helpsection.name }}
+			h2(class="h2 help-section-item-name") {{ helpsection.name }} 
 			div(class="help-section-item-blocks")
 				helpitem(v-for="item in helpsection.items", v-bind:helpitem="item", v-bind:key="item.id")
 

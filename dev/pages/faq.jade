@@ -17,7 +17,7 @@ block content
 		div(v-bind:class="{ loading:!faqList.length }")
 			div(class="faq-item", v-for="faq in faqList")
 				div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
-				div(class="faq-item-text") {{ faq.answer }}
+				div(class="faq-item-text") {{ faq.answer }} 
 
 block scripts
 	script.

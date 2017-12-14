@@ -1,6 +1,6 @@
 (function($) {
 	var DEALIBRE = (function() {
-
+ 
 		var $sel = {};
 		$sel.window = $(window);
 		$sel.html = $("html");

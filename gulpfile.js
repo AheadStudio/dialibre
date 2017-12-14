@@ -93,6 +93,7 @@ var gulp = require("gulp"),
 	generator = require('generate-password'),
 
 	browserify = require('browserify'),
+	vueify = require('vueify'),
 	source = require('vinyl-source-stream');
 
 // Слияние параметров и путей
@@ -468,6 +469,18 @@ gulp.task("svg", function() {
 
 
 // JS
+
+gulp.task('browserify', function () {
+    return	browserify({entries: ['./dev/js/dealibre.main.js']}) // path to your entry file here
+    .transform(vueify)
+    .bundle()
+	.pipe(source("dealibre.main.js"))
+	.pipe(gulp.dest(settings.paths.prod.js))
+	.pipe(browserSync.reload({
+		stream: true
+	}));
+});
+
 gulp.task("js", function() {
 	gulp.src([settings.paths.dev.js + "*", settings.paths.dev.js + "**"])
 		.pipe(newer(settings.paths.prod.js))
@@ -475,13 +488,7 @@ gulp.task("js", function() {
 		.pipe(browserSync.reload({
 			stream: true
 		}));
-	/*browserify("./dev/js/dealibre.app.js")
-		.bundle()
-		.pipe(source("dealibre.app.js"))
-		.pipe(gulp.dest(settings.paths.prod.js))
-		.pipe(browserSync.reload({
-			stream: true
-		}));*/
+	gulp.start("browserify");
 });
 
 
