@@ -1,16 +1,16 @@
 <template lang="jade">
     div(id="t1")
-        my-checkbox2()
+        my-checkbox7()
         span {{ greeting }}
 </template>
 
 <script>
-    Vue.component('my-checkbox2', {
+    Vue.component('my-checkbox7', {
         template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
         data() {
             return {
               checked: false,
-              title: 'chat'
+              title: 'recover'
             }
         },
         methods: {

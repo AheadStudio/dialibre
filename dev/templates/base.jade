@@ -70,8 +70,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		])
 	body(itemscope, itemtype="http://schema.org/WebPage", class="#{page.bodyClass ? page.bodyClass : ''}")
 		div(class="menu-overlay")
-
+	
 		div(class="page")
+			div(id="test", style="position: fixed; display: block")
+				router-view
 			header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
 				pageheader()
 

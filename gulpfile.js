@@ -15,7 +15,8 @@ var paths = {
 		"cssLib": "./dev/lib/css/",
 		"htmlLib": "./dev/lib/html/",
 		"jsLib": "./dev/lib/js/",
-		"fonts": "./dev/fonts/"
+		"fonts": "./dev/fonts/",
+		"components": "./dev/components/"
 	},
 	"prod": {
 		"root": "./prod/",
@@ -94,7 +95,8 @@ var gulp = require("gulp"),
 
 	browserify = require('browserify'),
 	vueify = require('vueify'),
-	source = require('vinyl-source-stream');
+	source = require('vinyl-source-stream'),
+	babelify = require("babelify");
 
 // Слияние параметров и путей
 settings.paths = paths;
@@ -469,12 +471,12 @@ gulp.task("svg", function() {
 
 
 // JS
-
 gulp.task('browserify', function () {
-    return	browserify({entries: ['./dev/js/dealibre.main.js']}) // path to your entry file here
+    return	browserify({ entries: './dev/js/dealibre.main.js'})
+    .transform(babelify, { presets: ['es2015'] })
     .transform(vueify)
-    .bundle()
-	.pipe(source("dealibre.main.js"))
+	.bundle()
+	.pipe(source('dealibre.main.js'))
 	.pipe(gulp.dest(settings.paths.prod.js))
 	.pipe(browserSync.reload({
 		stream: true
@@ -685,6 +687,11 @@ gulp.task("default", ["browser-sync"], function() {
 	watch([settings.paths.dev.js + "*.js", settings.paths.dev.js + "**"], function(e) {
 		gulp.start("js");
 	});
+
+	watch([settings.paths.dev.components + "*.vue", settings.paths.dev.components + "**"], function(e) {
+		gulp.start("browserify");
+	});
+
 
 	// Шрифты
 	watch([settings.paths.dev.fonts + "*"], function(e) {
