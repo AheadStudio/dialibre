@@ -19,7 +19,6 @@ var restore = require('../components/restore.vue');
 var search = require('../components/search.vue');
 var signin = require('../components/signin.vue');
 var text = require('../components/text.vue');
-
 // routes in site
 const routes = [
   {
@@ -93,6 +92,7 @@ const router = new VueRouter({
     routes,
 });
 
-const app = new Vue({
-   router
-}).$mount('#test');
+var app = new Vue({
+    el: "#dealibre-app",
+    router
+});

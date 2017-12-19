@@ -1,27 +1,19 @@
 extends ../templates/base
 
 block content
-    div(id="reg-success")
-        div(class="page-heading")
-            div(class="page-inner page-inner--w1")
-                h1(class="h1") THANK YOU FOR SHARING THIS DEAL WITH THE COMMUNITY!
-
-        div(class="page-inner page-inner--w1")
-            div(class="register-share")
-                div(class="register-share-title register-share-title--success") You analyst will review the information, you will receive a notification whether the deal you shared was approved and how many points are awarded.
-                div(class="register-share-success")
-                    a(href="#", class="link register-share-success-link") Another deal to share
-                    br
-                    a(href="#", class="link register-share-success-link") Search deal flow
-
-
-                
+    div(id="dealibre-app")
+        router-view()        
 block scripts
     script.
         new Vue({
             created: function() {
-                DealibreApp.methods.setAuthorized();
-                DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
-                DealibreApp.methods.showFooter(); 
+                DealibreApp.methods.checkAuthorized(function(isAuth) {
+                    if (!isAuth) {
+                        DealibreApp.methods.setHeader("register", "header-mobile--white", "black");
+                    } else {
+                        DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
+                    }
+                });
+                DealibreApp.methods.showFooter();
             }
         });

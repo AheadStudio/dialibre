@@ -1,11 +1,4 @@
 <svg id="Слой_1" data-name="Слой 1" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.19 14.38">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #b8c3d1;
-      }
-    </style>
-  </defs>
   <title>filter</title>
   <g>
     <path class="cls-1" d="M347.19,577.27a1.27,1.27,0,0,0-1.27,1.27v1.88a1.27,1.27,0,0,0,2.53,0v-1.87A1.27,1.27,0,0,0,347.19,577.27Zm0.56,3.09a0.58,0.58,0,0,1-1.15,0v-1.71a0.58,0.58,0,0,1,1.15,0v1.75Z" transform="translate(-336.19 -577.27)"/>

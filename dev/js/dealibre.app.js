@@ -1,19 +1,17 @@
 // Configure axios
 axios.defaults.baseURL = "http://67.207.95.140";
 axios.defaults.withCredentials = true;
-//axios.defaults.headers.common["X-CSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
 
 // Global states
-var DealibreApp = {
+DealibreApp = {
 	data: {
 		user: {
 			authorized: false,
-			authorizedUser: ""
+			authorizedUser: "",
+			checkUrl: "/api/auth/check"
 		},
 		page: {
-			header: "",
 			footer: false,
-			mobileMenu: "",
 			textButton: "",
 			pageTitle: "",
 			classMobile: "",
@@ -40,6 +38,24 @@ var DealibreApp = {
 		},
 		showFooter: function() {
 			DealibreApp.data.page.footer = true;
+		},
+		checkAuthorized: function(callback) {
+			var self = this,
+				check = "";
+			axios.get(DealibreApp.data.user.checkUrl).then(function(answer) {
+				if (answer.data.data.authenticated === true) {
+					self.setAuthorized();
+					check = true;
+					if(callback) {
+						callback(check);
+					}
+				} else {
+					check = false;
+					if(callback) {
+						callback(check);
+					}
+				}
+			});
 		}
 	},
 	utils: {
@@ -87,22 +103,9 @@ var formMixin = {
 
 			$form.addClass("loading");
 			$form.find(":submit").attr("disabled", "disabled");
-
-			/*
-			var xhr = new XMLHttpRequest();
-			xhr.withCredentials = true;
-			xhr.open("POST", "http://67.207.95.140/api/login", true);
-			xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://67.207.95.140/api/login');
-			xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-			xhr.send($form.serialize());
-			console.log( xhr.responseText );
-			*/
-
 			axios.post($form.attr("action"), $form.serialize())
 				.then(function(answer) {
 					var data = answer.data;
-
-					console.log(answer);
 
 					self.form.message = data.message;
 					self.form.success = true;
@@ -137,27 +140,14 @@ var formMixin = {
 
 // Header
 Vue.component("pageheader", {
-	mixins: [formMixin],
 	template: "#header-tmpl",
 	data: function() {
 		return {
 			states: DealibreApp.data,
 		}
-	},
-	created: function() {
-		var self = this;
-		self.checkAuth();
-	},
-	methods:{
-		checkAuth: function() {
-			var self = this;
-			axios.get("/api/auth/check").then(function(answer) {
-				//if (answer.data.data.authenticated == false)
-			});
-		}
 	}
 });
-new Vue({
+header = new Vue({
 	el: "#page-header"
 });
 
@@ -165,7 +155,6 @@ new Vue({
 
 // Footer
 Vue.component("pagefooter", {
-	mixins: [formMixin],
 	template: "#footer-tmpl",
 	data: function() {
 		return {
@@ -173,6 +162,6 @@ Vue.component("pagefooter", {
 		}
 	}
 });
-new Vue({
+footer = new Vue({
 	el: "#footer-holder"
 });

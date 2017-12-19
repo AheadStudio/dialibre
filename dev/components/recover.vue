@@ -1,29 +1,22 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox7()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") Recover your password
+
+        div(class="page-description")
+            div(class="page-inner page-inner--w1") Enter your email and we’ll send you a password reset link.
+
+        div(class="page-inner page-inner--w3")
+            recoverform()
 </template>
 
 <script>
-    Vue.component('my-checkbox7', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'recover'
-            }
-        },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
+    // connect components in home page
+    import recoverform from './main-components/component.recover.recoverform.vue';
+    export default {
+        components: {
+            "recoverform": recoverform,
         }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

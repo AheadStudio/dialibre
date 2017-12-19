@@ -72,13 +72,11 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		div(class="menu-overlay")
 	
 		div(class="page")
-			div(id="test", style="position: fixed; display: block")
-				router-view
 			header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
 				pageheader()
 
 				script(type="text/x-template", id="header-tmpl")
-					div(class="header-inner")
+					div(class="header-inner", id="page-header-link")
 						div(v-bind:class="states.page.classMobile", class="header-mobile", v-show="!states.user.authorized")
 							div(class="header-logo-container header-logo-container--light", v-show="states.page.pageTitle !== 'home'")
 								a(href="home.html", class="header-logo-black")
@@ -593,7 +591,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				pagefooter()
 
 			script(type="text/x-template", id="footer-tmpl")
-				footer(class="page-footer", v-show="states.page.footer",itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
+				footer(class="page-footer", v-show="states.page.footer", itemscope, itemtype="http://schema.org/WPFooter", id="page-footer")
 					div(class="page-inner page-inner--w1")
 						+menu({
 							rootClass: "footer-menu",
@@ -617,7 +615,6 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 								}
 							]
 						})
-
 						div(class="footer-social")
 							div(class="footer-social-items")
 								a(href="#", target="_blank", class="footer-social-item")

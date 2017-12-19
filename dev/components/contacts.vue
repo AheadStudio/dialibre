@@ -1,29 +1,23 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox28()
-        span {{ greeting }}
+    div(class="contacts")
+        div(class="page-inner page-inner--w2")
+            div(class="contacts-inner")
+                div(class="contacts-info")
+                    b Contact
+                    p North America
+                    p State
+                    p
+                        a(href="mailto:email@mail.com", class="link link--blue") email@mail.com
+
+                contactsform()
 </template>
 
 <script>
-    Vue.component('my-checkbox28', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'contacts'
-            }
-        },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
+    import contactsform from './main-components/component.contacts.contactsform.vue';
+
+    export default {
+        components: {
+            "contactsform": contactsform,
         }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

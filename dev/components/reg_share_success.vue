@@ -1,29 +1,14 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox11()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") THANK YOU FOR SHARING THIS DEAL WITH THE COMMUNITY!
+
+        div(class="page-inner page-inner--w1")
+            div(class="register-share")
+                div(class="register-share-title register-share-title--success") You analyst will review the information, you will receive a notification whether the deal you shared was approved and how many points are awarded.
+                div(class="register-share-success")
+                    a(href="#", class="link register-share-success-link") Another deal to share
+                    br
+                    a(href="#", class="link register-share-success-link") Search deal flow
 </template>
-
-<script>
-    Vue.component('my-checkbox11', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'register share success'
-            }
-        },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
-        }
-    });
-</script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

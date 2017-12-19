@@ -1,64 +1,20 @@
 extends ../templates/base
 
 block content
-	// HTML
-	div(id="reset")
-		div(class="page-heading")
-			div(class="page-inner page-inner--w1")
-				h1(class="h1") Change your password
-
-		div(class="page-description")
-			div(class="page-inner page-inner--w1") Change your password
-
-
-		div(class="page-inner page-inner--w3")
-			resetform()
-
-	// Template
-	script(type="text/x-template", id="reset-form")
-		div(class="form-holder")
-			form(class="form", @submit.prevent="send", v-bind:action="form.action")
-				input(type="hidden", name="token", v-model="token")
-				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						input(type="email", class="form-item--text", placeholder="E-mail", name="email", v-model="fields.email", required)
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						input(type="password", class="form-item--text", placeholder="Password", name="password", v-model="fields.password", required)
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						input(type="password", class="form-item--text", placeholder="Password confirmation", name="password_confirmation", v-model="fields.password_confirmation", required)
-				div(class="form-row form-row--centered")
-					div(class="form-btn-holder")
-						button(type="submit", class="btn btn--green form-btn") Change 
-
+	div(id="dealibre-app")
+		router-view()
 // Scripts
 block scripts
 	script.
-		Vue.component("resetform", {
-			mixins: [formMixin],
-			template: "#reset-form",
-			data: function() {
-				return {
-					fields: {
-						email: "",
-						password: "",
-						password_confirmation: "",
-						token: DealibreApp.utils.getUrlParameter("token")
-					},
-					form: {
-						action: "api/password/reset",
-						message: "",
-						success: false
-					}
-				}
-			}
-		});
 		new Vue({
-			el: "#reset",
 			created: function() {
-				DealibreApp.methods.setHeader("restore-user", "header-mobile--white", "black");
+				DealibreApp.methods.checkAuthorized(function(isAuth) {
+					if (!isAuth) {
+						DealibreApp.methods.setHeader("restore-user", "header-mobile--white", "black");
+					} else {
+						DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
+					}
+				});
 				DealibreApp.methods.showFooter();
 			}
 		});

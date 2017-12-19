@@ -1,29 +1,20 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox14()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") Log in
+
+        div(class="page-inner page-inner--w3")
+            loginform()
 </template>
 
 <script>
-    Vue.component('my-checkbox14', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'signin'
-            }
-        },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
+    // connect components in home page
+    import loginform from './main-components/component.signin.loginform.vue';
+    
+    export default {
+        components: {
+            "loginform": loginform,
         }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

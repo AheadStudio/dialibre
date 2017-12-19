@@ -506,14 +506,25 @@ gulp.task("dummy", function() {
 
 // Веб-сервер
 gulp.task("browser-sync", function() {
-	browserSync.init({
+	var files = [
+		settings.paths.prod.root
+	];
+	/*browserSync.init({
 		server: {
-			baseDir: [settings.paths.prod.root, settings.paths.prod.pages]
+		baseDir: [settings.paths.prod.root, settings.paths.prod.pages]
+	},
+	});*/
+
+	browserSync.init({
+		open: "external",
+		host: "wemakesites.ru",
+		server: {
+		baseDir: [settings.paths.prod.root, settings.paths.prod.pages]
 		},
-		open: false
+		port: 3000,
+		browser: "opera",
 	});
 });
-
 gulp.task("clear", function() {
 	gulp.src([settings.paths.prod.root + "*", settings.paths.prod.root + "**"])
 		.pipe(rm())

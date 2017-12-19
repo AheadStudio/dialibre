@@ -1,29 +1,24 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox13()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") Change your password
+
+        div(class="page-description")
+            div(class="page-inner page-inner--w1") Change your password
+
+
+        div(class="page-inner page-inner--w3")
+            resetform()
 </template>
 
 <script>
-    Vue.component('my-checkbox13', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'restore'
-            }
+    // connect components in restore page
+    import resetform from './main-components/component.restore.restoreform.vue';
+
+    export default {
+        components: {
+            "resetform": resetform
         },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
-        }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

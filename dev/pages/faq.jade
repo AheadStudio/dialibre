@@ -1,52 +1,19 @@
 extends ../templates/base
 
 block content
-	// HTML
-	div(class="page-heading")
-		div(class="page-inner page-inner--w1")
-			h1(class="h1") Faq
-
-	div(id="faq", class="faq")
-		div(class="page-inner page-inner--w2")
-			div(class="faq-items")
-				faqitem()
-
-	
-	// Templates
-	script(id="faq-item", type="text/x-template")
-		div(v-bind:class="{ loading:!faqList.length }")
-			div(class="faq-item", v-for="faq in faqList")
-				div(class="faq-item-title") {{ faq.id }}. {{ faq.question }}
-				div(class="faq-item-text") {{ faq.answer }} 
-
+	div(id="dealibre-app")
+		router-view()
 block scripts
 	script.
-		Vue.component("faqitem", {
-			data: function() {
-				return {
-					faqList: [],
-				}
-			},
-			props: ["faq"],
-			created: function() {
-				this.load();
-			},
-			methods: {
-				load: function() {
-					var self = this;
-					axios.get("/api/faq").then(function(answer) {
-						for(var key in answer.data.data) {
-							self.faqList.push(answer.data.data[key]);
-						}
-					});
-				}
-			},
-			template: "#faq-item"
-		});
 		new Vue({
-			el: "#faq",
 			created: function() {
-				DealibreApp.methods.setHeader("faq", "header-mobile--white", "black");
+				DealibreApp.methods.checkAuthorized(function(isAuth) {
+					if (!isAuth) {
+						DealibreApp.methods.setHeader("faq", "header-mobile--white", "black");
+					} else {
+						DealibreApp.methods.setHeader("faq", "header-mobile--aut", "black");
+					}
+				});
 				DealibreApp.methods.showFooter();
-			},
+			}
 		});

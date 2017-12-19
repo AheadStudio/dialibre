@@ -1,29 +1,22 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox5()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") Faq
+
+        div(id="faq", class="faq")
+            div(class="page-inner page-inner--w2")
+                div(class="faq-items")
+                    faqitem()
 </template>
 
 <script>
-    Vue.component('my-checkbox5', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'faq'
-            }
-        },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
+    // connect components in faq page
+    import faqitem from './main-components/component.faq.faqitem.vue';
+
+    export default {
+        components: {
+            "faqitem": faqitem,
         }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>

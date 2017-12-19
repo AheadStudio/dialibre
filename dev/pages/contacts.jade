@@ -1,62 +1,20 @@
 extends ../templates/base
 
 block content
-	// HTML
-	div(class="contacts", id="contacts")
-		div(class="page-inner page-inner--w2")
-			div(class="contacts-inner")
-				div(class="contacts-info")
-					b Contact
-					p North America
-					p State
-					p 
-						a(href="mailto:email@mail.com", class="link link--blue") email@mail.com
-
-				contactsform()
-
-
-	// Templates
-	script(type="text/x-template", id="contacts-form")
-		div(class="contacts-form")
-			form(class="form", v-bind:action="form.action", @submit.prevent="send")
-				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }} 
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--half")
-						input(type="text", class="form-item form-item--text", placeholder="User name", name="name", v-model="fields.name")
-					div(class="form-item-holder form-item-holder--half")
-						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="fields.email")
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="fields.text")
-				div(class="form-row")
-					button(type="submit", class="btn btn--green") Send 
-
-
+	div(id="dealibre-app")
+		router-view()
 block scripts
 	// Component
 	script.
-		Vue.component("contactsform", {
-			mixins: [formMixin],
-			template: "#contacts-form",
-			data: function() {
-				return {
-					fields: {
-						name: "",
-						email: "",
-						text: ""
-					},
-					form: {
-						action: "/api/contacts/message",
-						message: "",
-						success: false
-					}
-				}
-			}
-		});
 		new Vue({
-			el: "#contacts",
 			created: function() {
-				DealibreApp.methods.setHeader("contacts", "header-mobile--white header-mobile--aut", "black");
+				DealibreApp.methods.checkAuthorized(function(isAuth) {
+					if (!isAuth) {
+						DealibreApp.methods.setHeader("contacts", "header-mobile--white", "black");
+					} else {
+						DealibreApp.methods.setHeader("contacts", "header-mobile--white header-mobile--aut", "black");
+					}
+				});
 				DealibreApp.methods.showFooter();
 			}
 		});

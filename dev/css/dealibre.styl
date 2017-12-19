@@ -96,6 +96,10 @@ body
 
 .page-content-register
 	padding 0
+	
+.page-content--auth
+	padding 0 0 320px 0
+
 /*** //Base ***/
 
 
@@ -293,7 +297,7 @@ body
 
 		&:before
 			opacity 1
-			background-image url("../svg/kolokol.svg") 
+			background-image url("../svg/kolokol.svg")
 
 		&:after
 			opacity 0
@@ -1193,7 +1197,9 @@ span.form-item--error
 		&:hover
 			transform translateX(-50%) translateY(5px)
 
+		img
 		svg
+			display block
 			width 100%
 			height 100%
 
@@ -1431,6 +1437,7 @@ span.form-item--error
 
 				transform rotate(-45deg)
 
+			img
 			svg
 				vertical-align middle
 
@@ -1652,6 +1659,7 @@ span.form-item--error
 	width 100%
 
 	svg
+	img
 		width 80%
 		height 100%
 
@@ -4016,10 +4024,10 @@ span.form-item--error
 					transition opacity 0.3s $transitionAnimation
 
 				&:before
-					background-image url("../../svg/lypa.svg")
+					background-image url("../svg/lypa.svg")
 					opacity 1
 				&:after
-					background-image url("../../svg/lypa_blue.svg")
+					background-image url("../svg/lypa_blue.svg")
 					opacity 0
 
 			.chat-dialogues-search-filter
@@ -4044,10 +4052,10 @@ span.form-item--error
 					transition opacity 0.3s $transitionAnimation
 
 				&:before
-					background-image url("../../svg/filter.svg")
+					background-image url("../svg/filter.svg")
 					opacity 1
 				&:after
-					background-image url("../../svg/filter_blue.svg")
+					background-image url("../svg/filter_blue.svg")
 					opacity 0
 
 

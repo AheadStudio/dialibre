@@ -1,6 +1,6 @@
 (function($) {
 	var DEALIBRE = (function() {
- 
+
 		var $sel = {};
 		$sel.window = $(window);
 		$sel.html = $("html");
@@ -512,7 +512,7 @@
 						limit: 5,
 						extensions: ["doc", "docx", "pdf", "xis", "xlsx", "txt"],
 						theme: "One-button",
-						changeInput: '<button type="button" class="btn btn--green chat-message-send-item-btn"><img src="../../svg/skrepka.svg" class="chat-message-send-item-btn-img"></button>',
+						changeInput: '<button type="button" class="btn btn--green chat-message-send-item-btn"><img src="../svg/skrepka.svg" class="chat-message-send-item-btn-img"></button>',
 						addMore: true,
 						captions: {
 			            	button: function(options) {
@@ -532,9 +532,11 @@
 					       	}
 		            	},
 					});
-
-
 				},
+
+				refresh: function(elements) {
+					jcf.refresh( elements );
+				}
 			},
 
 			tabs: {
@@ -805,15 +807,15 @@
 						score: 0,
 						number: 5,
 						scoreName: "result-quality",
-						starOff: "../../svg/zvezda.svg",
-						starOn: "../../svg/zvezda_green.svg",
+						starOff: "../svg/zvezda.svg",
+						starOn: "../svg/zvezda_green.svg",
 					});
 					$(".popup-rating-item-count--opportunity").raty({
 						score: 0,
 						number: 5,
 						scoreName: "result-opportunity",
-						starOff: "../../svg/zvezda.svg",
-						starOn: "../../svg/zvezda_green.svg",
+						starOff: "../svg/zvezda.svg",
+						starOn: "../svg/zvezda_green.svg",
 					});
 
 				},

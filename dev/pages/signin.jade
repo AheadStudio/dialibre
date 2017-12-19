@@ -1,71 +1,20 @@
 extends ../templates/base
 
 block content
-	// HTML
-	div(id="login")
-		div(class="page-heading")
-			div(class="page-inner page-inner--w1")
-				h1(class="h1") Log in
-
-		div(class="page-inner page-inner--w3")
-			loginform()
-
-	// Template
-	script(type="text/x-template", id="login-form")
-		div(class="form-holder")
-			form(class="form", @submit.prevent="send", v-bind:action="form.action")
-				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						input(type="text", class="form-item form-item--text", placeholder="User name", required, name="login", v-model="fields.login")
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						input(type="password", class="form-item form-item--text", placeholder="Password", required, name="password", v-model="fields.password")
-				div(class="form-row form-row--clearfix")
-					label(class="form-savesession form-checkbox")
-						input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox", v-model="fields.remember")
-						span(class="form-checkbox-title") Keep me logged in
-					a(href="recover.html", class="form-forgot form-link") Forgot password?
-				div(class="form-row form-row--centered")
-					div(class="form-btn-holder")
-						button(type="submit", class="btn btn--green form-btn") Log in
-						div(class="form-btn-controls")
-							div(class="form-btn-control-item form-btn-control-item--left")
-								span Dont have an account? 
-							div(class="form-btn-control-item form-btn-control-item--right")
-								a(href="register.html", class="btn btn--blue") Registration
-
-
+	div(id="dealibre-app")
+		router-view()
 block scripts
 	script.
-		Vue.component("loginform", {
-			mixins: [formMixin],
-			template: "#login-form",
-			data: function() {
-				return {
-					fields: {
-						login: "",
-						password: "",
-						remember: ""
-					},
-					form: {
-						action: "/api/login",
-						message: "",
-						success: false
-					}
-				}
-			},
-			methods: {
-				successCallback: function() {
-					DealibreApp.methods.setAuthorized();
-				}
-			}
-		});
-
 		new Vue({
 			el: "#login",
 			created: function() {
-				DealibreApp.methods.setHeader("signin-user", "header-mobile--white", "black");
+				DealibreApp.methods.checkAuthorized(function(isAuth) {
+					if (!isAuth) {
+						DealibreApp.methods.setHeader("signin-user", "header-mobile--white", "black");
+					} else {
+						DealibreApp.methods.setHeader("faq", "header-mobile--aut", "black");
+					}
+				});
 				DealibreApp.methods.showFooter();
 			}
 		});

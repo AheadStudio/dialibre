@@ -1,29 +1,23 @@
 <template lang="jade">
-    div(id="t1")
-        my-checkbox12()
-        span {{ greeting }}
+    div()
+        div(class="page-heading")
+            div(class="page-inner page-inner--w1")
+                h1(class="h1") Join DeaLibre’
+
+        div(class="page-description")
+            div(class="page-inner page-inner--w1") Free deal exchange for business brokers, prospectors, rasearchers, and investors.
+
+        div(class="page-inner page-inner--w3")
+            registerform()
 </template>
 
 <script>
-    Vue.component('my-checkbox12', {
-        template: `<div class="checkbox-wrapper" @click="check"><div :class="{ checkbox: true, checked: checked }"></div><div class="title">{{ title }}</div></div>`,
-        data() {
-            return {
-              checked: false,
-              title: 'register'
-            }
+    // connect components in hone page
+    import registerform from './main-components/component.register.registerform.vue';
+
+    export default {
+        components: {
+            "registerform": registerform
         },
-        methods: {
-            check() {
-              this.checked = !this.checked;
-            }
-        }
-    });
+    }
 </script>
-
-<style scoped lang="stylus">
-    span
-        font-family 'Roboto', sans-serif
-        color green
-
-</style>
