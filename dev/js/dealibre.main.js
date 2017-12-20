@@ -16,7 +16,7 @@ var registerShareForm = require('../components/reg_share_form.vue');
 var registerShareSuccess = require('../components/reg_share_success.vue');
 var register = require('../components/register.vue');
 var restore = require('../components/restore.vue');
-var search = require('../components/search.vue');
+var dashboard = require('../components/dashboard.vue');
 var signin = require('../components/signin.vue');
 var text = require('../components/text.vue');
 // routes in site
@@ -74,8 +74,8 @@ const routes = [
       component: restore
   },
   {
-      path: '/pages/search.html',
-      component: search
+      path: '/pages/dashboard.html',
+      component: dashboard
   },
   {
       path: '/pages/signin.html',

@@ -10,7 +10,7 @@
                     input(type="password", class="form-item form-item--text", placeholder="Password", required, name="password", v-model="fields.password")
             div(class="form-row form-row--clearfix")
                 label(class="form-savesession form-checkbox")
-                    input(type="checkbox", class="form-item form-checkbox-item form-item--checkbox", v-model="fields.remember")
+                    input(type="checkbox", name="remember", class="form-item form-checkbox-item form-item--checkbox", v-model="fields.remember")
                     span(class="form-checkbox-title") Keep me logged in
                 a(href="recover.html", class="form-forgot form-link") Forgot password?
             div(class="form-row form-row--centered")
@@ -30,12 +30,13 @@
                 fields: {
                     login: "",
                     password: "",
-                    remember: ""
+                    remember: "",
                 },
                 form: {
                     action: "/api/login",
                     message: "",
-                    success: false
+                    success: false,
+                    redirect: "",
                 }
             }
         },
@@ -70,9 +71,9 @@
                 axios.post($form.attr("action"), $form.serialize())
                     .then(function(answer) {
                         var data = answer.data;
-
                         self.form.message = data.message;
                         self.form.success = true;
+                        self.form.redirect = data.redirect;
 
                         $form.find(":submit").removeAttr("disabled");
                         $form.removeClass("loading");
@@ -89,14 +90,22 @@
 
                         $form.find(".valid").removeClass("valid");
 
+                        if (self.form.redirect != null) {
+                            var redirect = self.form.redirect.replace("/", "") + ".html";
+                            document.location.href = redirect;
+                        }
+
                     }).catch(function(info) {
+                        console.log(info);
                         var dataError = info.response.data;
+                        self.form.redirect = dataError.redirect;
                         self.form.message = dataError.message;
                         self.form.success = false;
                         self.validateFromServer(dataError.data);
                         $form.find(":submit").removeAttr("disabled");
                         $form.removeClass("loading");
                     });
+
             }
         }
     }

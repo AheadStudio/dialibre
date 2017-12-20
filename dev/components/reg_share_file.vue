@@ -13,10 +13,10 @@
                     form(action="#", class="register-share-form-upload")
                         div(class="register-share-form-upload-row")
                             div(class="register-share-form-upload-holder")
-                                input(type="file", name="files", class="register-share-form-upload-item-file")
+                                input(type="file", name="files", class="register-share-form-upload-item-file", @change="fileDeals")
                         div(class="register-share-form-upload-row")
                             label(class="register-share-form-upload-item-checkbox")
-                                input(type="checkbox", class="register-share-form-upload-item-checkbox-item")
+                                input(type="checkbox", class="register-share-form-upload-item-checkbox-item", v-model="checked")
                                 span(class="register-share-form-upload-item-checkbox-title") By click “SUBMIT DEAL” you agree with Terms of Service.
 
                         div(class="register-share-form-upload-row")
@@ -25,6 +25,26 @@
 
 <script>
     export default {
+        data: function() {
+            return {
+                checked: "",
+                file: "",
+            }
+        },
+        watch: {
+            checked: function(val) {
+                console.log(val);
+            }
+        },
+        methods: {
+            fileDeals: function(e) {
+                console.log(15);
+                console.log(e.target.files);
+            },
+            send: function(el) {
+                console.log(el);
+            }
+        },
         mounted: function() {
             DEALIBRE.forms.init(false);
             DEALIBRE.forms.fileUpload();

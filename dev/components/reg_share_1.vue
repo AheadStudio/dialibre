@@ -15,7 +15,7 @@
                     form(action="#", class="register-share-form-choose", @submit.prevent="send")
                         div(class="register-share-form-choose-row")
                             div(class="register-share-form-choose-holder")
-                                select(class="register-share-form-choose-item-select", placeholder="Choose One", v-model="selectStep")
+                                select(class="register-share-form-choose-item-select", placeholder="Choose One", v-model="selectStep", required, data-error="Please change one step")
                                     option(v-for="step in steps" v-bind:value="step.link") {{ step.stepText }}
                             button(type="submit", class="btn btn--green register-share-form-choose-submit") next step
 
@@ -38,9 +38,32 @@
         },
         methods: {
             send: function() {
-                var self = this;
-                document.location.href=self.selectStep;
+                var self = this,
+                    $form = $(this.$el).find("form"),
+                    $select = $form.find(".jcf-select"),
+                    $container = $select.parent(),
+                    textError = $form.find("select").data("error");
+
+
+                if (self.selectStep == "") {
+                    $container.append('<span class="form-item--error">'+textError+'</span>');
+                    $select.addClass("error-select");
+                } else {
+                    document.location.href=self.selectStep;
+                }
             }
+        },
+        watch: {
+            selectStep: function(val) {
+                var self = this,
+                    $form = $(this.$el).find("form"),
+                    $select = $form.find(".jcf-select");
+
+                if (val != "") {
+                    $select.removeClass("error-select");
+                    $form.find(".form-item--error").remove();
+                }
+            },
         },
         mounted: function() {
             DEALIBRE.forms.init(false);

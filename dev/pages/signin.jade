@@ -6,13 +6,13 @@ block content
 block scripts
 	script.
 		new Vue({
-			el: "#login",
 			created: function() {
 				DealibreApp.methods.checkAuthorized(function(isAuth) {
 					if (!isAuth) {
 						DealibreApp.methods.setHeader("signin-user", "header-mobile--white", "black");
 					} else {
 						DealibreApp.methods.setHeader("faq", "header-mobile--aut", "black");
+						document.location.href = "dashboard.html";
 					}
 				});
 				DealibreApp.methods.showFooter();

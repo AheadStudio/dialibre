@@ -32,7 +32,7 @@
             },
             "bodyClass": "page-home"
         },
-        "search": {
+        "dashboard": {
             "name": "Search",
             "progress": {
                 "desktop": "100",
