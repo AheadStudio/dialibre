@@ -165,3 +165,35 @@ Vue.component("pagefooter", {
 footer = new Vue({
 	el: "#footer-holder"
 });
+
+
+Vue.component("pagelogount", {
+	template: "#logout-tmpl",
+	data: function() {
+		return {
+			form: {
+				action: "/api/logout",
+				message: "",
+				success: false
+			}
+		}
+	},
+	methods: {
+		send: function() {
+			var self = this,
+				$form = $(this.$el).find("form");
+
+				axios.get(self.form.action)
+					.then(function(answer) {
+						document.location.href = "home.html";
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+		}
+	},
+
+});
+logount = new Vue({
+	el: "#logout"
+})

@@ -438,13 +438,12 @@
 					jcf.replace($(".form-item--range", $container));
 
 
-					$("[data-mask]").each(function() {
-						var $item = $(this);
-						$item.mask($item.data("mask"));
-					});
-
 					self.fileUpload();
-
+					$("[data-mask]").each(function() {
+						var $item = $(this),
+							data = $item.data("mask");
+						$item.mask(data);
+					});
 					$.validator.setDefaults({
 						errorClass: "form-item--error",
 						errorElement: "span"

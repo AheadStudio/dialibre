@@ -13,13 +13,13 @@
                         div(class="page-profile-personal-info")
                             profileinformation()
                             a(href="#edit-profile", class="btn btn--blue page-profile-personal-info-btn popup") Edit profile
-                            a(href="#", class="btn btn--blue-inverse page-profile-personal-info-btn") Change password
+                            a(href="#change-password", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Change password
 
                     div(class="page-profile-personal--right")
                         div(class="page-profile-personal-credits")
                             span(class="page-profile-personal-credits-quantity") 566
                             span credits
-                            button(class="btn btn--green page-profile-personal-credits-btn") Get credits
+                            button(href="#get-credits", class="btn btn--green page-profile-personal-credits-btn popup") Get credits
                         getfetch()
                         a(href="#addcard", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Add card
 
@@ -29,57 +29,19 @@
                             div(class="page-profile-history-header-item-title") Billing History
                         div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
                             div(class="page-profile-history-header-item-title") Credit History
+                    historypayments()
 
-                    div(class="page-profile-history-container")
-                        div(class="page-profile-history-container-item tabs-content-item active-tabs", id="history-1")
-                            div(class="page-profile-history-container-radio")
-                                label(class="page-profile-history-radio")
-                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                    span(class="page-profile-history-container-radio-title") MasterCard
-                                label(class="page-profile-history-radio")
-                                    input(type="radio", name="credits", class="page-profile-history-container-radio-item")
-                                    span(class="page-profile-history-container-radio-title") Visa
-
-                            input(type="text", class="page-profile-history-container-text", placeholder="MM/DD/YY")
-
-                            input(type="text", class="page-profile-history-container-text", placeholder="MM/DD/YY")
-
-                            a(href="#", class="btn btn--blue page-profile-history-container-btn") View
-
-                            table(class="page-profile-history-container-table")
-                                thead
-                                    tr
-                                        th Date
-                                        th Time
-                                        th Card
-                                        th Amount
-                                        th Deal #
-                                tbody
-                                    tr
-                                        td 06/21/2017
-                                        td 07:13PM
-                                        td XXXX
-                                        td $10.60
-                                        td # 15
-                                    tr
-                                        td 06/21/2017
-                                        td 07:13PM
-                                        td XXXX
-                                        td $10.60
-                                        td # 15
-                                    tr
-                                        td 06/21/2017
-                                        td 07:13PM
-                                        td XXXX
-                                        td $10.60
-                                        td # 15
-
-
-                        div(class="page-profile-history-container-item tabs-content-item", id="history-2")
         div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
             addcard()
+
         div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
             profileupdate()
+
+        div(id="change-password", class="popup-container popup-addcard white-popup mfp-hide")
+            changepassword()
+
+        div(id="get-credits", class="popup-container popup-addcard white-popup mfp-hide")
+            getcredits()
 
 </template>
 
@@ -89,6 +51,9 @@
     import getfetch from './main-components/component.profile.getfetch.vue';
     import addcard from './main-components/component.profile.addcard.vue';
     import profileupdate from './main-components/component.profile.profileupdate.vue';
+    import changepassword from './main-components/component.profile.changepassword.vue';
+    import historypayments from './main-components/component.profile.historypayments.vue';
+    import getcredits from './main-components/component.profile.getcredits.vue';
 
 
     export default {
@@ -97,6 +62,9 @@
             "getfetch": getfetch,
             "addcard": addcard,
             "profileupdate": profileupdate,
+            "changepassword": changepassword,
+            "historypayments": historypayments,
+            "getcredits": getcredits,
         },
         mounted: function() {
             DEALIBRE.forms.init();

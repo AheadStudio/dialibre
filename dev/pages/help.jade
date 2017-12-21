@@ -1,105 +1,20 @@
 extends ../templates/base
 
 block content
-	// HTML
-	div(id="help")
-		div(class="page-heading")
-			div(class="page-inner page-inner--w1")
-				h1(class="h1") Help
-
-		div(class="help", v-bind:class="{loading:!help.length}")
-			div(class="page-inner page-inner--w2")
-				div(class="help-sections")
-					helpsection(v-for="section in help", v-bind:helpsection="section", v-bind:key="section.id")
-
-		div(class="page-inner page-inner--w2")
-			helpform()
-
-	// Templates
-	script(type="text/x-template", id="help-section")
-		div(class="help-section-item")
-			h2(class="h2 help-section-item-name") {{ helpsection.name }} 
-			div(class="help-section-item-blocks")
-				helpitem(v-for="item in helpsection.items", v-bind:helpitem="item", v-bind:key="item.id")
-
-	script(type="text/x-template", id="help-item")
-		div(class="help-section-item-block-item")
-			div(class="help-section-item-block-item-name-holder")
-				a(href="#", class="help-section-item-block-item-name link link--blue") {{ helpitem.question }} 
-			div(class="help-section-item-block-item-text") {{ helpitem.answer }}
-
-	script(type="text/x-template", id="help-form")
-		div(class="form-holder")
-			form(class="form", v-bind:action="form.action", @submit.prevent="send")
-				div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--third")
-						input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="fields.name")
-					div(class="form-item-holder form-item-holder--third")
-						input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="fields.email")
-					div(class="form-item-holder form-item-holder--third")
-						input(type="text", class="form-item form-item--text", placeholder="Phone", name="phone", v-model="fields.phone", data-mask="0000-0000")
-				div(class="form-row")
-					div(class="form-item-holder form-item-holder--full")
-						textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="fields.text")
-				div(class="form-row")
-					button(type="submit", class="btn btn--green") Send
-
+	div(id="dealibre-app")
+		router-view()
 
 block scripts
-	// Component
 	script.
-		Vue.component("helpitem", {
-			props: ["helpitem"],
-			template: "#help-item"
-		});
-		Vue.component("helpsection", {
-			props: ["helpsection"],
-			template: "#help-section"
-		});
-		Vue.component("helpform", {
-			mixins: [formMixin],
-			template: "#help-form",
-			data: function() {
-				return {
-					fields: {
-						name: "",
-						email: "",
-						phone: "",
-						text: "",
-					},
-					form: {
-						action: "/api/support/ask",
-						message: "",
-						success: false
-					}
-				}
-			}
-		});
 		new Vue({
-			el: "#help",
-			data: {
-				help: []
-			},
 			created: function() {
-				this.load();
-				DealibreApp.methods.setHeader("help", "header-mobile--white", "black");
+				DealibreApp.methods.checkAuthorized(function(isAuth) {
+					if (!isAuth) {
+						DealibreApp.methods.setHeader("help", "header-mobile--white", "black");
+					} else {
+						DealibreApp.methods.setHeader("faq", "header-mobile--aut", "black");
+					}
+				});
 				DealibreApp.methods.showFooter();
-			},
-			methods: {
-				load: function() {
-					var self = this;
-					axios.get("/api/help").then(function(r) {
-						for(var key in r.data.data) {
-						var section = r.data.data[key];
-							section = {
-								id: section.id,
-								name: section.name,
-								items: section.help_questions
-							};
-							self.help.push(section);
-						}
-					});
-				}
 			}
 		});

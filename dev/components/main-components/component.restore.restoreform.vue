@@ -65,6 +65,7 @@ export default {
 
                     self.form.message = data.message;
                     self.form.success = true;
+                    self.form.redirect = data.redirect;
 
                     $form.find(":submit").removeAttr("disabled");
                     $form.removeClass("loading");
@@ -80,6 +81,11 @@ export default {
                     }
 
                     $form.find(".valid").removeClass("valid");
+                    
+                    if (self.form.redirect != null) {
+                        var redirect = self.form.redirect.replace("/", "") + ".html";
+                        document.location.href = redirect;
+                    }
 
                 }).catch(function(info) {
                     var dataError = info.response.data;

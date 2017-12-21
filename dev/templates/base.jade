@@ -263,17 +263,22 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 					block content
 				
 			div(id="profile_popup", class="popup-container popup-profile white-popup mfp-hide")
-				div(class="popup-profile-holder")
-					img(src="../i/profile.jpg", class="popup-profile-holder-img")
-				div(class="popup-profile-personal")
-					div(class="popup-profile-name") Jon Smit
-					a(href="#", class="link link--blue popup-profile-link") Profile
-					div(class="popup-profile-events")
-						a(href="#", class="popup-profile-events-alerts")
-							span(class="popup-profile-events-count") 566 
-						a(href="#", class="popup-profile-events-mail")
-							span(class="popup-profile-events-count") 566
-				button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
+				div(id="logout")
+					pagelogount()
+				script(type="text/x-template", id="logout-tmpl")
+					div(class="popup-profile-container")
+						div(class="popup-profile-holder")
+							img(src="../i/profile.jpg", class="popup-profile-holder-img")
+						div(class="popup-profile-personal")
+							div(class="popup-profile-name") Jon Smit
+							a(href="profile.html", class="link link--blue popup-profile-link") Profile
+							div(class="popup-profile-events")
+								a(href="#", class="popup-profile-events-alerts")
+									span(class="popup-profile-events-count") 566 
+								a(href="#", class="popup-profile-events-mail")
+									span(class="popup-profile-events-count") 566
+						form(class="form", v-bind:action="form.action", @submit.prevent="send")
+							button(type="submit", class="btn btn--green-inverse popup-profile-btn") Sign out
 		
 		div(class="mobile-panel mobile-panel--chat", data-open="open-chat")
 			div(class="mobile-logo header-mobile-open", id="open-chat")

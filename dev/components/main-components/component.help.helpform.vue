@@ -1,26 +1,19 @@
 <template lang="jade">
     div(class="form-holder")
-        form(class="form", @submit.prevent="send", v-bind:action="form.action")
+        form(class="form", v-bind:action="form.action", @submit.prevent="send")
             div(class="form-result" v-bind:class="{'form-result--error':!form.success, 'form-result--success': form.success}") {{ form.message }}
             div(class="form-row")
-                div(class="form-item-holder form-item-holder--full")
-                    input(type="text", class="form-item form-item--text", placeholder="User name", required, name="login", v-model="fields.login")
+                div(class="form-item-holder form-item-holder--third")
+                    input(type="text", class="form-item form-item--text", placeholder="Name", name="name", v-model="fields.name", required)
+                div(class="form-item-holder form-item-holder--third")
+                    input(type="email", class="form-item form-item--text", placeholder="E-mail", name="email", required, v-model="fields.email")
+                div(class="form-item-holder form-item-holder--third")
+                    input(type="text", class="form-item form-item--text", placeholder="Phone", name="phone", data-mask="+1 (999) 999-99-99")
             div(class="form-row")
                 div(class="form-item-holder form-item-holder--full")
-                    input(type="password", class="form-item form-item--text", placeholder="Password", required, name="password", v-model="fields.password")
-            div(class="form-row form-row--clearfix")
-                label(class="form-savesession form-checkbox")
-                    input(type="checkbox", name="remember", class="form-item form-checkbox-item form-item--checkbox", v-model="fields.remember")
-                    span(class="form-checkbox-title") Keep me logged in
-                a(href="recover.html", class="form-forgot form-link") Forgot password?
-            div(class="form-row form-row--centered")
-                div(class="form-btn-holder")
-                    button(type="submit", class="btn btn--green form-btn") Log in
-                    div(class="form-btn-controls")
-                        div(class="form-btn-control-item form-btn-control-item--left")
-                            span Dont have an account?
-                        div(class="form-btn-control-item form-btn-control-item--right")
-                            a(href="register.html", class="btn btn--blue") Registration
+                    textarea(class="form-item form-item--textarea", placeholder="Question", name="text", v-model="fields.text", required)
+            div(class="form-row")
+                button(type="submit", class="btn btn--green") Send
 </template>
 
 <script>
@@ -28,21 +21,16 @@
         data: function() {
             return {
                 fields: {
-                    login: "",
-                    password: "",
-                    remember: "",
+                    name: "",
+                    email: "",
+                    text: "",
                 },
                 form: {
-                    action: "/api/login",
+                    action: "/api/support/ask",
                     message: "",
-                    success: false,
-                    redirect: "",
+                    success: false
                 }
             }
-        },
-        mounted: function() {
-            DEALIBRE.forms.init(this.$el);
-            DEALIBRE.forms.fileUpload();
         },
         methods: {
             successCallback: function() {
@@ -73,7 +61,6 @@
                         var data = answer.data;
                         self.form.message = data.message;
                         self.form.success = true;
-                        self.form.redirect = data.redirect;
 
                         $form.find(":submit").removeAttr("disabled");
                         $form.removeClass("loading");
@@ -90,11 +77,6 @@
 
                         $form.find(".valid").removeClass("valid");
 
-                        if (self.form.redirect != null) {
-                            var redirect = self.form.redirect.replace("/", "") + ".html";
-                            document.location.href = redirect;
-                        }
-
                     }).catch(function(info) {
                         var dataError = info.response.data;
                         self.form.redirect = dataError.redirect;
@@ -105,7 +87,15 @@
                         $form.removeClass("loading");
                     });
 
-            }
+            },
         }
     }
 </script>
+<style lang="css" scoped>
+    input[name="phone"] {
+        border-color: #abb1b9;
+    }
+    input[name="phone"]:hover {
+        border-color: #30b0ef;
+    }
+</style>

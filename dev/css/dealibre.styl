@@ -2563,9 +2563,10 @@ span.form-item--error
 		margin-bottom 15px
 
 .popup-profile
-	display flex
-	justify-content space-between
-	align-items flex-end
+	.popup-profile-container
+		display flex
+		justify-content space-between
+		align-items flex-end
 
 	.popup-profile-holder
 		display block
@@ -5107,6 +5108,7 @@ span.form-item--error
 
 				.page-profile-history-radio
 					margin-right 35px
+					cursor pointer
 					&:last-child
 						margin-right 0
 
@@ -5248,6 +5250,9 @@ span.form-item--error
 
 			&--left
 				text-align left
+
+			&--center
+				justify-content center
 
 			.popup-addcard-form-holder-item--btn
 				display block
@@ -5525,5 +5530,17 @@ span.form-item--error
 							.chat-dialogues-item-info-position
 								font-size 10px
 
+.popup-addcard
+	.popup-addcard-form
+		.popup-addcard-form-row
+			.popup-addcard-form-holder--foto
+				width: 22%
+				img
+					width 100%
 
+			.popup-addcard-form-holder--uploadfoto
+				width 75%
+
+				.popup-addcard-form-holder-item--btn
+					margin-bottom 20px
 /** //mobile panels **/

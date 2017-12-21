@@ -86,8 +86,6 @@
     				.then(function(answer) {
     					var data = answer.data;
 
-    					console.log(answer.headers["set-cookie"]);
-
     					self.form.message = data.message;
     					self.form.success = true;
 

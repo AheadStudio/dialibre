@@ -22,67 +22,67 @@ var text = require('../components/text.vue');
 // routes in site
 const routes = [
   {
-      path: '/pages/chat.html',
+      path: '/projects/dealibre/pages/chat.html',
       component: chat
   },
   {
-      path: '/pages/contacts.html',
+      path: '/projects/dealibre/pages/contacts.html',
       component: contacts
   },
   {
-      path: '/pages/faq.html',
+      path: '/projects/dealibre/pages/faq.html',
       component: faq
   },
   {
-      path: '/pages/help.html',
+      path: '/projects/dealibre/pages/help.html',
       component: help
   },
   {
-      path: '/pages/home.html',
+      path: '/projects/dealibre/pages/home.html',
       component: home
   },
   {
-      path: '/pages/profile.html',
+      path: '/projects/dealibre/pages/profile.html',
       component: profile
   },
   {
-      path: '/pages/recover.html',
+      path: '/projects/dealibre/pages/recover.html',
       component: recover
   },
   {
-      path: '/pages/register_share_step1.html',
+      path: '/projects/dealibre/pages/register_share_step1.html',
       component: registerShareInit
   },
   {
-      path: '/pages/register_share_step2_files.html',
+      path: '/projects/dealibre/pages/register_share_step2_files.html',
       component: registerShareFile
   },
   {
-      path: '/pages/register_share_step2_form.html',
+      path: '/projects/dealibre/pages/register_share_step2_form.html',
       component: registerShareForm
   },
   {
-      path: '/pages/register_share_success.html',
+      path: '/projects/dealibre/pages/register_share_success.html',
       component: registerShareSuccess
   },
   {
-      path: '/pages/register.html',
+      path: '/projects/dealibre/pages/register.html',
       component: register
   },
   {
-      path: '/pages/restore.html',
+      path: '/projects/dealibre/pages/restore.html',
       component: restore
   },
   {
-      path: '/pages/dashboard.html',
+      path: '/projects/dealibre/pages/dashboard.html',
       component: dashboard
   },
   {
-      path: '/pages/signin.html',
+      path: '/projects/dealibre/pages/signin.html',
       component: signin
   },
   {
-      path: '/pages/text.html',
+      path: '/projects/dealibre/pages/text.html',
       component: text
   }
 ];
