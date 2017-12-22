@@ -197,3 +197,5 @@ Vue.component("pagelogount", {
 logount = new Vue({
 	el: "#logout"
 })
+// for upload components
+var upload = new Vue();

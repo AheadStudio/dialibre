@@ -20,6 +20,7 @@ var dashboard = require('../components/dashboard.vue');
 var signin = require('../components/signin.vue');
 var text = require('../components/text.vue');
 // routes in site
+
 const routes = [
   {
       path: '/projects/dealibre/pages/chat.html',
@@ -86,7 +87,74 @@ const routes = [
       component: text
   }
 ];
-
+/*
+const routes = [
+  {
+      path: '/pages/chat.html',
+      component: chat
+  },
+  {
+      path: '/pages/contacts.html',
+      component: contacts
+  },
+  {
+      path: '/pages/faq.html',
+      component: faq
+  },
+  {
+      path: '/pages/help.html',
+      component: help
+  },
+  {
+      path: '/pages/home.html',
+      component: home
+  },
+  {
+      path: '/pages/profile.html',
+      component: profile
+  },
+  {
+      path: '/pages/recover.html',
+      component: recover
+  },
+  {
+      path: '/pages/register_share_step1.html',
+      component: registerShareInit
+  },
+  {
+      path: '/pages/register_share_step2_files.html',
+      component: registerShareFile
+  },
+  {
+      path: '/pages/register_share_step2_form.html',
+      component: registerShareForm
+  },
+  {
+      path: '/pages/register_share_success.html',
+      component: registerShareSuccess
+  },
+  {
+      path: '/pages/register.html',
+      component: register
+  },
+  {
+      path: '/pages/restore.html',
+      component: restore
+  },
+  {
+      path: '/pages/dashboard.html',
+      component: dashboard
+  },
+  {
+      path: '/pages/signin.html',
+      component: signin
+  },
+  {
+      path: '/pages/text.html',
+      component: text
+  }
+];
+*/
 const router = new VueRouter({
     mode: 'history',
     routes,

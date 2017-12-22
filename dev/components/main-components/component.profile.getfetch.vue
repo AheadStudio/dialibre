@@ -3,8 +3,8 @@
         div(class="page-profile-personal-credits-item", v-for="item in cards")
             label(class="page-profile-personal-credits-radio")
                 input(type="radio", name="credits", class="page-profile-personal-credits-radio-item")
-                span(class="page-profile-personal-credits-radio-title", v-cloak) {{ item.name }}
-            div(class="page-profile-personal-credits-item-number", v-cloak) {{ item.count }}
+                span(class="page-profile-personal-credits-radio-title", v-cloak) {{ item.brand }}
+            div(class="page-profile-personal-credits-item-number", v-cloak) {{ item.last4 }}
             a(href="#",class="page-profile-personal-credits-item-close")
 </template>
 
@@ -12,10 +12,7 @@
 export default {
     data: function() {
         return {
-            cards: {
-                name    :  "",
-                count   :  "",
-            }
+            cards: []
         }
     },
     created: function() {
@@ -27,15 +24,16 @@ export default {
             var self = this;
 
             axios.get("/api/user/sources/fetch").then(function(answer) {
-                var infoCard = answer.data;
-                console.log(infoCard);
+                var infoCard = answer.data.data.data;
+                    for(var key in infoCard) {
+                        self.cards.push(answer.data.data.data[key]);
+                    }
             });
         }
     },
-    mounted: function() {
-        DEALIBRE.reload();
+    updated: function() {
+        DEALIBRE.forms.init(this.$el);
     }
-
 }
 </script>
 

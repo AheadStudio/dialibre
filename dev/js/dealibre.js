@@ -554,6 +554,7 @@
 							}
 							e.preventDefault();
 						}
+						$(".sort-table").trigger("update");
 					});
 				},
 				show: function(tabID, $tabs) {
@@ -699,6 +700,7 @@
 
 						self.changeColor(checkboxItem);
 					});
+
 				},
 
 				changeColor: function(checkboxItem) {
@@ -713,6 +715,10 @@
 
 				},
 
+			},
+
+			tableSort: function() {
+				$(".sort-table").tablesorter();
 			},
 
 			modalWindow: {
@@ -743,7 +749,7 @@
 					$(".replace-scrollbar-table").mCustomScrollbar({
 						theme: "minimal-dark",
 						scrollInertia: "450",
-						axis: 'x',
+						axis: 'yx',
 						documentTouchScroll: true,
 						advanced: {
 							autoExpandHorizontalScroll: true
@@ -834,6 +840,7 @@
 	DEALIBRE.toggleContent.init();
 
 	DEALIBRE.tableSearch.init();
+	DEALIBRE.tableSort();
 	DEALIBRE.modalWindow.init();
 	DEALIBRE.content.init();
 

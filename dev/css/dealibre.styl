@@ -1731,6 +1731,16 @@ span.form-item--error
 
 
 /*** Preloader ***/
+.loading-opacity
+	opacity 0
+	transform translateY(-10px)
+	transition opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+
+.loading-opacity--show
+	opacity 1
+	display block
+	transform translateY(0)
+
 .loading
 	position relative
 
@@ -1749,6 +1759,8 @@ span.form-item--error
 		height 100%
 
 		background #FFF url("../i/preloader.gif") no-repeat center center
+
+
 /*** //Preloader ***/
 
 
@@ -2091,6 +2103,25 @@ span.form-item--error
 		background-image url("../svg/lypa_blue.svg")
 
 
+table
+	tr
+		th
+			position relative
+			cursor pointer
+			&:after
+				content none
+				position absolute
+				top 19px
+				margin-left 5px
+				width 0
+				height 0
+				border-left 3px solid transparent
+				border-right 3px solid transparent
+				border-top 5px solid #000
+			&:hover
+				&:after
+					content ""
+
 .main-table-result-scroll
 	display block
 	width 100%
@@ -2118,20 +2149,6 @@ span.form-item--error
 					border-right 1px solid #c2c9d1
 					color #344c67
 					cursor pointer
-
-					&:after
-						content none
-						position absolute
-						top 19px
-						margin-left 5px
-						width 0
-						height 0
-						border-left 3px solid transparent
-						border-right 3px solid transparent
-						border-top 5px solid #000
-					&:hover
-						&:after
-							content ""
 
 					&:last-child
 					&:first-child
@@ -5229,6 +5246,16 @@ span.form-item--error
 
 
 /** modal window **/
+.hidden
+	position absolute
+	top 0
+	right 0
+	left 0
+	bottom 0
+	opacity 0
+
+	cursor pointer
+
 
 .popup-addcard
 	display block
@@ -5255,10 +5282,13 @@ span.form-item--error
 				justify-content center
 
 			.popup-addcard-form-holder-item--btn
+				position relative
 				display block
 				width 180px
 
 				padding 16px
+				box-sizing border-box
+
 
 				margin-top 10px
 
@@ -5266,6 +5296,8 @@ span.form-item--error
 				font-size 15px
 
 				text-transform uppercase
+				text-align center
+				cursor pointer
 
 
 			.popup-addcard-form-holder
@@ -5539,6 +5571,7 @@ span.form-item--error
 					width 100%
 
 			.popup-addcard-form-holder--uploadfoto
+				position relative
 				width 75%
 
 				.popup-addcard-form-holder-item--btn

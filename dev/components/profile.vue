@@ -7,13 +7,7 @@
         div(class="page-profile")
             div(class="page-inner page-inner--w2")
                 div(class="page-profile-personal")
-                    div(class="page-profile-personal--left")
-                        div(class="page-profile-personal-holder")
-                            img(src="../dummy/Jon_Smit_1.jpg", class="page-profile-personal-holder-img")
-                        div(class="page-profile-personal-info")
-                            profileinformation()
-                            a(href="#edit-profile", class="btn btn--blue page-profile-personal-info-btn popup") Edit profile
-                            a(href="#change-password", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Change password
+                    profileinformation()
 
                     div(class="page-profile-personal--right")
                         div(class="page-profile-personal-credits")
@@ -30,6 +24,9 @@
                         div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
                             div(class="page-profile-history-header-item-title") Credit History
                     historypayments()
+
+                div(class="profile-nda")
+                    profilenda()
 
         div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
             addcard()
@@ -54,7 +51,7 @@
     import changepassword from './main-components/component.profile.changepassword.vue';
     import historypayments from './main-components/component.profile.historypayments.vue';
     import getcredits from './main-components/component.profile.getcredits.vue';
-
+    import profilenda from './main-components/component.profile.profilenda.vue';
 
     export default {
         components: {
@@ -65,11 +62,12 @@
             "changepassword": changepassword,
             "historypayments": historypayments,
             "getcredits": getcredits,
+            "profilenda": profilenda,
         },
         mounted: function() {
             DEALIBRE.forms.init();
-            DEALIBRE.toggleContent.init();
             DEALIBRE.modalWindow.init();
+            DEALIBRE.scrollBar.init();
         }
     }
 </script>
