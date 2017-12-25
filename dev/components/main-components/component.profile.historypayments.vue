@@ -62,51 +62,51 @@
 </template>
 
 <script>
-export default {
-    data: function() {
-        return {
-            billingHistory: [],
-            creditHistory: []
-        }
-    },
-    created: function() {
-        var self = this;
-        self.sendRequest();
-    },
-    methods: {
-        sendRequest: function(){
+    export default {
+        data: function() {
+            return {
+                billingHistory: [],
+                creditHistory: []
+            }
+        },
+        created: function() {
             var self = this;
+            self.sendRequest();
+        },
+        methods: {
+            sendRequest: function(){
+                var self = this;
 
-            axios.get("/api/user/billing/history", {
-                "from": "",
-                "to"  : "",
-            }).then(function(answer) {
-                var data = answer.data.data;
-                for(var key in data) {
-                    self.billingHistory.push(data[key]);
-                }
-            });
+                axios.get("/api/user/billing/history", {
+                    "from": "",
+                    "to"  : "",
+                }).then(function(answer) {
+                    var data = answer.data.data;
+                    for(var key in data) {
+                        self.billingHistory.push(data[key]);
+                    }
+                });
 
-            axios.get("/api/user/credit/history", {
-                "from": "",
-                "to"  : "",
-            }).then(function(answer) {
-                var data = answer.data.data;
-                for(var key in data) {
-                    self.creditHistory.push(data[key]);
-                }
-            });
+                axios.get("/api/user/credit/history", {
+                    "from": "",
+                    "to"  : "",
+                }).then(function(answer) {
+                    var data = answer.data.data;
+                    for(var key in data) {
+                        self.creditHistory.push(data[key]);
+                    }
+                });
+            }
+        },
+        mounted: function() {
+            this.$nextTick(function () {
+                DEALIBRE.tableSort();
+            })
+        },
+        updated: function() {
+            DEALIBRE.tabs.init();
         }
-    },
-    mounted: function() {
-        this.$nextTick(function () {
-            DEALIBRE.tableSort();
-        })
-    },
-    updated: function() {
-        DEALIBRE.tabs.init();
     }
-}
 </script>
 
 <style lang="css" scoped>

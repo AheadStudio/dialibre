@@ -1,35 +1,40 @@
 <template lang="jade">
     div(class="geo-info")
-        div(class="geo-item animation-block", data-animation="true", v-for="land in locationlList")
+        div(class="geo-item animation-block", data-animation="true", v-for="land in requestResult")
             select(class="geo-item-select", :placeholder="land.name", :data-map="land.name")
                 option(value="1", v-for="country in land.countries") {{ country.name }}
 </template>
 
 <script>
-export default {
-    data: function() {
-        return {
-            locationlList: [],
-            url: "/api/deal/options",
-        }
-    },
-    created: function() {
-        this.getInfo();
-    },
-    methods: {
-        getInfo: function() {
-            var self = this;
+    // connect mixins
+    import { getMixin } from "../mixins/get_request.js"
 
-            axios.get(self.url).then(function(answer) {
-                for (var item = 0; item < answer.data.data.locations.length; item++) {
-                    self.locationlList.push(answer.data.data.locations[item]);
+    export default {
+        data: function() {
+            return {
+                requestResult: [],
+                requestParams: {
+                    url: "/api/deal/options",
+                    res: [],
                 }
-            });
+            }
+        },
+        mixins: [getMixin],
+        methods: {
+            resultHandler: function() {
+                var self = this;
+
+                for (var item = 0; item < self.requestParams.res.locations.length; item++) {
+                    self.requestResult.push(self.requestParams.res.locations[item]);
+                }
+            }
+        },
+        created: function() {
+            this.sendRequest();
+        },
+        updated: function() {
+            DEALIBRE.forms.init(false);
+            DEALIBRE.page.scrollAnimation.init();
         }
-    },
-    updated: function() {
-        DEALIBRE.forms.init(false);
-        DEALIBRE.page.scrollAnimation.init();
     }
-}
 </script>

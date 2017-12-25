@@ -23,7 +23,7 @@
             redirectUrl: function() {
                 var self = this,
                     url = self.form.action,
-                    params = self.fields.email
+                    params = self.fields.email 
 
                 if (url.indexOf("?") === -1) {
                     url += "?emailUser=" + params;

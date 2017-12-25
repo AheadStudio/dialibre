@@ -39,7 +39,7 @@
                 var self = this;
                 axios.get("/api/help").then(function(r) {
                     for(var key in r.data.data) {
-                    var section = r.data.data[key];
+                        var section = r.data.data[key];
                         section = {
                             id: section.id,
                             name: section.name,
@@ -51,6 +51,16 @@
             }
         },
         mounted: function() {
+            var element = $(this.$el);
+
+            this.$nextTick(function () {
+                element.addClass("loading-opacity");
+
+                setTimeout(function(){
+                    element.addClass("loading-opacity--show");
+                }, 600);
+            })
+
             DEALIBRE.forms.init(this.$el);
         },
     }
