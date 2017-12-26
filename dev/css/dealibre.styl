@@ -3600,6 +3600,9 @@ table
 				margin-left auto
 				margin-right auto
 
+			.fileuploader-theme-One-button
+				flex-flow column
+
 		.register-share-form-upload-item-checkbox
 			display block
 			margin-top 60px
@@ -3612,6 +3615,9 @@ table
 
 				cursor pointer
 
+				&.error
+					color #dc8654
+					font-weight 600
 
 
 /** Register share big form **/
@@ -3887,6 +3893,8 @@ table
 
 		.jcf-select-drop-content
 			background #fff
+			max-height 500px
+			overflow-y scroll
 
 			ul
 				li

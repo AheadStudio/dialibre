@@ -505,6 +505,7 @@
 						       	filesType: "Only ${extensions} files are allowed to be uploaded."
 					       	}
 		            	},
+						enableApi: true,
 					});
 
 					$('input[name="files-chat"]').fileuploader({
@@ -530,7 +531,10 @@
 						       	filesType: "Only ${extensions} files are allowed to be uploaded."
 					       	}
 		            	},
+						enableApi: true,
 					});
+
+					fileUploadApi = $.fileuploader.getInstance("input[type='file']");
 				},
 
 				refresh: function(elements) {

@@ -14,64 +14,57 @@
 </template>
 
 <script>
+    // connect mixins
+    import { getMixin } from "../mixins/get_request.js"
 
-
-export default {
-    data: function() {
-        return {
-            user: {
-                first_name :  "",
-                last_name  :  "",
-                company    :  "",
-                position   :  "",
-                email      :  "",
-                phone      :  "",
-                photo      :  "",
+    export default {
+        data: function() {
+            return {
+                requestResult: [],
+                requestParams: {
+                    url: "/api/user/profile",
+                    res: [],
+                },
+                user: {
+                    first_name :  "",
+                    last_name  :  "",
+                    company    :  "",
+                    position   :  "",
+                    email      :  "",
+                    phone      :  "",
+                    photo      :  "",
+                }
             }
-        }
-    },
-    computed: {
-        fullname: function() {
-            var self = this;
-            return self.user.first_name + " " + self.user.last_name;
-        }
-    },
-    created: function() {
-        var self = this;
-        self.getInfo();
-        upload.$on('uploadInfo', function (id) {
-            if (id == 1) {
-                self.getInfo();
+        },
+        mixins: [getMixin],
+        computed: {
+            fullname: function() {
+                var self = this;
+                return self.user.first_name + " " + self.user.last_name;
             }
-        })
-    },
-    methods: {
-        getInfo: function(){
+        },
+        created: function() {
             var self = this;
-
-            axios.get("/api/user/profile").then(function(answer) {
-                var userInfo = answer.data.data;
-
-                self.user.first_name = userInfo.name;
-                self.user.last_name = userInfo.last_name;
-                self.user.company = userInfo.company_name;
-                self.user.position = userInfo.position;
-                self.user.email = userInfo.email;
-                self.user.phone = userInfo.phone;
-                self.user.photo = userInfo.photo.url;
-            });
+            self.sendRequest();
+            upload.$on('uploadInfo', function (id) {
+                if (id == 1) {
+                    self.sendRequest();
+                }
+            })
+        },
+        methods: {
+            resultHandler: function() {
+                var self = this;
+                self.user.first_name = self.requestParams.res.name;
+                self.user.last_name = self.requestParams.res.last_name;
+                self.user.company = self.requestParams.res.company_name;
+                self.user.position = self.requestParams.res.position;
+                self.user.email = self.requestParams.res.email;
+                self.user.phone = self.requestParams.res.phone;
+                self.user.photo = self.requestParams.res.photo.url;
+            },
         }
-    },
-    mounted: function() {
-        var element = $(this.$el);
-
-        element.addClass("loading-opacity");
-
-        setTimeout(function(){
-            element.addClass("loading-opacity--show");
-        }, 600);
     }
-}
 </script>
 
 <style lang="css" scoped>

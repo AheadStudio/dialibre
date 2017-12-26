@@ -18,84 +18,39 @@
 </template>
 
 <script>
-export default {
-    data: function() {
-        return {
-            fields: {
-                email: "",
-                password: "",
-                password_confirmation: "",
-                token: DealibreApp.utils.getUrlParameter("token")
-            },
-            form: {
-                action: "api/password/reset",
-                message: "",
-                success: false
-            }
-        }
-    },
-    mounted: function() {
-        DEALIBRE.forms.init(this.$el);
-        DEALIBRE.forms.fileUpload();
-    },
-    methods: {
-        validateFromServer: function(form) {
-            var $form = $(this.$el).find("form");
-            for(var code in form) {
-                var fieldError = form[code],
-                    $field = $form.find("[name=" + code + "]");
-                if($field.attr("type") != "hidden") {
-                    $field.addClass("form-item--error").after('<span class="form-item--error" id="' + code + '-error">' + fieldError + '</span>');
+    // connect mixins
+    import { sendMixin } from "../mixins/send_request.js"
+
+    export default {
+        data: function() {
+            return {
+                fields: {
+                    email: "",
+                    password: "",
+                    password_confirmation: "",
+                    token: DealibreApp.utils.getUrlParameter("token")
+                },
+                form: {
+                    action: "api/password/reset",
+                    message: "",
+                    success: false
                 }
             }
         },
-        send: function() {
-            var self = this,
-                $form = $(this.$el).find("form");
+        mixins: [sendMixin],
+        mounted: function() {
+            var element = $(this.$el);
 
-            if(!$form.valid()) {
-                return false;
-            }
+            this.$nextTick(function () {
+                element.addClass("loading-opacity");
 
-            $form.addClass("loading");
-            $form.find(":submit").attr("disabled", "disabled");
-            axios.post($form.attr("action"), $form.serialize())
-                .then(function(answer) {
-                    var data = answer.data;
+                setTimeout(function(){
+                    element.addClass("loading-opacity--show");
+                }, 600);
+            })
 
-                    self.form.message = data.message;
-                    self.form.success = true;
-                    self.form.redirect = data.redirect;
-
-                    $form.find(":submit").removeAttr("disabled");
-                    $form.removeClass("loading");
-
-                    if(self.successCallback) {
-                        self.successCallback();
-                    }
-
-                    if(self.fields) {
-                        for(var code in self.fields) {
-                            self.fields[code] = "";
-                        }
-                    }
-
-                    $form.find(".valid").removeClass("valid");
-                    
-                    if (self.form.redirect != null) {
-                        var redirect = self.form.redirect.replace("/", "") + ".html";
-                        document.location.href = redirect;
-                    }
-
-                }).catch(function(info) {
-                    var dataError = info.response.data;
-                    self.form.message = dataError.message;
-                    self.form.success = false;
-                    self.validateFromServer(dataError.data);
-                    $form.find(":submit").removeAttr("disabled");
-                    $form.removeClass("loading");
-                });
-        }
+            DEALIBRE.forms.init(this.$el);
+            DEALIBRE.forms.fileUpload();
+        },
     }
-}
 </script>

@@ -10,14 +10,14 @@
                 div(class="register-share-subtitle") You will receive a notification whether the deals you shared were approved and how many points are awarded
 
                 div(class="register-share-upload")
-                    form(action="#", class="register-share-form-upload")
+                    form(action="#", class="register-share-form-upload", v-on:submit.prevent="submitForm")
                         div(class="register-share-form-upload-row")
                             div(class="register-share-form-upload-holder")
-                                input(type="file", name="files", class="register-share-form-upload-item-file", @change="fileDeals")
+                                input(type="file", name="files", class="register-share-form-upload-item-file")
                         div(class="register-share-form-upload-row")
                             label(class="register-share-form-upload-item-checkbox")
                                 input(type="checkbox", class="register-share-form-upload-item-checkbox-item", v-model="checked")
-                                span(class="register-share-form-upload-item-checkbox-title") By click “SUBMIT DEAL” you agree with Terms of Service.
+                                span(class="register-share-form-upload-item-checkbox-title") {{ fileText }}
 
                         div(class="register-share-form-upload-row")
                             button(type="submit", class="btn btn--green register-share-form-upload-submit") Submit Deal
@@ -27,25 +27,61 @@
     export default {
         data: function() {
             return {
-                checked: "",
+                checked: false,
                 file: "",
+                fileText: "By click “SUBMIT DEAL” you agree with Terms of Service.",
+                fileTextStyle: "",
             }
         },
-        watch: {
-            checked: function(val) {
-                console.log(val);
-            }
+        created: function() {
+            var self = this;
         },
         methods: {
-            fileDeals: function(e) {
-                console.log(15);
-                console.log(e.target.files);
-            },
-            send: function(el) {
-                console.log(el);
+            submitForm: function() {
+                var self = this,
+                    textCheckbox = $(".register-share-form-upload-item-checkbox-title"),
+                    arrayFile = fileUploadApi.getChoosedFiles(),
+                    formData = new FormData();
+
+                    if (self.checked == false || arrayFile.length === 0 ) {
+                        self.fileText = 'You forgot to click "SUBMIT DEAL" you agree with Terms of Service';
+                        textCheckbox.addClass("error");
+                    } else {
+                        textCheckbox.removeClass("error");
+                        self.fileText = 'By click “SUBMIT DEAL” you agree with Terms of Service.';
+
+                        for (var i = 0; i < arrayFile.length; i++) {
+                            formData.append('files[]', arrayFile[i].file);
+                        }
+
+                        const config = {
+                            headers: { 'content-type': 'multipart/form-data' }
+                        }
+
+                        axios.post("/api/deal/suggest", formData, config
+                            ).then(function(answer) {
+                                var redirect = "register_share_success.html";
+
+                                setTimeout(function(){
+                                    document.location.href = redirect;
+                                }, 600);
+                                
+                            }).catch(function(info) {
+                            });
+                    }
             }
         },
         mounted: function() {
+            var element = $(this.$el);
+
+            this.$nextTick(function () {
+                element.addClass("loading-opacity");
+
+                setTimeout(function(){
+                    element.addClass("loading-opacity--show");
+                }, 600);
+            })
+
             DEALIBRE.forms.init(false);
             DEALIBRE.forms.fileUpload();
         }

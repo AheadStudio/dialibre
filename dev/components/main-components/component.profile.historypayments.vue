@@ -85,6 +85,7 @@
                     for(var key in data) {
                         self.billingHistory.push(data[key]);
                     }
+                    console.log(self.billingHistory);
                 });
 
                 axios.get("/api/user/credit/history", {

@@ -5,7 +5,6 @@ export const getMixin = {
 
             axios.get(self.requestParams.url).then(function(answer) {
                 self.requestParams.res = answer.data.data;
-                console.log("Get all params" ,answer);
                 self.resultHandler();
             });
         }
