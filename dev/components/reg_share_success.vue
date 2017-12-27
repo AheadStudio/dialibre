@@ -1,14 +1,27 @@
 <template lang="jade">
     div()
-        div(class="page-heading")
-            div(class="page-inner page-inner--w1")
-                h1(class="h1") THANK YOU FOR SHARING THIS DEAL WITH THE COMMUNITY!
+        header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+            newheader()
+        main(class="page-content")
+            div(class="page-heading")
+                div(class="page-inner page-inner--w1")
+                    h1(class="h1") THANK YOU FOR SHARING THIS DEAL WITH THE COMMUNITY!
 
-        div(class="page-inner page-inner--w1")
-            div(class="register-share")
-                div(class="register-share-title register-share-title--success") You analyst will review the information, you will receive a notification whether the deal you shared was approved and how many points are awarded.
-                div(class="register-share-success")
-                    a(href="#", class="link register-share-success-link") Another deal to share
-                    br
-                    a(href="#", class="link register-share-success-link") Search deal flow
+            div(class="page-inner page-inner--w1")
+                div(class="register-share")
+                    div(class="register-share-title register-share-title--success") You analyst will review the information, you will receive a notification whether the deal you shared was approved and how many points are awarded.
+                    div(class="register-share-success")
+                        a(href="#", class="link register-share-success-link") Another deal to share
+                        br
+                        a(href="#", class="link register-share-success-link") Search deal flow
 </template>
+
+<script>
+    // connect components in home page
+    import newheader from './header.vue';
+    export default {
+        components: {
+            "newheader"  : newheader,
+        }
+    }
+</script>

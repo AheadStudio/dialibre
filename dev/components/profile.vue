@@ -1,49 +1,53 @@
 <template lang="jade">
     div()
-        div(class="page-heading")
-            div(class="page-inner page-inner--w1")
-                h1(class="h1") Profile
+        header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+            newheader()
+        main(class="page-content")
+            div(class="page-heading")
+                div(class="page-inner page-inner--w1")
+                    h1(class="h1") Profile
 
-        div(class="page-profile")
-            div(class="page-inner page-inner--w2")
-                div(class="page-profile-personal")
-                    profileinformation()
+            div(class="page-profile")
+                div(class="page-inner page-inner--w2")
+                    div(class="page-profile-personal")
+                        profileinformation()
 
-                    div(class="page-profile-personal--right")
-                        div(class="page-profile-personal-credits")
-                            span(class="page-profile-personal-credits-quantity") 566
-                            span credits
-                            button(href="#get-credits", class="btn btn--green page-profile-personal-credits-btn popup") Get credits
-                        getfetch()
-                        a(href="#addcard", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Add card
+                        div(class="page-profile-personal--right")
+                            div(class="page-profile-personal-credits")
+                                span(class="page-profile-personal-credits-quantity") 566
+                                span credits
+                                button(href="#get-credits", class="btn btn--green page-profile-personal-credits-btn popup") Get credits
+                            getfetch()
+                            a(href="#addcard", class="btn btn--blue-inverse page-profile-personal-info-btn popup") Add card
 
-                div(class="page-profile-history")
-                    div(class="page-profile-history-header")
-                        div(class="page-profile-history-header-item tabs-heading-item active-tabs", data-tabs="history-1")
-                            div(class="page-profile-history-header-item-title") Billing History
-                        div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
-                            div(class="page-profile-history-header-item-title") Credit History
-                    historypayments()
+                    div(class="page-profile-history")
+                        div(class="page-profile-history-header")
+                            div(class="page-profile-history-header-item tabs-heading-item active-tabs", data-tabs="history-1")
+                                div(class="page-profile-history-header-item-title") Billing History
+                            div(class="page-profile-history-header-item tabs-heading-item", data-tabs="history-2")
+                                div(class="page-profile-history-header-item-title") Credit History
+                        historypayments()
 
-                div(class="profile-nda")
-                    profilenda()
+                    div(class="profile-nda")
+                        profilenda()
 
-        div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
-            addcard()
+            div(id="addcard", class="popup-container popup-addcard white-popup mfp-hide")
+                addcard()
 
-        div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
-            profileupdate()
+            div(id="edit-profile", class="popup-container popup-addcard white-popup mfp-hide")
+                profileupdate()
 
-        div(id="change-password", class="popup-container popup-addcard white-popup mfp-hide")
-            changepassword()
+            div(id="change-password", class="popup-container popup-addcard white-popup mfp-hide")
+                changepassword()
 
-        div(id="get-credits", class="popup-container popup-addcard white-popup mfp-hide")
-            getcredits()
+            div(id="get-credits", class="popup-container popup-addcard white-popup mfp-hide")
+                getcredits()
 
 </template>
 
 <script>
     // connect components in home page
+    import newheader from './header.vue';
     import profileinformation from './main-components/component.profile.profileinformation.vue';
     import getfetch from './main-components/component.profile.getfetch.vue';
     import addcard from './main-components/component.profile.addcard.vue';
@@ -55,6 +59,7 @@
 
     export default {
         components: {
+            "newheader": newheader,
             "profileinformation": profileinformation,
             "getfetch": getfetch,
             "addcard": addcard,

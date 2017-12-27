@@ -139,7 +139,7 @@ var formMixin = {
 
 
 // Header
-Vue.component("pageheader", {
+/*Vue.component("pageheader", {
 	template: "#header-tmpl",
 	data: function() {
 		return {
@@ -149,7 +149,7 @@ Vue.component("pageheader", {
 });
 header = new Vue({
 	el: "#page-header"
-});
+});*/
 
 
 

@@ -3,10 +3,10 @@
         div(class="register-share-form-big-row")
             div(class="register-share-form-big-row-title") Location
             div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
-                select(class="register-share-form-big-item register-share-form-big-item--select", placeholder="Continent", name="area", @change="getIdCountry")
+                select(class="register-share-form-big-item register-share-form-big-item--select", placeholder="Continent", name="area", @change="getIdContinent")
                     option(:value="item.id", v-for="item in location.continent") {{ item.name }}
             div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
-                select(class="register-share-form-big-item register-share-form-big-item--select", placeholder="Country", name="country")
+                select(class="register-share-form-big-item register-share-form-big-item--select", placeholder="Country", name="country", @change="getIdCountry")
                     option(:value="item.id", v-for="item in location.country[0]") {{ item.name }}
         div(class="register-share-form-big-row")
             div(class="register-share-form-big-item-holder register-share-form-big-item-holder--w2")
@@ -54,7 +54,7 @@
                     }
 
             },
-            getIdCountry: function(event) {
+            getIdContinent: function(event) {
                 var self = this,
                     idSelectContinent = $(event.target).val();
 
@@ -62,6 +62,17 @@
                 for (var cont = 0; cont < self.location.continent.length; cont++) {
                     if (self.location.continent[cont].id == idSelectContinent) {
                         self.location.country.push(self.location.continent[cont].countries);
+                    }
+                }
+            },
+            getIdCountry: function(event) {
+                var self = this,
+                    idSelectContinent = $(event.target).val();
+
+                self.location.state = [];
+                for (var cont = 0; cont < self.location.country.length; cont++) {
+                    if (self.location.country[cont].id == idSelectContinent) {
+                        self.location.state.push(self.location.country[cont].state);
                     }
                 }
             }

@@ -1,25 +1,30 @@
 <template lang="jade">
     div()
-        div(class="page-heading")
-            div(class="page-inner page-inner--w1")
-                h1(class="h1") Help
+        header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+            newheader()
+        main(class="page-content")
+            div(class="page-heading")
+                div(class="page-inner page-inner--w1")
+                    h1(class="h1") Help
 
-        div(class="help", v-bind:class="{loading:!help.length}")
+            div(class="help", v-bind:class="{loading:!help.length}")
+                div(class="page-inner page-inner--w2")
+                    div(class="help-sections")
+                        div(class="help-section-item", v-for="section in help")
+                            h2(class="h2 help-section-item-name") {{ section.name }}
+                            div(class="help-section-item-blocks")
+                                div(class="help-section-item-block-item", v-for="item in section.items")
+                                    div(class="help-section-item-block-item-name-holder")
+                                        a(href="#", class="help-section-item-block-item-name link link--blue") {{ item.question }}
+                                    div(class="help-section-item-block-item-text") {{ item.answer }}
+
             div(class="page-inner page-inner--w2")
-                div(class="help-sections")
-                    div(class="help-section-item", v-for="section in help")
-                        h2(class="h2 help-section-item-name") {{ section.name }}
-                        div(class="help-section-item-blocks")
-                            div(class="help-section-item-block-item", v-for="item in section.items")
-                                div(class="help-section-item-block-item-name-holder")
-                                    a(href="#", class="help-section-item-block-item-name link link--blue") {{ item.question }}
-                                div(class="help-section-item-block-item-text") {{ item.answer }}
-
-        div(class="page-inner page-inner--w2")
-            helpform()
+                helpform()
 </template>
 
 <script>
+    // connect components in home page
+    import newheader from './header.vue';
     import helpform from './main-components/component.help.helpform.vue';
 
     export default {
@@ -33,6 +38,7 @@
         },
         components: {
             "helpform" : helpform,
+            "newheader" : newheader,
         },
         methods: {
             getInfo: function() {
@@ -51,16 +57,6 @@
             }
         },
         mounted: function() {
-            var element = $(this.$el);
-
-            this.$nextTick(function () {
-                element.addClass("loading-opacity");
-
-                setTimeout(function(){
-                    element.addClass("loading-opacity--show");
-                }, 600);
-            })
-
             DEALIBRE.forms.init(this.$el);
         },
     }
