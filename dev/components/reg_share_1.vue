@@ -1,7 +1,7 @@
 <template lang="jade">
     div()
         header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-            newheader()
+            newheader(:headersetting="headerProps")
         main(class="page-content")
             div(class="page-heading")
                 div(class="page-inner page-inner--w1")
@@ -39,8 +39,37 @@
                 steps: [
                     {link:"register_share_step2_files.html", stepText:"I'm an Authorized Rep in is deal"},
                     {link:"register_share_step2_form.html", stepText:"Sharing deal from my deal flow"}
-                ]
+                ],
+                headerProps: {
+                    pageTitle    :  "",
+                    mobileClass  :  "",
+                    headerType   :  "",
+                    isUserAuth   :   false,
+                },
             }
+        },
+        created: function() {
+            var self = this,
+                $body = $("body");
+            DealibreApp.methods.checkAuthorized(function(isAuth) {
+                self.headerProps.isUserAuth = isAuth;
+                if (!isAuth) {
+                    self.headerProps.pageTitle = "register-step-one";
+                    self.headerProps.mobileClass = "header-mobile--white";
+                    self.headerProps.headerType = "black";
+                } else {
+                    self.headerProps.pageTitle = "register-step-one";
+                    self.headerProps.mobileClass = "header-mobile--aut";
+                    self.headerProps.headerType = "black";
+                }
+            });
+
+            if ($body.hasClass("page-home")) {
+                $body.removeClass("page-home");
+                $(".page-content", $body).addClass("page-content--auth");
+            }
+
+            DealibreApp.methods.showFooter();
         },
         components: {
             "newheader"  : newheader,

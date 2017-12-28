@@ -3,18 +3,3 @@ extends ../templates/base
 block content
     div(id="dealibre-app")
         router-view()
-
-block scripts
-    script.
-        new Vue({
-            created: function() {
-                DealibreApp.methods.checkAuthorized(function(isAuth) {
-                    if (!isAuth) {
-                        DealibreApp.methods.setHeader("register", "header-mobile--white", "black");
-                    } else {
-                        DealibreApp.methods.setHeader("register", "header-mobile--aut", "black");
-                    }
-                });
-                DealibreApp.methods.showFooter();
-            }
-        });

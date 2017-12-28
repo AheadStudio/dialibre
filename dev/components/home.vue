@@ -1,7 +1,7 @@
 <template lang="jade">
     div()
         header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-            newheader()
+            newheader(:headersetting="headerProps")
         main(class="page-content")
             div(class="intro polygon-animate")
                 div(style="position: relative; left: 0; right: 0; top: 0; bottom: 0;")
@@ -82,13 +82,46 @@
     import linkregister from './main-components/component.home.linkregister.vue';
 
     export default {
+        data: function() {
+            return {
+                headerProps: {
+                    pageTitle    :  "",
+                    mobileClass  :  "",
+                    headerType   :  "",
+                    isUserAuth   :   false,
+                },
+            }
+        },
         components: {
             "reviewslist": reviewslist,
             "maplist": maplist,
             "linkregister": linkregister,
             "newheader": newheader,
         },
+        created: function() {
+            var self = this;
+
+            DealibreApp.methods.checkAuthorized(function(isAuth) {
+                self.headerProps.isUserAuth = isAuth;
+                if (!isAuth) {
+                    self.headerProps.pageTitle = "home";
+                    self.headerProps.mobileClass = "";
+                    self.headerProps.headerType = "black";
+                } else {
+                    self.headerProps.pageTitle = "home";
+                    self.headerProps.mobileClass = "header-mobile--aut";
+                    self.headerProps.headerType = "black";
+                }
+            });
+            DealibreApp.methods.showFooter();
+        },
         mounted: function() {
+            var $body = $("body");
+            if (!$body.hasClass("page-home")) {
+                $body.addClass("page-home");
+                $(".page-content", $body).removeClass("page-content--auth");
+            }
+
             DEALIBRE.page.polygonAnimate.init();
             DEALIBRE.page.scrollAnimation.init();
             DEALIBRE.page.playVideo.init();

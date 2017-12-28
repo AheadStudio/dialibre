@@ -1,7 +1,7 @@
 <template lang="jade">
     div()
         header(class="page-header", id="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-            newheader()
+            newheader(:headersetting="headerProps")
         main(class="page-content")
             div(class="page-heading")
                 div(class="page-inner page-inner--w1")
@@ -58,6 +58,16 @@
     import profilenda from './main-components/component.profile.profilenda.vue';
 
     export default {
+        data: function() {
+            return {
+                headerProps: {
+                    pageTitle    :  "",
+                    mobileClass  :  "",
+                    headerType   :  "",
+                    isUserAuth   :   false,
+                },
+            }
+        },
         components: {
             "newheader": newheader,
             "profileinformation": profileinformation,
@@ -68,6 +78,30 @@
             "historypayments": historypayments,
             "getcredits": getcredits,
             "profilenda": profilenda,
+        },
+        created: function() {
+            var self = this,
+                $body = $("body");
+            DealibreApp.methods.checkAuthorized(function(isAuth) {
+                self.headerProps.isUserAuth = isAuth;
+                if (!isAuth) {
+                    self.headerProps.pageTitle = "profile";
+                    self.headerProps.mobileClass = "header-mobile--white";
+                    self.headerProps.headerType = "black";
+                    document.location.href = "signin.html";
+                } else {
+                    self.headerProps.pageTitle = "profile";
+                    self.headerProps.mobileClass = "header-mobile--aut";
+                    self.headerProps.headerType = "black";
+                }
+            });
+
+            if ($body.hasClass("page-home")) {
+                $body.removeClass("page-home");
+                $(".page-content", $body).addClass("page-content--auth");
+            }
+
+            DealibreApp.methods.showFooter();
         },
         mounted: function() {
             DEALIBRE.forms.init();

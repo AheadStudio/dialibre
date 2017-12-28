@@ -11,9 +11,8 @@ export const getMixin = {
     },
     mounted: function() {
         var element = $(this.$el);
-
+        element.addClass("loading-opacity");
         this.$nextTick(function () {
-            element.addClass("loading-opacity");
 
             setTimeout(function(){
                 element.addClass("loading-opacity--show");
