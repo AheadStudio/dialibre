@@ -103,6 +103,7 @@
 
             DealibreApp.methods.checkAuthorized(function(isAuth) {
                 self.headerProps.isUserAuth = isAuth;
+
                 if (!isAuth) {
                     self.headerProps.pageTitle = "home";
                     self.headerProps.mobileClass = "";
@@ -113,10 +114,13 @@
                     self.headerProps.headerType = "black";
                 }
             });
+
             DealibreApp.methods.showFooter();
         },
         mounted: function() {
-            var $body = $("body");
+            var self = this,
+                $body = $("body");
+
             if (!$body.hasClass("page-home")) {
                 $body.addClass("page-home");
                 $(".page-content", $body).removeClass("page-content--auth");

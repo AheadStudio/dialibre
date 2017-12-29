@@ -20,7 +20,7 @@ var dashboard = require('../components/dashboard.vue');
 var signin = require('../components/signin.vue');
 var text = require('../components/text.vue');
 // routes in site
-/*
+
 const routes = [
   {
       path: '/projects/dealibre/pages/chat.html',
@@ -87,7 +87,7 @@ const routes = [
       component: text
   }
 ];
-*/
+/*
 const routes = [
   {
       path: '/pages/chat.html',
@@ -154,7 +154,7 @@ const routes = [
       component: text
   }
 ];
-
+*/
 const router = new VueRouter({
     mode: 'history',
     routes
