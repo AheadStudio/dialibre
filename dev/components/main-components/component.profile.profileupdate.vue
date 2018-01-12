@@ -12,7 +12,7 @@
                     input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your first name", name="first_name", v-model="fields.first_name")
             div(class="popup-addcard-form-row")
                 div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
-                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your  last name", name="last_name", v-model="fields.last_name")
+                    input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your last name", name="last_name", v-model="fields.last_name")
             div(class="popup-addcard-form-row")
                 div(class="popup-addcard-form-holder popup-addcard-form-holder--w1")
                     input(type="text", class="popup-addcard-form-holder-item popup-addcard-form-holder--text", placeholder="Your company", name="company_name", v-model="fields.company_name")
@@ -45,7 +45,8 @@
                     action: "/api/user/profile",
                     message: "",
                     success: false
-                }
+                },
+                callResultHandler: true,
             }
         },
         created: function() {
@@ -59,8 +60,7 @@
 
                 axios.get("/api/user/profile").then(function(answer) {
                     var userInfo = answer.data.data;
-
-                    self.fields.first_name = userInfo.name;
+                    self.fields.first_name = userInfo.first_name;
                     self.fields.last_name = userInfo.last_name;
                     self.fields.company_name = userInfo.company_name;
                     self.fields.position = userInfo.position;
@@ -77,18 +77,21 @@
                     namefile = $(".namefile"),
                     formData = new FormData();
 
-                formData.append('photo', event.target.files[0])
+                formData.append('photo', event.target.files[0]);
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-                axios.post("/api/user/photo", formData, config
-                ).then(function(answer) {
+                axios.post("/api/user/photo", formData, config).then(function(answer) {
                     var data = answer.data;
                     namefile.text("Update success");
                     self.getInfo();
                 }).catch(function(info) {
                     var dataError = info.response.data;
                 });
+            },
+            resultHandler: function() {
+                var self = this;
+                self.getInfo();
             }
         }
     }

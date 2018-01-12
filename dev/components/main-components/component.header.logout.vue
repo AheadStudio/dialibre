@@ -38,13 +38,12 @@
                 var self = this,
                     $form = $(this.$el).find("form");
 
-                    axios.get(self.form.action)
-                        .then(function(answer) {
-                            document.location.href = "home.html";
-                        })
-                        .catch(function(error) {
-                            console.log(error);
-                        });
+                axios.get(self.form.action)
+                .then(function(answer) {
+                    document.location.href = "home.html";
+                })
+                .catch(function(error) {
+                });
             }
         },
     }

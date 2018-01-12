@@ -148,7 +148,12 @@
     export default {
         data: function() {
     		return {
-                params      : {},
+                params      : {
+                    pageTitle: this.headersetting.pageTitle,
+                    headerType: this.headersetting.headerType,
+                    classMobile: this.headersetting.mobileClass,
+                    isUserAuth: this.headersetting.isUserAuth,
+                },
                 profileInfo : {
                     name      : "",
                     lastName  : "",
@@ -159,8 +164,9 @@
         props: ["headersetting"],
         created: function() {
             var self = this;
-            self.params = this.headersetting;
+
             self.getInfoProfile();
+
         },
         components: {
             "logout" : logout,
@@ -194,6 +200,8 @@
         updated: function () {
             var self = this,
                 $body = $("body");
+
+
             this.$nextTick(function () {
                 if (this.params.pageTitle == "home" && this.params.isUserAuth === true) {
                     if ($body.hasClass("page-home")) {
@@ -201,6 +209,12 @@
                         $(".page-content", $body).addClass("page-content--auth");
                     }
                 }
+
+                self.params.classMobile = self.headersetting.mobileClass;
+                self.params.headerType = self.headersetting.headerType;
+                self.params.pageTitle = self.headersetting.pageTitle;
+                self.params.isUserAuth = self.headersetting.isUserAuth;
+
             })
         },
         mounted: function() {
@@ -213,8 +227,15 @@
                 setTimeout(function(){
                     element.addClass("loading-opacity--show");
                 }, 200);
+
+                self.params.classMobile = self.headersetting.mobileClass;
+                self.params.headerType = self.headersetting.headerType;
+                self.params.pageTitle = self.headersetting.pageTitle;
+                self.params.isUserAuth = self.headersetting.isUserAuth;
+
             });
             DEALIBRE.modalWindow.init();
+
         },
     }
 </script>

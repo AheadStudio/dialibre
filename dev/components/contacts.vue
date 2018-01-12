@@ -52,10 +52,12 @@
                     self.headerProps.headerType = "black";
                 }
             });
+
             if ($body.hasClass("page-home")) {
                 $body.removeClass("page-home");
                 $(".page-content", $body).addClass("page-content--auth");
             }
+            
             DealibreApp.methods.showFooter();
         }
     }

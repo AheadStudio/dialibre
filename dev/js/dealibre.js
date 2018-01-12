@@ -721,8 +721,12 @@
 
 			},
 
-			tableSort: function() {
-				$(".sort-table").tablesorter();
+			tableSort: function(params) {
+				if (params) {
+					$(".sort-table").tablesorter(params);
+				} else {
+					$(".sort-table").tablesorter();
+				}
 			},
 
 			modalWindow: {
@@ -830,6 +834,47 @@
 				},
 			},
 
+			changeTableText: function() {
+				var self = this,
+					$tableRow = $(".register-share-form-big-item--table .table-text");
+
+				$tableRow.on("click", function() {
+					var el = $(this),
+						$input = el.parent().find(".input-table-text");
+
+					el.css("display", "none");
+					$input.css("display", "inline");
+				});
+			},
+
+			deals: {
+
+				init: function() {
+					var self = this;
+
+					self.changedeal();
+				},
+
+				changedeal: function(nameClass) {
+					var self = this;
+
+					nameClass.on("click", function() {
+						var el = $(this),
+							input = el.find(".deal-input");
+
+						input.css("display", "block");
+					});
+
+					$(document).mouseup(function (event) {
+						if (nameClass.has(event.target).length === 0){
+							nameClass.removeClass("active");
+							var input = nameClass.find(".deal-input");
+							input.css("display", "none");
+						}
+					});
+				},
+			}
+
 		};
 
 	})();
@@ -854,6 +899,8 @@
 	DEALIBRE.page.scrollAnimation.init();
 	DEALIBRE.page.playVideo.init();
 	DEALIBRE.page.summCr.init();
+
+	DEALIBRE.changeTableText();
 
 
 	DEALIBRE.map.init();

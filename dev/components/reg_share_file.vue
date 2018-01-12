@@ -93,8 +93,8 @@
                             headers: { 'content-type': 'multipart/form-data' }
                         }
 
-                        axios.post("/api/deal/suggest", formData, config
-                            ).then(function(answer) {
+                        axios.post("/api/deal/suggest", formData, config)
+                            .then(function(answer) {
                                 var redirect = "register_share_success.html";
 
                                 setTimeout(function(){

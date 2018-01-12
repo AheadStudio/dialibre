@@ -75,21 +75,6 @@ DealibreApp = {
 	},
 };
 
-// Header
-/*Vue.component("pageheader", {
-	template: "#header-tmpl",
-	data: function() {
-		return {
-			states: DealibreApp.data,
-		}
-	}
-});
-header = new Vue({
-	el: "#page-header"
-});*/
-
-
-
 // Footer
 Vue.component("pagefooter", {
 	template: "#footer-tmpl",
@@ -103,5 +88,5 @@ footer = new Vue({
 	el: "#footer-holder"
 });
 
-// for upload components
+// bus for upload components
 var upload = new Vue();

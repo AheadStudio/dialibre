@@ -5,6 +5,7 @@ export const getMixin = {
 
             axios.get(self.requestParams.url).then(function(answer) {
                 self.requestParams.res = answer.data.data;
+                console.log(answer);
                 self.resultHandler();
             });
         }
@@ -16,7 +17,8 @@ export const getMixin = {
 
             setTimeout(function(){
                 element.addClass("loading-opacity--show");
-            }, 600);
+            }, 300);
+
         })
     }
 }

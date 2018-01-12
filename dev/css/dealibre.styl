@@ -73,7 +73,7 @@ body
 
 	&--max
 		width 100%
-		height 100%
+		height 70px
 
 	&--w0
 		max-width 100%
@@ -779,6 +779,10 @@ body
 
 
 /*** Forms ***/
+.error
+	color #ea640b
+	font-weight 600
+
 .form-result
 	margin-bottom 30px
 
@@ -1788,7 +1792,8 @@ span.form-item--error
 		height 100%
 
 		background #FFF url("../i/preloader.gif") no-repeat center center
-
+		background-position-y top
+		background-position-x center
 
 /*** //Preloader ***/
 
@@ -2132,7 +2137,7 @@ span.form-item--error
 		background-image url("../svg/lypa_blue.svg")
 
 
-table
+table.sort-table
 	tr
 		th
 			position relative
@@ -2151,6 +2156,32 @@ table
 				&:after
 					content ""
 
+.register-share-form-big-row
+	.register-estimate
+		display block
+		margin-top 10px
+		width 100%
+		text-align right
+
+table.register-share-form-big-item--table
+	tr
+		th
+			.year
+				vertical-align bottom
+				margin-left 10px
+
+	.input-table-text
+		display none
+		position absolute
+		right 8px
+		top 0
+		bottom 0
+		width 100px
+		text-align right
+
+	.table-text
+		cursor pointer
+
 .main-table-result-scroll
 	display block
 	width 100%
@@ -2166,6 +2197,16 @@ table
 
 	table
 		width 100%
+
+		&.sort-table
+			thead
+				tr
+					 th
+						&:after
+							margin-left inherit
+							top 50%
+							right 5px
+							margin-top -4px
 		thead
 			tr
 				th
@@ -2202,6 +2243,9 @@ table
 						width 7px
 						height 11px
 
+					&:first-child
+						column-width 85px;
+						min-width 85px
 					&:last-child
 					&:first-child
 						border-right none
@@ -2228,13 +2272,14 @@ table
 
 					.table-btn-unlock
 						position absolute
-						top 12px
+						top 50%
 						left 25px
 
 						padding 5px
 						box-sizing border-box
 
 						margin-left 10px
+						margin-top -10px
 
 						font-size 12px
 						font-family ProximaNovaRegular
@@ -2841,6 +2886,7 @@ table
 			display inline-block
 			width 20.333333%
 			height 100%
+			float right
 
 			background-color #344c67
 
@@ -2854,6 +2900,7 @@ table
 				display flex
 				justify-content space-between
 				align-items center
+				flex-wrap wrap
 
 				width 160px
 
@@ -2945,14 +2992,44 @@ table
 
 								color #000
 
-							.update-text
-								font-size 14px
-								font-family ProximaNovaBold
+							&.changedeal
+								position relative
+								cursor pointer
 
-								text-transform uppercase
-								text-decoration none
+								.deal-input
+									display none
+									position absolute
+									right 0
+									top 0
 
-								color #85c859
+									padding 11px 0
+									box-sizing border-box
+
+									background #fff
+									text-align right
+
+									font-size 14px
+									font-family ProximaNovaRegular
+
+
+								&:hover
+									&:before
+										content "UPLOAD"
+										position absolute
+										top 0
+										right 0
+										padding 13px 0
+										display block
+										width 100%
+
+										font-size 14px
+										font-family ProximaNovaBold
+
+										text-transform uppercase
+										text-decoration none
+
+										color #85c859
+										background #fff
 
 							img
 								width 7px
@@ -3698,6 +3775,7 @@ table
 
 
 		.register-share-form-big-item-holder
+			position relative
 			display block
 			float left
 
@@ -3714,6 +3792,9 @@ table
 				width 73%
 			&--w4
 				width 23%
+
+			.form-item--error
+				bottom -15px
 
 
 			.register-share-form-big-item

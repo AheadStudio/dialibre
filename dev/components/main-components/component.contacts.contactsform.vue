@@ -30,7 +30,8 @@
                     action: "/api/contacts/message",
                     message: "",
                     success: false
-                }
+                },
+                callResultHandler: false,
             }
         },
         mixins: [sendMixin],
