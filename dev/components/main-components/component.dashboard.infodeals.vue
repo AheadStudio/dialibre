@@ -20,7 +20,7 @@
                     span(class="popup-infodeals-head-price-item-text") Cash flow
                     span(class="popup-infodeals-head-price-item-quantity", v-if="fields.financial_records") ${{ fields.financial_records[0].cash_flow }} m
 
-                button(type="button", class="btn btn--green popup-infodeals-head-price-items-btn", @click="unlockDeal($event)") unlock 25
+                button(type="button", class="btn btn--green popup-infodeals-head-price-items-btn", @click="unlockDeal($event)", v-if="!fields.has_user") unlock 25
 
         div(class="popup-infodeals-content")
             div(class="popup-infodeals-content-item")
@@ -164,27 +164,32 @@
                     tbody
                         tr
                             td
-                            td(v-if="fields.financial_records", v-for="item in fields.financial_records")
+                            td(v-if="fields.financial_records", v-for="item in reverseArray", :key="item.id")
                                 {{ item.year }}
                                 span(v-if="item.estimate") E
                         tr
                             td Revenue
-                            td(v-if="fields.financial_records", v-for="item in fields.financial_records") ${{ item.revenue }} m
+                            td(v-if="fields.financial_records", v-for="item in reverseArray") ${{ item.revenue }} m
                         tr
                             td Cash
-                            td(v-if="fields.financial_records", v-for="item in fields.financial_records") ${{ item.cash_flow }} m
+                            td(v-if="fields.financial_records", v-for="item in reverseArray") ${{ item.cash_flow }} m
                         tr
                             td EBITDA
-                            td(v-if="fields.financial_records", v-for="item in fields.financial_records") ${{ item.ebitda }} m
+                            td(v-if="fields.financial_records", v-for="item in reverseArray") ${{ item.ebitda }} m
                         tr
                             td EBITDA Margin
-                            td(v-if="fields.financial_records", v-for="item in fields.financial_records") ${{ item.ebitda }} m
+                            td(v-if="fields.financial_records", v-for="item in reverseArray") ${{ item.ebitda }} m
 
         div(class="popup-infodeals-navigation")
-            a(href="#infodeals2", class="link popup-infodeals-navigation-prev popup")
+            a(href="#", class="link popup-infodeals-navigation-prev popup-infodeals-navigation-prev--w60")
                 span(class="popup-infodeals-navigation-icon") <
                 span(class="popup-infodeals-navigation-item") Previous deal
-            a(href="#infodeals2", class="link popup-infodeals-navigation-next popup")
+
+            a(href="#nda", class="btn btn--blue popup-infodeals-navigation-btn popup", v-if="fields.has_user") Sigh nda
+            a(href="#rating", class="btn btn--blue popup-infodeals-navigation-btn popup", v-if="fields.has_user && fields.source_type.authorized") Rate this deal
+            a(href="#nda", class="btn btn--green popup-infodeals-navigation-btn popup", v-if="fields.has_user && fields.source_type.authorized") Chat with rep
+            a(href="#reportdeal", class="btn btn--blue-inverse popup-infodeals-navigation-btn popup", v-if="fields.has_user && fields.source_type.authorized") report deal
+            a(href="#", class="link popup-infodeals-navigation-next popup-infodeals-navigation-next--w30")
                 span(class="popup-infodeals-navigation-item") Next deal
                 span(class="popup-infodeals-navigation-icon") >
 </template>
@@ -199,7 +204,8 @@
             }
         },
         methods: {
-            // === set parameters for change and update deal === //
+
+            // === Set parameters for change and update deal === //
             changeDeal: function(event) {
                 var self = this,
                     el = $(event.target),
@@ -242,11 +248,11 @@
                 }
 
                 // call method in parent component for update information if change it
-
-                self.$parent.$emit("update-information", newInfo);
+                self.$root.$emit("update-information", newInfo);
 
             },
-            // === unlock deal ===//
+
+            // === Unlock deal ===//
             unlockDeal: function(event) {
                 var self = this,
                     el = $(event.target);
@@ -255,42 +261,50 @@
                 .then(function(answer) {
                     var data = answer.data.data;
 
-                    self.$parent.$emit("refresh-information", data.id);
+                    self.$root.$emit("refresh-information", data.id);
 
                 }).catch(function(info) {
                     var dataError = info.response.data;
                 });
 
             },
-        },
-        components: {
-            "mapsvg" : mapsvg,
-        },
-        created: function() {
-            var self = this;
-        },
-        beforeMount: function() {
-            var self = this,
-                el = $(self.$el);
 
-            upload.$on("send-data", function (data) {
-                data.financial_records = data.financial_records.reverse();
+            // === Get Information about deal === //
+            getInfoDeal: function(data) {
+                var self = this;
                 self.fields = data;
+
                 self.fields.has_user = data.unlocked;
-                self.fields.official = true;
 
                 for (var key in self.fields.locale) {
                     if (self.fields.locale[key] === null) {
                         self.fields.locale[key] = "";
                     }
                 }
-                console.log("Info about deal", self.fields);
-            });
-
+                console.log("Info deal", self.fields);
+            }
+        },
+        computed: {
+            reverseArray: function() {
+                var self = this;
+                if (self.fields.financial_records) {
+                    return self.fields.financial_records.slice().reverse();
+                }
+            }
+        },
+        components: {
+            "mapsvg" : mapsvg,
         },
         mounted: function() {
             var self = this,
                 el = $(self.$el);
+
+            // --- Lisen events --- //
+            upload.$on("send-data", function (data) {
+                self.getInfoDeal(data);
+            });
+            // --- || --- //
+
             DEALIBRE.forms.init(el);
         },
         updated: function () {
